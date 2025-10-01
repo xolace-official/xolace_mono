@@ -1,0 +1,33 @@
+{
+  "name": "@xolacekit/auth",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@hookform/resolvers": "catalog:",
+    "@types/react": "catalog:",
+    "@xolacekit/eslint-config": "workspace:*",
+    "@xolacekit/prettier-config": "workspace:*",
+    "@xolacekit/supabase": "workspace:*",
+    "@xolacekit/tailwind-config": "workspace:*",
+    "@xolacekit/typescript-config": "workspace:*",
+    "@xolacekit/ui": "workspace:*",
+    "expo-auth-session": "catalog:",
+    "react": "catalog:",
+    "react-hook-form": "catalog:",
+    "zod": "catalog:"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@xolacekit/eslint-config"
+    ]
+  },
+  "prettier": "@xolacekit/prettier-config"
+}

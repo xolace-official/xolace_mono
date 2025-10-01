@@ -1,0 +1,67 @@
+{
+  "name": "@xolacekit/ui",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/eslint": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@xolacekit/eslint-config": "workspace:*",
+    "@xolacekit/prettier-config": "workspace:*",
+    "@xolacekit/tailwind-config": "workspace:*",
+    "@xolacekit/typescript-config": "workspace:*",
+    "eslint": "catalog:",
+    "react-native": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "catalog:",
+    "@rn-primitives/accordion": "catalog:",
+    "@rn-primitives/alert-dialog": "catalog:",
+    "@rn-primitives/avatar": "catalog:",
+    "@rn-primitives/checkbox": "catalog:",
+    "@rn-primitives/collapsible": "catalog:",
+    "@rn-primitives/dialog": "catalog:",
+    "@rn-primitives/dropdown-menu": "catalog:",
+    "@rn-primitives/hover-card": "catalog:",
+    "@rn-primitives/label": "catalog:",
+    "@rn-primitives/menubar": "catalog:",
+    "@rn-primitives/navigation-menu": "catalog:",
+    "@rn-primitives/popover": "catalog:",
+    "@rn-primitives/progress": "catalog:",
+    "@rn-primitives/radio-group": "catalog:",
+    "@rn-primitives/select": "catalog:",
+    "@rn-primitives/separator": "catalog:",
+    "@rn-primitives/slot": "catalog:",
+    "@rn-primitives/switch": "catalog:",
+    "@rn-primitives/table": "catalog:",
+    "@rn-primitives/tabs": "catalog:",
+    "@rn-primitives/toggle": "catalog:",
+    "@rn-primitives/toggle-group": "catalog:",
+    "@rn-primitives/types": "catalog:",
+    "class-variance-authority": "catalog:",
+    "clsx": "catalog:",
+    "lucide-react-native": "catalog:",
+    "nativewind": "catalog:",
+    "react": "catalog:",
+    "react-native-svg": "catalog:",
+    "sonner": "catalog:",
+    "sonner-native": "catalog:",
+    "tailwind-merge": "catalog:"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@xolacekit/eslint-config"
+    ]
+  },
+  "prettier": "@xolacekit/prettier-config"
+}

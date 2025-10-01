@@ -1,0 +1,17 @@
+{
+  "name": "@xolacekit/tailwind-config",
+  "private": true,
+  "version": "0.1.0",
+  "main": "./index.js",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check \"**/*.{mjs,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "nativewind": "catalog:",
+    "react-native-reanimated": "catalog:",
+    "tailwindcss": "catalog:",
+    "tailwindcss-animate": "catalog:"
+  }
+}

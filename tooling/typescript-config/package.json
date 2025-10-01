@@ -1,0 +1,11 @@
+{
+  "name": "@xolacekit/typescript-config",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules"
+  },
+  "files": [
+    "base.json"
+  ]
+}

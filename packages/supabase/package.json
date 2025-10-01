@@ -1,0 +1,35 @@
+{
+  "name": "@xolacekit/supabase",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/aes-js": "catalog:",
+    "@xolacekit/eslint-config": "workspace:*",
+    "@xolacekit/prettier-config": "workspace:*",
+    "@xolacekit/tailwind-config": "workspace:*",
+    "@xolacekit/typescript-config": "workspace:*",
+    "zod": "catalog:"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "catalog:",
+    "@supabase/supabase-js": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "aes-js": "catalog:",
+    "expo-secure-store": "catalog:",
+    "react-native-get-random-values": "catalog:"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@xolacekit/eslint-config"
+    ]
+  },
+  "prettier": "@xolacekit/prettier-config"
+}
