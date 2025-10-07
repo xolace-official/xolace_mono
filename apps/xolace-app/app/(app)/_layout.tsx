@@ -1,7 +1,10 @@
 import { Stack } from "expo-router";
-import { useAuthSession } from "@xolacekit/supabase";
+import {useAuthChangeListener, useAuthSession} from "@xolacekit/supabase";
 
 export default function AppLayout() {
+    useAuthChangeListener({
+        appHomePath: '/',
+    });
     const { isAuthenticated } = useAuthSession();
 
     return (

@@ -10,6 +10,7 @@ export function useAuthSyncStore() {
     useEffect(() => {
         const { data: sub } = supabase.auth.onAuthStateChange(async (_event, session) => {
             const user = session?.user ?? null;
+            console.log("session: ",user);
             if (user) {
                 // Extract minimal, non-sensitive derived fields
                 setAuth({ userId: user.id, email: user.email ?? null });
@@ -19,9 +20,9 @@ export function useAuthSyncStore() {
         });
 
         // also do an initial pull on mount
-        supabase.auth.getSession().then(({ data }) => {
-            const user = data.session?.user ?? null;
-            if (user) setAuth({ userId: user.id, email: user.email ?? null });
+        supabase.auth.getClaims().then(({ data }) => {
+            const user = data?.claims ?? null;
+            if (user) setAuth({ userId: user.sub, email: user.email ?? null });
             else resetAuth();
         });
 

@@ -25,6 +25,8 @@ export default function RootLayout() {
     useRegisterAutoRefresh();
     useAuthSyncStore();
 
+
+
   return (
     <RootProvider>
         <SplashController />
