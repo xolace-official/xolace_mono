@@ -1,4 +1,7 @@
-import { Database } from "./types_db";
+import { ReactNode } from 'react';
+
+import { Database } from './types_db';
+
 // export interface Post extends Database['public']['Tables']['posts']['Row'] {
 //   posttags: Array<{
 //     tags: {
@@ -16,7 +19,9 @@ import { Database } from "./types_db";
 // }
 
 type Profile = Database['public']['Tables']['profiles']['Row'];
-interface SearchParamsInterface{ SearchParams : Promise<{ [key: string]: string | string[] | undefined }>}
+interface SearchParamsInterface {
+  SearchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
   posttags: {
@@ -27,10 +32,10 @@ type Post = Database['public']['Tables']['posts']['Row'] & {
   comments: {
     count: number;
   }[];
-  views:{
-    count:number
+  views: {
+    count: number;
   }[];
-  collections: {user_id: string}[];
+  collections: { user_id: string }[];
   post_slides: {
     content: string;
     slide_index: number;
@@ -49,9 +54,11 @@ type DetailPost = Database['public']['Tables']['posts']['Row'] & {
     };
   }[];
   votes: Database['public']['Tables']['votes']['Row'][];
-  views:[{
-    count:number
-  }]
+  views: [
+    {
+      count: number;
+    },
+  ];
   comments: Database['public']['Tables']['comments']['Row'][];
   collections: Database['public']['Tables']['collections']['Row'][];
   post_slides: {
@@ -75,15 +82,15 @@ export interface CampfirePost extends Post {
   };
 }
 
-type User = Database['public']['Tables']['profiles']['Row']
+type User = Database['public']['Tables']['profiles']['Row'];
 
-type Comment = Database['public']['Tables']['comments']['Row']
+type Comment = Database['public']['Tables']['comments']['Row'];
 
 type NestedComment = Comment & { replies: NestedComment[] };
 
-type UserPreferences = Database['public']['Tables']['user_preferences']['Row']
+type UserPreferences = Database['public']['Tables']['user_preferences']['Row'];
 
-type Tag = Database['public']['Tables']['tags']['Row']
+type Tag = Database['public']['Tables']['tags']['Row'];
 
 interface BadgeCounts {
   GOLD: number;
@@ -99,11 +106,10 @@ declare interface DropdownListProps {
 }
 
 type SupaVideoDetails = Database['public']['Tables']['videos']['Row'] & {
-  video_collections: {user_id: string}[];
-}
+  video_collections: { user_id: string }[];
+};
 
-type Notification = Database['public']['Tables']['notifications']['Row']
-
+type Notification = Database['public']['Tables']['notifications']['Row'];
 
 export interface EnhancedPost {
   id: string;
@@ -121,7 +127,13 @@ export interface EnhancedPost {
   is_sensitive: boolean;
   is_prompt_response: boolean;
   type: string;
-  author_roles: ("normal_user" | "verified" | "blue_team" | "help_professional" | "mentor")[];
+  author_roles: (
+    | 'normal_user'
+    | 'verified'
+    | 'blue_team'
+    | 'help_professional'
+    | 'mentor'
+  )[];
   campfire_id: string | null;
   campfire_name: string | null;
   campfire_slug: string | null;

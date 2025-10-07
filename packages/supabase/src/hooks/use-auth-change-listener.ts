@@ -31,6 +31,7 @@ export function useAuthChangeListener({
 
       // revalidate user session when user signs in or out
       if (event === 'SIGNED_OUT') {
+        console.log('SIGNED_OUT');
         queryClient.setQueryData(['supabase', 'user'], null);
       }
     });

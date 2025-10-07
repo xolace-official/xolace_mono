@@ -7,6 +7,7 @@ export function useSignOut() {
 
   return useMutation({
     mutationFn: () => {
+      console.log('SIGNED_OUT-mutation');
       return client.auth.signOut();
     },
   });

@@ -139,9 +139,9 @@ function onProfilePhotoUploaded(props: {
       removeExistingStorageFile().then(() =>
         uploadUserProfilePhoto(client, file, userId).then((pictureUrl) => {
           return client
-            .from('accounts')
+            .from('profiles')
             .update({
-              picture_url: pictureUrl,
+              avatar_url: pictureUrl,
             })
             .eq('id', userId)
             .throwOnError()
@@ -158,9 +158,9 @@ function onProfilePhotoUploaded(props: {
     const promise = () =>
       removeExistingStorageFile().then(() => {
         return client
-          .from('accounts')
+          .from('profiles')
           .update({
-            picture_url: null,
+            avatar_url: null,
           })
           .eq('id', userId)
           .throwOnError()

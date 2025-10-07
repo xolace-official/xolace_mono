@@ -1,5 +1,23 @@
-export type EntityType = 'post' | 'comment' | 'vote' | 'report' | 'profile' | 'system' | 'view' | 'video';
-export type ActionType = 'created' | 'deleted' | 'updated' | 'commented' | 'reported' | 'upvoted' | 'downvoted' | 'viewed' | 'added' | 'liked';
+export type EntityType =
+  | 'post'
+  | 'comment'
+  | 'vote'
+  | 'report'
+  | 'profile'
+  | 'system'
+  | 'view'
+  | 'video';
+export type ActionType =
+  | 'created'
+  | 'deleted'
+  | 'updated'
+  | 'commented'
+  | 'reported'
+  | 'upvoted'
+  | 'downvoted'
+  | 'viewed'
+  | 'added'
+  | 'liked';
 
 export interface User {
   id: string;
@@ -21,7 +39,7 @@ export interface ActivityLog {
   ip_address?: string;
 }
 
-export enum ActivityType{
+export enum ActivityType {
   SIGNIN = 'signin',
   SIGNUP = 'signup',
   SIGNOUT = 'signout',
@@ -32,11 +50,11 @@ export enum ActivityType{
   PROFILE = 'profile',
   SYSTEM = 'system',
   VIEW = 'view',
-  VIDEO = 'video'
+  VIDEO = 'video',
 }
 
 //
-export interface DbUser{
+export interface DbUser {
   id: string;
   username: string;
   avatar_url: string;
@@ -47,12 +65,19 @@ export interface DbActivityLog {
   id: string;
   user_id: string;
   related_user_id?: string;
-  entity_type: 'post' | 'comment' | 'vote' | 'report' | 'profile' | 'system' | 'view';
+  entity_type:
+    | 'post'
+    | 'comment'
+    | 'vote'
+    | 'report'
+    | 'profile'
+    | 'system'
+    | 'view';
   related_username?: string;
   related_user_avatar_url?: string;
-  username: string,
-  user_avatar_url: string,
-  
+  username: string;
+  user_avatar_url: string;
+
   // Entity-specific references
   post_id?: string;
   comment_id?: number;
@@ -64,10 +89,9 @@ export interface DbActivityLog {
   metadata: Record<string, any>;
   created_at: string;
   ip_address?: string;
-  
+
   // Join relationships
 }
-
 
 // Types for Reputation System
 export interface ReputationInteraction {

@@ -25,7 +25,6 @@ In the output, you'll find options to open the app in a
 
 This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-
 To learn more about Expo, look at the following resources:
 
 - [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).

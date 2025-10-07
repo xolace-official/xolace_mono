@@ -13,6 +13,7 @@
     "@types/aes-js": "catalog:",
     "@xolacekit/eslint-config": "workspace:*",
     "@xolacekit/prettier-config": "workspace:*",
+    "@xolacekit/state": "workspace:*",
     "@xolacekit/tailwind-config": "workspace:*",
     "@xolacekit/typescript-config": "workspace:*",
     "zod": "catalog:"
