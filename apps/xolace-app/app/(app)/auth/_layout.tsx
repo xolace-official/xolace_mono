@@ -1,61 +1,13 @@
-import { Redirect, Stack } from 'expo-router';
+import { Stack } from "expo-router";
 
-import {
-  AuthProvider,
-  AuthProviderSignedIn,
-  AuthProviderSignedOut,
-} from '@xolacekit/supabase';
-
-export default function AuthTabsLayout() {
-  return (
-    <AuthProvider>
-      <AuthProviderSignedIn>
-        <Redirect href={'/'} />
-      </AuthProviderSignedIn>
-
-      <AuthProviderSignedOut>
+export default function AuthStackLayout() {
+    return (
         <Stack>
-          <Stack.Screen
-            name="sign-in"
-            options={{
-              title: 'Sign In',
-              headerShown: false,
-            }}
-          />
-
-          <Stack.Screen
-            name="sign-up"
-            options={{
-              title: 'Sign Up',
-              headerShown: false,
-            }}
-          />
-
-          <Stack.Screen
-            name="password-reset"
-            options={{
-              title: 'Password Reset',
-              headerShown: false,
-            }}
-          />
-
-          <Stack.Screen
-            name="callback"
-            options={{
-              title: '',
-              headerShown: false,
-            }}
-          />
-
-          <Stack.Screen
-            name="error"
-            options={{
-              title: '',
-              headerShown: false,
-            }}
-          />
+            <Stack.Screen name="sign-in" options={{ headerShown: false, title: "Sign In" }} />
+            <Stack.Screen name="sign-up" options={{ headerShown: false, title: "Sign Up" }} />
+            <Stack.Screen name="password-reset" options={{ headerShown: false, title: "Password Reset" }} />
+            <Stack.Screen name="callback" options={{ headerShown: false, title: "" }} />
+            <Stack.Screen name="error" options={{ headerShown: false, title: "" }} />
         </Stack>
-      </AuthProviderSignedOut>
-    </AuthProvider>
-  );
+    );
 }
