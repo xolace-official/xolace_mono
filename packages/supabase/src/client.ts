@@ -4,8 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 import { z } from 'zod';
 
-import { Database } from './types_db';
 import { LargeSecureStore } from './large-secure-store';
+import { Database } from './types_db';
 
 const storage = Platform.OS === 'web' ? AsyncStorage : new LargeSecureStore();
 

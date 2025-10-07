@@ -4,7 +4,7 @@ const project = resolve(process.cwd(), "tsconfig.json");
 /** @type {import("eslint").Linter.Config} */
 const config = {
   extends: [
-    "turbo",
+
     "expo",
     "eslint:recommended",
     "prettier"

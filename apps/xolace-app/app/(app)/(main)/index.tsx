@@ -1,5 +1,6 @@
-import { View, Text } from 'react-native';
-import {useUserEmail} from "@xolacekit/state";
+import { Text, View } from 'react-native';
+
+import { useUserEmail } from '@xolacekit/state';
 
 export default function HomePage() {
   const email = useUserEmail();
@@ -7,9 +8,7 @@ export default function HomePage() {
   return (
     <View className="flex flex-1 items-center justify-center">
       {/* Your code goes here */}
-      <Text>
-        Email {email}
-      </Text>
+      <Text>Email {email}</Text>
     </View>
   );
 }

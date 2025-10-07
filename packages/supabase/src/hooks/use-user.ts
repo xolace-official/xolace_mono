@@ -8,10 +8,10 @@ export function useUser() {
   const client = useSupabase();
 
   const queryFn = async () => {
-    const {data , error} = await client.auth.getClaims();
+    const { data, error } = await client.auth.getClaims();
     const user = data?.claims;
 
-    console.log("payload : ", user)
+    console.log('payload : ', user);
 
     // this is most likely a session error or the user is not logged in
     if (error || !user) {

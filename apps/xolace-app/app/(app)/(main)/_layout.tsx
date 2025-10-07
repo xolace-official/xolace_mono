@@ -1,26 +1,26 @@
-import { Tabs } from "expo-router";
-import { HomeIcon, SettingsIcon } from "lucide-react-native";
+import { Tabs } from 'expo-router';
+import { HomeIcon, SettingsIcon } from 'lucide-react-native';
 
 export default function MainLayout() {
-    return (
-        <Tabs initialRouteName="index">
-            <Tabs.Screen
-                name="index"
-                options={{
-                    title: "Home",
-                    href: "/",
-                    tabBarIcon: () => <HomeIcon className="h-5" />,
-                }}
-            />
-            <Tabs.Screen
-                name="settings"
-                options={{
-                    title: "Settings",
-                    href: "/settings",
-                    headerShown: false,
-                    tabBarIcon: () => <SettingsIcon className="h-5" />,
-                }}
-            />
-        </Tabs>
-    );
+  return (
+    <Tabs initialRouteName="index">
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          href: '/',
+          tabBarIcon: () => <HomeIcon className="h-5" />,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          href: '/settings',
+          headerShown: false,
+          tabBarIcon: () => <SettingsIcon className="h-5" />,
+        }}
+      />
+    </Tabs>
+  );
 }
