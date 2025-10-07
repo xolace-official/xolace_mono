@@ -43,9 +43,9 @@ export function UpdateProfileContainer() {
   );
 }
 
-function UpdateProfilePictureContainer(props: { data: Tables<'accounts'> }) {
+function UpdateProfilePictureContainer(props: { data: Tables<'profiles'> }) {
   const userId = props.data.id;
-  const pictureUrl = props.data.picture_url;
+  const pictureUrl = props.data.avatar_url;
 
   return (
     <Card>
@@ -64,7 +64,7 @@ function UpdateProfilePictureContainer(props: { data: Tables<'accounts'> }) {
   );
 }
 
-function UpdateProfileForm(props: { data: Tables<'accounts'> }) {
+function UpdateProfileForm(props: { data: Tables<'profiles'> }) {
   return (
     <Card>
       <CardHeader>
@@ -82,11 +82,11 @@ function UpdateProfileForm(props: { data: Tables<'accounts'> }) {
   );
 }
 
-function UpdateProfileNameForm(props: { data: Tables<'accounts'> }) {
+function UpdateProfileNameForm(props: { data: Tables<'profiles'> }) {
   const form = useForm({
     resolver: zodResolver(z.object({ name: z.string().min(2).max(255) })),
     defaultValues: {
-      name: props.data.name,
+      username: props.data.username,
     },
   });
 
@@ -97,7 +97,7 @@ function UpdateProfileNameForm(props: { data: Tables<'accounts'> }) {
       <View>
         <Controller
           control={form.control}
-          name={'name'}
+          name={'username'}
           render={({ field }) => (
             <Input
               placeholder="Your name"

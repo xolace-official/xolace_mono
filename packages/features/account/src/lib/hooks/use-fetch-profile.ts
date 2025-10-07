@@ -12,7 +12,7 @@ export function useFetchAccount(userId: string | null | undefined) {
     }
 
     const { data, error } = await supabase
-      .from('accounts')
+      .from('profiles')
       .select('*')
       .eq('id', userId)
       .limit(1)

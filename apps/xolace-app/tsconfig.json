@@ -3,6 +3,8 @@
   "compilerOptions": {
     "strict": true,
     "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "types": [],
     "paths": {},
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
