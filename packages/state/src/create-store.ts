@@ -3,6 +3,17 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 import { mmkvStorage } from './storage/mmkv';
 
+
+
+export const ONBOARDING_VERSION = "2025.10.0";
+
+type OnboardingSlice = {
+    onboardingCompletedVersion: string | null;
+    completeOnboarding: (version?: string) => void;
+    resetOnboarding: () => void;
+};
+
+
 type AuthSlice = {
   userId: string | null;
   email: string | null;
@@ -29,7 +40,12 @@ type PrefLocalSlice = {
   resetToggles: () => void;
 };
 
-export type AppState = AuthSlice & UiSlice & ProfileLocalSlice & PrefLocalSlice;
+type HydrationSlice = {
+    _hasHydrated: boolean;
+    _setHasHydrated: (v: boolean) => void;
+};
+
+export type AppState = AuthSlice & UiSlice & ProfileLocalSlice & PrefLocalSlice & OnboardingSlice & HydrationSlice;
 
 export const useAppStore = create<AppState>()(
   devtools(
@@ -58,6 +74,16 @@ export const useAppStore = create<AppState>()(
         setToggle: (key, value) =>
           set((s) => ({ toggles: { ...s.toggles, [key]: value } })),
         resetToggles: () => set({ toggles: {} }),
+
+          // onboarding (versioned)
+          onboardingCompletedVersion: null,
+          completeOnboarding: (version = ONBOARDING_VERSION) =>
+              set({ onboardingCompletedVersion: version }),
+          resetOnboarding: () => set({ onboardingCompletedVersion: null }),
+
+          // hydration
+          _hasHydrated: false,
+          _setHasHydrated: (v) => set({ _hasHydrated: v }),
       }),
       {
         name: 'xolace-app-store',
@@ -66,9 +92,14 @@ export const useAppStore = create<AppState>()(
           // persist only what is safe/useful at boot
           theme: s.theme,
           toggles: s.toggles,
+            onboardingCompletedVersion: s.onboardingCompletedVersion,
           // DO NOT persist auth identifiers unless you explicitly want cached UI routing.
           // userId/email/isAuthenticated rehydrate from Supabase listener on boot.
         }),
+          onRehydrateStorage: () => (state) => {
+              // mark hydrated after rehydrate finishes
+              state?._setHasHydrated?.(true);
+          },
       },
     ),
   ),

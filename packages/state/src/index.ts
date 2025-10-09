@@ -10,3 +10,4 @@ export * from './selectors/auth';
 export * from './selectors/ui';
 export * from './selectors/profile-local';
 export * from './selectors/pref-local';
+export * from './selectors/onboarding';

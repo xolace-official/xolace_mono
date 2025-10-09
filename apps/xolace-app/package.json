@@ -46,6 +46,7 @@
     "expo-dev-client": "catalog:",
     "expo-font": "catalog:",
     "expo-haptics": "catalog:",
+    "expo-image": "catalog:",
     "expo-linking": "catalog:",
     "expo-router": "catalog:",
     "expo-splash-screen": "catalog:",

@@ -1,0 +1,80 @@
+import {View, StyleSheet, FlatList, ViewToken} from "react-native";
+import {data, OnboardingData} from '../../../constants/onboarding-data'
+import {useCallback, useRef} from "react";
+import Animated, {useAnimatedRef, useAnimatedScrollHandler, useSharedValue} from "react-native-reanimated";
+import RenderItem from "../../../components/onboarding/RenderItem";
+// import Pagination from "@/components/Pagination";
+// import OnboardingButton from "@/components/OnboardingButton";
+
+const Onboarding = () => {
+
+    const scrollRef = useAnimatedRef<FlatList<OnboardingData>>()
+    const x = useSharedValue(0);
+    const scrollIndex = useSharedValue(0);
+
+    const keyExtractor = useCallback((item:any, index: number) => index.toString(), [])
+
+    const onScroll = useAnimatedScrollHandler({
+        onScroll: event => {
+            x.value = event.contentOffset.x;
+        },
+    })
+
+    const onViewableItemChanges = useCallback(({viewableItems}: {viewableItems: ViewToken[]}) => {
+        const firstVisibleItem = viewableItems[0];
+        if(firstVisibleItem?.index !== null && firstVisibleItem?.index !== undefined) {
+            scrollIndex.value = firstVisibleItem.index;
+        }
+    }, [])
+
+
+    const viewabilityConfig = useRef({minimumViewTime: 300, viewAreaCoveragePercentThreshold: 10})
+
+    return (
+        <View style={styles.container}>
+            <Animated.FlatList
+                ref={scrollRef}
+                data={data}
+                horizontal
+                pagingEnabled
+                bounces={false}
+                showsHorizontalScrollIndicator={false}
+                scrollEventThrottle={16}
+                keyExtractor={keyExtractor}
+                renderItem={({item , index})=> (
+                    <RenderItem index={index} item={item} x={x} key={index}/>
+                )}
+                onScroll={onScroll}
+                onViewableItemsChanged={onViewableItemChanges}
+                viewabilityConfig={viewabilityConfig.current}
+            />
+
+            {/*<View style={styles.bottomView}>*/}
+            {/*    <Pagination data={data} x={x}/>*/}
+
+            {/*    <OnboardingButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x}/>*/}
+            {/*</View>*/}
+        </View>
+    );
+};
+
+export default Onboarding;
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+
+    },
+    bottomView:{
+        position: 'absolute',
+        bottom: 20,
+        left: 0,
+        right: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginHorizontal: 30,
+        paddingVertical: 30,
+    }
+})
