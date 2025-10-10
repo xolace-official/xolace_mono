@@ -22,7 +22,7 @@ type NavButtonProps = {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const AnimatedIcon = Animated.createAnimatedComponent(FontAwesome);
 
-export const NavButton: FC<NavButtonProps> = ({
+export const AnimatedNavButton: FC<NavButtonProps> = ({
                                            direction,
                                            x,
                                            colors,
