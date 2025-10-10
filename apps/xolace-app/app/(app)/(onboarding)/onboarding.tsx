@@ -3,6 +3,9 @@ import {data, OnboardingData} from '../../../constants/onboarding-data'
 import {useCallback, useRef} from "react";
 import Animated, {useAnimatedRef, useAnimatedScrollHandler, useSharedValue} from "react-native-reanimated";
 import RenderItem from "../../../components/onboarding/RenderItem";
+import OnboardingButton from "../../../components/onboarding/onBoardingButton";
+import OnboardingNavButton from "../../../components/onboarding/onBoardingNavButton";
+import Pagination from "../../../components/onboarding/Pagination";
 // import Pagination from "@/components/Pagination";
 // import OnboardingButton from "@/components/OnboardingButton";
 
@@ -49,11 +52,15 @@ const Onboarding = () => {
                 viewabilityConfig={viewabilityConfig.current}
             />
 
-            {/*<View style={styles.bottomView}>*/}
-            {/*    <Pagination data={data} x={x}/>*/}
+            <View style={styles.bottomView}>
+                <OnboardingNavButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x}/>
 
-            {/*    <OnboardingButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x}/>*/}
-            {/*</View>*/}
+                <OnboardingButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x}/>
+            </View>
+
+            <View style={styles.paginationView}>
+                <Pagination data={data} x={x}/>
+            </View>
         </View>
     );
 };
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
     },
     bottomView:{
         position: 'absolute',
-        bottom: 20,
+        bottom: 50,
         left: 0,
         right: 0,
         flexDirection: 'row',
@@ -76,5 +83,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 30,
         paddingVertical: 30,
+    },
+    paginationView:{
+        position: 'absolute',
+        bottom: 20,
+        left: 0,
+        right: 0,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+
     }
 })

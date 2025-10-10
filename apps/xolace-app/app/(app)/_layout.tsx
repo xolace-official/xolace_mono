@@ -25,7 +25,7 @@ export default function AppLayout() {
 
         {/* 3) ONBOARDING: only shown if NOT completed AND NOT authenticated */}
         <Stack.Protected guard={!isAuthenticated && !hasCompletedOnboarding}>
-            <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
+            <Stack.Screen name="(onboarding)/onboarding" options={{ headerShown: false }} />
         </Stack.Protected>
     </Stack>
   );

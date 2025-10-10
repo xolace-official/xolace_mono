@@ -23,6 +23,10 @@ export * from './components/ui/alert';
 export * from './components/ui/loading-overlay';
 export * from './components/ui/sonner';
 
+// custom ui components
+// shared
+export * from './components/shared/AnimatedNavButton'
+
 export * from './lib/constants';
 export * from './lib/utils';
 export * from './lib/use-color-scheme';

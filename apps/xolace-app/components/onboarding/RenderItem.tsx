@@ -18,7 +18,7 @@ const RenderItem = ({index , item , x}: RenderItemProps) => {
 
     const {width: SCREEN_WIDTH} = useWindowDimensions()
     const circleSize = SCREEN_WIDTH;
-    const lottieSize = SCREEN_WIDTH * 0.9;
+    const lottieSize = SCREEN_WIDTH * 1.2;
     const circleRadius = circleSize / 2;
 
     const animationRange = [
@@ -122,14 +122,14 @@ const RenderItem = ({index , item , x}: RenderItemProps) => {
                 <Image
                     source={item.image}
                     placeholder={{ blurhash }}
-                    contentFit="cover"
+                    contentFit="contain"
                     transition={1000}
                     style={[styles.lottie, {width: lottieSize, height: lottieSize}]}
                 />
             </Animated.View>
 
-            <View style={styles.textContainer}>
-                <Animated.Text style={[styles.title, {color: item.textColor}, titleAnimation]}>
+            <View className={"w-full"} style={styles.textContainer}>
+                <Animated.Text className={""} style={[styles.title, {color: item.textColor}, titleAnimation]}>
                     {item.text}
                 </Animated.Text>
                 {item.description && (
@@ -146,7 +146,7 @@ export default RenderItem;
 const styles = StyleSheet.create ({
     itemContainer: {
         flex: 1,
-        justifyContent: 'space-around',
+
         alignItems: 'center',
         marginBottom: 120,
     },
@@ -163,18 +163,19 @@ const styles = StyleSheet.create ({
     },
     textContainer: {
         paddingHorizontal: 20,
-        alignItems: 'center',
+        alignItems: 'flex-start',
     },
     title: {
-        textAlign: 'center',
+        textAlign: 'justify',
         fontSize: 35,
         fontWeight: 700,
         marginBottom: 10,
     },
     description:{
-        textAlign: 'center',
-        fontSize: 18,
+        textAlign: 'justify',
+        fontSize: 16,
         fontWeight: 400,
         opacity: 0.8,
+        letterSpacing: 0.2,
     }
 })
