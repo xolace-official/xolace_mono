@@ -26,6 +26,7 @@ export * from './components/ui/sonner';
 // custom ui components
 // shared
 export * from './components/shared/AnimatedNavButton';
+export * from './components/shared/inputField'
 
 export * from './lib/constants';
 export * from './lib/utils';
@@ -37,3 +38,5 @@ export * from './lib/icons/ChevronDown';
 export * from './lib/icons/ChevronUp';
 export * from './lib/icons/ChevronRight';
 export * from './lib/icons/X';
+export * from './lib/icons/Email';
+export * from './lib/icons/LockKeyhole';

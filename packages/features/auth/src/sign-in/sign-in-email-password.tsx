@@ -11,10 +11,13 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
-  Input,
   Text,
   X,
+    InputField,
+    Mail,
+    LockKeyhole
 } from '@xolacekit/ui';
+
 
 import { EmailPasswordSchema } from '../lib/schema';
 import { AuthError } from '../shared/auth-error';
@@ -39,44 +42,60 @@ export function SignInEmailPassword() {
   }
 
   return (
-    <View className={'flex-col justify-center gap-4 p-8'}>
-      <View>
-        <Controller
-          control={form.control}
-          name={'email'}
-          render={({ field }) => (
-            <Input
-              inputMode={'email'}
-              placeholder="Email"
-              onBlur={field.onBlur}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-          )}
-        />
-      </View>
+    <View className={'flex-col justify-center'}>
 
-      <View>
-        <Controller
-          control={form.control}
-          name={'password'}
-          render={({ field }) => (
-            <Input
-              secureTextEntry
-              placeholder={'Password'}
-              onBlur={field.onBlur}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-          )}
-        />
+        <View className={'flex-col justify-center bg-white rounded-[14px] gap-4 p-8'}>
+           <View>
+               <Text className={'text-4xl font-bold tracking-widest mb-1'}>
+                   Sign In
+               </Text>
 
-        <Link className={'my-4'} href="/auth/password-reset">
-          <Text className={'text-muted-foreground text-sm'}>
-            Forgot your password?
-          </Text>
-        </Link>
-      </View>
+               <View className={"bg-[#4F041D] h-[1px] w-24"}/>
+           </View>
+
+          <View>
+            <Controller
+              control={form.control}
+              name={'email'}
+              render={({ field }) => (
+                <InputField
+                  inputMode={'email'}
+                  placeholder="Email"
+                  onBlur={field.onBlur}
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  label={'Email'}
+                  icon={Mail}
+                />
+              )}
+            />
+          </View>
+
+          <View>
+            <Controller
+              control={form.control}
+              name={'password'}
+              render={({ field }) => (
+                <InputField
+                  secureTextEntry
+                  placeholder={'enter your password'}
+                  onBlur={field.onBlur}
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  label={'Password'}
+                  icon={LockKeyhole}
+                />
+              )}
+            />
+
+            <Link className={'my-4'} href="/auth/password-reset">
+              <Text className={'text-muted-foreground text-sm'}>
+                Forgot your password?
+              </Text>
+            </Link>
+          </View>
+
+        </View>
 
       <View>
         <Button
