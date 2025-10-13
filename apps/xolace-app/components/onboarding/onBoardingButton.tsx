@@ -29,7 +29,6 @@ const OnboardingButton: FC<ButtonProps> = (
     {
         dataLength,
         scrollIndex,
-        scrollRef,
         x,
         onFinish,
     }) => {
@@ -80,18 +79,19 @@ const OnboardingButton: FC<ButtonProps> = (
     const handlePress = () => {
         console.log("onPress", dataLength)
         console.log("scroll ", scrollIndex)
-        const isLastIndex = scrollIndex.value === dataLength - 1;
-
-        if(!isLastIndex){
-            scrollRef.current?.scrollToIndex({
-                index: scrollIndex.value + 1,
-                animated: true,
-            });
-        }else{
+        // const isLastIndex = scrollIndex.value === dataLength - 1;
+        //
+        // if(!isLastIndex){
+        //     scrollRef.current?.scrollToIndex({
+        //         index: scrollIndex.value + 1,
+        //         animated: true,
+        //     });
+        // }else{
+            console.log("onFinish ")
             if(onFinish){
                 scheduleOnRN(onFinish)
             }else{console.log("finish")}
-        }
+
     }
 
 

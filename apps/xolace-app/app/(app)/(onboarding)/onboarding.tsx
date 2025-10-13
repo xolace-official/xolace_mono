@@ -6,10 +6,13 @@ import RenderItem from "../../../components/onboarding/RenderItem";
 import OnboardingButton from "../../../components/onboarding/onBoardingButton";
 import OnboardingNavButton from "../../../components/onboarding/onBoardingNavButton";
 import Pagination from "../../../components/onboarding/Pagination";
+import { router } from 'expo-router';
+import {ONBOARDING_VERSION , useAppStore} from "@xolacekit/state";
 // import Pagination from "@/components/Pagination";
 // import OnboardingButton from "@/components/OnboardingButton";
 
 const Onboarding = () => {
+    const completeOnboarding = useAppStore((s) => s.completeOnboarding);
 
     const scrollRef = useAnimatedRef<FlatList<OnboardingData>>()
     const x = useSharedValue(0);
@@ -33,6 +36,10 @@ const Onboarding = () => {
 
     const viewabilityConfig = useRef({minimumViewTime: 300, viewAreaCoveragePercentThreshold: 10})
 
+    const onFinish = () => {
+        completeOnboarding(ONBOARDING_VERSION);
+    }
+
     return (
         <View style={styles.container}>
             <Animated.FlatList
@@ -55,7 +62,7 @@ const Onboarding = () => {
             <View style={styles.bottomView}>
                 <OnboardingNavButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x}/>
 
-                <OnboardingButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x}/>
+                <OnboardingButton dataLength={data.length} scrollIndex={scrollIndex} scrollRef={scrollRef} x={x} onFinish={onFinish}/>
             </View>
 
             <View style={styles.paginationView}>
