@@ -15,7 +15,8 @@ import {
   X,
     InputField,
     Mail,
-    LockKeyhole
+    LockKeyhole,
+    XolaceButton
 } from '@xolacekit/ui';
 
 
@@ -44,7 +45,7 @@ export function SignInEmailPassword() {
   return (
     <View className={'flex-col justify-center'}>
 
-        <View className={'flex-col justify-center bg-white rounded-[14px] gap-4 p-8'}>
+        <View className={'flex-col justify-center bg-white rounded-[14px] gap-4 p-8 mb-4'}>
            <View>
                <Text className={'text-4xl font-bold tracking-widest mb-1'}>
                    Sign In
@@ -97,20 +98,33 @@ export function SignInEmailPassword() {
 
         </View>
 
-      <View>
-        <Button
-          size={'lg'}
-          className={'w-full'}
-          disabled={signIn.isPending}
-          onPress={form.handleSubmit((data) => {
-            signIn.mutate({
-              email: data.email,
-              password: data.password,
-            });
-          })}
-        >
-          <Text>Sign in</Text>
-        </Button>
+      <View className={'mx-auto mb-2'}>
+
+          <XolaceButton label={'Sign In'}
+            className={" w-[160px] mb-5"}
+                        disabled={signIn.isPending}
+                        onPress={form.handleSubmit((data) => {
+                            signIn.mutate({
+                                email: data.email,
+                                password: data.password,
+                            });
+                        })}
+          />
+
+          <Text className='text-sm text-white mb-5 tracking-wider'>Your Community Awaits You.</Text>
+        {/*<Button*/}
+        {/*  size={'lg'}*/}
+        {/*  className={'w-full'}*/}
+        {/*  disabled={signIn.isPending}*/}
+        {/*  onPress={form.handleSubmit((data) => {*/}
+        {/*    signIn.mutate({*/}
+        {/*      email: data.email,*/}
+        {/*      password: data.password,*/}
+        {/*    });*/}
+        {/*  })}*/}
+        {/*>*/}
+        {/*  <Text>Sign in</Text>*/}
+        {/*</Button>*/}
       </View>
     </View>
   );

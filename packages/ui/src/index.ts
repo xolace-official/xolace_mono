@@ -28,6 +28,9 @@ export * from './components/ui/sonner';
 export * from './components/shared/AnimatedNavButton';
 export * from './components/shared/inputField'
 
+// builders
+export * from './components/builders/xolace-button'
+
 export * from './lib/constants';
 export * from './lib/utils';
 export * from './lib/use-color-scheme';
@@ -40,3 +43,4 @@ export * from './lib/icons/ChevronRight';
 export * from './lib/icons/X';
 export * from './lib/icons/Email';
 export * from './lib/icons/LockKeyhole';
+export * from './lib/icons/Ghost';

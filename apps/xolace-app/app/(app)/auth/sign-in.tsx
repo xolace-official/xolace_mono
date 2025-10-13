@@ -7,9 +7,11 @@ import {
   AuthPageLayoutHeading,
   AuthPageLayoutLogo,
   AuthPageLayoutSecondaryButton,
+    AuthPageLayoutNavigationButton,
   SignInForm,
+    AnonymousButton
 } from '@xolacekit/auth';
-import { Button, Text } from '@xolacekit/ui';
+import { Text } from '@xolacekit/ui';
 
 import { LogoImage } from '../../../components/logo';
 
@@ -31,12 +33,16 @@ export default function SignInPage() {
       </AuthPageLayoutForm>
 
       <AuthPageLayoutSecondaryButton>
-        <Button variant={'link'} asChild>
-          <Link className={'text-center'} href="/auth/sign-up">
-            <Text>Create an Account</Text>
-          </Link>
-        </Button>
+        <AnonymousButton/>
       </AuthPageLayoutSecondaryButton>
+
+        <AuthPageLayoutNavigationButton>
+            <Text className={'text-white tracking-wider'}>Don't have an account?</Text>
+                <Link className={'text-center '} href="/auth/sign-up">
+                    <Text className={'text-white'}>Sign Up</Text>
+                </Link>
+
+        </AuthPageLayoutNavigationButton>
     </AuthPageLayout>
   );
 }

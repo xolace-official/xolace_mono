@@ -29,6 +29,11 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
         React.isValidElement(child) &&
         child.type === AuthPageLayoutSecondaryButton,
     ),
+    AuthNavigationButton: childrenArray.find(
+        (child) =>
+            React.isValidElement(child) &&
+            child.type === AuthPageLayoutNavigationButton,
+    ),
   };
 
   return (
@@ -44,6 +49,10 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
 
       <View className={'top-24 px-8'}>
         {childrenByType.secondaryActionButton}
+      </View>
+
+      <View className={'top-24 flex flex-row justify-center items-center gap-1'}>
+        {childrenByType.AuthNavigationButton}
       </View>
     </View>
   );
@@ -70,5 +79,9 @@ export function AuthPageLayoutDescription(props: React.PropsWithChildren) {
 }
 
 export function AuthPageLayoutSecondaryButton(props: React.PropsWithChildren) {
+  return props.children;
+}
+
+export function AuthPageLayoutNavigationButton(props: React.PropsWithChildren) {
   return props.children;
 }
