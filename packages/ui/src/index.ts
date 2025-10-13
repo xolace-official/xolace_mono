@@ -25,7 +25,7 @@ export * from './components/ui/sonner';
 
 // custom ui components
 // shared
-export * from './components/shared/AnimatedNavButton'
+export * from './components/shared/AnimatedNavButton';
 
 export * from './lib/constants';
 export * from './lib/utils';

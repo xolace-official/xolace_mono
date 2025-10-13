@@ -1,4 +1,4 @@
-import {useAppStore, ONBOARDING_VERSION} from "../create-store";
+import { ONBOARDING_VERSION, useAppStore } from '../create-store';
 
-
-export const useSelectHasCompletedOnboarding = () => useAppStore((s) =>  s.onboardingCompletedVersion === ONBOARDING_VERSION);
+export const useSelectHasCompletedOnboarding = () =>
+  useAppStore((s) => s.onboardingCompletedVersion === ONBOARDING_VERSION);

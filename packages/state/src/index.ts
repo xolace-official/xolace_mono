@@ -1,5 +1,5 @@
 // Core store
-export { useAppStore , ONBOARDING_VERSION} from './create-store';
+export { useAppStore, ONBOARDING_VERSION } from './create-store';
 export type { AppState } from './create-store';
 
 // Storage adapters (public on purpose)
