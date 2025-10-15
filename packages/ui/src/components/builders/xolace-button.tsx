@@ -26,7 +26,7 @@ export const XolaceButton = ({label , leftIcon, iconSize, iconStroke, className,
                     )
                 }
 
-                <Text className={`text-xl text-[#4F041D] tracking-wider ${labelClassName}`}>
+                <Text className={`text-xl text-[#4F041D] tracking-wider font-medium ${labelClassName}`}>
                     {label}
                 </Text>
             </Button>

@@ -1,13 +1,14 @@
 import { Link } from 'expo-router';
+import {View} from 'react-native';
 
 import {
-  AuthPageLayout,
-  AuthPageLayoutDescription,
-  AuthPageLayoutForm,
-  AuthPageLayoutHeading,
-  AuthPageLayoutLogo,
-  AuthPageLayoutSecondaryButton,
-  SignUpForm,
+    AuthPageLayout,
+    AuthPageLayoutDescription,
+    AuthPageLayoutForm,
+    AuthPageLayoutHeading,
+    AuthPageLayoutLogo, AuthPageLayoutNavigationButton,
+    AuthPageLayoutTermsDescription,
+    SignUpForm,
 } from '@xolacekit/auth';
 import { Button, Text } from '@xolacekit/ui';
 
@@ -30,13 +31,18 @@ export default function SignUpPage() {
         <SignUpForm />
       </AuthPageLayoutForm>
 
-      <AuthPageLayoutSecondaryButton>
-        <Button variant={'link'} asChild>
-          <Link className={'text-center'} href="/auth/sign-in">
-            <Text>Already have an Account? Sign In.</Text>
-          </Link>
-        </Button>
-      </AuthPageLayoutSecondaryButton>
+        <AuthPageLayoutNavigationButton>
+            <Text className={'text-white tracking-wider'}>Don't have an account?</Text>
+            <Link className={'text-center '} href="/auth/sign-in">
+                <Text className={'text-white'}>Sign In</Text>
+            </Link>
+
+        </AuthPageLayoutNavigationButton>
+
+
+        <AuthPageLayoutTermsDescription>
+            <Text className='text-sm text-white text-center'>By clicking Register, you acknowledge that you’ve read and agreed to our Terms and Conditions </Text>
+        </AuthPageLayoutTermsDescription>
     </AuthPageLayout>
   );
 }

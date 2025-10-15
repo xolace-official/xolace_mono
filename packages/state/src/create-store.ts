@@ -3,7 +3,7 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 import { mmkvStorage } from './storage/mmkv';
 
-export const ONBOARDING_VERSION = '2025.10.0';
+export const ONBOARDING_VERSION = '2025.10.1';
 
 type OnboardingSlice = {
   onboardingCompletedVersion: string | null;
