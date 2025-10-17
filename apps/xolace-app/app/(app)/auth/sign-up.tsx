@@ -1,28 +1,27 @@
 import { Link } from 'expo-router';
 
 import {
-    AuthPageLayout,
-    AuthPageLayoutForm,
-    AuthPageLayoutHeading,
-    AuthPageLayoutLogo, AuthPageLayoutNavigationButton,
-    AuthPageLayoutTermsDescription,
-    SignUpForm,
+  AuthPageLayout,
+  AuthPageLayoutForm,
+  AuthPageLayoutHeading,
+  AuthPageLayoutLogo,
+  AuthPageLayoutNavigationButton,
+  AuthPageLayoutTermsDescription,
+  SignUpForm,
 } from '@xolacekit/auth';
-import { Text, H1 } from '@xolacekit/ui';
+import { H1, Text } from '@xolacekit/ui';
 
-import FluxSignup from "../../../components/icons/flux-signup";
+import FluxSignup from '../../../components/icons/flux-signup';
 
 export default function SignUpPage() {
   return (
     <AuthPageLayout>
       <AuthPageLayoutLogo>
-          <FluxSignup />
+        <FluxSignup />
       </AuthPageLayoutLogo>
 
       <AuthPageLayoutHeading>
-          <H1 className={'text-white font-black'}>
-              Hi there
-          </H1>
+        <H1 className={'font-black text-white'}>Hi there</H1>
       </AuthPageLayoutHeading>
 
       {/*<AuthPageLayoutDescription>*/}
@@ -33,18 +32,21 @@ export default function SignUpPage() {
         <SignUpForm />
       </AuthPageLayoutForm>
 
-        <AuthPageLayoutNavigationButton>
-            <Text className={'text-white tracking-wider'}>Already have an account?</Text>
-            <Link className={'text-center '} href="/auth/sign-in">
-                <Text className={'text-white'}>Sign In</Text>
-            </Link>
+      <AuthPageLayoutNavigationButton>
+        <Text className={'tracking-wider text-white'}>
+          Already have an account?
+        </Text>
+        <Link className={'text-center'} href="/auth/sign-in">
+          <Text className={'text-white'}>Sign In</Text>
+        </Link>
+      </AuthPageLayoutNavigationButton>
 
-        </AuthPageLayoutNavigationButton>
-
-
-        <AuthPageLayoutTermsDescription>
-            <Text className='text-sm text-white text-center'>By clicking Register, you acknowledge that you’ve read and agreed to our Terms and Conditions </Text>
-        </AuthPageLayoutTermsDescription>
+      <AuthPageLayoutTermsDescription>
+        <Text className="text-center text-sm text-white">
+          By clicking Register, you acknowledge that you’ve read and agreed to
+          our Terms and Conditions{' '}
+        </Text>
+      </AuthPageLayoutTermsDescription>
     </AuthPageLayout>
   );
 }

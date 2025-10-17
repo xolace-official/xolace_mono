@@ -12,10 +12,10 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
       (child) =>
         React.isValidElement(child) && child.type === AuthPageLayoutLogo,
     ),
-      logoSignIn: childrenArray.find(
-          (child) =>
-              React.isValidElement(child) && child.type === AuthPageLayoutLogoSignIn,
-      ),
+    logoSignIn: childrenArray.find(
+      (child) =>
+        React.isValidElement(child) && child.type === AuthPageLayoutLogoSignIn,
+    ),
     form: childrenArray.find(
       (child) =>
         React.isValidElement(child) && child.type === AuthPageLayoutForm,
@@ -34,27 +34,28 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
         child.type === AuthPageLayoutSecondaryButton,
     ),
     AuthNavigationButton: childrenArray.find(
-        (child) =>
-            React.isValidElement(child) &&
-            child.type === AuthPageLayoutNavigationButton,
+      (child) =>
+        React.isValidElement(child) &&
+        child.type === AuthPageLayoutNavigationButton,
     ),
-      AuthTermsDescription: childrenArray.find(
-          (child) =>
-              React.isValidElement(child) &&
-              child.type === AuthPageLayoutTermsDescription,
-      ),
+    AuthTermsDescription: childrenArray.find(
+      (child) =>
+        React.isValidElement(child) &&
+        child.type === AuthPageLayoutTermsDescription,
+    ),
   };
 
   return (
-    <View className={'w-full gap-4 bg-[#4F041D] flex-1 px-2'}>
-      <View className={'top-3 absolute right-5'}>{childrenByType.logo}</View>
+    <View className={'w-full flex-1 gap-4 bg-[#4F041D] px-2'}>
+      <View className={'absolute right-5 top-3'}>{childrenByType.logo}</View>
 
-        <View className={'top-3 absolute left-10'}>{childrenByType.logoSignIn}</View>
+      <View className={'absolute left-10 top-3'}>
+        {childrenByType.logoSignIn}
+      </View>
 
-      <View className={'top-24 px-4 mt-20'}>
+      <View className={'top-24 mt-20 px-4'}>
         {childrenByType.formHeading}
-          {/*<H1 className={'text-white font-black'}>{childrenByType.formDescription}</H1>*/}
-
+        {/*<H1 className={'text-white font-black'}>{childrenByType.formDescription}</H1>*/}
       </View>
 
       <View className={'top-24'}>{childrenByType.form}</View>
@@ -63,13 +64,15 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
         {childrenByType.secondaryActionButton}
       </View>
 
-      <View className={'top-24 flex flex-row justify-center items-center gap-1'}>
+      <View
+        className={'top-24 flex flex-row items-center justify-center gap-1'}
+      >
         {childrenByType.AuthNavigationButton}
       </View>
 
-        <View className={'top-24 flex flex-row justify-center items-center'}>
-            {childrenByType.AuthTermsDescription}
-        </View>
+      <View className={'top-24 flex flex-row items-center justify-center'}>
+        {childrenByType.AuthTermsDescription}
+      </View>
     </View>
   );
 }
@@ -79,7 +82,7 @@ export function AuthPageLayoutLogo(props: React.PropsWithChildren) {
 }
 
 export function AuthPageLayoutLogoSignIn(props: React.PropsWithChildren) {
-    return props.children;
+  return props.children;
 }
 
 export function AuthPageLayoutForm(props: React.PropsWithChildren) {
@@ -107,5 +110,5 @@ export function AuthPageLayoutNavigationButton(props: React.PropsWithChildren) {
 }
 
 export function AuthPageLayoutTermsDescription(props: React.PropsWithChildren) {
-    return props.children;
+  return props.children;
 }

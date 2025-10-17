@@ -8,11 +8,13 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Button,
   Check,
+  InputField,
+  LockKeyhole,
+  Mail,
   Text,
+  XolaceButton,
   toast,
-  InputField, Mail, LockKeyhole, XolaceButton
 } from '@xolacekit/ui';
 
 import { useCreateDeepLink } from '../lib/deep-links';
@@ -50,78 +52,79 @@ export function SignUpEmailPassword() {
 
   return (
     <View className={'flex-col justify-center'}>
-
-      <View className={'flex-col justify-center bg-white rounded-[14px] gap-4 px-8 py-12 mb-4'}>
-
+      <View
+        className={
+          'mb-4 flex-col justify-center gap-4 rounded-[14px] bg-white px-8 py-12'
+        }
+      >
         <View>
-          <Text className={'text-4xl font-bold tracking-widest mb-1'}>
+          <Text className={'mb-1 text-4xl font-bold tracking-widest'}>
             Sign Up
           </Text>
 
-          <View className={"bg-[#4F041D] h-[1px] w-24"}/>
+          <View className={'h-[1px] w-24 bg-[#4F041D]'} />
         </View>
-
 
         <View>
           <Controller
-              control={form.control}
-              name={'username'}
-              render={({ field }) => (
-                  <InputField
-                      inputMode={'text'}
-                      placeholder="Dont use your real name"
-                      onBlur={field.onBlur}
-                      onChangeText={field.onChange}
-                      value={field.value}
-                      label={'Username'}
-                  />
-              )}
+            control={form.control}
+            name={'username'}
+            render={({ field }) => (
+              <InputField
+                inputMode={'text'}
+                placeholder="Dont use your real name"
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Username'}
+              />
+            )}
           />
         </View>
 
-      <View>
-        <Controller
-          control={form.control}
-          name={'email'}
-          render={({ field }) => (
-            <InputField
-              inputMode={'email'}
-              placeholder="demo@gmail.com"
-              onBlur={field.onBlur}
-              onChangeText={field.onChange}
-              value={field.value}
-              label={'Email'}
-              icon={Mail}
-            />
-          )}
-        />
+        <View>
+          <Controller
+            control={form.control}
+            name={'email'}
+            render={({ field }) => (
+              <InputField
+                inputMode={'email'}
+                placeholder="demo@gmail.com"
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Email'}
+                icon={Mail}
+              />
+            )}
+          />
+        </View>
+
+        <View>
+          <Controller
+            control={form.control}
+            name={'password'}
+            render={({ field }) => (
+              <InputField
+                placeholder={'enter your password'}
+                secureTextEntry
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Password'}
+                icon={LockKeyhole}
+              />
+            )}
+          />
+        </View>
       </View>
 
       <View>
-        <Controller
-          control={form.control}
-          name={'password'}
-          render={({ field }) => (
-            <InputField
-              placeholder={'enter your password'}
-              secureTextEntry
-              onBlur={field.onBlur}
-              onChangeText={field.onChange}
-              value={field.value}
-              label={'Password'}
-              icon={LockKeyhole}
-            />
-          )}
-        />
-      </View>
-      </View>
-
-      <View>
-
-        <XolaceButton label={'Register'}
-                      className={" w-[160px] mb-5 mx-auto"}
-                      disabled={signUpMutation.isPending}
-                      onPress={onSubmit}
+        <XolaceButton
+          label={'Register'}
+          className={'mx-auto mb-5 w-[160px]'}
+          disabled={signUpMutation.isPending}
+          onPress={onSubmit}
         />
 
         {/*<Button*/}

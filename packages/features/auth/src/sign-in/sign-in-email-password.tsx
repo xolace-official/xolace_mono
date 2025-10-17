@@ -11,14 +11,13 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
+  InputField,
+  LockKeyhole,
+  Mail,
   Text,
   X,
-    InputField,
-    Mail,
-    LockKeyhole,
-    XolaceButton
+  XolaceButton,
 } from '@xolacekit/ui';
-
 
 import { EmailPasswordSchema } from '../lib/schema';
 import { AuthError } from '../shared/auth-error';
@@ -44,74 +43,78 @@ export function SignInEmailPassword() {
 
   return (
     <View className={'flex-col justify-center'}>
+      <View
+        className={
+          'mb-4 flex-col justify-center gap-4 rounded-[14px] bg-white p-8'
+        }
+      >
+        <View>
+          <Text className={'mb-1 text-4xl font-bold tracking-widest'}>
+            Sign In
+          </Text>
 
-        <View className={'flex-col justify-center bg-white rounded-[14px] gap-4 p-8 mb-4'}>
-           <View>
-               <Text className={'text-4xl font-bold tracking-widest mb-1'}>
-                   Sign In
-               </Text>
-
-               <View className={"bg-[#4F041D] h-[1px] w-24"}/>
-           </View>
-
-          <View>
-            <Controller
-              control={form.control}
-              name={'email'}
-              render={({ field }) => (
-                <InputField
-                  inputMode={'email'}
-                  placeholder="Email"
-                  onBlur={field.onBlur}
-                  onChangeText={field.onChange}
-                  value={field.value}
-                  label={'Email'}
-                  icon={Mail}
-                />
-              )}
-            />
-          </View>
-
-          <View>
-            <Controller
-              control={form.control}
-              name={'password'}
-              render={({ field }) => (
-                <InputField
-                  secureTextEntry
-                  placeholder={'enter your password'}
-                  onBlur={field.onBlur}
-                  onChangeText={field.onChange}
-                  value={field.value}
-                  label={'Password'}
-                  icon={LockKeyhole}
-                />
-              )}
-            />
-
-            <Link className={'my-4'} href="/auth/password-reset">
-              <Text className={'text-muted-foreground text-sm'}>
-                Forgot your password?
-              </Text>
-            </Link>
-          </View>
-
+          <View className={'h-[1px] w-24 bg-[#4F041D]'} />
         </View>
 
-      <View className={'mx-auto mb-2'}>
+        <View>
+          <Controller
+            control={form.control}
+            name={'email'}
+            render={({ field }) => (
+              <InputField
+                inputMode={'email'}
+                placeholder="Email"
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Email'}
+                icon={Mail}
+              />
+            )}
+          />
+        </View>
 
-          <XolaceButton label={'Sign In'}
-            className={" w-[160px] mb-5"}
-                        disabled={signIn.isPending}
-                        onPress={form.handleSubmit((data) => {
-                            signIn.mutate({
-                                email: data.email,
-                                password: data.password,
-                            });
-                        })}
+        <View>
+          <Controller
+            control={form.control}
+            name={'password'}
+            render={({ field }) => (
+              <InputField
+                secureTextEntry
+                placeholder={'enter your password'}
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Password'}
+                icon={LockKeyhole}
+              />
+            )}
           />
 
-          <Text className='text-sm text-white mb-5 tracking-wider'>Your Community Awaits You.</Text>
+          <Link className={'my-4'} href="/auth/password-reset">
+            <Text className={'text-muted-foreground text-sm'}>
+              Forgot your password?
+            </Text>
+          </Link>
+        </View>
+      </View>
+
+      <View className={'mx-auto mb-2'}>
+        <XolaceButton
+          label={'Sign In'}
+          className={'mb-5 w-[160px]'}
+          disabled={signIn.isPending}
+          onPress={form.handleSubmit((data) => {
+            signIn.mutate({
+              email: data.email,
+              password: data.password,
+            });
+          })}
+        />
+
+        <Text className="mb-5 text-sm tracking-wider text-white">
+          Your Community Awaits You.
+        </Text>
         {/*<Button*/}
         {/*  size={'lg'}*/}
         {/*  className={'w-full'}*/}

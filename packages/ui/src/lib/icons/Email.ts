@@ -1,4 +1,4 @@
-import {Mail} from 'lucide-react-native'
+import { Mail } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 

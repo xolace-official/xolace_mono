@@ -26,10 +26,10 @@ export * from './components/ui/sonner';
 // custom ui components
 // shared
 export * from './components/shared/AnimatedNavButton';
-export * from './components/shared/inputField'
+export * from './components/shared/inputField';
 
 // builders
-export * from './components/builders/xolace-button'
+export * from './components/builders/xolace-button';
 
 export * from './lib/constants';
 export * from './lib/utils';
