@@ -6,4 +6,5 @@ export const EmailSchema = z.object({
 
 export const EmailPasswordSchema = EmailSchema.extend({
   password: z.string().min(8),
+  username: z.string().optional(),
 });

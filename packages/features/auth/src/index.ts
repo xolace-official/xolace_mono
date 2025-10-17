@@ -3,3 +3,4 @@ export * from './sign-up/sign-up-form';
 export * from './password-reset/password-reset-form';
 export * from './shared/auth-page-layout';
 export * from './lib/deep-links';
+export * from './anonymous-signin/AnonymousButton';

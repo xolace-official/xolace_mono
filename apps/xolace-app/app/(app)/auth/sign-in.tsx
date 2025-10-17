@@ -1,42 +1,51 @@
 import { Link } from 'expo-router';
 
 import {
+  AnonymousButton,
   AuthPageLayout,
   AuthPageLayoutDescription,
   AuthPageLayoutForm,
   AuthPageLayoutHeading,
   AuthPageLayoutLogo,
+  AuthPageLayoutNavigationButton,
   AuthPageLayoutSecondaryButton,
   SignInForm,
 } from '@xolacekit/auth';
-import { Button, Text } from '@xolacekit/ui';
+import { H1, Text } from '@xolacekit/ui';
 
-import { LogoImage } from '../../../components/logo';
+//import { LogoImage } from '../../../components/logo';
+import FluxSignin from '../../../components/icons/flux-signin';
 
 export default function SignInPage() {
   return (
     <AuthPageLayout>
       <AuthPageLayoutLogo>
-        <LogoImage />
+        <FluxSignin />
       </AuthPageLayoutLogo>
 
-      <AuthPageLayoutHeading>Welcome Back.</AuthPageLayoutHeading>
+      <AuthPageLayoutHeading>
+        <H1 className={'font-black text-white'}>Holla, </H1>
+        <H1 className={'font-black text-white'}>Welcome Back</H1>
+      </AuthPageLayoutHeading>
 
-      <AuthPageLayoutDescription>
-        Let's get you signed in.
-      </AuthPageLayoutDescription>
+      <AuthPageLayoutDescription>Welcome Back</AuthPageLayoutDescription>
 
       <AuthPageLayoutForm>
         <SignInForm />
       </AuthPageLayoutForm>
 
       <AuthPageLayoutSecondaryButton>
-        <Button variant={'link'} asChild>
-          <Link className={'text-center'} href="/auth/sign-up">
-            <Text>Create an Account</Text>
-          </Link>
-        </Button>
+        <AnonymousButton />
       </AuthPageLayoutSecondaryButton>
+
+      <AuthPageLayoutNavigationButton>
+        <Text className={'tracking-wider text-white'}>
+          Don't have an account?
+        </Text>
+        <Link className={'text-center'} href="/auth/sign-up">
+          <Text className={'text-white'}>Sign Up</Text>
+        </Link>
+      </AuthPageLayoutNavigationButton>
     </AuthPageLayout>
   );
 }

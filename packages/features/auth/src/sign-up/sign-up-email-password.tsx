@@ -8,10 +8,12 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Button,
   Check,
-  Input,
+  InputField,
+  LockKeyhole,
+  Mail,
   Text,
+  XolaceButton,
   toast,
 } from '@xolacekit/ui';
 
@@ -22,6 +24,7 @@ export function SignUpEmailPassword() {
   const form = useForm({
     resolver: zodResolver(EmailPasswordSchema),
     defaultValues: {
+      username: '',
       email: '',
       password: '',
     },
@@ -48,47 +51,89 @@ export function SignUpEmailPassword() {
   });
 
   return (
-    <View className={'flex-col justify-center gap-4 p-8'}>
-      <View>
-        <Controller
-          control={form.control}
-          name={'email'}
-          render={({ field }) => (
-            <Input
-              inputMode={'email'}
-              placeholder="Email"
-              onBlur={field.onBlur}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-          )}
-        />
+    <View className={'flex-col justify-center'}>
+      <View
+        className={
+          'mb-4 flex-col justify-center gap-4 rounded-[14px] bg-white px-8 py-12'
+        }
+      >
+        <View>
+          <Text className={'mb-1 text-4xl font-bold tracking-widest'}>
+            Sign Up
+          </Text>
+
+          <View className={'h-[1px] w-24 bg-[#4F041D]'} />
+        </View>
+
+        <View>
+          <Controller
+            control={form.control}
+            name={'username'}
+            render={({ field }) => (
+              <InputField
+                inputMode={'text'}
+                placeholder="Dont use your real name"
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Username'}
+              />
+            )}
+          />
+        </View>
+
+        <View>
+          <Controller
+            control={form.control}
+            name={'email'}
+            render={({ field }) => (
+              <InputField
+                inputMode={'email'}
+                placeholder="demo@gmail.com"
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Email'}
+                icon={Mail}
+              />
+            )}
+          />
+        </View>
+
+        <View>
+          <Controller
+            control={form.control}
+            name={'password'}
+            render={({ field }) => (
+              <InputField
+                placeholder={'enter your password'}
+                secureTextEntry
+                onBlur={field.onBlur}
+                onChangeText={field.onChange}
+                value={field.value}
+                label={'Password'}
+                icon={LockKeyhole}
+              />
+            )}
+          />
+        </View>
       </View>
 
       <View>
-        <Controller
-          control={form.control}
-          name={'password'}
-          render={({ field }) => (
-            <Input
-              placeholder={'Password'}
-              secureTextEntry
-              onBlur={field.onBlur}
-              onChangeText={field.onChange}
-              value={field.value}
-            />
-          )}
-        />
-      </View>
-
-      <View>
-        <Button
-          size={'lg'}
+        <XolaceButton
+          label={'Register'}
+          className={'mx-auto mb-5 w-[160px]'}
           disabled={signUpMutation.isPending}
           onPress={onSubmit}
-        >
-          <Text>Create Account</Text>
-        </Button>
+        />
+
+        {/*<Button*/}
+        {/*  size={'lg'}*/}
+        {/*  disabled={signUpMutation.isPending}*/}
+        {/*  onPress={onSubmit}*/}
+        {/*>*/}
+        {/*  <Text>Create Account</Text>*/}
+        {/*</Button>*/}
       </View>
     </View>
   );
