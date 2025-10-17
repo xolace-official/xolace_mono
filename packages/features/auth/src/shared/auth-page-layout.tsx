@@ -2,7 +2,7 @@ import React from 'react';
 
 import { View } from 'react-native';
 
-import { H1, H4, Text } from '@xolacekit/ui';
+import { Text } from '@xolacekit/ui';
 
 export function AuthPageLayout(props: React.PropsWithChildren) {
   const childrenArray = React.Children.toArray(props.children);
@@ -12,6 +12,10 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
       (child) =>
         React.isValidElement(child) && child.type === AuthPageLayoutLogo,
     ),
+      logoSignIn: childrenArray.find(
+          (child) =>
+              React.isValidElement(child) && child.type === AuthPageLayoutLogoSignIn,
+      ),
     form: childrenArray.find(
       (child) =>
         React.isValidElement(child) && child.type === AuthPageLayoutForm,
@@ -43,14 +47,17 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
 
   return (
     <View className={'w-full gap-4 bg-[#4F041D] flex-1 px-2'}>
-      <View className={'top-20'}>{childrenByType.logo}</View>
+      <View className={'top-3 absolute right-5'}>{childrenByType.logo}</View>
 
-      <View className={'top-28 px-8'}>
-        <H1>{childrenByType.formHeading}</H1>
-        <H4>{childrenByType.formDescription}</H4>
+        <View className={'top-3 absolute left-10'}>{childrenByType.logoSignIn}</View>
+
+      <View className={'top-24 px-4 mt-20'}>
+        {childrenByType.formHeading}
+          {/*<H1 className={'text-white font-black'}>{childrenByType.formDescription}</H1>*/}
+
       </View>
 
-      <View className={'top-28'}>{childrenByType.form}</View>
+      <View className={'top-24'}>{childrenByType.form}</View>
 
       <View className={'top-24 px-8'}>
         {childrenByType.secondaryActionButton}
@@ -69,6 +76,10 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
 
 export function AuthPageLayoutLogo(props: React.PropsWithChildren) {
   return props.children;
+}
+
+export function AuthPageLayoutLogoSignIn(props: React.PropsWithChildren) {
+    return props.children;
 }
 
 export function AuthPageLayoutForm(props: React.PropsWithChildren) {

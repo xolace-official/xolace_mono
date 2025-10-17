@@ -1,38 +1,40 @@
 import { Link } from 'expo-router';
-import {View} from 'react-native';
 
 import {
     AuthPageLayout,
-    AuthPageLayoutDescription,
     AuthPageLayoutForm,
     AuthPageLayoutHeading,
     AuthPageLayoutLogo, AuthPageLayoutNavigationButton,
     AuthPageLayoutTermsDescription,
     SignUpForm,
 } from '@xolacekit/auth';
-import { Button, Text } from '@xolacekit/ui';
+import { Text, H1 } from '@xolacekit/ui';
 
-import { LogoImage } from '../../../components/logo';
+import FluxSignup from "../../../components/icons/flux-signup";
 
 export default function SignUpPage() {
   return (
     <AuthPageLayout>
       <AuthPageLayoutLogo>
-        <LogoImage />
+          <FluxSignup />
       </AuthPageLayoutLogo>
 
-      <AuthPageLayoutHeading>Let's get started.</AuthPageLayoutHeading>
+      <AuthPageLayoutHeading>
+          <H1 className={'text-white font-black'}>
+              Hi there
+          </H1>
+      </AuthPageLayoutHeading>
 
-      <AuthPageLayoutDescription>
-        Sign up to create your account.
-      </AuthPageLayoutDescription>
+      {/*<AuthPageLayoutDescription>*/}
+      {/*  Sign up to create your account.*/}
+      {/*</AuthPageLayoutDescription>*/}
 
       <AuthPageLayoutForm>
         <SignUpForm />
       </AuthPageLayoutForm>
 
         <AuthPageLayoutNavigationButton>
-            <Text className={'text-white tracking-wider'}>Don't have an account?</Text>
+            <Text className={'text-white tracking-wider'}>Already have an account?</Text>
             <Link className={'text-center '} href="/auth/sign-in">
                 <Text className={'text-white'}>Sign In</Text>
             </Link>
