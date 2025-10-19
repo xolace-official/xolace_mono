@@ -14,7 +14,7 @@ export default function AppLayout() {
     <Stack>
       {/* Private app screens visible when authenticated */}
       <Stack.Protected guard={isAuthenticated}>
-        <Stack.Screen name="(main)" options={{ headerShown: false }} />
+        <Stack.Screen name="(protected)" options={{ headerShown: false }} />
       </Stack.Protected>
 
       {/* Public auth screens (sign-in/up/etc.) visible when NOT authenticated */}

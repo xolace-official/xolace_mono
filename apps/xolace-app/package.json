@@ -37,6 +37,7 @@
     "@tanstack/react-query": "catalog:",
     "@xolacekit/account": "workspace:*",
     "@xolacekit/auth": "workspace:*",
+    "@xolacekit/campfire": "workspace:*",
     "@xolacekit/state": "workspace:*",
     "@xolacekit/supabase": "workspace:^",
     "@xolacekit/ui": "workspace:*",
