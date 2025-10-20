@@ -374,6 +374,9 @@ importers:
       '@xolacekit/auth':
         specifier: workspace:*
         version: link:../../packages/features/auth
+      '@xolacekit/campfire':
+        specifier: workspace:*
+        version: link:../../packages/features/campfire
       '@xolacekit/state':
         specifier: workspace:*
         version: link:../../packages/state
@@ -604,6 +607,45 @@ importers:
       zod:
         specifier: 'catalog:'
         version: 3.25.76
+
+  packages/features/campfire:
+    devDependencies:
+      '@hookform/resolvers':
+        specifier: 'catalog:'
+        version: 3.10.0(react-hook-form@7.63.0(react@19.1.0))
+      '@supabase/supabase-js':
+        specifier: 'catalog:'
+        version: 2.58.0
+      '@tanstack/react-query':
+        specifier: 'catalog:'
+        version: 5.90.2(react@19.1.0)
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.1.16
+      '@xolacekit/eslint-config':
+        specifier: workspace:*
+        version: link:../../../tooling/eslint-config
+      '@xolacekit/prettier-config':
+        specifier: workspace:*
+        version: link:../../../tooling/prettier-config
+      '@xolacekit/supabase':
+        specifier: workspace:*
+        version: link:../../supabase
+      '@xolacekit/tailwind-config':
+        specifier: workspace:*
+        version: link:../../../tooling/tailwind-config
+      '@xolacekit/typescript-config':
+        specifier: workspace:*
+        version: link:../../../tooling/typescript-config
+      '@xolacekit/ui':
+        specifier: workspace:*
+        version: link:../../ui
+      expo-auth-session:
+        specifier: 'catalog:'
+        version: 5.5.2(expo@54.0.11)
+      react:
+        specifier: 'catalog:'
+        version: 19.1.0
 
   packages/state:
     devDependencies:
