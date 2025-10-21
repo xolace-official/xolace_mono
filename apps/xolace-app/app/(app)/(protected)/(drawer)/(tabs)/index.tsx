@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 
-import { useUserEmail } from '@xolacekit/state';
+import { useUserEmail } from '@xolacekit/state/dist';
 
 export default function HomePage() {
   const email = useUserEmail();

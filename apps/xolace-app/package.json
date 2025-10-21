@@ -60,11 +60,13 @@
     "react-dom": "catalog:",
     "react-native": "catalog:",
     "react-native-gesture-handler": "catalog:",
+    "react-native-keyboard-controller": "catalog:",
     "react-native-mmkv": "catalog:",
     "react-native-reanimated": "catalog:",
     "react-native-safe-area-context": "catalog:",
     "react-native-screens": "catalog:",
     "react-native-svg": "catalog:",
+    "react-native-ui-lib": "catalog:",
     "react-native-web": "catalog:",
     "react-native-worklets": "catalog:",
     "zustand": "catalog:"

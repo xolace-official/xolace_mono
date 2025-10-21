@@ -7,9 +7,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@xolacekit/ui';
+} from '@xolacekit/ui/dist';
 
-import { ThemeModeToggle } from '../../../../../../components/settings/theme-mode-toggle';
+import { ThemeModeToggle } from '../../../../../../../components/settings/theme-mode-toggle';
 
 export default function ApplicationSettingsPage() {
   return (
