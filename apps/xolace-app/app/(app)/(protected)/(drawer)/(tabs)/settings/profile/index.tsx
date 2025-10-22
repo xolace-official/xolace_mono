@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
-import { UpdateProfileContainer } from '@xolacekit/account/dist';
+import { UpdateProfileContainer } from '@xolacekit/account';
 
 export default function ProfileSettingsPage() {
   return (

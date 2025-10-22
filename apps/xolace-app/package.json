@@ -33,6 +33,7 @@
   "dependencies": {
     "@expo/vector-icons": "catalog:",
     "@react-native-async-storage/async-storage": "catalog:",
+    "@react-navigation/drawer": "catalog:",
     "@react-navigation/native": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@xolacekit/account": "workspace:*",

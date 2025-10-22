@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
-import { UpdateAccountContainer } from '@xolacekit/account/dist';
+import { UpdateAccountContainer } from '@xolacekit/account';
 
 export default function AccountSettingsPage() {
   return (
