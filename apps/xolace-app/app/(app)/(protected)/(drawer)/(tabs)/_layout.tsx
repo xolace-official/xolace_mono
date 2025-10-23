@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import { HomeIcon, SettingsIcon } from 'lucide-react-native';
+import { DrawerToggleButton } from '@react-navigation/drawer';
 
 export default function MainLayout() {
   return (
@@ -10,6 +11,9 @@ export default function MainLayout() {
           title: 'Home',
           href: '/',
           tabBarIcon: () => <HomeIcon className="h-5" />,
+            headerLeft: ()=>(
+                <DrawerToggleButton/>
+            )
         }}
       />
       <Tabs.Screen
