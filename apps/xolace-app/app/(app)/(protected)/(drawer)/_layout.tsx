@@ -11,6 +11,7 @@ import { useColorScheme } from 'nativewind';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Avatar, Text as UiText, View as UiView } from 'react-native-ui-lib';
+import {LibraryBig} from "@xolacekit/ui";
 
 
 
@@ -78,10 +79,10 @@ const CustomDrawerContent = (props: any) => {
             <DrawerItem
                 icon={({ color, size, focused})=>(
                     <MaterialIcons name="app-settings-alt"
-                                   size={24}
-                                   color={getIconColor('/settings')} />
+                                   size={focused ? 24 : 20}
+                                   color={getIconColor('/')} />
                 )}
-                label={"Settings"}
+                label={"Feed"}
                 labelStyle={[styles.navItemLabel, {color : getLabelColor('/')} ]}
                 style={{ backgroundColor: getBackgroundColor('/')}}
                 onPress={()=> router.push("/")}
@@ -89,8 +90,21 @@ const CustomDrawerContent = (props: any) => {
 
             <DrawerItem
                 icon={({ color, size, focused})=>(
+                    <LibraryBig
+                        size={focused ? 24 : 20}
+                        color={getIconColor('/collections')}
+                    />
+                )}
+                label={"Collections"}
+                labelStyle={[styles.navItemLabel, {color : getLabelColor('/collections')} ]}
+                style={{ backgroundColor: getBackgroundColor('/collections')}}
+                onPress={()=> router.push("/(app)/(protected)/(drawer)/collections")}
+            />
+
+            <DrawerItem
+                icon={({ color, size, focused})=>(
                     <MaterialIcons name="app-settings-alt"
-                                   size={24}
+                                   size={focused ? 24 : 15}
                                    color={getIconColor('/logout')} />
                 )}
                 label={"Logout"}
@@ -121,7 +135,7 @@ export default function DrawerLayout() {
 
 const styles = StyleSheet.create({
     navItemLabel: {
-        marginLeft: -15,
+        marginLeft: 5,
         fontSize: 18,
     }
 })
