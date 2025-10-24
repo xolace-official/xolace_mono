@@ -53,6 +53,7 @@
     "nativewind": "catalog:",
     "react": "catalog:",
     "react-native-svg": "catalog:",
+    "react-native-ui-lib": "catalog:",
     "sonner": "catalog:",
     "sonner-native": "catalog:",
     "tailwind-merge": "catalog:"

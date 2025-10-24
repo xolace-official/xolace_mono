@@ -3,13 +3,14 @@ import { HomeIcon, SettingsIcon } from 'lucide-react-native';
 
 export default function MainLayout() {
   return (
-    <Tabs initialRouteName="index">
+    <Tabs initialRouteName="(feed)">
       <Tabs.Screen
-        name="index"
+        name="(feed)"
         options={{
           title: 'Home',
           href: '/',
           tabBarIcon: () => <HomeIcon className="h-5" />,
+          headerShown: false,
         }}
       />
       <Tabs.Screen

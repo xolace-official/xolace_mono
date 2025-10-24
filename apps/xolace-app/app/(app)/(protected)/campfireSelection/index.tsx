@@ -60,7 +60,7 @@ const CampfireSelection = () => {
         <Text className="text-center text-white">Not Sure?</Text>
         {/*<Link className='text-center text-white flex flex-row items-center' href='/'><Text>Explore All</Text> <ArrowRight size={15}/></Link>*/}
         <View className="flex items-center justify-center">
-          <Link className="text-center" href="/" asChild>
+          <Link className="text-center" replace href="/" asChild>
             <Pressable className="flex flex-row items-center gap-1">
               <Text className="text-white">Explore All Campfires</Text>
               <ArrowRight color="white" size={15} />
