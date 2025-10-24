@@ -5,10 +5,10 @@ import {
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { useUserEmail } from '@xolacekit/state';
-import FluxSignup from "../../../../../../components/icons/flux-signup";
+
 
 import {Dialog, PanningProvider, View as ViewUI, Text as TextUI, Colors, Constants} from "react-native-ui-lib";
-import {XolaceButton, Button} from "@xolacekit/ui";
+import {XolaceButton} from "@xolacekit/ui";
 
 // const SCROLL_TYPE = {
 //     NONE: 'none',
@@ -26,7 +26,6 @@ export default function HomePage() {
     }));
 
     const isVisible = true
-    const showHeader = true
 
   return (
     <View className="flex flex-1 items-center justify-center">
@@ -57,7 +56,8 @@ export default function HomePage() {
                 <ViewUI marginT-20 marginH-20 marginB-20>
                     {/*<View className={'absolute -top-40'}><FluxSignup/></View>*/}
                     {/*<TextUI $textDefault marginT-20={!showHeader}>Get message</TextUI>*/}
-                    <TextUI color={'#6D1865'} className={'text-center px-12 font-medium'}>You’ve just found your space. Your chosen campfires are
+                    <TextUI color={'#6D1865'} className={'text-center px-12 font-medium'}>
+                        You’ve just found your space. Your chosen campfires are
                         ready, and you’re never alone
                         here.
                     </TextUI>
@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.$backgroundDefault
     },
     roundedDialog: {
-        backgroundColor: '#B8B8B8',
+        backgroundColor: '#fff',
         marginBottom: Constants.isIphoneX ? 0 : 20,
         borderRadius: 12,
         position: 'relative',
+        experimental_backgroundImage: 'linear-gradient(to right, rgba(184, 184, 184, 0) 0%, rgba(184, 184, 184, 0.9) 100%)'
     },
     button: {
         margin: 5,
