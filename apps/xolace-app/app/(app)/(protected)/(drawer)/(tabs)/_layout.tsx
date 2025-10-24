@@ -1,7 +1,6 @@
 import { Tabs } from 'expo-router';
 import { HomeIcon, SettingsIcon } from 'lucide-react-native';
 
-
 export default function MainLayout() {
   return (
     <Tabs initialRouteName="(feed)">
@@ -11,7 +10,7 @@ export default function MainLayout() {
           title: 'Home',
           href: '/',
           tabBarIcon: () => <HomeIcon className="h-5" />,
-            headerShown: false,
+          headerShown: false,
         }}
       />
       <Tabs.Screen
