@@ -170,7 +170,7 @@ export function EnhancedPostCard({
             {/* Header */}
             <CardHeader className="flex-row items-start justify-between px-4 py-2">
                 <View className="flex flex-row items-center gap-3">
-                    <Avatar>
+                    <Avatar alt={'avatar'} >
                         <AvatarImage source={{ uri: avatarSrc }} />
                         <AvatarFallback className="bg-gradient-to-br from-[#0536ff] to-[#6a71ea]">
                             <Text className="text-white font-semibold">{fallbackInitials}</Text>

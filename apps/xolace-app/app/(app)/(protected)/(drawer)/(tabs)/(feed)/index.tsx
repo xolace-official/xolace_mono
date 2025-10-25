@@ -9,7 +9,7 @@ import {
   Text as TextUI,
   View as ViewUI,
 } from 'react-native-ui-lib';
-import {SafeAreaView} from "react-native-safe-area-context";
+import {DailyPrompt} from "../../../../../../components/cards/DailyPrompt";
 
 import { useUserEmail } from '@xolacekit/state';
 import { XolaceButton } from '@xolacekit/ui';
@@ -51,6 +51,7 @@ export default function HomePage() {
 
           {/*<PostCard post={post}/>*/}
 
+          <DailyPrompt/>
           <EnhancedPostCard post={dummyPosts[0]}/>
           <EnhancedPostCard post={dummyPosts[2]}/>
 
