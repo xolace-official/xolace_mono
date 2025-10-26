@@ -322,6 +322,58 @@ export const dummyPosts: EnhancedPost[] = [
         is_sensitive: false,
         is_campfire_post: false,
     },
+    {
+        id: 'post-009',
+        created_at: getRecentDate(6),
+        expires_at: null,
+        author_name: 'Marcus Thompson',
+        author_avatar_url: 'https://i.pravatar.cc/150?img=52',
+        author_roles: ['mentor'],
+        campfire_name: null,
+        campfire_icon_url: null,
+        campfire_slug: null,
+        mood: 'grateful',
+        type: 'single',
+        content: '5 Things I Wish I Knew About Depression Earlier 💭\n\n#1: It\'s not "just in your head"\n\nDepression is a real medical condition with biological, psychological, and social factors.',
+        post_slides: [
+            {
+                content: '5 Things I Wish I Knew About Depression Earlier 💭\n\n#1: It\'s not "just in your head"\n\nDepression is a real medical condition with biological, psychological, and social factors.',
+                slide_index: 0,
+            },
+            {
+                content: '#2: Medication isn\'t "cheating"\n\nIf you have diabetes, you take insulin. If you have depression, medication can be part of your treatment plan. No shame.',
+                slide_index: 1,
+            },
+            {
+                content: '#3: Progress isn\'t linear\n\nSome days will be harder than others. A bad day doesn\'t mean you\'re back at square one.',
+                slide_index: 2,
+            },
+            {
+                content: '#4: You can\'t "think" your way out\n\nPositive thinking helps, but depression requires real treatment. Be patient with yourself.',
+                slide_index: 3,
+            },
+            {
+                content: '#5: Asking for help is strength\n\nReaching out for support takes courage. You deserve care and compassion. 💜',
+                slide_index: 4,
+            },
+        ],
+        prompt_text: null,
+        posttags: [
+            { name: 'depression' },
+            { name: 'mentalhealth' },
+            { name: 'education' },
+            { name: 'support' }
+        ],
+        comments_count: 94,
+        upvotes: 276,
+        downvotes: 8,
+        views_count: 1834,
+        created_by: 'user-marcus-007',
+        collections: [],
+        expires_in_24hr: false,
+        is_sensitive: false,
+        is_campfire_post: false,
+    },
 ];
 
 // Helper function to get a random post

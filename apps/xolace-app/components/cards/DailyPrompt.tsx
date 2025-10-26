@@ -114,7 +114,7 @@ export function DailyPrompt() {
             setIsLoadingStreak(true);
 
             // DUMMY: Simulate API call delay
-            await new Promise(resolve => setTimeout(resolve, 7000));
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
             // DUMMY: Set prompt data
             setPromptData({
@@ -180,7 +180,7 @@ export function DailyPrompt() {
     // Loading state
     if (isLoadingPrompt) {
         return (
-            <Card className="relative overflow-hidden border-none bg-gradient-to-br from-purple-600 to-lavender-700 p-4 mx-4 my-3">
+            <Card className="relative overflow-hidden border-none bg-[#D91656] p-4 mx-4 my-3">
                 <View className="flex flex-col gap-4">
                     <View className="h-6 w-1/3 rounded bg-white/20" />
                     <View className="h-20 rounded bg-white/20" />
@@ -193,7 +193,7 @@ export function DailyPrompt() {
     // No prompt available
     if (!promptData) {
         return (
-            <Card className="relative overflow-hidden border-none bg-gradient-to-br from-purple-600 to-lavender-700 p-4 mx-4 my-3">
+            <Card className="relative overflow-hidden border-none bg-purple-500 p-4 mx-4 my-3">
                 <Text className="text-white text-center">No prompt available for today.</Text>
             </Card>
         );
