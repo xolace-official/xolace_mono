@@ -12,10 +12,12 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useNavigation } from 'expo-router';
 import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 import { scheduleOnRN } from 'react-native-worklets';
+import {Stack} from "expo-router";
 
 import { DailyPrompt } from "../../../../../../components/cards/DailyPrompt";
 import { EnhancedPostCard } from "../../../../../../components/cards/EnhancedPostCard";
 import dummyPosts, {EnhancedPost} from "../../../../../../lib/dummy-data/post";
+import FeedHeader from "../../../../../../components/shared/FeedHeader";
 
 import { Constants, Dialog, PanningProvider, Text, View as ViewUI } from "react-native-ui-lib";
 import { XolaceButton } from "@xolacekit/ui";
@@ -103,7 +105,7 @@ export default function HomePage() {
         lastScrollOffset.value = currentScroll;
     }, [tabBarHeight, navigation]);
 
-    
+
     // Animated scroll handler with content size tracking
     const scrollHandler = useAnimatedScrollHandler({
         onScroll: (event) => {
@@ -141,6 +143,11 @@ export default function HomePage() {
 
     return (
         <View className="flex-1 dark:bg-[#141A2E]">
+            <Stack.Screen
+                options={{
+                    header: () => <FeedHeader />,
+                }}
+            />
             <AnimatedFlashList
                 data={dummyPosts}
                 renderItem={renderItem}

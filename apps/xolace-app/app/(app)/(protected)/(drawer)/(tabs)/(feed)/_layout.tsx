@@ -6,7 +6,8 @@ export default function Layout() {
     <Stack>
       <Stack.Screen
         name="index"
-        options={{ title: 'Home', headerLeft: () => <DrawerToggleButton /> }}
+        options={{ title: 'Feed', headerLeft: () => <DrawerToggleButton /> ,
+        }}
       />
     </Stack>
   );

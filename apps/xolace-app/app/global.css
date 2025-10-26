@@ -102,3 +102,18 @@
         --ring: 224.3 76.3% 48%;
     }
 }
+
+
+@layer utilities {
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+
+    .flex-between {
+        @apply flex items-center justify-between;
+    }
+
+    .flex-start {
+        @apply flex items-start justify-center;
+    }
+}

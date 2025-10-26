@@ -1,10 +1,11 @@
 // components/daily-prompt/daily-prompt.tsx
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Pressable, ActivityIndicator } from 'react-native';
+import {View, Pressable, ActivityIndicator} from 'react-native';
 import { ArrowRight, Sparkles, CalendarDays, Tag } from 'lucide-react-native';
 import { format, isToday } from 'date-fns';
 import { useRouter } from 'expo-router';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 import { Card, Button, Text} from '@xolacekit/ui';
 import { cn } from '@xolacekit/ui';
@@ -180,22 +181,27 @@ export function DailyPrompt() {
     // Loading state
     if (isLoadingPrompt) {
         return (
-            <Card className="relative overflow-hidden border-none bg-[#D91656] p-4 mx-4 my-3">
+            <SafeAreaView className='pt-20'>
+
+            <Card className="relative overflow-hidden border-none bg-[#D91656] p-4 mx-4">
                 <View className="flex flex-col gap-4">
                     <View className="h-6 w-1/3 rounded bg-white/20" />
                     <View className="h-20 rounded bg-white/20" />
                     <View className="h-10 rounded bg-white/20" />
                 </View>
             </Card>
+            </SafeAreaView>
         );
     }
 
     // No prompt available
     if (!promptData) {
         return (
+            <SafeAreaView className={'pt-20'}>
             <Card className="relative overflow-hidden border-none bg-purple-500 p-4 mx-4 my-3">
                 <Text className="text-white text-center">No prompt available for today.</Text>
             </Card>
+                </SafeAreaView>
         );
     }
 
@@ -203,7 +209,9 @@ export function DailyPrompt() {
     const categoryIcon = getCategoryIcon(promptData.category);
 
     return (
-        <View className="w-full px-4 my-3">
+        <SafeAreaView>
+
+        <View className="w-full px-4 mt-24">
             <Card className={cn(
                 'relative overflow-hidden border-none  shadow-xl',
                 'bg-purple-500',
@@ -308,5 +316,6 @@ export function DailyPrompt() {
                 </View>
             </Card>
         </View>
+        </SafeAreaView>
     );
 }
