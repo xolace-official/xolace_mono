@@ -342,13 +342,13 @@ importers:
         specifier: 'catalog:'
         version: 8.57.0
       expo:
-        specifier: ~54.0.11
+        specifier: 'catalog:'
         version: 54.0.20(@babel/core@7.28.5)(@expo/metro-runtime@6.1.2)(expo-router@6.0.13)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
       react:
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0
       react-dom:
         specifier: 'catalog:'
@@ -357,7 +357,7 @@ importers:
         specifier: 'catalog:'
         version: 18.3.1
       react-native:
-        specifier: 0.81.4
+        specifier: 'catalog:'
         version: 0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0)
       turbo:
         specifier: 'catalog:'

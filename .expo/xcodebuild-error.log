@@ -1,0 +1,7 @@
+2025-10-25 22:31:25.685 xcodebuild[89390:1667961] Writing error result bundle to /var/folders/1p/kxfbbzc9099c9jj70dhcbxl80000gn/T/ResultBundle_2025-25-10_22-31-0025.xcresult
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ id:52A8D234-568F-47F6-9ED4-54E42E8D51E5 }
+
+	Ineligible destinations for the "xolacemono" scheme:
+		{ platform:iOS, arch:arm64e, id:00008020-001975860EB8003A, name:Nathaniel’s iPhone, error:iOS 26.0 is not installed. Please download and install the platform from Xcode > Settings > Components. }
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device, error:iOS 26.0 is not installed. Please download and install the platform from Xcode > Settings > Components. }
