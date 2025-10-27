@@ -19,7 +19,7 @@ export default function MainLayout() {
       <Tabs.Screen
         name="(feed)"
         options={{
-          title: 'Home',
+          title: 'Feed',
           href: '/',
           tabBarIcon: ({ color }) => <HomeIcon color={color} className="h-5" />,
           headerShown: false,
