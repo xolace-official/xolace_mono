@@ -4,4 +4,3 @@ import { iconWithClassName } from './iconWithClassName';
 
 iconWithClassName(UserCheck);
 export { UserCheck };
-

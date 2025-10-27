@@ -1,11 +1,11 @@
-import {View, Text} from 'react-native';
+import { Text, View } from 'react-native';
 
 const CheckIn = () => {
-    return (
-        <View>
-            <Text>Check In</Text>
-        </View>
-    );
+  return (
+    <View>
+      <Text>Check In</Text>
+    </View>
+  );
 };
 
 export default CheckIn;

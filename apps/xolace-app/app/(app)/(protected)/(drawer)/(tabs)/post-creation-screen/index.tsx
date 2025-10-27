@@ -1,12 +1,11 @@
-
-import {View, Text} from "react-native";
+import { Text, View } from 'react-native';
 
 const PostCreationScreen = () => {
-    return (
-        <View>
-            <Text>Post creation</Text>
-        </View>
-    );
+  return (
+    <View>
+      <Text>Post creation</Text>
+    </View>
+  );
 };
 
 export default PostCreationScreen;

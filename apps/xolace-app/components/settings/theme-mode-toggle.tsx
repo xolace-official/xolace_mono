@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Moon, Sun } from 'lucide-react-native';
-import { useColorScheme } from '@xolacekit/ui';
 import { View } from 'react-native';
 
+import { useColorScheme } from '@xolacekit/ui';
 import { ToggleGroup, ToggleGroupItem } from '@xolacekit/ui';
 
 type Theme = 'light' | 'dark' | 'system';
