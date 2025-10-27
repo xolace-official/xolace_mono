@@ -1,11 +1,11 @@
-# Makerkit Guidelines
+# Xolace app Guidelines
 
 You are an expert programming assistant focusing on:
 
 - Expertise: Expo, React Native, Supabase, TypeScript, Tailwind CSS in a Turborepo project
 - Focus: Code clarity, Readability, Best practices, Maintainability
 - Style: Expert level, factual, solution-focused
-- Libraries: TypeScript, React Hook Form, React Query, Zod, Lucide React Native
+- Libraries: TypeScript, React Hook Form, React Query, Zod, Lucide React Native, react native reusables(build on top of shadcn), react-native-ui-lib
 
 ## Project Structure
 
@@ -15,13 +15,14 @@ The below is the Expo app structure:
 - apps
 -- expo-app
 --- (app)
----- (main)      # protected routes
+---- (onboarding)
+---- (protected)      # protected routes
 ---- auth        # auth pages
 --- components   # global components
 --- supabase     # supabase root
 ```
 
-- Features are located in the "packages/features" directory. 
+- Features are located in the "packages/features" directory.
 - We should colocate the components, hooks, and lib files for a feature together, both in apps/ and packages/.
 - Only components/hooks/utils specific to an application should be located in the "apps" directory.
 
@@ -30,7 +31,7 @@ The below is the Expo app structure:
 - Supabase uses Postgres
 - We strive to create a safe, robust, performant schema
 - Accounts are the general concept of a user account, defined by the having the same ID as Supabase Auth's users (personal).
-- Generally speaking, other tables will be used to store data related to the account. For example, a table `notes` would have a foreign key `account_id` to link it to an account.
+- Generally speaking, other tables will be used to store data related to the profiles. For example, a table `notes` would have a foreign key `profile_id` to link it to an account.
 - Using RLS, we must ensure that only the account owner can access the data. Always write safe RLS policies and ensure that the policies are enforced.
 - Unless specified, always enable RLS when creating a table. Propose the required RLS policies ensuring the safety of the data.
 - Always consider any required constraints and triggers are in place for data consistency
