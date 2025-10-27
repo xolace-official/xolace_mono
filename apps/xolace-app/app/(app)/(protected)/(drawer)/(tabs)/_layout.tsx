@@ -2,12 +2,12 @@ import { Tabs } from 'expo-router';
 import { HomeIcon, SettingsIcon } from 'lucide-react-native';
 import PostCreateButton from "../../../../../components/shared/PostCreateButton";
 
-import {useColorScheme, UserCheck} from "@xolacekit/ui";
+import {UserCheck} from "@xolacekit/ui";
 import {Compass } from '@xolacekit/ui'
 
 export default function MainLayout() {
 
-const {colorScheme} = useColorScheme();
+
 
   return (
     <Tabs initialRouteName="(feed)" screenOptions={{ animation: 'shift', tabBarStyle: {position: 'absolute'} , tabBarActiveTintColor: 'purple' }}>

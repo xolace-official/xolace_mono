@@ -3,8 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Animated, {
     useSharedValue,
     useAnimatedScrollHandler,
-    withTiming,
-    Easing, withSpring
+    withSpring
 } from "react-native-reanimated";
 // import { useDrawerProgress } from "@react-navigation/drawer";
 import { FlashList } from "@shopify/flash-list";
@@ -12,12 +11,11 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useNavigation } from 'expo-router';
 import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 import { scheduleOnRN } from 'react-native-worklets';
-import {Stack} from "expo-router";
 
 import { DailyPrompt } from "../../../../../../components/cards/DailyPrompt";
 import { EnhancedPostCard } from "../../../../../../components/cards/EnhancedPostCard";
 import dummyPosts, {EnhancedPost} from "../../../../../../lib/dummy-data/post";
-import FeedHeader from "../../../../../../components/shared/FeedHeader";
+
 
 import { Constants, Dialog, PanningProvider, Text, View as ViewUI } from "react-native-ui-lib";
 import { XolaceButton } from "@xolacekit/ui";

@@ -1,16 +1,9 @@
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Link } from 'expo-router';
+import { View, StyleSheet } from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import {Bell} from "@xolacekit/ui";
 
 import {Text} from "@xolacekit/ui";
-
-
-interface Props {
-    onCategoryChanged: (category: string) => void;
-}
 
 const FeedHeader = () => {
 

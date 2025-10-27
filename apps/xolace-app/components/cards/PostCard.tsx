@@ -1,6 +1,6 @@
 // import { View, Text } from 'react-native'
 import React from 'react'
-import {Colors, View, Card, CardProps, Button, Text, Avatar} from 'react-native-ui-lib';
+import { View, Card, Button, Text, Avatar} from 'react-native-ui-lib';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 

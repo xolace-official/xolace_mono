@@ -126,8 +126,7 @@ export function EnhancedPostCard({
 
     // States
     const [timestamp, setTimestamp] = useState('');
-    const [isReportOpen, setIsReportOpen] = useState(false);
-    const [showDailyPrompt, setShowDailyPrompt] = useState(false);
+    // const [showDailyPrompt, setShowDailyPrompt] = useState(false);
 
     // Format timestamp
     React.useEffect(() => {
@@ -254,7 +253,6 @@ export function EnhancedPostCard({
                         <SinglePost
                             content={post.content}
                             dailyPrompt={post.prompt_text}
-                            showDailyPrompt={showDailyPrompt}
                         />
                     ) : (
                         // TODO: Implement SimpleCarouselPost

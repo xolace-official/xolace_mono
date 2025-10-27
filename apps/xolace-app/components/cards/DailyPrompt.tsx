@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import {View, Pressable, ActivityIndicator} from 'react-native';
 import { ArrowRight, Sparkles, CalendarDays, Tag } from 'lucide-react-native';
 import { format, isToday } from 'date-fns';
-import { useRouter } from 'expo-router';
 import {SafeAreaView} from "react-native-safe-area-context";
 
 import { Card, Button, Text} from '@xolacekit/ui';
@@ -89,7 +88,6 @@ const getCategoryIcon = (category?: string): string => {
 };
 
 export function DailyPrompt() {
-    const router = useRouter();
 
     // DUMMY DATA - Replace with actual hooks
     const currentUserId = 'dummy-user-id';

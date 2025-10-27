@@ -1,4 +1,4 @@
-import {Alert, TouchableOpacity, StyleSheet} from "react-native";
+import { TouchableOpacity, StyleSheet} from "react-native";
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics'
 import {router} from 'expo-router';
 
