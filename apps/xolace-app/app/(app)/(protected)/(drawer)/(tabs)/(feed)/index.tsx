@@ -4,7 +4,7 @@ import Animated, {
     useSharedValue,
     useAnimatedScrollHandler,
     withTiming,
-    Easing
+    Easing, withSpring
 } from "react-native-reanimated";
 // import { useDrawerProgress } from "@react-navigation/drawer";
 import { FlashList } from "@shopify/flash-list";
@@ -88,9 +88,14 @@ export default function HomePage() {
         }
 
         // 🔹 Smooth animation with timing
-        tabBarTranslateY.value = withTiming(targetTranslateY, {
-            duration: 150, // Quick but smooth
-            easing: Easing.out(Easing.cubic),
+        // tabBarTranslateY.value = withTiming(targetTranslateY, {
+        //     duration: 150, // Quick but smooth
+        //     easing: Easing.out(Easing.cubic),
+        // });
+        tabBarTranslateY.value = withSpring(targetTranslateY, {
+            damping: 15,
+            stiffness: 150,
+            mass: 0.5,
         });
 
         // Apply the translation

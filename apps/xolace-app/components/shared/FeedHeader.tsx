@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import {SafeAreaView} from "react-native-safe-area-context";
 import { DrawerToggleButton } from '@react-navigation/drawer';
+import {Bell} from "@xolacekit/ui";
 
 import {Text} from "@xolacekit/ui";
 
@@ -26,7 +27,7 @@ const FeedHeader = () => {
                    </View>
 
                     <View>
-
+                        <Bell/>
                     </View>
 
 

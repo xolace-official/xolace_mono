@@ -1,17 +1,22 @@
 import { Tabs } from 'expo-router';
 import { HomeIcon, SettingsIcon } from 'lucide-react-native';
 import PostCreateButton from "../../../../../components/shared/PostCreateButton";
+
+import {useColorScheme, UserCheck} from "@xolacekit/ui";
 import {Compass } from '@xolacekit/ui'
 
 export default function MainLayout() {
+
+const {colorScheme} = useColorScheme();
+
   return (
-    <Tabs initialRouteName="(feed)" screenOptions={{ animation: 'shift', tabBarStyle: {position: 'absolute'} }}>
+    <Tabs initialRouteName="(feed)" screenOptions={{ animation: 'shift', tabBarStyle: {position: 'absolute'} , tabBarActiveTintColor: 'purple' }}>
       <Tabs.Screen
         name="(feed)"
         options={{
           title: 'Home',
           href: '/',
-          tabBarIcon: () => <HomeIcon className="h-5" />,
+          tabBarIcon: ({color}) => <HomeIcon color={color} className="h-5" />,
           headerShown: false,
         }}
       />
@@ -21,7 +26,7 @@ export default function MainLayout() {
             options={{
                 title: 'Campfires',
                 href: '/discovery',
-                tabBarIcon: () => < Compass className="h-5" />,
+                tabBarIcon: ({color}) => < Compass color={color} className="h-5" />,
                 headerShown: false,
             }}
         />
@@ -47,7 +52,7 @@ export default function MainLayout() {
                 title: 'Checkin',
                 href: '/checkin',
                 headerShown: false,
-                tabBarIcon: () => <SettingsIcon className="h-5" />,
+                tabBarIcon: ({color}) => <UserCheck color={color} className="h-5" />,
             }}
         />
 
@@ -57,7 +62,7 @@ export default function MainLayout() {
           title: 'Settings',
           href: '/settings',
           headerShown: false,
-          tabBarIcon: () => <SettingsIcon className="h-5" />,
+          tabBarIcon: ({color}) => <SettingsIcon color={color} className="h-5" />,
         }}
       />
     </Tabs>

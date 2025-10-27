@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Moon, Sun } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
+import { useColorScheme } from '@xolacekit/ui';
 import { View } from 'react-native';
 
 import { ToggleGroup, ToggleGroupItem } from '@xolacekit/ui';
