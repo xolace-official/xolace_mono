@@ -148,11 +148,11 @@ export default function HomePage() {
 
     return (
         <View className="flex-1 dark:bg-[#141A2E]">
-            <Stack.Screen
-                options={{
-                    header: () => <FeedHeader />,
-                }}
-            />
+            {/*<Stack.Screen*/}
+            {/*    options={{*/}
+            {/*        header: () => <FeedHeader />,*/}
+            {/*    }}*/}
+            {/*/>*/}
             <AnimatedFlashList
                 data={dummyPosts}
                 renderItem={renderItem}
