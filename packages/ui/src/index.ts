@@ -47,3 +47,7 @@ export * from './lib/icons/LockKeyhole';
 export * from './lib/icons/Ghost';
 export * from './lib/icons/ArrowRight';
 export * from './lib/icons/LibraryBig';
+export * from './lib/icons/MessageSquarePlus';
+export * from './lib/icons/Compass';
+export * from './lib/icons/UserCheck';
+export * from './lib/icons/Bell';

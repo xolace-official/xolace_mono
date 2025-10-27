@@ -35,6 +35,7 @@
     "@react-native-async-storage/async-storage": "catalog:",
     "@react-navigation/drawer": "catalog:",
     "@react-navigation/native": "catalog:",
+    "@shopify/flash-list": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@xolacekit/account": "workspace:*",
     "@xolacekit/auth": "workspace:*",

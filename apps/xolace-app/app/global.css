@@ -85,8 +85,22 @@
         --popover: 222.2 84% 4.9%;
         --popover-foreground: 210 40% 98%;
 
-        --primary: 217.2 91.2% 59.8%;
-        --primary-foreground: 222.2 47.4% 11.2%;
+       
+
+        /* Primary (Ocean) */
+        --primary: 221.2 83.2% 53.3%;
+        --primary-foreground: 210 40% 98%;
+        --ocean-50: 209 100% 96%;
+        --ocean-100: 207 100% 93%;
+        --ocean-200: 208 100% 86%;
+        --ocean-300: 210 100% 76%;
+        --ocean-400: 215 100% 65%;
+        --ocean-500: 226 100% 55%;
+        --ocean-600: 230 100% 45%;
+        --ocean-700: 235 100% 40%;
+        --ocean-800: 235 100% 30%;
+        --ocean-900: 238 100% 20%;
+        --ocean-950: 240 100% 10%;
 
         --secondary: 235 30% 18%;
         --secondary-foreground: 210 40% 98%;
@@ -100,5 +114,20 @@
         --border: 217.2 32.6% 17.5%;
         --input: 217.2 32.6% 17.5%;
         --ring: 224.3 76.3% 48%;
+    }
+}
+
+
+@layer utilities {
+    .flex-row-center {
+        @apply flex flex-row items-center justify-center;
+    }
+
+    .flex-between {
+        @apply flex items-center justify-between;
+    }
+
+    .flex-start {
+        @apply flex items-start justify-center;
     }
 }
