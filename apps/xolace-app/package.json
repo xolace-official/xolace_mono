@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "catalog:",
+    "@gorhom/bottom-sheet": "catalog:",
     "@react-native-async-storage/async-storage": "catalog:",
     "@react-navigation/drawer": "catalog:",
     "@react-navigation/native": "catalog:",
