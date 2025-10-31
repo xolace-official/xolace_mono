@@ -1,6 +1,5 @@
 // components/post/post-card.tsx
-import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { formatDistanceToNow } from 'date-fns';
 import {
@@ -31,7 +30,6 @@ import {
   AvatarImage,
   Badge,
   Card,
-  CardContent,
   CardFooter,
   CardHeader,
 } from '@xolacekit/ui';
@@ -150,7 +148,6 @@ const formatTimestamp = (date: string): string => {
 export function EnhancedPostCard({
   className,
   post,
-  onClick,
   signedUrls,
   campfireOverride,
 }: PostCardProps) {
@@ -163,7 +160,7 @@ export function EnhancedPostCard({
   // const [showDailyPrompt, setShowDailyPrompt] = useState(false);
 
   // Format timestamp
-  React.useEffect(() => {
+  useEffect(() => {
     setTimestamp(formatTimestamp(post.created_at));
   }, [post.created_at]);
 
@@ -296,8 +293,9 @@ export function EnhancedPostCard({
       </CardHeader>
 
       {/* Content */}
-      <CardContent>
-        <Pressable onPress={onClick}>
+      
+      <View className='p-6 pt-0'>
+        
           {post.type === 'single' ? (
             <SinglePost content={post.content} dailyPrompt={post.prompt_text} />
           ) : (
@@ -308,11 +306,11 @@ export function EnhancedPostCard({
               </Text>
             </View>
           )}
-        </Pressable>
+     
 
         {/* Tags */}
         {post.posttags && post.posttags.length > 0 && (
-          <View className="mt-2 flex flex-row flex-wrap gap-2">
+          <View className="flex flex-row flex-wrap gap-2 mt-2">
             {post.posttags.map((tag, index) => (
               <Badge key={`${tag.name}_${index}`} variant="secondary">
                 <Text className="text-xs text-black dark:text-gray-300">
@@ -322,10 +320,10 @@ export function EnhancedPostCard({
             ))}
           </View>
         )}
-      </CardContent>
+      </View>
 
       {/* Footer */}
-      <CardFooter className="flex w-full flex-row items-center justify-between">
+      <CardFooter className="flex flex-row items-center justify-between w-full">
         <PostMetrics post={postMetricData} userId={currentUserId} />
 
         <View className="flex flex-row items-center gap-2">
@@ -337,7 +335,7 @@ export function EnhancedPostCard({
 
         <View className="flex flex-row items-center justify-center gap-2">
           {post.expires_in_24hr && (
-            <View className="flex h-6 w-8 items-center justify-center rounded-full bg-zinc-400 dark:bg-zinc-700">
+            <View className="flex items-center justify-center w-8 h-6 rounded-full bg-zinc-400 dark:bg-zinc-700">
               <Text className="text-sm">⏳</Text>
             </View>
           )}

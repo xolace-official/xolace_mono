@@ -9,7 +9,12 @@ const ProtectedLayout = () => {
         name="post-creation"
         options={{ title: 'Create Post', presentation: 'formSheet' }}
       />
+      <Stack.Screen
+        name="post/[id]"
+        options={{ title: 'Post Details' }}
+      />
     </Stack>
+    
   );
 };
 
