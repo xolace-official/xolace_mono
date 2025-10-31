@@ -1,4 +1,4 @@
-const { hairlineWidth } = require('nativewind/theme');
+const { hairlineWidth, platformSelect, platformColor } = require('nativewind/theme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -39,6 +39,13 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        lavenderBase:"hsl(235 65% 60%)",
+         error: platformSelect({
+          // Now you can provide platform specific values
+          ios: platformColor("systemRed"),
+          android: platformColor("?android:colorError"),
+          default: "red",
+        }),
       },
       borderWidth: {
         hairline: hairlineWidth(),

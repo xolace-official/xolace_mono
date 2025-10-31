@@ -2,12 +2,14 @@ import { useCallback, useMemo, useRef } from 'react';
 import {  StyleSheet, useColorScheme } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
-import { View as UiView, Button, Text,} from 'react-native-ui-lib';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { View as UiView} from 'react-native-ui-lib';
 import { HeaderHandle } from './HeaderHandle';
-import { dummyComments, NestedComment } from '../lib/dummy-data/comments';
+import { dummyComments } from '../lib/dummy-data/comments';
+import dummyPosts from '../lib/dummy-data/post';
 import {CommentCard} from '../components/cards/CommentCard';
 import CommentForm from '../components/forms/CommentForm';
+
+import { PostMetrics } from './shared/PostMetrics';
 
 
 
@@ -17,13 +19,24 @@ const keyExtractor = (item: any, index: number) => `${item.$id}.${index}`;
 
 
 const PostBottomSheet = () => {
+  const currentUserId = 'user_123'; // Replace with actual user ID from auth context
     // hooks
   const bottomSheetRef = useRef<BottomSheet>(null);
   const { bottom: bottomSafeArea } = useSafeAreaInsets();
   const colorScheme = useColorScheme()
 
+   // Post metric data
+  const postMetricData = {
+    id: dummyPosts[0].id,
+    comments: [{ count: dummyPosts[0].comments_count }],
+    created_by: dummyPosts[0].created_by,
+    upvotes: dummyPosts[0].upvotes,
+    downvotes: dummyPosts[0].downvotes,
+  };
+
+  
   // variables
-  const snapPoints = useMemo(() => ['50%', '80%'], []);
+  const snapPoints = useMemo(() => ['20%','50%', '80%'], []);
 
   // styles
   const sheetStyle = useMemo(
@@ -58,18 +71,9 @@ const renderFlatListItem = useCallback(
    ( props : any ) =>( 
    <HeaderHandle {...props} >
           <>
-            <UiView row center gap-50 marginT-10>
-                    <UiView row  centerV>
-
-                            <Button
-                            style={{marginRight: 3}}
-                            text90
-                            link
-                            iconSource={()=> <FontAwesome5 name="heart" size={24} color={colorScheme === "dark" ? "white" : "black"} />}
-                            />
-                        <Text text90 className="text-gray-600 dark:text-gray-400"> 11k</Text>
-                    </UiView>
-                    <UiView row centerV>
+            <UiView row center gap-50 marginT-10 className=''>
+                   <PostMetrics  post={postMetricData} userId={currentUserId} />
+                    {/* <UiView row centerV>
                         <Button
                         style={{marginRight: 3}}
                         text90
@@ -77,14 +81,14 @@ const renderFlatListItem = useCallback(
                         iconSource={()=> <FontAwesome5 name="comment" size={24} color={colorScheme === "dark" ? "white" : "black"} />}
                         />
                         <Text text90 $textDefault className="text-gray-600 dark:text-gray-400">123</Text>
-                    </UiView>
+                    </UiView> */}
             </UiView>
 
             <CommentForm />
           </>
    </HeaderHandle>
    ),
-    [colorScheme]
+    [postMetricData]
   );
 
   return (
@@ -125,7 +129,7 @@ const renderFlatListItem = useCallback(
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 24,
+      padding: 16,
     },
     sheetContainer: {
       
@@ -142,7 +146,7 @@ const styles = StyleSheet.create({
       elevation: 24,
     },
     contentContainer: {
-        paddingHorizontal: 16,
+        paddingHorizontal: 0,
         overflow: 'visible',
       },
   });

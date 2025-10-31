@@ -1,12 +1,12 @@
-import * as React from 'react';
+import { forwardRef, ElementRef, ComponentPropsWithoutRef } from 'react';
 
 import { TextInput } from 'react-native';
 
 import { cn } from '../../lib/utils';
 
-const Input = React.forwardRef<
-  React.ElementRef<typeof TextInput>,
-  React.ComponentPropsWithoutRef<typeof TextInput>
+const Input = forwardRef<
+ ElementRef<typeof TextInput>,
+  ComponentPropsWithoutRef<typeof TextInput>
 >(({ className, placeholderClassName, ...props }, ref) => {
   return (
     <TextInput

@@ -161,7 +161,7 @@ export default function HomePage() {
   const getItemType = useCallback(() => 'post', []);
 
   return (
-    <View className="flex-1 dark:bg-[#141A2E]">
+    <View className="flex-1 dark:bg-background">
       {/*<Stack.Screen*/}
       {/*    options={{*/}
       {/*        header: () => <FeedHeader />,*/}
@@ -192,12 +192,12 @@ export default function HomePage() {
             <Text className="text-xl !text-white dark:text-white">✨ Welcome to Xolace! ✨</Text>
           </View>
           <ViewUI marginT-20 marginH-20 marginB-20>
-            <Text color="#6D1865" className="px-12 text-center font-medium">
+            <Text color="#6D1865" className="px-12 font-medium text-center">
               You've just found your space. Your chosen campfires are ready, and
               you're never alone here.
             </Text>
           </ViewUI>
-          <View className="mb-8 flex flex-row items-center justify-center gap-2">
+          <View className="flex flex-row items-center justify-center gap-2 mb-8">
             <XolaceButton
               size="sm"
               label="Explore Campfires"

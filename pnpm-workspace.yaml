@@ -61,6 +61,7 @@ catalog:
   eslint-plugin-only-warn: ^1.1.0
   expo: ~54.0.10
   expo-auth-session: ^5.5.2
+  expo-blur: ~15.0.7
   expo-constants: ~18.0.9
   expo-dev-client: ~6.0.12
   expo-document-picker: ^13.0.1

@@ -45,6 +45,7 @@
     "@xolacekit/supabase": "workspace:^",
     "@xolacekit/ui": "workspace:*",
     "expo": "catalog:",
+    "expo-blur": "catalog:",
     "expo-constants": "catalog:",
     "expo-crypto": "~15.0.7",
     "expo-dev-client": "catalog:",

@@ -122,7 +122,7 @@ export function CommentCard({
 
         <Card
           className={cn(
-            'mb-2 w-full border-0 transition-all duration-200',
+            ' w-full border-0 transition-all duration-200',
             isBeingRepliedTo
               ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
               : 'border-gray-200 dark:border-gray-700',

@@ -180,6 +180,9 @@ catalogs:
     expo-auth-session:
       specifier: ^5.5.2
       version: 5.5.2
+    expo-blur:
+      specifier: ~15.0.7
+      version: 15.0.7
     expo-constants:
       specifier: ~18.0.9
       version: 18.0.10
@@ -413,6 +416,9 @@ importers:
       expo:
         specifier: 'catalog:'
         version: 54.0.21(@babel/core@7.28.5)(@expo/metro-runtime@6.1.2)(expo-router@6.0.14)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
+      expo-blur:
+        specifier: 'catalog:'
+        version: 15.0.7(expo@54.0.21)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       expo-constants:
         specifier: 'catalog:'
         version: 18.0.10(expo@54.0.21)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))
@@ -845,6 +851,9 @@ importers:
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
+      expo-blur:
+        specifier: 'catalog:'
+        version: 15.0.7(expo@54.0.21)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       lucide-react-native:
         specifier: 'catalog:'
         version: 0.544.0(react-native-svg@15.12.1(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
@@ -4747,6 +4756,13 @@ packages:
 
   expo-auth-session@5.5.2:
     resolution: {integrity: sha512-fgqrNz9FhCl/kNyU2Vy2AmLWk+X7vmgiGN2KVUgB8yLHl/tPogYLpNOiqFl/pMLMveoKjPpVOVfbz3RTJHJoTg==}
+
+  expo-blur@15.0.7:
+    resolution: {integrity: sha512-SugQQbQd+zRPy8z2G5qDD4NqhcD7srBF7fN7O7yq6q7ZFK59VWvpDxtMoUkmSfdxgqONsrBN/rLdk00USADrMg==}
+    peerDependencies:
+      expo: '*'
+      react: '*'
+      react-native: '*'
 
   expo-constants@16.0.2:
     resolution: {integrity: sha512-9tNY3OVO0jfiMzl7ngb6IOyR5VFzNoN5OOazUWoeGfmMqVB5kltTemRvKraK9JRbBKIw+SOYLEmF0sEqgFZ6OQ==}
@@ -13194,6 +13210,12 @@ snapshots:
     transitivePeerDependencies:
       - expo
       - supports-color
+
+  expo-blur@15.0.7(expo@54.0.21)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0):
+    dependencies:
+      expo: 54.0.21(@babel/core@7.28.5)(@expo/metro-runtime@6.1.2)(expo-router@6.0.14)(react-native@0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+      react-native: 0.81.4(@babel/core@7.28.5)(@types/react@19.1.17)(react@19.1.0)
 
   expo-constants@16.0.2(expo@54.0.21):
     dependencies:

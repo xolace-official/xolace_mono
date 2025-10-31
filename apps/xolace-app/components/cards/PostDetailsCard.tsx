@@ -18,7 +18,8 @@ import {
   Sun,
   Zap,
 } from 'lucide-react-native';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
+import { Stack } from 'expo-router';
 
 import {
   Avatar,
@@ -29,7 +30,8 @@ import {
   CardFooter,
   CardHeader,
   Badge,
-  cn
+  cn,
+  Text
 } from '@xolacekit/ui';
 
 import dummyPosts from '../../lib/dummy-data/post';
@@ -178,7 +180,10 @@ export function DetailCard() {
 
   return (
     <>
-      <Card className="w-full border-0 rounded-none">
+    <Stack.Screen
+    options={{ title: `${displayName}`}}
+    />
+      <Card className="w-full border-0 rounded-none dark:bg-background">
         {/* Header */}
         <CardHeader className="flex-row items-start justify-between px-3 py-2">
           <View className="flex flex-row items-center gap-2">
@@ -197,7 +202,7 @@ export function DetailCard() {
 
             <View className="flex flex-col items-start justify-center">
               <View className="flex flex-row items-center gap-1">
-                <Text className="text-sm tracking-tight text-default-400">
+                <Text className="text-sm tracking-tight text-default-400 dark:text-white">
                   {displayName}
                 </Text>
                 <View
@@ -216,26 +221,26 @@ export function DetailCard() {
                 </Text>
 
                 {isProfessional && (
-                  <Badge className="py-[1px] text-[8px]">
-                    <Text className="text-green-400">PROFESSIONAL</Text>
+                  <Badge className="py-[1px]">
+                    <Text className="text-[10px] text-green-400">PROFESSIONAL</Text>
                   </Badge>
                 )}
 
                 {isMentor && (
-                  <Badge className="py-[1px] text-[8px]">
-                    <Text className="text-orange-400">MENTOR</Text>
+                  <Badge className="py-[1px]">
+                    <Text className="text-orange-400 text-[10px]">MENTOR</Text>
                   </Badge>
                 )}
 
                 {isVerified && (
-                  <Badge className="py-[1px] text-[8px]">
-                    <Text className="text-blue-400">VERIFIED</Text>
+                  <Badge className="py-[1px]">
+                    <Text className="text-blue-400 text-[10px]">VERIFIED</Text>
                   </Badge>
                 )}
 
                 {campfires && (
-                  <Badge className="py-[1px] text-[8px]">
-                    <Text className="text-purple-400">CAMPFIRE</Text>
+                  <Badge className="py-[1px] ">
+                    <Text className="text-purple-400 text-[10px]">CAMPFIRE</Text>
                   </Badge>
                 )}
               </View>
