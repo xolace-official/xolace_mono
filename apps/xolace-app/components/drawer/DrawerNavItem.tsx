@@ -1,7 +1,7 @@
 import { ComponentType, ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
 
-import { Badge, Text, cn } from '@xolacekit/ui';
+import { Badge, Text, cn, NAV_THEME } from '@xolacekit/ui';
 
 type DrawerNavIcon = ComponentType<{
   color?: string;
@@ -38,7 +38,7 @@ export function DrawerNavItem({
 
   const iconColor = isActive
     ? isDarkMode
-      ? '#111827'
+      ? '#E5E7EB'
       : '#111827'
     : isDarkMode
       ? '#E5E7EB'
@@ -46,7 +46,7 @@ export function DrawerNavItem({
 
   const textColor = isActive
     ? isDarkMode
-      ? 'text-gray-900'
+      ? 'text-gray-300'
       : 'text-gray-900'
     : isDarkMode
       ? 'text-gray-200'
@@ -60,8 +60,8 @@ export function DrawerNavItem({
         'flex-row items-center justify-between rounded-2xl px-4 py-3',
         isActive
           ? isDarkMode
-            ? 'bg-white'
-            : 'bg-gray-100'
+            ? `bg-[#453fc3]/40`
+            : `bg-[#6a71ea]`
           : 'bg-transparent',
       )}
       onPress={onPress}

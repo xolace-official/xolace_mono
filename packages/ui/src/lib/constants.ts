@@ -44,6 +44,9 @@ export const NAV_THEME = {
       notification: 'hsl(0 84.2% 60.2%)', // destructive
       primary: 'hsl(240 5.9% 10%)', // primary
       text: 'hsl(240 10% 3.9%)', // foreground
+      new_badge: '#4338ca',
+      beta_badge: '#F472B6',
+      active_route: '#6a71ea'
     },
     fonts: FONTS,
   },
@@ -56,6 +59,9 @@ export const NAV_THEME = {
       notification: 'hsl(0 72% 51%)', // destructive
       primary: 'hsl(0 0% 98%)', // primary
       text: 'hsl(0 0% 98%)', // foreground
+      new_badge: '#4338ca',
+      beta_badge: '#F472B6',
+      active_route: '#453fc3'
     },
     fonts: FONTS,
   },

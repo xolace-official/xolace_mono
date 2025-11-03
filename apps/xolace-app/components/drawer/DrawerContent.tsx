@@ -140,20 +140,6 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           }))}
           isDarkMode={isDarkMode}
         />
-
-        {/* <View className="mt-4">
-          <DrawerNavItem
-            label={HEALTH_SPACE_ROUTE.label}
-            icon={HEALTH_SPACE_ROUTE.icon}
-            onPress={() => navigateTo(HEALTH_SPACE_ROUTE.href)}
-            isActive={isRouteActive(pathname, HEALTH_SPACE_ROUTE.href)}
-            isDarkMode={isDarkMode}
-            trailing={
-              <ChevronRight color={isDarkMode ? '#9CA3AF' : '#6B7280'} />
-            }
-          />
-        </View> */}
-
         
       </View>
     </DrawerContentScrollView>
