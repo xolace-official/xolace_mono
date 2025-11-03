@@ -68,10 +68,10 @@ export function DrawerNavItem({
       android_ripple={{
         color: isDarkMode ? 'rgba(255,255,255,0.08)' : 'rgba(17,24,39,0.08)',
       }}
-      style={{ paddingLeft: depth > 0 ? 16 + depth * 8 : undefined }}
+      style={{ paddingLeft: depth > 0 ? 10 + depth * 8 : undefined }}
     >
-      <View className="flex-row items-center gap-3">
-        <View className="rounded-xl bg-transparent">
+      <View className="flex-row items-center gap-3 px-4">
+        <View className="bg-transparent rounded-xl">
           <IconComponent color={iconColor} size={22} />
         </View>
         <Text className={cn('text-base font-semibold', textColor)}>
@@ -86,7 +86,7 @@ export function DrawerNavItem({
               badgeClassName,
             )}
           >
-            <Text className="text-xs font-bold uppercase tracking-wide">
+            <Text className="text-xs font-bold tracking-wide uppercase">
               {badgeLabel}
             </Text>
           </Badge>

@@ -54,7 +54,7 @@ export function DrawerHeader({
   return (
     <View
       className={cn(
-        'mb-5 rounded-3xl border px-4 py-6 mx-1',
+        'mb-5 rounded-3xl border px-4 py-6 mx-2',
         isDarkMode
           ? 'border-white/5 bg-white/5'
           : 'border-black/5 bg-black/5',

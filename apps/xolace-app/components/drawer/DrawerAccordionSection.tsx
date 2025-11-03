@@ -51,11 +51,12 @@ export function DrawerAccordionSection({
       type="single"
       collapsible
       defaultValue={defaultOpen ? value : undefined}
+      className='mb-2'
     >
       <AccordionItem value={value} className="border-0">
         <AccordionTrigger
           className={cn(
-            'items-center rounded-2xl pr-4 py-2',
+            'items-center rounded-2xl pl-3 pr-4 py-2',
             isDarkMode ? 'bg-white/5' : 'bg-gray-50',
           )}
         >
@@ -94,7 +95,7 @@ export function DrawerAccordionSection({
             ) : null}
           </View>
         </AccordionTrigger>
-        <AccordionContent className="px-1 py-2 ml-4 border-l-2 border-gray-200 dark:border-gray-800">
+        <AccordionContent className="px-1 py-1 ml-4 border-l-2 border-gray-200 dark:border-gray-800">
           <View className="gap-2 rounded-2xl">
             {items.map((item) => (
               <DrawerNavItem

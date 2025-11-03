@@ -5,7 +5,7 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import { router, usePathname } from 'expo-router';
-import { ChevronRight, Flame } from 'lucide-react-native';
+import { ChevronRight, Flame, HouseHeart } from 'lucide-react-native';
 import { View } from 'react-native';
 
 import { useColorScheme } from '@xolacekit/ui';
@@ -20,6 +20,7 @@ import {
   HEALTH_SPACE_ROUTE,
   PRIMARY_NAV_ITEMS,
   WHATS_NEW_ACTION,
+  HEALTH_SPACE_ITEMS
 } from './drawer-config';
 
 function getRouteAliases(href: string): string[] {
@@ -85,7 +86,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         backgroundColor: isDarkMode ? '#050505' : '#F9FAFB',
       }}
     >
-      <View className="flex-1 px-2">
+      <View className="flex-1 px-1">
         <DrawerHeader
           isDarkMode={isDarkMode}
           onPressProfile={() =>
@@ -129,7 +130,19 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           badgeLabel="Beta"
         />
 
-        <View className="mt-6">
+        <DrawerAccordionSection
+          value="health-space"
+          title="Health Space"
+          icon={HouseHeart}
+          items={HEALTH_SPACE_ITEMS.map((item) => ({
+            ...item,
+            onPress: () => navigateTo(item.href),
+            isActive: isRouteActive(pathname, item.href),
+          }))}
+          isDarkMode={isDarkMode}
+        />
+
+        {/* <View className="mt-4">
           <DrawerNavItem
             label={HEALTH_SPACE_ROUTE.label}
             icon={HEALTH_SPACE_ROUTE.icon}
@@ -140,7 +153,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
               <ChevronRight color={isDarkMode ? '#9CA3AF' : '#6B7280'} />
             }
           />
-        </View>
+        </View> */}
 
         <DrawerFooterAction
           label={WHATS_NEW_ACTION.label}

@@ -11,6 +11,7 @@ import {
   Settings2,
   ShieldCheck,
   User,
+  TvMinimalPlay
 } from 'lucide-react-native';
 
 import type { DrawerNavItemProps } from './DrawerNavItem';
@@ -88,6 +89,28 @@ export const CAMPFIRE_ITEMS: DrawerRouteItem[] = [
     icon: Search,
   },
 ];
+
+export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
+  {
+    id: 'health-tips',
+    label: 'Health Tips',
+    href: '/(app)/(protected)/(drawer)/campfire/discover',
+    icon: HeartPulse,
+    badgeLabel: 'New',
+    badgeVariant: 'default',
+    badgeClassName: 'bg-[#4338ca]',
+  },
+  {
+    id: 'glimpse',
+    label: 'Glimpse',
+    href: '/(app)/(protected)/(drawer)/campfire/discover',
+    icon: TvMinimalPlay,
+    badgeLabel: 'New',
+    badgeVariant: 'default',
+    badgeClassName: 'bg-[#4338ca]',
+  },
+
+]
 
 export const HEALTH_SPACE_ROUTE: DrawerRouteItem = {
   id: 'health-space',
