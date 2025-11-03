@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { Stack } from 'expo-router';
 import {
   Angry,
   Brain,
@@ -19,19 +20,18 @@ import {
   Zap,
 } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
-import { Stack } from 'expo-router';
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  Badge,
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-  Badge,
+  Text,
   cn,
-  Text
 } from '@xolacekit/ui';
 
 import dummyPosts from '../../lib/dummy-data/post';
@@ -130,8 +130,8 @@ const formatTimestamp = (date: string): string => {
 
 export function DetailCard() {
   // DUMMY DATA - Replace with actual user data
-//   const currentUserId = 'dummy-user-id';
-  const {created_at} = dummyPosts[0];
+  //   const currentUserId = 'dummy-user-id';
+  const { created_at } = dummyPosts[0];
 
   // States
   // const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -152,14 +152,14 @@ export function DetailCard() {
     post_slides,
     author_roles,
     expires_in_24hr,
-    views_count
+    views_count,
   } = dummyPosts[0];
 
   const campfires = {
     name: 'Mental Health Support',
     icon_url: 'https://i.pravatar.cc/150?img=50',
     slug: 'mental-health-support',
-  }
+  };
 
   // Determine badge eligibility
   const isProfessional = author_roles.includes('help_professional');
@@ -180,19 +180,15 @@ export function DetailCard() {
 
   return (
     <>
-    <Stack.Screen
-    options={{ title: `${displayName}`}}
-    />
-      <Card className="w-full border-0 rounded-none dark:bg-background">
+      <Stack.Screen options={{ title: `${displayName}` }} />
+      <Card className="w-full rounded-none border-0 dark:bg-background">
         {/* Header */}
         <CardHeader className="flex-row items-start justify-between px-3 py-2">
           <View className="flex flex-row items-center gap-2">
             {/* Back button removed as per instruction - handled by header */}
 
             <Avatar alt={displayName}>
-              <AvatarImage
-                source={{ uri: displayAvatarUrl || undefined }}
-              />
+              <AvatarImage source={{ uri: displayAvatarUrl || undefined }} />
               <AvatarFallback className="bg-gradient-to-br from-[#0536ff] to-[#6a71ea]">
                 <Text className="font-semibold text-white">
                   {fallbackInitials}
@@ -202,7 +198,7 @@ export function DetailCard() {
 
             <View className="flex flex-col items-start justify-center">
               <View className="flex flex-row items-center gap-1">
-                <Text className="text-sm tracking-tight text-default-400 dark:text-white">
+                <Text className="text-default-400 text-sm tracking-tight dark:text-white">
                   {displayName}
                 </Text>
                 <View
@@ -222,25 +218,29 @@ export function DetailCard() {
 
                 {isProfessional && (
                   <Badge className="py-[1px]">
-                    <Text className="text-[10px] text-green-400">PROFESSIONAL</Text>
+                    <Text className="text-[10px] text-green-400">
+                      PROFESSIONAL
+                    </Text>
                   </Badge>
                 )}
 
                 {isMentor && (
                   <Badge className="py-[1px]">
-                    <Text className="text-orange-400 text-[10px]">MENTOR</Text>
+                    <Text className="text-[10px] text-orange-400">MENTOR</Text>
                   </Badge>
                 )}
 
                 {isVerified && (
                   <Badge className="py-[1px]">
-                    <Text className="text-blue-400 text-[10px]">VERIFIED</Text>
+                    <Text className="text-[10px] text-blue-400">VERIFIED</Text>
                   </Badge>
                 )}
 
                 {campfires && (
-                  <Badge className="py-[1px] ">
-                    <Text className="text-purple-400 text-[10px]">CAMPFIRE</Text>
+                  <Badge className="py-[1px]">
+                    <Text className="text-[10px] text-purple-400">
+                      CAMPFIRE
+                    </Text>
                   </Badge>
                 )}
               </View>
@@ -266,14 +266,14 @@ export function DetailCard() {
               </Text>
             </View>
           ) : (
-            <Text className="leading-relaxed whitespace-pre-wrap text-foreground">
+            <Text className="whitespace-pre-wrap leading-relaxed text-foreground">
               {content}
             </Text>
           )}
 
           {/* Tags */}
           {posttags && posttags.length > 0 && (
-            <View className="flex flex-row flex-wrap gap-2 mt-4">
+            <View className="mt-4 flex flex-row flex-wrap gap-2">
               {posttags.map((tag, index) => (
                 <Badge key={`${tag.name}_${index}`} variant="secondary">
                   <Text className="text-xs">#{tag.name}</Text>
@@ -287,7 +287,7 @@ export function DetailCard() {
         <CardFooter className="flex flex-row items-center justify-between">
           <View className="flex flex-row items-center gap-3">
             {expires_in_24hr && (
-              <View className="flex items-center justify-center w-10 rounded-full h-7 bg-zinc-400 dark:bg-zinc-700">
+              <View className="flex h-7 w-10 items-center justify-center rounded-full bg-zinc-400 dark:bg-zinc-700">
                 <Text className="text-sm">⏳</Text>
               </View>
             )}

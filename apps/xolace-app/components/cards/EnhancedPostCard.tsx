@@ -1,5 +1,5 @@
 // components/post/post-card.tsx
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { formatDistanceToNow } from 'date-fns';
 import {
@@ -293,24 +293,22 @@ export function EnhancedPostCard({
       </CardHeader>
 
       {/* Content */}
-      
-      <View className='p-6 pt-0'>
-        
-          {post.type === 'single' ? (
-            <SinglePost content={post.content} dailyPrompt={post.prompt_text} />
-          ) : (
-            // TODO: Implement SimpleCarouselPost
-            <View>
-              <Text className="text-muted-foreground">
-                Carousel post (not implemented)
-              </Text>
-            </View>
-          )}
-     
+
+      <View className="p-6 pt-0">
+        {post.type === 'single' ? (
+          <SinglePost content={post.content} dailyPrompt={post.prompt_text} />
+        ) : (
+          // TODO: Implement SimpleCarouselPost
+          <View>
+            <Text className="text-muted-foreground">
+              Carousel post (not implemented)
+            </Text>
+          </View>
+        )}
 
         {/* Tags */}
         {post.posttags && post.posttags.length > 0 && (
-          <View className="flex flex-row flex-wrap gap-2 mt-2">
+          <View className="mt-2 flex flex-row flex-wrap gap-2">
             {post.posttags.map((tag, index) => (
               <Badge key={`${tag.name}_${index}`} variant="secondary">
                 <Text className="text-xs text-black dark:text-gray-300">
@@ -323,7 +321,7 @@ export function EnhancedPostCard({
       </View>
 
       {/* Footer */}
-      <CardFooter className="flex flex-row items-center justify-between w-full">
+      <CardFooter className="flex w-full flex-row items-center justify-between">
         <PostMetrics post={postMetricData} userId={currentUserId} />
 
         <View className="flex flex-row items-center gap-2">
@@ -335,7 +333,7 @@ export function EnhancedPostCard({
 
         <View className="flex flex-row items-center justify-center gap-2">
           {post.expires_in_24hr && (
-            <View className="flex items-center justify-center w-8 h-6 rounded-full bg-zinc-400 dark:bg-zinc-700">
+            <View className="flex h-6 w-8 items-center justify-center rounded-full bg-zinc-400 dark:bg-zinc-700">
               <Text className="text-sm">⏳</Text>
             </View>
           )}

@@ -43,7 +43,6 @@ export default function MainLayout() {
           tabBarButton: PostCreateButton,
           headerShown: false,
         }}
-        
       />
 
       <Tabs.Screen

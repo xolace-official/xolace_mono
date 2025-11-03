@@ -1,12 +1,10 @@
 import { useRef, useState } from 'react';
 
-import { Ionicons , FontAwesome5} from '@expo/vector-icons';
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
 //import { BlurView } from 'expo-blur';
 import { StyleSheet, View } from 'react-native';
 import { Pressable, TextInput } from 'react-native-gesture-handler';
-import {
-  KeyboardAwareScrollView,
-} from 'react-native-keyboard-controller';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import Animated, {
   Extrapolation,
   interpolate,
@@ -81,37 +79,38 @@ const CommentForm = () => {
     <>
       <KeyboardAwareScrollView bottomOffset={62}>
         <View>
-          <View
-            style={{ paddingBottom: 0, paddingTop: 10 }}
-          >
+          <View style={{ paddingBottom: 0, paddingTop: 10 }}>
             <View style={styles.row}>
-              <APressable onPress={expandItems} style={[styles.roundBtn, expandButtonStyle]}>
-          <Ionicons name="add" size={24} color={"grey"} />
-        </APressable>
+              <APressable
+                onPress={expandItems}
+                style={[styles.roundBtn, expandButtonStyle]}
+              >
+                <Ionicons name="add" size={24} color={'grey'} />
+              </APressable>
 
               <Animated.View style={[styles.buttonView, buttonViewStyle]}>
-          <Pressable onPress={() => {}}>
-            <Ionicons name="camera-outline" size={24} color={'grey'} />
-          </Pressable>
-          <Pressable onPress={() => {}}>
-            <Ionicons name="image-outline" size={24} color={'grey'} />
-          </Pressable>
-          <Pressable onPress={() => {}}>
-            <Ionicons name="folder-outline" size={24} color={'grey'} />
-          </Pressable>
-        </Animated.View>
+                <Pressable onPress={() => {}}>
+                  <Ionicons name="camera-outline" size={24} color={'grey'} />
+                </Pressable>
+                <Pressable onPress={() => {}}>
+                  <Ionicons name="image-outline" size={24} color={'grey'} />
+                </Pressable>
+                <Pressable onPress={() => {}}>
+                  <Ionicons name="folder-outline" size={24} color={'grey'} />
+                </Pressable>
+              </Animated.View>
 
               <TextInput
-              className='text-black dark:text-white'
-          autoFocus
-          ref={inputRef}
-          placeholder="Message"
-          style={styles.messageInput}
-          onFocus={collapseItems}
-          onChangeText={onChangeText}
-          value={message}
-          multiline
-        />
+                className="text-black dark:text-white"
+                autoFocus
+                ref={inputRef}
+                placeholder="Message"
+                style={styles.messageInput}
+                onFocus={collapseItems}
+                onChangeText={onChangeText}
+                value={message}
+                multiline
+              />
               {message.length > 0 ? (
                 <Pressable onPress={onSend}>
                   <Ionicons name="arrow-up-circle" size={24} color={'grey'} />
@@ -142,7 +141,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     borderColor: '#B8B3BA',
-    borderStyle: 'dashed'
+    borderStyle: 'dashed',
   },
   roundBtn: {
     width: 30,

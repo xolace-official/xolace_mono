@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router';
+
 import { useColorScheme } from '@xolacekit/ui';
 
 const ProtectedLayout = () => {
-
   const { colorScheme } = useColorScheme();
 
   return (
@@ -15,10 +15,15 @@ const ProtectedLayout = () => {
       />
       <Stack.Screen
         name="post/[id]"
-        options={{ title: 'Post Details', headerBackButtonDisplayMode: 'minimal', headerStyle: { backgroundColor: colorScheme === 'dark'? '#141A2E' : 'white' } }}
+        options={{
+          title: 'Post Details',
+          headerBackButtonDisplayMode: 'minimal',
+          headerStyle: {
+            backgroundColor: colorScheme === 'dark' ? '#141A2E' : 'white',
+          },
+        }}
       />
     </Stack>
-    
   );
 };
 

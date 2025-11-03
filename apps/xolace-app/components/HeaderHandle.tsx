@@ -1,9 +1,10 @@
-import { memo , ReactNode} from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { ReactNode, memo } from 'react';
+
 import {
   BottomSheetHandle,
   BottomSheetHandleProps,
 } from '@gorhom/bottom-sheet';
+import { StyleSheet, Text } from 'react-native';
 
 interface HeaderHandleProps extends BottomSheetHandleProps {
   children?: string | ReactNode | ReactNode[];
@@ -18,9 +19,9 @@ const HeaderHandleComponent = ({ children, ...rest }: HeaderHandleProps) => {
     >
       {typeof children === 'string' ? (
         <>
-        <Text style={styles.title}>{children}</Text>
-        <Text>hmm</Text>
-        <Text>damn</Text>
+          <Text style={styles.title}>{children}</Text>
+          <Text>hmm</Text>
+          <Text>damn</Text>
         </>
       ) : (
         children
@@ -31,7 +32,6 @@ const HeaderHandleComponent = ({ children, ...rest }: HeaderHandleProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    
     paddingBottom: 12,
     paddingHorizontal: 16,
     borderBottomWidth: 1,

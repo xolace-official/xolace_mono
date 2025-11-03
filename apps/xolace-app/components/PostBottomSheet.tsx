@@ -62,7 +62,9 @@ const PostBottomSheet = () => {
         comment={item.item}
         isExpanded={true}
         onToggleExpanded={() => {}}
-        onReply={(authorName: string, commentId: number) => {console.log(authorName , commentId)}}
+        onReply={(authorName: string, commentId: number) => {
+          console.log(authorName, commentId);
+        }}
         postCreatedBy={''}
       />
     ),

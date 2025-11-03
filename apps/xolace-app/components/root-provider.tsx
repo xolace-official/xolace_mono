@@ -1,12 +1,12 @@
+import { ReactNode } from 'react';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 import { Toaster } from '@xolacekit/ui';
 
 import { GlobalThemeProvider } from './theme-provider';
-import { KeyboardProvider } from 'react-native-keyboard-controller';
-
-import { ReactNode } from 'react';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,9 +21,7 @@ export function RootProvider({ children }: { children: ReactNode }) {
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
         <GlobalThemeProvider>
-          <KeyboardProvider>
-          {children}
-          </KeyboardProvider>
+          <KeyboardProvider>{children}</KeyboardProvider>
           <Toaster />
         </GlobalThemeProvider>
       </QueryClientProvider>

@@ -1,8 +1,8 @@
 // components/post/single-post.tsx
+import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
 
 import { Text, cn } from '@xolacekit/ui';
-import { router } from 'expo-router';
 
 interface SinglePostProps {
   content: string;
@@ -20,7 +20,7 @@ const truncateText = (text: string, maxLength: number): string => {
 // DailyPromptQuestion component (simplified)
 const DailyPromptQuestion = ({ dailyPrompt }: { dailyPrompt: string }) => {
   return (
-    <View className="p-3 mb-3 border border-purple-200 rounded-lg bg-purple-50 dark:border-purple-800 dark:bg-purple-900/20">
+    <View className="mb-3 rounded-lg border border-purple-200 bg-purple-50 p-3 dark:border-purple-800 dark:bg-purple-900/20">
       <Text className="mb-1 text-xs font-semibold text-purple-600 dark:text-purple-400">
         Daily Prompt
       </Text>
@@ -40,7 +40,7 @@ export function SinglePost({
   const displayContent = truncateText(content, 200);
 
   return (
-    <View className="py-2 rounded-2xl">
+    <View className="rounded-2xl py-2">
       {showDailyPrompt && dailyPrompt && (
         <DailyPromptQuestion dailyPrompt={dailyPrompt} />
       )}

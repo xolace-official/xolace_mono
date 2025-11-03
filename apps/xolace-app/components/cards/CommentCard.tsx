@@ -1,9 +1,26 @@
 // components/comment/comment-card.tsx
-import { useState, useEffect } from 'react';
-import { View, Text, Pressable } from 'react-native';
-import { BrainCircuit, ChevronDown, ChevronRight, MessageCircle, Pin, Sparkles } from 'lucide-react-native';
+import { useEffect, useState } from 'react';
 
-import { Card, CardHeader, CardContent , Avatar, AvatarImage, AvatarFallback , Badge , cn} from '@xolacekit/ui';
+import {
+  BrainCircuit,
+  ChevronDown,
+  ChevronRight,
+  MessageCircle,
+  Pin,
+  Sparkles,
+} from 'lucide-react-native';
+import { Pressable, Text, View } from 'react-native';
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Badge,
+  Card,
+  CardContent,
+  CardHeader,
+  cn,
+} from '@xolacekit/ui';
 
 // TODO: Import when ready
 // import { PostDropdown } from '../shared/post-dropdown';
@@ -46,14 +63,20 @@ interface CommentCardProps {
 const formatTimestamp = (date: string): string => {
   const now = new Date();
   const commentDate = new Date(date);
-  const diffInSeconds = Math.floor((now.getTime() - commentDate.getTime()) / 1000);
+  const diffInSeconds = Math.floor(
+    (now.getTime() - commentDate.getTime()) / 1000,
+  );
 
   if (diffInSeconds < 60) return 'just now';
   if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} min ago`;
-  if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)} hr ago`;
-  if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)} days ago`;
-  if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 604800)} wks ago`;
-  if (diffInSeconds < 31536000) return `${Math.floor(diffInSeconds / 2592000)} mos ago`;
+  if (diffInSeconds < 86400)
+    return `${Math.floor(diffInSeconds / 3600)} hr ago`;
+  if (diffInSeconds < 604800)
+    return `${Math.floor(diffInSeconds / 86400)} days ago`;
+  if (diffInSeconds < 2592000)
+    return `${Math.floor(diffInSeconds / 604800)} wks ago`;
+  if (diffInSeconds < 31536000)
+    return `${Math.floor(diffInSeconds / 2592000)} mos ago`;
   return `${Math.floor(diffInSeconds / 31536000)} yrs ago`;
 };
 
@@ -89,7 +112,8 @@ export function CommentCard({
   const displayName = campfires?.name || comment.author_name;
   const avatarSrc =
     campfires?.iconUrl ||
-    (comment.author_avatar_url && commentSignedUrls?.[comment.author_avatar_url]) ||
+    (comment.author_avatar_url &&
+      commentSignedUrls?.[comment.author_avatar_url]) ||
     comment.author_avatar_url ||
     undefined;
 
@@ -122,21 +146,24 @@ export function CommentCard({
 
         <Card
           className={cn(
-            ' w-full border-0 transition-all duration-200',
+            'w-full border-0 transition-all duration-200',
             isBeingRepliedTo
               ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
               : 'border-gray-200 dark:border-gray-700',
-            className
+            className,
           )}
         >
           {/* Header */}
           <CardHeader
-            className={cn('flex-row items-start justify-between px-4 py-2', headerClassName)}
+            className={cn(
+              'flex-row items-start justify-between px-4 py-2',
+              headerClassName,
+            )}
             style={{ paddingLeft: 16 + indentPadding }}
           >
             <View className="flex flex-row items-center justify-center gap-1">
-              <Avatar alt={displayName} className="w-8 h-8">
-                <AvatarImage source={{ uri: avatarSrc }}  />
+              <Avatar alt={displayName} className="h-8 w-8">
+                <AvatarImage source={{ uri: avatarSrc }} />
                 <AvatarFallback className="bg-gradient-to-br from-[#0536ff] to-[#6a71ea]">
                   <Text className="text-xs font-semibold text-white">
                     {fallbackInitials}
@@ -155,7 +182,7 @@ export function CommentCard({
                 </View>
 
                 {comment.ai_suggestion && (
-                  <Badge className="text-[9px] py-[1px]">
+                  <Badge className="py-[1px] text-[9px]">
                     <View className="flex flex-row items-center gap-1">
                       <Sparkles size={10} color="#fb923c" />
                       <Text className="text-orange-400">AI SUGGESTION</Text>
@@ -205,13 +232,13 @@ export function CommentCard({
               {(() => {
                 console.log('Matching comment text:', comment.comment_text);
                 const match = comment.comment_text.match(/^@(\w+)\s+(.*)/);
-                
+
                 if (match) {
                   const username = match[1];
                   const rest = match[2];
                   return (
                     <Text className="leading-relaxed text-gray-800 dark:text-gray-200">
-                      <Text className="mr-1 text-ocean-600">@{username}</Text>
+                      <Text className="text-ocean-600 mr-1">@{username}</Text>
                       <Text>{rest}</Text>
                     </Text>
                   );
@@ -234,7 +261,9 @@ export function CommentCard({
               </Pressable> */}
 
               <Pressable
-                onPress={() => onReply?.(comment.author_name || 'User', comment.id)}
+                onPress={() =>
+                  onReply?.(comment.author_name || 'User', comment.id)
+                }
                 className="flex flex-row items-center gap-1"
               >
                 <MessageCircle
@@ -244,7 +273,7 @@ export function CommentCard({
                 <Text
                   className={cn(
                     'text-sm',
-                    isBeingRepliedTo ? 'text-blue-600' : 'text-gray-500'
+                    isBeingRepliedTo ? 'text-blue-600' : 'text-gray-500',
                   )}
                 >
                   Reply
@@ -262,7 +291,7 @@ export function CommentCard({
             {hasReplies && (
               <Pressable
                 onPress={() => onToggleExpanded(comment.id)}
-                className="flex flex-row items-center gap-1 mt-3"
+                className="mt-3 flex flex-row items-center gap-1"
               >
                 {isExpanded ? (
                   <ChevronDown size={16} color="#4b5563" />
@@ -281,7 +310,7 @@ export function CommentCard({
         {/* RECURSIVE RENDERING OF REPLIES */}
         {hasReplies && isExpanded && (
           <View className="space-y-2">
-            {comment.replies.map(reply => (
+            {comment.replies.map((reply) => (
               <CommentCard
                 key={reply.id}
                 comment={reply}
