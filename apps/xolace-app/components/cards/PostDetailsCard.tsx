@@ -134,7 +134,7 @@ export function DetailCard() {
   const {created_at} = dummyPosts[0];
 
   // States
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  // const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [timestamp, setTimestamp] = useState('');
 
   // Format timestamp
@@ -248,7 +248,7 @@ export function DetailCard() {
           </View>
 
           {/* TODO: Implement PostDropdown */}
-          <Pressable onPress={() => setIsSheetOpen(true)}>
+          <Pressable onPress={() => {}}>
             <Text className="text-muted-foreground">⋮</Text>
           </Pressable>
         </CardHeader>

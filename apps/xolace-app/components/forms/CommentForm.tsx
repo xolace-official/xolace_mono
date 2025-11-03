@@ -1,13 +1,11 @@
 import { useRef, useState } from 'react';
 
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { BlurView } from 'expo-blur';
+import { Ionicons , FontAwesome5} from '@expo/vector-icons';
+//import { BlurView } from 'expo-blur';
 import { StyleSheet, View } from 'react-native';
 import { Pressable, TextInput } from 'react-native-gesture-handler';
 import {
   KeyboardAwareScrollView,
-  KeyboardToolbar,
 } from 'react-native-keyboard-controller';
 import Animated, {
   Extrapolation,
@@ -16,17 +14,11 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const APressable = Animated.createAnimatedComponent(Pressable);
 
-export type Props = {
-  onShouldSend?: (message: string) => void;
-};
-
-const CommentForm = ({ onShouldSend }: Props) => {
+const CommentForm = () => {
   const [message, setMessage] = useState('');
-  const { bottom } = useSafeAreaInsets();
   const expanded = useSharedValue(0);
   const inputRef = useRef<TextInput>(null);
 

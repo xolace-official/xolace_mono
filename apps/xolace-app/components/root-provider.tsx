@@ -6,6 +6,8 @@ import { Toaster } from '@xolacekit/ui';
 import { GlobalThemeProvider } from './theme-provider';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 
+import { ReactNode } from 'react';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -14,7 +16,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export function RootProvider({ children }: { children: React.ReactNode }) {
+export function RootProvider({ children }: { children: ReactNode }) {
   return (
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
