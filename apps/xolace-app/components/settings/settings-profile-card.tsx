@@ -12,17 +12,7 @@ import {
   Text,
   cn,
 } from '@xolacekit/ui';
-
-export type UserClaims = {
-  avatar_url?: string;
-  email?: string;
-  full_name?: string;
-  id?: string;
-  name?: string;
-  picture?: string;
-  preferred_username?: string;
-  user_metadata?: Record<string, unknown> | null;
-};
+import { UserClaims } from '@xolacekit/ui/src/types/ui_types';
 
 type SettingsProfileCardProps = {
   user: UserClaims | null | undefined;
