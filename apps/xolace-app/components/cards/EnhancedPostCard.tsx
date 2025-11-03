@@ -1,6 +1,5 @@
 // components/post/post-card.tsx
-import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { formatDistanceToNow } from 'date-fns';
 import {
@@ -31,7 +30,6 @@ import {
   AvatarImage,
   Badge,
   Card,
-  CardContent,
   CardFooter,
   CardHeader,
 } from '@xolacekit/ui';
@@ -150,7 +148,6 @@ const formatTimestamp = (date: string): string => {
 export function EnhancedPostCard({
   className,
   post,
-  onClick,
   signedUrls,
   campfireOverride,
 }: PostCardProps) {
@@ -163,7 +160,7 @@ export function EnhancedPostCard({
   // const [showDailyPrompt, setShowDailyPrompt] = useState(false);
 
   // Format timestamp
-  React.useEffect(() => {
+  useEffect(() => {
     setTimestamp(formatTimestamp(post.created_at));
   }, [post.created_at]);
 
@@ -296,19 +293,18 @@ export function EnhancedPostCard({
       </CardHeader>
 
       {/* Content */}
-      <CardContent>
-        <Pressable onPress={onClick}>
-          {post.type === 'single' ? (
-            <SinglePost content={post.content} dailyPrompt={post.prompt_text} />
-          ) : (
-            // TODO: Implement SimpleCarouselPost
-            <View>
-              <Text className="text-muted-foreground">
-                Carousel post (not implemented)
-              </Text>
-            </View>
-          )}
-        </Pressable>
+
+      <View className="p-6 pt-0">
+        {post.type === 'single' ? (
+          <SinglePost content={post.content} dailyPrompt={post.prompt_text} />
+        ) : (
+          // TODO: Implement SimpleCarouselPost
+          <View>
+            <Text className="text-muted-foreground">
+              Carousel post (not implemented)
+            </Text>
+          </View>
+        )}
 
         {/* Tags */}
         {post.posttags && post.posttags.length > 0 && (
@@ -322,7 +318,7 @@ export function EnhancedPostCard({
             ))}
           </View>
         )}
-      </CardContent>
+      </View>
 
       {/* Footer */}
       <CardFooter className="flex w-full flex-row items-center justify-between">

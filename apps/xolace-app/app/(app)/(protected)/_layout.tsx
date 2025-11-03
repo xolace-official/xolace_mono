@@ -1,6 +1,10 @@
 import { Stack } from 'expo-router';
 
+import { useColorScheme } from '@xolacekit/ui';
+
 const ProtectedLayout = () => {
+  const { colorScheme } = useColorScheme();
+
   return (
     <Stack>
       <Stack.Screen name="campfireSelection" options={{ headerShown: false }} />
@@ -8,6 +12,16 @@ const ProtectedLayout = () => {
       <Stack.Screen
         name="post-creation"
         options={{ title: 'Create Post', presentation: 'formSheet' }}
+      />
+      <Stack.Screen
+        name="post/[id]"
+        options={{
+          title: 'Post Details',
+          headerBackButtonDisplayMode: 'minimal',
+          headerStyle: {
+            backgroundColor: colorScheme === 'dark' ? '#141A2E' : 'white',
+          },
+        }}
       />
     </Stack>
   );

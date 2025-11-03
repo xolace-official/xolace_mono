@@ -161,7 +161,7 @@ export default function HomePage() {
   const getItemType = useCallback(() => 'post', []);
 
   return (
-    <View className="flex-1 dark:bg-[#141A2E]">
+    <View className="flex-1 dark:bg-background">
       {/*<Stack.Screen*/}
       {/*    options={{*/}
       {/*        header: () => <FeedHeader />,*/}
@@ -189,7 +189,9 @@ export default function HomePage() {
       >
         <ViewUI spread>
           <View className="flex h-16 items-center justify-center bg-[#242627]">
-            <Text className="text-xl !text-white dark:text-white">✨ Welcome to Xolace! ✨</Text>
+            <Text className="text-xl !text-white dark:text-white">
+              ✨ Welcome to Xolace! ✨
+            </Text>
           </View>
           <ViewUI marginT-20 marginH-20 marginB-20>
             <Text color="#6D1865" className="px-12 text-center font-medium">
@@ -223,6 +225,7 @@ const styles = StyleSheet.create({
     marginBottom: Constants.isIphoneX ? 0 : 20,
     borderRadius: 12,
     position: 'relative',
-    experimental_backgroundImage: "linear-gradient(to right,  rgba(255, 255, 255, 0.1) 20%, rgba(0, 0, 0, 0.3) 100%)"
+    experimental_backgroundImage:
+      'linear-gradient(to right,  rgba(255, 255, 255, 0.1) 20%, rgba(0, 0, 0, 0.3) 100%)',
   },
 });

@@ -49,6 +49,7 @@
     "@rn-primitives/types": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
+    "expo-blur": "catalog:",
     "lucide-react-native": "catalog:",
     "nativewind": "catalog:",
     "react": "catalog:",

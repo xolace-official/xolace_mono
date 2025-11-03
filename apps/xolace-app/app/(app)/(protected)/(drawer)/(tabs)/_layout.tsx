@@ -43,12 +43,6 @@ export default function MainLayout() {
           tabBarButton: PostCreateButton,
           headerShown: false,
         }}
-        listeners={{
-          tabPress: (e) => {
-            e.preventDefault();
-            console.log('tabPress');
-          },
-        }}
       />
 
       <Tabs.Screen

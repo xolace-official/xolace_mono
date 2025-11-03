@@ -1,9 +1,8 @@
 // components/post/single-post.tsx
-import * as React from 'react';
+import { router } from 'expo-router';
+import { Pressable, View } from 'react-native';
 
-import { Pressable, Text, View } from 'react-native';
-
-import { cn } from '@xolacekit/ui';
+import { Text, cn } from '@xolacekit/ui';
 
 interface SinglePostProps {
   content: string;
@@ -34,7 +33,6 @@ const DailyPromptQuestion = ({ dailyPrompt }: { dailyPrompt: string }) => {
 
 export function SinglePost({
   content,
-  onClick,
   showDailyPrompt,
   dailyPrompt,
 }: SinglePostProps) {
@@ -42,25 +40,34 @@ export function SinglePost({
   const displayContent = truncateText(content, 200);
 
   return (
-    <Pressable onPress={onClick} className="relative">
-      <View className="rounded-2xl py-2">
-        {showDailyPrompt && dailyPrompt && (
-          <DailyPromptQuestion dailyPrompt={dailyPrompt} />
-        )}
+    <View className="rounded-2xl py-2">
+      {showDailyPrompt && dailyPrompt && (
+        <DailyPromptQuestion dailyPrompt={dailyPrompt} />
+      )}
 
+      <Pressable
+        onPress={() => {
+          console.log('Navigate to post details for tap me');
+          router.push('/post/123'); // Replace '123' with actual post ID
+        }}
+      >
+        <Text className="">{displayContent}</Text>
+      </Pressable>
+
+      <Pressable
+        onPress={() => {
+          console.log('Navigate to post details');
+        }}
+      >
         <Text
           className={cn(
             'text-base leading-relaxed dark:text-white',
             'active:text-purple-400',
           )}
         >
-          {displayContent}
+          displayContent
         </Text>
-      </View>
-
-      {/* Decorative elements (commented out, uncomment if needed) */}
-      {/* <View className="absolute -top-2 -left-2 w-3 h-3 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-60" />
-      <View className="absolute -bottom-2 -right-1 w-3 h-3 bg-gradient-to-br from-blue-400 to-teal-400 rounded-full opacity-60" /> */}
-    </Pressable>
+      </Pressable>
+    </View>
   );
 }

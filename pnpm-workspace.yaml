@@ -5,7 +5,7 @@ packages:
 catalog:
   "@babel/core": ^7.26.0
   "@expo/vector-icons": ^15.0.2
-  "@gorhom/bottom-sheet": ^5.2.6,
+  "@gorhom/bottom-sheet": ^5.2.6
   "@hookform/resolvers": ^3.9.1
   "@manypkg/cli": ^0.23.0
   "@react-native-async-storage/async-storage": 2.2.0
@@ -61,6 +61,7 @@ catalog:
   eslint-plugin-only-warn: ^1.1.0
   expo: ~54.0.10
   expo-auth-session: ^5.5.2
+  expo-blur: ~15.0.7
   expo-constants: ~18.0.9
   expo-dev-client: ~6.0.12
   expo-document-picker: ^13.0.1
