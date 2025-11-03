@@ -1,16 +1,28 @@
 import { useSignOut } from '@xolacekit/supabase';
-import { Button, Text } from '@xolacekit/ui';
+import { Button, ButtonProps, Text, cn } from '@xolacekit/ui';
 
-export function SignOutButton() {
+type SignOutButtonProps = {
+  className?: string;
+  textClassName?: string;
+  variant?: ButtonProps['variant'];
+};
+
+export function SignOutButton({
+  className,
+  textClassName,
+  variant = 'destructive',
+}: SignOutButtonProps) {
   const signOutMutation = useSignOut();
 
   return (
     <Button
-      variant={'destructive'}
-      className={'mt-auto'}
+      variant={variant}
+      className={cn('mt-auto', className)}
       onPress={() => signOutMutation.mutate()}
     >
-      <Text>Sign Out</Text>
+      <Text className={cn('text-base font-medium', textClassName)}>
+        Sign Out
+      </Text>
     </Button>
   );
 }

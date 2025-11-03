@@ -51,3 +51,6 @@ export * from './lib/icons/MessageSquarePlus';
 export * from './lib/icons/Compass';
 export * from './lib/icons/UserCheck';
 export * from './lib/icons/Bell';
+
+// --- types ---
+export type { UserClaims, SettingsListItem,SettingsSectionConfig, InputFieldProps } from './types/ui_types';
