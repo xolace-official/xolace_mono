@@ -25,6 +25,10 @@ import {
 
 function getRouteAliases(href: string): string[] {
 
+  if(href.endsWith('/campfire/manage')){
+    return ['/campfire/manage']
+  }
+
   if (href.endsWith('/post-creation-screen')) {
     return [
       '/(app)/(protected)/(drawer)/(tabs)/post-creation-screen',
