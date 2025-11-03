@@ -28,18 +28,7 @@ export type DrawerRouteItem = {
 
 export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   { id: 'fireside', label: 'Fireside', href: '/', icon: Flame },
-  {
-    id: 'create-post',
-    label: 'Create Post',
-    href: '/(app)/(protected)/(drawer)/(tabs)/post-creation-screen',
-    icon: MessageSquarePlus,
-  },
-  {
-    id: 'profile',
-    label: 'Profile',
-    href: '/(app)/(protected)/(drawer)/(tabs)/settings/profile',
-    icon: User,
-  },
+
   {
     id: 'explore',
     label: 'Explore',

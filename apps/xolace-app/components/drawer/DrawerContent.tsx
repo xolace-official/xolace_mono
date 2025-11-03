@@ -24,9 +24,6 @@ import {
 } from './drawer-config';
 
 function getRouteAliases(href: string): string[] {
-  if (href === '/') {
-    return ['/(app)/(protected)/(drawer)/(tabs)/(feed)'];
-  }
 
   if (href.endsWith('/post-creation-screen')) {
     return [
@@ -50,6 +47,7 @@ function isRouteActive(pathname: string, href: string) {
 
 export function DrawerContent(props: DrawerContentComponentProps) {
   const pathname = usePathname();
+  console.log('pathname ', pathname)
   const { colorScheme } = useColorScheme();
   const isDarkMode = colorScheme === 'dark';
 
@@ -77,6 +75,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
   );
 
   return (
+    <>
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={{
@@ -155,7 +154,12 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           />
         </View> */}
 
-        <DrawerFooterAction
+        
+      </View>
+    </DrawerContentScrollView>
+
+    <View className='pb-10 bg-[#F9FAFB]  dark:bg-[#050505]'>
+      <DrawerFooterAction
           label={WHATS_NEW_ACTION.label}
           icon={WHATS_NEW_ACTION.icon}
           onPress={() => navigateTo(WHATS_NEW_ACTION.href)}
@@ -172,7 +176,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
             Handcrafted for your daily rituals. Stay curious ✨
           </Text>
         </View>
-      </View>
-    </DrawerContentScrollView>
+    </View>
+    </>
   );
 }
