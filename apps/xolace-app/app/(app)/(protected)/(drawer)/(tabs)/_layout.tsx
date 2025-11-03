@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { HomeIcon, SettingsIcon, FlameKindling, Flame } from 'lucide-react-native';
+import { FlameKindling, SettingsIcon } from 'lucide-react-native';
 
 import { UserCheck } from '@xolacekit/ui';
 import { Compass } from '@xolacekit/ui';
@@ -21,7 +21,9 @@ export default function MainLayout() {
         options={{
           title: 'Fireside',
           href: '/',
-          tabBarIcon: ({ color }) => <FlameKindling color={color} className="h-5" />,
+          tabBarIcon: ({ color }) => (
+            <FlameKindling color={color} className="h-5" />
+          ),
           headerShown: false,
         }}
       />

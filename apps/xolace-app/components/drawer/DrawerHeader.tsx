@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { Pressable, View } from 'react-native';
 
 import { useUser } from '@xolacekit/supabase';
@@ -54,21 +55,15 @@ export function DrawerHeader({
   return (
     <View
       className={cn(
-        'mb-5 rounded-3xl border px-4 py-6 mx-2',
-        isDarkMode
-          ? 'border-white/5 bg-white/5'
-          : 'border-black/5 bg-black/5',
+        'mx-2 mb-5 rounded-3xl border px-4 py-6',
+        isDarkMode ? 'border-white/5 bg-white/5' : 'border-black/5 bg-black/5',
       )}
     >
       <View className="flex-row items-center gap-4">
-        <Avatar alt={displayName} className="border h-14 w-14 border-white/20">
-          {avatarUrl ? (
-            <AvatarImage source={{ uri: avatarUrl }} />
-          ) : null}
-          <AvatarFallback className="text-lg font-semibold uppercase bg-black/10">
-          <Text>       
-            {initials}
-          </Text>
+        <Avatar alt={displayName} className="h-14 w-14 border border-white/20">
+          {avatarUrl ? <AvatarImage source={{ uri: avatarUrl }} /> : null}
+          <AvatarFallback className="bg-black/10 text-lg font-semibold uppercase">
+            <Text>{initials}</Text>
           </AvatarFallback>
         </Avatar>
 
@@ -96,7 +91,7 @@ export function DrawerHeader({
         </View>
       </View>
 
-      <View className="flex-row items-center justify-between mt-4">
+      <View className="mt-4 flex-row items-center justify-between">
         <Badge
           className={cn(
             'rounded-full px-3 py-1',
@@ -119,7 +114,7 @@ export function DrawerHeader({
           onPress={onPressProfile}
           className="rounded-full bg-[#6366f1] px-3 py-1"
         >
-          <Text className="text-xs font-semibold tracking-wide text-white uppercase">
+          <Text className="text-xs font-semibold uppercase tracking-wide text-white">
             View profile
           </Text>
         </Pressable>

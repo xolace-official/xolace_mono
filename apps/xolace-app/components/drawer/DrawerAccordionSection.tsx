@@ -21,7 +21,7 @@ type DrawerAccordionItem = Pick<
   | 'badgeLabel'
   | 'badgeVariant'
   | 'badgeClassName'
->& { id: string };
+> & { id: string };
 
 export interface DrawerAccordionSectionProps {
   value: string;
@@ -51,12 +51,12 @@ export function DrawerAccordionSection({
       type="single"
       collapsible
       defaultValue={defaultOpen ? value : undefined}
-      className='mb-2'
+      className="mb-2"
     >
       <AccordionItem value={value} className="border-0">
         <AccordionTrigger
           className={cn(
-            'items-center rounded-2xl pl-3 pr-4 py-2',
+            'items-center rounded-2xl py-2 pl-3 pr-4',
             isDarkMode ? 'bg-white/5' : 'bg-gray-50',
           )}
         >
@@ -88,14 +88,14 @@ export function DrawerAccordionSection({
                 )}
                 variant="secondary"
               >
-                <Text className="text-xs font-bold tracking-wide text-white uppercase">
+                <Text className="text-xs font-bold uppercase tracking-wide text-white">
                   {badgeLabel}
                 </Text>
               </Badge>
             ) : null}
           </View>
         </AccordionTrigger>
-        <AccordionContent className="px-1 py-1 ml-4 border-l-2 border-gray-200 dark:border-gray-800">
+        <AccordionContent className="ml-4 border-l-2 border-gray-200 px-1 py-1 dark:border-gray-800">
           <View className="gap-2 rounded-2xl">
             {items.map((item) => (
               <DrawerNavItem

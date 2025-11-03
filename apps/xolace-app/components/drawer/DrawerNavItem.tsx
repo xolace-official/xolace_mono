@@ -1,7 +1,8 @@
 import { ComponentType, ReactNode } from 'react';
+
 import { Pressable, View } from 'react-native';
 
-import { Badge, Text, cn, NAV_THEME } from '@xolacekit/ui';
+import { Badge, Text, cn } from '@xolacekit/ui';
 
 type DrawerNavIcon = ComponentType<{
   color?: string;
@@ -71,7 +72,7 @@ export function DrawerNavItem({
       style={{ paddingLeft: depth > 0 ? 10 + depth * 8 : undefined }}
     >
       <View className="flex-row items-center gap-3 px-4">
-        <View className="bg-transparent rounded-xl">
+        <View className="rounded-xl bg-transparent">
           <IconComponent color={iconColor} size={22} />
         </View>
         <Text className={cn('text-base font-semibold', textColor)}>
@@ -86,7 +87,7 @@ export function DrawerNavItem({
               badgeClassName,
             )}
           >
-            <Text className="text-xs font-bold tracking-wide uppercase">
+            <Text className="text-xs font-bold uppercase tracking-wide">
               {badgeLabel}
             </Text>
           </Badge>

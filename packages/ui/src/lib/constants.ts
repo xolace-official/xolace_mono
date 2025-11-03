@@ -46,7 +46,7 @@ export const NAV_THEME = {
       text: 'hsl(240 10% 3.9%)', // foreground
       new_badge: '#4338ca',
       beta_badge: '#F472B6',
-      active_route: '#6a71ea'
+      active_route: '#6a71ea',
     },
     fonts: FONTS,
   },
@@ -61,7 +61,7 @@ export const NAV_THEME = {
       text: 'hsl(0 0% 98%)', // foreground
       new_badge: '#4338ca',
       beta_badge: '#F472B6',
-      active_route: '#453fc3'
+      active_route: '#453fc3',
     },
     fonts: FONTS,
   },

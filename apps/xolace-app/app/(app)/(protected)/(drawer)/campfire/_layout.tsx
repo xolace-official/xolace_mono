@@ -20,7 +20,7 @@ export default function Layout() {
           title: 'Your Campfires',
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
-            <View className="flex flex-row ml-2">
+            <View className="ml-2 flex flex-row">
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),

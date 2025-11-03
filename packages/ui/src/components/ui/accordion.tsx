@@ -1,7 +1,5 @@
-import { RefAttributes, ReactNode } from 'react';
-import { Icon } from './icon';
-import { TextClassContext } from './text';
-import { cn } from '../../lib/utils';
+import { ReactNode, RefAttributes } from 'react';
+
 import * as AccordionPrimitive from '@rn-primitives/accordion';
 import { ChevronDown } from 'lucide-react-native';
 import { Platform, Pressable, View } from 'react-native';
@@ -13,7 +11,11 @@ import Animated, {
   useDerivedValue,
   withTiming,
 } from 'react-native-reanimated';
- 
+
+import { cn } from '../../lib/utils';
+import { Icon } from './icon';
+import { TextClassContext } from './text';
+
 function Accordion({
   children,
   ...props
@@ -23,13 +25,16 @@ function Accordion({
     <LayoutAnimationConfig skipEntering>
       <AccordionPrimitive.Root
         {...(props as AccordionPrimitive.RootProps)}
-        asChild={Platform.OS !== 'web'}>
-        <Animated.View layout={LinearTransition.duration(200)}>{children}</Animated.View>
+        asChild={Platform.OS !== 'web'}
+      >
+        <Animated.View layout={LinearTransition.duration(200)}>
+          {children}
+        </Animated.View>
       </AccordionPrimitive.Root>
     </LayoutAnimationConfig>
   );
 }
- 
+
 function AccordionItem({
   children,
   className,
@@ -41,22 +46,24 @@ function AccordionItem({
       className={cn(
         'border-border border-b',
         Platform.select({ web: 'last:border-b-0' }),
-        className
+        className,
       )}
       value={value}
       asChild
-      {...props}>
+      {...props}
+    >
       <Animated.View
         className="native:overflow-hidden"
-        layout={Platform.select({ native: LinearTransition.duration(200) })}>
+        layout={Platform.select({ native: LinearTransition.duration(200) })}
+      >
         {children}
       </Animated.View>
     </AccordionPrimitive.Item>
   );
 }
- 
+
 const Trigger = Platform.OS === 'web' ? View : Pressable;
- 
+
 function AccordionTrigger({
   className,
   children,
@@ -65,24 +72,28 @@ function AccordionTrigger({
   children?: ReactNode;
 } & RefAttributes<AccordionPrimitive.TriggerRef>) {
   const { isExpanded } = AccordionPrimitive.useItemContext();
- 
+
   const progress = useDerivedValue(
-    () => (isExpanded ? withTiming(1, { duration: 250 }) : withTiming(0, { duration: 200 })),
-    [isExpanded]
+    () =>
+      isExpanded
+        ? withTiming(1, { duration: 250 })
+        : withTiming(0, { duration: 200 }),
+    [isExpanded],
   );
   const chevronStyle = useAnimatedStyle(
     () => ({
       transform: [{ rotate: `${progress.value * 180}deg` }],
     }),
-    [progress]
+    [progress],
   );
- 
+
   return (
     <TextClassContext.Provider
       value={cn(
         'text-left text-sm font-medium',
-        Platform.select({ web: 'group-hover:underline' })
-      )}>
+        Platform.select({ web: 'group-hover:underline' }),
+      )}
+    >
       <AccordionPrimitive.Header>
         <AccordionPrimitive.Trigger {...props} asChild>
           <Trigger
@@ -91,8 +102,9 @@ function AccordionTrigger({
               Platform.select({
                 web: 'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 outline-none transition-all hover:underline focus-visible:ring-[3px] disabled:pointer-events-none [&[data-state=open]>svg]:rotate-180',
               }),
-              className
-            )}>
+              className,
+            )}
+          >
             <>{children}</>
             <Animated.View style={chevronStyle}>
               <Icon
@@ -102,7 +114,7 @@ function AccordionTrigger({
                   'text-muted-foreground shrink-0',
                   Platform.select({
                     web: 'pointer-events-none translate-y-0.5 transition-transform duration-200',
-                  })
+                  }),
                 )}
               />
             </Animated.View>
@@ -112,12 +124,13 @@ function AccordionTrigger({
     </TextClassContext.Provider>
   );
 }
- 
+
 function AccordionContent({
   className,
   children,
   ...props
-}: AccordionPrimitive.ContentProps & RefAttributes<AccordionPrimitive.ContentRef>) {
+}: AccordionPrimitive.ContentProps &
+  RefAttributes<AccordionPrimitive.ContentRef>) {
   const { isExpanded } = AccordionPrimitive.useItemContext();
   return (
     <TextClassContext.Provider value="text-sm">
@@ -126,17 +139,19 @@ function AccordionContent({
           'overflow-hidden',
           Platform.select({
             web: isExpanded ? 'animate-accordion-down' : 'animate-accordion-up',
-          })
+          }),
         )}
-        {...props}>
+        {...props}
+      >
         <Animated.View
           exiting={Platform.select({ native: FadeOutUp.duration(200) })}
-          className={cn('pb-4', className)}>
+          className={cn('pb-4', className)}
+        >
           {children}
         </Animated.View>
       </AccordionPrimitive.Content>
     </TextClassContext.Provider>
   );
 }
- 
+
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

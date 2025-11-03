@@ -4,14 +4,12 @@ import {
   Gift,
   HeartPulse,
   LibraryBig,
-  MessageSquarePlus,
   PlusCircle,
   Radio,
   Search,
   Settings2,
   ShieldCheck,
-  User,
-  TvMinimalPlay
+  TvMinimalPlay,
 } from 'lucide-react-native';
 
 import type { DrawerNavItemProps } from './DrawerNavItem';
@@ -98,8 +96,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
     badgeVariant: 'default',
     badgeClassName: 'bg-[#4338ca]',
   },
-
-]
+];
 
 export const HEALTH_SPACE_ROUTE: DrawerRouteItem = {
   id: 'health-space',
