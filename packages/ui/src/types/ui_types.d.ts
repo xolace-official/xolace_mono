@@ -1,9 +1,11 @@
+import { ComponentProps } from 'react';
+
 import { ImageSource } from 'expo-image';
+import { Link } from 'expo-router';
 import type { LucideIcon } from 'lucide-react-native';
 import { TextInputProps } from 'react-native';
+
 import { BadgeProps } from '../components/ui/badge';
-import { ComponentProps } from 'react';
-import { Link } from 'expo-router';
 
 declare interface InputFieldProps extends TextInputProps {
   label: string;
@@ -18,7 +20,6 @@ declare interface InputFieldProps extends TextInputProps {
   className?: string;
 }
 
-
 declare interface SettingsListItem {
   badge?: {
     label: string;
@@ -32,7 +33,7 @@ declare interface SettingsListItem {
   iconColor: string;
   id: string;
   title: string;
-};
+}
 
 declare interface SettingsSectionConfig {
   id: string;
@@ -49,4 +50,4 @@ declare interface UserClaims {
   picture?: string;
   preferred_username?: string;
   user_metadata?: Record<string, unknown> | null;
-};
+}

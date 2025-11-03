@@ -10,7 +10,6 @@ import {
   AvatarImage,
   Badge,
   Text,
-  cn,
 } from '@xolacekit/ui';
 import { UserClaims } from '@xolacekit/ui/src/types/ui_types';
 

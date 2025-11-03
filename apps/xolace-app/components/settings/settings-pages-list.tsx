@@ -1,26 +1,12 @@
-
-import {
-  HelpCircle,
-  ListChecks,
-  Megaphone,
-  MessageCircle,
-  MonitorSmartphone,
-  Settings as SettingsIcon,
-  ShieldCheck,
-  Star,
-  UserRound,
-} from 'lucide-react-native';
 import { ScrollView, View } from 'react-native';
 
 import { useUser } from '@xolacekit/supabase';
-import { BadgeProps } from '@xolacekit/ui';
+import { SETTINGS_SECTIONS } from '@xolacekit/ui';
+import { UserClaims } from '@xolacekit/ui/src/types/ui_types';
 
 import { SettingsProfileCard } from './settings-profile-card';
-import { UserClaims } from '@xolacekit/ui/src/types/ui_types';
 import { SettingsSectionCard } from './settings-section-card';
 import { SignOutButton } from './sign-out-button';
-
-import { SETTINGS_SECTIONS } from '@xolacekit/ui';
 
 export function SettingsPagesList() {
   const userQuery = useUser();

@@ -9,8 +9,8 @@ import {
   Star,
   UserRound,
 } from 'lucide-react-native';
-import { SettingsSectionConfig } from '../types/ui_types';
 
+import { SettingsSectionConfig } from '../types/ui_types';
 
 const WEB_FONT_STACK =
   'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
@@ -60,7 +60,6 @@ export const NAV_THEME = {
     fonts: FONTS,
   },
 };
-
 
 export const SETTINGS_SECTIONS: SettingsSectionConfig[] = [
   {
