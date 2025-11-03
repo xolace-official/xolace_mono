@@ -2,7 +2,7 @@ import { ScrollView, View } from 'react-native';
 
 import { useUser } from '@xolacekit/supabase';
 import { SETTINGS_SECTIONS } from '@xolacekit/ui';
-import { UserClaims } from '@xolacekit/ui/src/types/ui_types';
+import type { UserClaims } from '@xolacekit/ui';
 
 import { SettingsProfileCard } from './settings-profile-card';
 import { SettingsSectionCard } from './settings-section-card';

@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
 
 import { Badge, Text, cn } from '@xolacekit/ui';
-import { SettingsListItem } from '@xolacekit/ui/src/types/ui_types';
+import type { SettingsListItem } from '@xolacekit/ui';
 
 type SettingsSectionItemProps = {
   isLast: boolean;

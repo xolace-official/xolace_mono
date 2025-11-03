@@ -11,7 +11,7 @@ import {
   Badge,
   Text,
 } from '@xolacekit/ui';
-import { UserClaims } from '@xolacekit/ui/src/types/ui_types';
+import type { UserClaims } from '@xolacekit/ui';
 
 type SettingsProfileCardProps = {
   user: UserClaims | null | undefined;

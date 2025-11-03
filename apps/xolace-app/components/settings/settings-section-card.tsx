@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
-import { SettingsSectionConfig } from '@xolacekit/ui/src/types/ui_types';
+import type { SettingsSectionConfig } from '@xolacekit/ui';
 
 import { SettingsSectionItem } from './settings-section-item';
 

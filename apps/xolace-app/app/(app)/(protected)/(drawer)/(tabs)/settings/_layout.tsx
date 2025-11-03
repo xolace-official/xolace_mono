@@ -1,8 +1,7 @@
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Stack } from 'expo-router';
 
-import { useColorScheme } from '@xolacekit/ui';
-import { NAV_THEME } from '@xolacekit/ui';
+import { useColorScheme , NAV_THEME} from '@xolacekit/ui';
 
 export default function SettingsLayout() {
   const { colorScheme } = useColorScheme();
