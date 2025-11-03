@@ -36,7 +36,7 @@ export const NAV_THEME = {
   dark: {
     dark: true,
     colors: {
-      background: 'hsl(240 10% 3.9%)', // background
+      background: 'hsl(226, 39%, 13%)', // background
       border: 'hsl(240 3.7% 15.9%)', // border
       card: 'hsl(240 10% 3.9%)', // card
       notification: 'hsl(0 72% 51%)', // destructive
