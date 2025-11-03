@@ -53,4 +53,9 @@ export * from './lib/icons/UserCheck';
 export * from './lib/icons/Bell';
 
 // --- types ---
-export type { UserClaims, SettingsListItem,SettingsSectionConfig, InputFieldProps } from './types/ui_types';
+export type {
+  UserClaims,
+  SettingsListItem,
+  SettingsSectionConfig,
+  InputFieldProps,
+} from './types/ui_types';

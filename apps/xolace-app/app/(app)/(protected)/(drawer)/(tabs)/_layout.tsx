@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { HomeIcon, SettingsIcon } from 'lucide-react-native';
+import { FlameKindling, SettingsIcon } from 'lucide-react-native';
 
 import { UserCheck } from '@xolacekit/ui';
 import { Compass } from '@xolacekit/ui';
@@ -19,9 +19,11 @@ export default function MainLayout() {
       <Tabs.Screen
         name="(feed)"
         options={{
-          title: 'Feed',
+          title: 'Fireside',
           href: '/',
-          tabBarIcon: ({ color }) => <HomeIcon color={color} className="h-5" />,
+          tabBarIcon: ({ color }) => (
+            <FlameKindling color={color} className="h-5" />
+          ),
           headerShown: false,
         }}
       />
