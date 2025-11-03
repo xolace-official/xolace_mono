@@ -1,5 +1,3 @@
-
-
 import { Link } from 'expo-router';
 import type { LucideIcon } from 'lucide-react-native';
 import {
@@ -15,23 +13,13 @@ import {
 } from 'lucide-react-native';
 import { ScrollView, View } from 'react-native';
 
-import {
-  BadgeProps,
-} from '@xolacekit/ui';
 import { useUser } from '@xolacekit/supabase';
+import { BadgeProps } from '@xolacekit/ui';
 
 import { SettingsProfileCard } from './settings-profile-card';
-import { SettingsSectionCard } from './settings-section-card';
-
-import { SignOutButton } from './sign-out-button';
-
 import { UserClaims } from './settings-profile-card';
-
-// type Page = {
-//   name: string;
-//   title: string;
-//   href: React.ComponentProps<typeof Link>['href'];
-// };
+import { SettingsSectionCard } from './settings-section-card';
+import { SignOutButton } from './sign-out-button';
 
 export type SettingsListItem = {
   badge?: {
@@ -53,26 +41,6 @@ export type SettingsSectionConfig = {
   items: SettingsListItem[];
   title?: string;
 };
-
-
-
-// const pages: Page[] = [
-//   {
-//     name: 'application',
-//     title: 'Application',
-//     href: '/settings/application' as const,
-//   },
-//   {
-//     name: 'profile',
-//     title: 'Profile',
-//     href: '/settings/profile' as const,
-//   },
-//   {
-//     name: 'account',
-//     title: 'Account',
-//     href: '/settings/account' as const,
-//   },
-// ];
 
 const SETTINGS_SECTIONS: SettingsSectionConfig[] = [
   {
@@ -193,15 +161,15 @@ const SETTINGS_SECTIONS: SettingsSectionConfig[] = [
 ];
 
 export function SettingsPagesList() {
-const userQuery = useUser();
+  const userQuery = useUser();
   const user = userQuery.data as UserClaims | null | undefined;
 
   return (
- <ScrollView
-      className={"flex-1 bg-background"}
-      contentInsetAdjustmentBehavior={"automatic"}
+    <ScrollView
+      className={'flex-1 bg-background'}
+      contentInsetAdjustmentBehavior={'automatic'}
     >
-      <View className={"flex-1 gap-6 px-4 py-2 pb-16"}>
+      <View className={'flex-1 gap-6 px-4 py-2 pb-16'}>
         <SettingsProfileCard user={user} />
 
         {SETTINGS_SECTIONS.map((section) => (
@@ -209,9 +177,11 @@ const userQuery = useUser();
         ))}
 
         <SignOutButton
-          variant={"ghost"}
-          className={"mt-0 w-full rounded-3xl border border-border bg-card py-4"}
-          textClassName={"text-destructive text-base font-semibold"}
+          variant={'ghost'}
+          className={
+            'mt-0 w-full rounded-3xl border border-border bg-card py-4'
+          }
+          textClassName={'text-destructive text-base font-semibold'}
         />
       </View>
     </ScrollView>

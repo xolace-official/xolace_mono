@@ -1,7 +1,6 @@
 import { useSignOut } from '@xolacekit/supabase';
 import { Button, ButtonProps, Text, cn } from '@xolacekit/ui';
 
-
 type SignOutButtonProps = {
   className?: string;
   textClassName?: string;

@@ -1,32 +1,17 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
 import { Link } from 'expo-router';
-import { Pressable, ScrollView, View } from 'react-native';
-
-import {
-  ChevronRight,
-  HelpCircle,
-  ListChecks,
-  Megaphone,
-  MessageCircle,
-  MonitorSmartphone,
-  QrCode,
-  Settings as SettingsIcon,
-  ShieldCheck,
-  Star,
-  UserRound,
-} from 'lucide-react-native';
+import { ChevronRight, QrCode } from 'lucide-react-native';
+import { Pressable, View } from 'react-native';
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
   Badge,
-  BadgeProps,
   Text,
   cn,
 } from '@xolacekit/ui';
-import { useUser } from '@xolacekit/supabase';
 
 export type UserClaims = {
   avatar_url?: string;
@@ -65,43 +50,49 @@ export function SettingsProfileCard({ user }: SettingsProfileCardProps) {
 
   return (
     <Link asChild href={'/settings/profile'}>
-      <Pressable className={"rounded-3xl border border-border bg-card p-4 active:opacity-80"}>
-        <View className={"flex-row items-center gap-4"}>
-          <Avatar alt="avatar" className={"h-16 w-16 border border-border/60"}>
+      <Pressable
+        className={
+          'rounded-3xl border border-border bg-card p-4 active:opacity-80'
+        }
+      >
+        <View className={'flex-row items-center gap-4'}>
+          <Avatar alt="avatar" className={'h-16 w-16 border border-border/60'}>
             {avatarUri ? <AvatarImage source={{ uri: avatarUri }} /> : null}
-            <AvatarFallback className={"bg-primary/10"}>
-              <Text className={"text-lg font-semibold uppercase"}>{initials}</Text>
+            <AvatarFallback className={'bg-primary/10'}>
+              <Text className={'text-lg font-semibold uppercase'}>
+                {initials}
+              </Text>
             </AvatarFallback>
           </Avatar>
 
-          <View className={"flex-1 gap-1"}>
-            <Text className={"text-lg font-semibold"}>{displayName}</Text>
+          <View className={'flex-1 gap-1'}>
+            <Text className={'text-lg font-semibold'}>{displayName}</Text>
             {subtitle ? (
-              <Text className={"text-sm text-muted-foreground"}>{subtitle}</Text>
+              <Text className={'text-sm text-muted-foreground'}>
+                {subtitle}
+              </Text>
             ) : null}
           </View>
 
-          <View className={"items-end gap-3"}>
+          <View className={'items-end gap-3'}>
             <Badge
-              variant={"outline"}
-              className={"border-border/60 bg-muted/40 px-3 py-1"}
+              variant={'outline'}
+              className={'border-border/60 bg-muted/40 px-3 py-1'}
             >
-              <Text className={"text-xs font-medium text-muted-foreground"}>
+              <Text className={'text-xs font-medium text-muted-foreground'}>
                 Avatar
               </Text>
             </Badge>
 
-            <QrCode color={"#a1a1aa"} size={20} />
+            <QrCode color={'#a1a1aa'} size={20} />
           </View>
 
-          <ChevronRight color={"#a1a1aa"} size={20} />
+          <ChevronRight color={'#a1a1aa'} size={20} />
         </View>
       </Pressable>
     </Link>
   );
 }
-
-
 
 function extractUserSummary(user: UserClaims | null | undefined) {
   const readString = (value: unknown) => {
@@ -132,10 +123,7 @@ function extractUserSummary(user: UserClaims | null | undefined) {
     'Your profile';
 
   const subtitle =
-    metadataString('status') ??
-    metadataString('headline') ??
-    email ??
-    null;
+    metadataString('status') ?? metadataString('headline') ?? email ?? null;
 
   const avatarUri =
     metadataString('avatar_url') ??
