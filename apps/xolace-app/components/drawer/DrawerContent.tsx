@@ -90,9 +90,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         <View className="flex-1 px-1">
           <DrawerHeader
             isDarkMode={isDarkMode}
-            onPressProfile={() =>
-              navigateTo('/(app)/(protected)/(drawer)/(tabs)/settings/profile')
-            }
+            onPressProfile={() => navigateTo('/(app)/(protected)/profile')}
           />
 
           <View className="gap-2">

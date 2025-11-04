@@ -23,6 +23,13 @@ const ProtectedLayout = () => {
           },
         }}
       />
+
+      <Stack.Screen
+        name="profile/index"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };
