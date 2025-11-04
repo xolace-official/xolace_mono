@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "catalog:",
+    "@react-native-menu/menu": "catalog:",
     "@rn-primitives/accordion": "catalog:",
     "@rn-primitives/alert-dialog": "catalog:",
     "@rn-primitives/avatar": "catalog:",
@@ -53,11 +54,14 @@
     "lucide-react-native": "catalog:",
     "nativewind": "catalog:",
     "react": "catalog:",
+    "react-native-ios-context-menu": "catalog:",
+    "react-native-ios-utilities": "catalog:",
     "react-native-svg": "catalog:",
     "react-native-ui-lib": "catalog:",
     "sonner": "catalog:",
     "sonner-native": "catalog:",
-    "tailwind-merge": "catalog:"
+    "tailwind-merge": "catalog:",
+    "zeego": "catalog:"
   },
   "eslintConfig": {
     "root": true,

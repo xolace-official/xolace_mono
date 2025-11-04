@@ -69,12 +69,6 @@ export const CAMPFIRE_ITEMS: DrawerRouteItem[] = [
     href: '/(app)/(protected)/(drawer)/campfire/manage',
     icon: Settings2,
   },
-  {
-    id: 'campfire-discover',
-    label: 'Discover Campfires',
-    href: '/(app)/(protected)/(drawer)/campfire/discover',
-    icon: Search,
-  },
 ];
 
 export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [

@@ -34,6 +34,7 @@
     "@expo/vector-icons": "catalog:",
     "@gorhom/bottom-sheet": "catalog:",
     "@react-native-async-storage/async-storage": "catalog:",
+    "@react-native-menu/menu": "catalog:",
     "@react-navigation/drawer": "catalog:",
     "@react-navigation/native": "catalog:",
     "@shopify/flash-list": "catalog:",
@@ -65,6 +66,8 @@
     "react-native": "catalog:",
     "react-native-gesture-handler": "catalog:",
     "react-native-keyboard-controller": "catalog:",
+    "react-native-ios-context-menu": "catalog:",
+    "react-native-ios-utilities": "catalog:",
     "react-native-mmkv": "catalog:",
     "react-native-reanimated": "catalog:",
     "react-native-safe-area-context": "catalog:",
@@ -73,6 +76,7 @@
     "react-native-ui-lib": "catalog:",
     "react-native-web": "catalog:",
     "react-native-worklets": "catalog:",
+    "zeego": "catalog:",
     "zustand": "catalog:"
   },
   "devDependencies": {
