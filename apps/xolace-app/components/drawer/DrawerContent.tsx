@@ -143,7 +143,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         </View>
       </DrawerContentScrollView>
 
-      <View className="bg-[#F9FAFB] pb-10 dark:bg-[#050505] px-5">
+      <View className="bg-[#F9FAFB] px-5 pb-10 dark:bg-[#050505]">
         <DrawerFooterAction
           label={WHATS_NEW_ACTION.label}
           icon={WHATS_NEW_ACTION.icon}
@@ -151,7 +151,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           isDarkMode={isDarkMode}
         />
 
-        <View className="px-2 mt-6 border border-transparent rounded-2xl">
+        <View className="mt-6 rounded-2xl border border-transparent px-2">
           <Text
             className={cn(
               'text-center text-xs text-gray-500',

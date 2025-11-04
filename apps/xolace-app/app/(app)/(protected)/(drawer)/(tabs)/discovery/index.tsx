@@ -1,12 +1,18 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/index.tsx
 import { useState } from 'react';
+
 import { View } from 'react-native';
+
 import { DiscoveryHeader } from '../../../../../../features/campfire/discovery/DiscoveryHeader';
 import { SearchBar } from '../../../../../../features/campfire/discovery/SearchBar';
 import { CampfireList } from '../../../../../../features/campfire/discovery/campfire-list';
 import { PurposeFilter } from '../../../../../../features/campfire/discovery/purpose-filter';
 
-export type CampfirePurpose = 'support circle' | 'growth group' | 'creative outlet' | 'general discussion';
+export type CampfirePurpose =
+  | 'support circle'
+  | 'growth group'
+  | 'creative outlet'
+  | 'general discussion';
 
 export interface Campfire {
   id: string;
@@ -21,8 +27,10 @@ export interface Campfire {
 
 export default function DiscoveryScreen() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedPurposes, setSelectedPurposes] = useState<CampfirePurpose[]>([]);
-  
+  const [selectedPurposes, setSelectedPurposes] = useState<CampfirePurpose[]>(
+    [],
+  );
+
   // Mock data - replace with actual data fetching
   const campfires: Campfire[] = [
     {
@@ -32,9 +40,8 @@ export default function DiscoveryScreen() {
       purpose: 'creative outlet',
       memberCount: 4,
       avatar: '👩🏾',
-      imageUri:
-      'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?',
-      joined: true
+      imageUri: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?',
+      joined: true,
     },
     {
       id: '2',
@@ -44,7 +51,7 @@ export default function DiscoveryScreen() {
       memberCount: 4,
       avatar: '👨🏾',
       imageUri:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=128&q=80',
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=128&q=80',
     },
     {
       id: '3',
@@ -62,7 +69,7 @@ export default function DiscoveryScreen() {
       memberCount: 8,
       avatar: '🎬',
       imageUri:
-      'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&fit=crop&w=128&q=80',
+        'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&fit=crop&w=128&q=80',
     },
     {
       id: '5',
@@ -74,10 +81,13 @@ export default function DiscoveryScreen() {
     },
   ];
 
-  const filteredCampfires = campfires.filter(campfire => {
-    const matchesSearch = campfire.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         campfire.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesPurpose = selectedPurposes.length === 0 || selectedPurposes.includes(campfire.purpose);
+  const filteredCampfires = campfires.filter((campfire) => {
+    const matchesSearch =
+      campfire.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      campfire.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesPurpose =
+      selectedPurposes.length === 0 ||
+      selectedPurposes.includes(campfire.purpose);
     return matchesSearch && matchesPurpose;
   });
 
@@ -85,12 +95,9 @@ export default function DiscoveryScreen() {
     <View className="flex-1 bg-background">
       <View className="flex-1 px-4 pb-20">
         <DiscoveryHeader />
-        
-        <View className="flex-row items-center gap-2 mt-3 mb-4">
-          <SearchBar 
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
+
+        <View className="mb-4 mt-3 flex-row items-center gap-2">
+          <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
           <PurposeFilter
             selectedPurposes={selectedPurposes}
             onPurposesChange={setSelectedPurposes}

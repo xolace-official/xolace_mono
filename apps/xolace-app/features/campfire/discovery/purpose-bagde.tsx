@@ -1,14 +1,25 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/purpose-badge.tsx
-import { View } from 'react-native';
-import { Text } from '@xolacekit/ui';
 import { Info } from 'lucide-react-native';
+import { View } from 'react-native';
+
+import { Text } from '@xolacekit/ui';
+
 import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/discovery';
 
 interface PurposeBadgeProps {
   purpose: CampfirePurpose;
 }
 
-const purposeStyles: Record<CampfirePurpose, { bg: string; text: string; border: string; iconColor: string, accentColor:string }> = {
+const purposeStyles: Record<
+  CampfirePurpose,
+  {
+    bg: string;
+    text: string;
+    border: string;
+    iconColor: string;
+    accentColor: string;
+  }
+> = {
   'creative outlet': {
     bg: 'bg-green-500/10',
     text: 'text-green-700 dark:text-green-400',
@@ -21,7 +32,7 @@ const purposeStyles: Record<CampfirePurpose, { bg: string; text: string; border:
     text: 'text-amber-700 dark:text-amber-400',
     border: 'border-amber-500/20',
     iconColor: '#f59e0b',
-    accentColor: '#FBBF24'
+    accentColor: '#FBBF24',
   },
   'support circle': {
     bg: 'bg-blue-500/10',
@@ -41,24 +52,20 @@ const purposeStyles: Record<CampfirePurpose, { bg: string; text: string; border:
 
 export function PurposeBadge({ purpose }: PurposeBadgeProps) {
   const styles = purposeStyles[purpose];
-  
+
   return (
-        <View
-      className="flex-row items-center gap-2 px-3 py-1 border rounded-full"
+    <View
+      className="flex-row items-center gap-2 rounded-full border px-3 py-1"
       style={{
         borderColor: `${styles.accentColor}33`,
         backgroundColor: `${styles.accentColor}1A`,
       }}
     >
-      <View
-        className="items-center justify-center rounded-full size-4"
-        style={{ backgroundColor: styles.accentColor }}
+      <Info size={13} color={styles.accentColor} />
+      <Text
+        className="text-xs font-medium"
+        style={{ color: styles.accentColor }}
       >
-        <Text className="text-[10px] font-semibold leading-none text-black/85">
-          i
-        </Text>
-      </View>
-      <Text className="text-xs font-medium" style={{ color: styles.accentColor }}>
         {purpose}
       </Text>
     </View>

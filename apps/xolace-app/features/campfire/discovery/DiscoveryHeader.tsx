@@ -17,13 +17,11 @@ export function DiscoveryHeader() {
             : 'border-gray-200 bg-white',
         )}
       >
-        <View className="items-center justify-center rounded-full size-9 bg-primary/15">
+        <View className="size-9 items-center justify-center rounded-full bg-primary/15">
           <Compass color="#A78BFA" size={18} />
         </View>
         <View className="flex-1">
-          <Text className="text-sm font-semibold">
-            Curated for you
-          </Text>
+          <Text className="text-sm font-semibold">Curated for you</Text>
           <Text className="text-xs text-muted-foreground">
             Explore vibrant spaces trending across the community this week.
           </Text>

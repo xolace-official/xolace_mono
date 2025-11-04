@@ -1,6 +1,4 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/campfire-avatar.tsx
-import { View } from 'react-native';
-
 import { Avatar, AvatarFallback, AvatarImage, Text } from '@xolacekit/ui';
 
 interface CampfireAvatarProps {
@@ -19,10 +17,16 @@ export function CampfireAvatar({ avatar, imageUri }: CampfireAvatarProps) {
     //   </Text>
     // </View>
     <>
-      <Avatar alt={'campfire'} className="w-10 h-10">
+      <Avatar alt={'campfire'} className="h-10 w-10">
         <AvatarImage source={{ uri: imageUri }} />
-        <AvatarFallback className="bg-gradient-to-br from-[#0536ff] to-[#6a71ea]">
-          <Text className="text-xs font-semibold text-white">{avatar}</Text>
+        <AvatarFallback className="bg-[#6a71ea]">
+          <Text
+            className={
+              isEmoji ? 'text-2xl' : 'text-base font-semibold text-white'
+            }
+          >
+            {avatar}
+          </Text>
         </AvatarFallback>
       </Avatar>
     </>

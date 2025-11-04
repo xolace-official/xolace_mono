@@ -1,15 +1,17 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/purpose-filter.tsx
-import { Pressable } from 'react-native';
 import { SlidersHorizontal } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
+import { Pressable } from 'react-native';
+
 import {
+  ZeegoDropdownMenuCheckboxItem,
+  ZeegoDropdownMenuContent,
+  ZeegoDropdownMenuItemTitle,
+  ZeegoDropdownMenuLabel,
   ZeegoDropdownMenuRoot,
   ZeegoDropdownMenuTrigger,
-  ZeegoDropdownMenuContent,
-  ZeegoDropdownMenuLabel,
-  ZeegoDropdownMenuCheckboxItem,
-  ZeegoDropdownMenuItemTitle,
 } from '@xolacekit/ui';
+
 import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/discovery';
 
 interface PurposeFilterProps {
@@ -24,13 +26,16 @@ const purposes: CampfirePurpose[] = [
   'general discussion',
 ];
 
-export function PurposeFilter({ selectedPurposes, onPurposesChange }: PurposeFilterProps) {
+export function PurposeFilter({
+  selectedPurposes,
+  onPurposesChange,
+}: PurposeFilterProps) {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
   const togglePurpose = (purpose: CampfirePurpose) => {
     if (selectedPurposes.includes(purpose)) {
-      onPurposesChange(selectedPurposes.filter(p => p !== purpose));
+      onPurposesChange(selectedPurposes.filter((p) => p !== purpose));
     } else {
       onPurposesChange([...selectedPurposes, purpose]);
     }
@@ -39,26 +44,21 @@ export function PurposeFilter({ selectedPurposes, onPurposesChange }: PurposeFil
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <Pressable className="p-3 border bg-muted/50 rounded-2xl border-black/10 dark:border-white/10 active:opacity-70">
-          <SlidersHorizontal 
-            size={20} 
-            color={isDark ? '#e5e7eb' : '#1f2937'} 
-          />
+        <Pressable className="rounded-2xl border border-black/10 bg-muted/50 p-3 active:opacity-70 dark:border-white/10">
+          <SlidersHorizontal size={20} color={isDark ? '#e5e7eb' : '#1f2937'} />
         </Pressable>
       </ZeegoDropdownMenuTrigger>
-      
+
       <ZeegoDropdownMenuContent>
         <ZeegoDropdownMenuLabel>Select Purposes</ZeegoDropdownMenuLabel>
-        
+
         {purposes.map((purpose) => (
           <ZeegoDropdownMenuCheckboxItem
             key={purpose}
             value={selectedPurposes.includes(purpose) ? 'on' : 'off'}
             onValueChange={() => togglePurpose(purpose)}
           >
-            <ZeegoDropdownMenuItemTitle>
-              {purpose}
-            </ZeegoDropdownMenuItemTitle>
+            <ZeegoDropdownMenuItemTitle>{purpose}</ZeegoDropdownMenuItemTitle>
           </ZeegoDropdownMenuCheckboxItem>
         ))}
       </ZeegoDropdownMenuContent>

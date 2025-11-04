@@ -6,7 +6,6 @@ import {
   LibraryBig,
   PlusCircle,
   Radio,
-  Search,
   Settings2,
   ShieldCheck,
   TvMinimalPlay,
