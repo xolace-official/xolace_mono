@@ -21,7 +21,7 @@ import {
 } from '@xolacekit/ui';
 import { useColorScheme } from '@xolacekit/ui';
 
-import type { ProfileData, ProfileTabKey } from '../../lib/dummy-data/profile';
+import type { ProfileData } from '../../lib/dummy-data/profile';
 import { NAV_THEME } from '@xolacekit/ui';
 
 interface ProfileSheetHeaderProps {
