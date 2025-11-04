@@ -91,7 +91,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           <DrawerHeader
             isDarkMode={isDarkMode}
             onPressProfile={() =>
-              navigateTo('/(app)/(protected)/(drawer)/(tabs)/settings/profile')
+              navigateTo('/(app)/(protected)/(drawer)/profile')
             }
           />
 
