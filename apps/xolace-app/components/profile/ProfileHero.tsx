@@ -13,11 +13,7 @@ interface ProfileHeroProps {
   isDarkMode: boolean;
 }
 
-function ProfileHeroComponent({
-  coverImageUrl,
-  topInset,
-  isDarkMode,
-}: ProfileHeroProps) {
+function ProfileHeroComponent({ topInset, isDarkMode }: ProfileHeroProps) {
   const heroHeight = 425;
 
   return (

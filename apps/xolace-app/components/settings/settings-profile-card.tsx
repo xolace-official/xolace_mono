@@ -38,7 +38,7 @@ export function SettingsProfileCard({ user }: SettingsProfileCardProps) {
   }, [displayName]);
 
   return (
-    <Link asChild href={'/settings/profile'}>
+    <Link asChild href={'/profile'}>
       <Pressable
         className={
           'rounded-3xl border border-border bg-card p-4 active:opacity-80'

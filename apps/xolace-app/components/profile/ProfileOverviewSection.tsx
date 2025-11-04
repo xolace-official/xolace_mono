@@ -29,7 +29,9 @@ function renderFeat(feat: ProfileFeat, isDarkMode: boolean) {
       key={feat.id}
       className={cn(
         'flex-row items-start gap-3 rounded-3xl border px-4 py-3',
-        isDarkMode ? 'border-white/15 bg-white/5' : 'border-gray-200 bg-gray-50',
+        isDarkMode
+          ? 'border-white/15 bg-white/5'
+          : 'border-gray-200 bg-gray-50',
       )}
       style={{ borderColor: feat.tone }}
     >
@@ -62,7 +64,9 @@ function ProfileOverviewSectionComponent({
       <Card
         className={cn(
           'rounded-3xl border p-5',
-          isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white',
+          isDarkMode
+            ? 'border-white/10 bg-white/5'
+            : 'border-gray-200 bg-white',
         )}
       >
         <Text className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-white/50">
@@ -102,7 +106,9 @@ function ProfileOverviewSectionComponent({
       <Card
         className={cn(
           'rounded-3xl border p-5',
-          isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white',
+          isDarkMode
+            ? 'border-white/10 bg-white/5'
+            : 'border-gray-200 bg-white',
         )}
       >
         <Text className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-white/50">
@@ -134,7 +140,9 @@ function ProfileOverviewSectionComponent({
       <Card
         className={cn(
           'rounded-3xl border p-5',
-          isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white',
+          isDarkMode
+            ? 'border-white/10 bg-white/5'
+            : 'border-gray-200 bg-white',
         )}
       >
         <Text className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-white/50">

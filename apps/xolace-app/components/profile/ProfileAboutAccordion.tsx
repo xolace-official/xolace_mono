@@ -1,5 +1,6 @@
 import { memo } from 'react';
 
+import { ChevronDown, Info } from 'lucide-react-native';
 import { View } from 'react-native';
 
 import {
@@ -10,7 +11,6 @@ import {
   Text,
   cn,
 } from '@xolacekit/ui';
-import { ChevronDown, Info } from 'lucide-react-native';
 
 import type { ProfileAboutItem } from '../../lib/dummy-data/profile';
 
@@ -29,7 +29,7 @@ function ProfileAboutAccordionComponent({
       collapsible
       defaultValue="about"
       className={cn(
-        'rounded-3xl border px-4 mb-2',
+        'mb-2 rounded-3xl border px-4',
         isDarkMode ? 'border-white/10 bg-white/5' : 'border-black/10 bg-white',
       )}
     >
@@ -61,7 +61,7 @@ function ProfileAboutAccordionComponent({
           />
         </AccordionTrigger>
 
-        <AccordionContent className="pt-1 pb-4">
+        <AccordionContent className="pb-4 pt-1">
           <View className="gap-3">
             {items.map((item) => (
               <View
@@ -72,7 +72,7 @@ function ProfileAboutAccordionComponent({
                 )}
               >
                 <View className="flex-1 pr-3">
-                  <Text className="text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-white/40">
+                  <Text className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-white/40">
                     {item.label}
                   </Text>
                   <Text className="mt-1 text-base text-gray-900 dark:text-white">

@@ -68,7 +68,7 @@ export function ProfileScreen() {
         return (
           <EnhancedPostCard
             post={post}
-            className="bg-white border border-gray-200 shadow-sm rounded-3xl dark:border-white/10 dark:bg-white/5"
+            className="rounded-3xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/5"
           />
         );
       }
@@ -107,7 +107,7 @@ export function ProfileScreen() {
         isExpanded={sheetIndex === 1 || sheetIndex === 2}
       />
     );
-  }, [sheetIndex]);
+  }, [sheetIndex, isDarkMode]);
 
   return (
     <View

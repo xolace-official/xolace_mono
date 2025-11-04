@@ -90,9 +90,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         <View className="flex-1 px-1">
           <DrawerHeader
             isDarkMode={isDarkMode}
-            onPressProfile={() =>
-              navigateTo('/(app)/(protected)/profile')
-            }
+            onPressProfile={() => navigateTo('/(app)/(protected)/profile')}
           />
 
           <View className="gap-2">
@@ -153,7 +151,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           isDarkMode={isDarkMode}
         />
 
-        <View className="px-2 mt-6 border border-transparent rounded-2xl">
+        <View className="mt-6 rounded-2xl border border-transparent px-2">
           <Text
             className={cn(
               'text-center text-xs text-gray-500',

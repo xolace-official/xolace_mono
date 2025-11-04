@@ -20,9 +20,9 @@ import {
   cn,
 } from '@xolacekit/ui';
 import { useColorScheme } from '@xolacekit/ui';
+import { NAV_THEME } from '@xolacekit/ui';
 
 import type { ProfileData } from '../../lib/dummy-data/profile';
-import { NAV_THEME } from '@xolacekit/ui';
 
 interface ProfileSheetHeaderProps {
   profile: ProfileData;
@@ -33,7 +33,6 @@ interface ProfileSheetHeaderProps {
 function ProfileSheetHeaderComponent({
   profile,
   isDarkMode,
-  isExpanded,
 }: ProfileSheetHeaderProps) {
   const { colorScheme } = useColorScheme();
   const { animatedIndex, animatedPosition } = useBottomSheet();
@@ -84,7 +83,10 @@ function ProfileSheetHeaderComponent({
         animatedIndex={animatedIndex}
         animatedPosition={animatedPosition}
         indicatorStyle={{
-          backgroundColor: colorScheme === 'dark' ? `${NAV_THEME.dark.colors.background}` : '#f1f5f9',
+          backgroundColor:
+            colorScheme === 'dark'
+              ? `${NAV_THEME.dark.colors.background}`
+              : '#f1f5f9',
         }}
       />
 
@@ -96,10 +98,10 @@ function ProfileSheetHeaderComponent({
             : 'border-gray-200 bg-white',
         )}
       >
-        <Avatar alt={profile.displayName} className="w-20 h-20">
+        <Avatar alt={profile.displayName} className="h-20 w-20">
           <AvatarImage source={{ uri: profile.avatarUrl }} />
           <AvatarFallback className="items-center justify-center bg-gray-200">
-            <Text className="text-lg font-semibold text-gray-700 uppercase">
+            <Text className="text-lg font-semibold uppercase text-gray-700">
               {profile.displayName.slice(0, 2)}
             </Text>
           </AvatarFallback>
@@ -120,7 +122,7 @@ function ProfileSheetHeaderComponent({
                     : 'border-gray-200',
                 )}
               >
-                <Text className="text-xs font-semibold tracking-wide text-gray-700 uppercase dark:text-white/80">
+                <Text className="text-xs font-semibold uppercase tracking-wide text-gray-700 dark:text-white/80">
                   {profile.roleBadge}
                 </Text>
               </Badge>
@@ -131,7 +133,7 @@ function ProfileSheetHeaderComponent({
             {profile.handle}
           </Text>
 
-          <Text className="mt-4 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:text-white/50">
+          <Text className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-white/50">
             {profile.statusText}
           </Text>
 

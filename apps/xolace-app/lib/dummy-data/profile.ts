@@ -53,14 +53,37 @@ export const dummyProfileData: ProfileData = {
   bio: 'Curator of cozy campfires, exploring empathy, art, and quiet rituals one story at a time.',
   about: [
     { id: 'location', label: 'Campfire Home', value: 'Lagoon District, Accra' },
-    { id: 'ritual', label: 'Daily Ritual', value: 'Sunrise journaling & mint tea' },
-    { id: 'energy', label: 'Current Mood', value: 'Open to gentle conversations' },
+    {
+      id: 'ritual',
+      label: 'Daily Ritual',
+      value: 'Sunrise journaling & mint tea',
+    },
+    {
+      id: 'energy',
+      label: 'Current Mood',
+      value: 'Open to gentle conversations',
+    },
   ],
   stats: [
     { id: 'karma', label: 'Karma', value: '28,137', helper: 'All-time spark' },
-    { id: 'contribution', label: 'Contribution', value: '1,345', helper: 'Stories shared' },
-    { id: 'age', label: 'Campfire Age', value: '13 yrs', helper: 'Member since 2012' },
-    { id: 'streak', label: 'Presence Streak', value: '27 days', helper: 'Showing up daily' },
+    {
+      id: 'contribution',
+      label: 'Contribution',
+      value: '1,345',
+      helper: 'Stories shared',
+    },
+    {
+      id: 'age',
+      label: 'Campfire Age',
+      value: '13 yrs',
+      helper: 'Member since 2012',
+    },
+    {
+      id: 'streak',
+      label: 'Presence Streak',
+      value: '27 days',
+      helper: 'Showing up daily',
+    },
   ],
   activeCommunities: [
     'Daily Prompt',
@@ -79,7 +102,8 @@ export const dummyProfileData: ProfileData = {
       id: 'feat-verified',
       label: 'Verified Email',
       tone: '#4ade80',
-      description: 'Signal always secure · every whisper reaches the right hearth.',
+      description:
+        'Signal always secure · every whisper reaches the right hearth.',
     },
     {
       id: 'feat-lasagna',
@@ -96,12 +120,14 @@ export const dummyProfileData: ProfileData = {
   ],
 };
 
-export const dummyProfilePosts: EnhancedPost[] = dummyPosts.slice(0, 4).map((post, index) => ({
-  ...post,
-  id: `profile-post-${index + 1}`,
-  author_name: dummyProfileData.displayName,
-  author_avatar_url: dummyProfileData.avatarUrl,
-  created_by: baseProfileId,
-  campfire_name: undefined,
-  posttags: post.posttags.slice(0, 2),
-}));
+export const dummyProfilePosts: EnhancedPost[] = dummyPosts
+  .slice(0, 4)
+  .map((post, index) => ({
+    ...post,
+    id: `profile-post-${index + 1}`,
+    author_name: dummyProfileData.displayName,
+    author_avatar_url: dummyProfileData.avatarUrl,
+    created_by: baseProfileId,
+    campfire_name: undefined,
+    posttags: post.posttags.slice(0, 2),
+  }));
