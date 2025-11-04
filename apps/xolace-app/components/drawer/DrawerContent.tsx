@@ -91,7 +91,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           <DrawerHeader
             isDarkMode={isDarkMode}
             onPressProfile={() =>
-              navigateTo('/(app)/(protected)/(drawer)/profile')
+              navigateTo('/(app)/(protected)/profile')
             }
           />
 
@@ -153,7 +153,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           isDarkMode={isDarkMode}
         />
 
-        <View className="mt-6 rounded-2xl border border-transparent px-2">
+        <View className="px-2 mt-6 border border-transparent rounded-2xl">
           <Text
             className={cn(
               'text-center text-xs text-gray-500',

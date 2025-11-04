@@ -10,7 +10,7 @@ import {
   Text,
   cn,
 } from '@xolacekit/ui';
-import { ChevronDown } from 'lucide-react-native';
+import { ChevronDown, Info } from 'lucide-react-native';
 
 import type { ProfileAboutItem } from '../../lib/dummy-data/profile';
 
@@ -29,7 +29,7 @@ function ProfileAboutAccordionComponent({
       collapsible
       defaultValue="about"
       className={cn(
-        'rounded-3xl border px-4',
+        'rounded-3xl border px-4 mb-2',
         isDarkMode ? 'border-white/10 bg-white/5' : 'border-black/10 bg-white',
       )}
     >
@@ -42,7 +42,7 @@ function ProfileAboutAccordionComponent({
                 isDarkMode ? 'bg-white/10' : 'bg-gray-100',
               )}
             >
-              <Text className="text-lg font-bold text-[#6366f1]">ℹ️</Text>
+              <Info color={isDarkMode ? 'white' : 'black'} size={20} />
             </View>
             <View>
               <Text className="text-base font-semibold text-gray-900 dark:text-white">
@@ -61,7 +61,7 @@ function ProfileAboutAccordionComponent({
           />
         </AccordionTrigger>
 
-        <AccordionContent className="pb-4 pt-1">
+        <AccordionContent className="pt-1 pb-4">
           <View className="gap-3">
             {items.map((item) => (
               <View
@@ -72,7 +72,7 @@ function ProfileAboutAccordionComponent({
                 )}
               >
                 <View className="flex-1 pr-3">
-                  <Text className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-white/40">
+                  <Text className="text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-white/40">
                     {item.label}
                   </Text>
                   <Text className="mt-1 text-base text-gray-900 dark:text-white">

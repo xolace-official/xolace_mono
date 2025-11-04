@@ -11,9 +11,11 @@ import {
   dummyProfilePosts,
 } from '../../lib/dummy-data/profile';
 import { EnhancedPostCard } from '../cards/EnhancedPostCard';
+import { ProfileAboutAccordion } from './ProfileAboutAccordion';
 import { ProfileHero } from './ProfileHero';
 import { ProfileOverviewSection } from './ProfileOverviewSection';
 import { ProfileSheetHeader } from './ProfileSheetHeader';
+import { ProfileTabSwitcher } from './ProfileTabSwitcher';
 
 type SheetItem = EnhancedPost | { id: string; type: 'overview' };
 
@@ -37,7 +39,7 @@ export function ProfileScreen() {
 
   const sheetBackgroundStyle = useMemo(
     () => ({
-      backgroundColor: isDarkMode ? '#05060a' : '#f9fafb',
+      backgroundColor: isDarkMode ? '#141A2E' : '#f9fafb',
     }),
     [isDarkMode],
   );
@@ -97,9 +99,19 @@ export function ProfileScreen() {
     setSheetIndex(index);
   }, []);
 
+  const renderHandle = useCallback(() => {
+    return (
+      <ProfileSheetHeader
+        profile={dummyProfileData}
+        isDarkMode={isDarkMode}
+        isExpanded={sheetIndex === 1 || sheetIndex === 2}
+      />
+    );
+  }, [sheetIndex]);
+
   return (
     <View
-      className={isDarkMode ? 'flex-1 bg-[#020617]' : 'flex-1 bg-[#f1f5f9]'}
+      className={isDarkMode ? 'flex-1 bg-background' : 'flex-1 bg-[#f1f5f9]'}
     >
       <ProfileHero
         coverImageUrl={dummyProfileData.coverImageUrl}
@@ -110,6 +122,7 @@ export function ProfileScreen() {
       <BottomSheet
         ref={bottomSheetRef}
         index={0}
+        handleComponent={renderHandle}
         snapPoints={snapPoints}
         enablePanDownToClose={false}
         animateOnMount
@@ -126,13 +139,18 @@ export function ProfileScreen() {
           renderItem={renderSheetItem}
           contentContainerStyle={listContentContainer}
           ListHeaderComponent={
-            <ProfileSheetHeader
-              profile={dummyProfileData}
-              activeTab={activeTab}
-              onTabChange={handleTabChange}
-              isDarkMode={isDarkMode}
-              isExpanded={sheetIndex === 1}
-            />
+            <View>
+              <ProfileAboutAccordion
+                items={dummyProfileData.about}
+                isDarkMode={isDarkMode}
+              />
+
+              <ProfileTabSwitcher
+                activeTab={activeTab}
+                onChange={handleTabChange}
+                isDarkMode={isDarkMode}
+              />
+            </View>
           }
           stickyHeaderIndices={[]}
           showsVerticalScrollIndicator={false}

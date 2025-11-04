@@ -135,7 +135,7 @@ export const SETTINGS_SECTIONS: SettingsSectionConfig[] = [
         id: 'profile',
         title: 'Profile',
         description: 'Personal details, avatar, biography.',
-        href: '/settings/profile',
+        href: '/profile',
         icon: UserRound,
         iconBackgroundClassName: 'bg-orange-500/10',
         iconColor: '#f97316',

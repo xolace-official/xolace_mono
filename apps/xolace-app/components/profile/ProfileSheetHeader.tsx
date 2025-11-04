@@ -1,6 +1,15 @@
 import { memo } from 'react';
 
-import { Pressable, View } from 'react-native';
+//import { ArrowDown01, LayoutGrid } from 'lucide-react-native';
+import { BottomSheetHandle, useBottomSheet } from '@gorhom/bottom-sheet';
+import { StyleSheet, View } from 'react-native';
+// import Animated, {
+//   Extrapolation,
+//   interpolate,
+//   useAnimatedStyle,
+//   withTiming,
+// } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 import {
   Avatar,
@@ -10,39 +19,87 @@ import {
   Text,
   cn,
 } from '@xolacekit/ui';
-import { ArrowDown01, LayoutGrid } from 'lucide-react-native';
+import { useColorScheme } from '@xolacekit/ui';
 
 import type { ProfileData, ProfileTabKey } from '../../lib/dummy-data/profile';
-import { ProfileAboutAccordion } from './ProfileAboutAccordion';
-import { ProfileTabSwitcher } from './ProfileTabSwitcher';
+import { NAV_THEME } from '@xolacekit/ui';
 
 interface ProfileSheetHeaderProps {
   profile: ProfileData;
-  activeTab: ProfileTabKey;
-  onTabChange: (tab: ProfileTabKey) => void;
   isDarkMode: boolean;
   isExpanded: boolean;
 }
 
 function ProfileSheetHeaderComponent({
   profile,
-  activeTab,
-  onTabChange,
   isDarkMode,
   isExpanded,
 }: ProfileSheetHeaderProps) {
+  const { colorScheme } = useColorScheme();
+  const { animatedIndex, animatedPosition } = useBottomSheet();
+
+  // const containerStyle = useAnimatedStyle(() => {
+  //   const paddingTop = interpolate(
+  //     isExpanded ? 1 : 0,
+  //     [0, 1],
+  //     [8, 16],
+  //     Extrapolation.CLAMP,
+  //   );
+
+  //   return {
+  //     paddingTop: withTiming(paddingTop, { duration: 300 }),
+  //   };
+  // });
+
+  // const profileSectionStyle = useAnimatedStyle(() => {
+  //   const marginTop = interpolate(
+  //     isExpanded ? 1 : 0,
+  //     [0, 1],
+  //     [-40, 8],
+  //     Extrapolation.CLAMP,
+  //   );
+
+  //   return {
+  //     marginTop: withTiming(marginTop, { duration: 300 }),
+  //   };
+  // });
+
+  // const avatarContainerStyle = useAnimatedStyle(() => {
+  //   const scale = interpolate(
+  //     isExpanded ? 1 : 0,
+  //     [0, 1],
+  //     [1, 0.7],
+  //     Extrapolation.CLAMP,
+  //   );
+
+  //   return {
+  //     transform: [{ scale: withTiming(scale, { duration: 300 }) }],
+  //   };
+  // });
+
   return (
-    <View className={cn('gap-6', isExpanded ? 'pt-2' : 'pt-6')}>
+    <Animated.View style={[styles.container]} className={cn('gap-6')}>
+      <BottomSheetHandle
+        style={styles.handleContainer}
+        animatedIndex={animatedIndex}
+        animatedPosition={animatedPosition}
+        indicatorStyle={{
+          backgroundColor: colorScheme === 'dark' ? `${NAV_THEME.dark.colors.background}` : '#f1f5f9',
+        }}
+      />
+
       <View
         className={cn(
           'flex-row items-start gap-4 rounded-3xl border px-5 py-5',
-          isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white',
+          isDarkMode
+            ? 'border-white/10 bg-white/5'
+            : 'border-gray-200 bg-white',
         )}
       >
-        <Avatar alt={profile.displayName} className="h-20 w-20">
+        <Avatar alt={profile.displayName} className="w-20 h-20">
           <AvatarImage source={{ uri: profile.avatarUrl }} />
           <AvatarFallback className="items-center justify-center bg-gray-200">
-            <Text className="text-lg font-semibold uppercase text-gray-700">
+            <Text className="text-lg font-semibold text-gray-700 uppercase">
               {profile.displayName.slice(0, 2)}
             </Text>
           </AvatarFallback>
@@ -58,10 +115,12 @@ function ProfileSheetHeaderComponent({
                 variant="outline"
                 className={cn(
                   'rounded-full px-2.5 py-0.5',
-                  isDarkMode ? 'border-white/20 bg-white/10' : 'border-gray-200',
+                  isDarkMode
+                    ? 'border-white/20 bg-white/10'
+                    : 'border-gray-200',
                 )}
               >
-                <Text className="text-xs font-semibold uppercase tracking-wide text-gray-700 dark:text-white/80">
+                <Text className="text-xs font-semibold tracking-wide text-gray-700 uppercase dark:text-white/80">
                   {profile.roleBadge}
                 </Text>
               </Badge>
@@ -72,64 +131,28 @@ function ProfileSheetHeaderComponent({
             {profile.handle}
           </Text>
 
-          <Text className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-white/50">
+          <Text className="mt-4 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:text-white/50">
             {profile.statusText}
           </Text>
 
-          <Text className="mt-2 text-base leading-relaxed text-gray-700 dark:text-white/70">
+          {/* <Text className="mt-2 text-base leading-relaxed text-gray-700 dark:text-white/70">
             {profile.bio}
-          </Text>
+          </Text> */}
         </View>
       </View>
-
-      <ProfileAboutAccordion items={profile.about} isDarkMode={isDarkMode} />
-
-      <View className="gap-4">
-        <ProfileTabSwitcher
-          activeTab={activeTab}
-          onChange={onTabChange}
-          isDarkMode={isDarkMode}
-        />
-
-        <View className="flex-row items-center justify-between px-1">
-          <Pressable
-            className={cn(
-              'flex-row items-center gap-2 rounded-full border px-3 py-1.5',
-              isDarkMode ? 'border-white/15 bg-white/5' : 'border-gray-200 bg-white',
-            )}
-          >
-            <ArrowDown01
-              size={16}
-              color={isDarkMode ? '#f3f4f6' : '#1f2937'}
-              strokeWidth={2}
-            />
-            <Text className="text-sm font-medium text-gray-700 dark:text-white/70">
-              Sort by
-            </Text>
-            <Text className="text-xs uppercase tracking-wide text-gray-400 dark:text-white/40">
-              Fresh
-            </Text>
-          </Pressable>
-
-          <Pressable
-            className={cn(
-              'flex-row items-center gap-2 rounded-full border px-3 py-1.5',
-              isDarkMode ? 'border-white/15 bg-white/5' : 'border-gray-200 bg-white',
-            )}
-          >
-            <Text className="text-sm font-medium text-gray-700 dark:text-white/70">
-              View Format
-            </Text>
-            <LayoutGrid
-              size={16}
-              color={isDarkMode ? '#f3f4f6' : '#1f2937'}
-              strokeWidth={2}
-            />
-          </Pressable>
-        </View>
-      </View>
-    </View>
+    </Animated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+    paddingBottom: 16,
+  },
+  handleContainer: {
+    paddingVertical: 8,
+    flex: 1,
+  },
+});
 
 export const ProfileSheetHeader = memo(ProfileSheetHeaderComponent);

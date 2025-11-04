@@ -1,9 +1,11 @@
 import { memo } from 'react';
 
-import { StyleSheet, View } from 'react-native';
+import { Image } from 'expo-image';
+import { router } from 'expo-router';
+import { ChevronLeft } from 'lucide-react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Text, cn } from '@xolacekit/ui';
-import { Image } from 'expo-image';
 
 interface ProfileHeroProps {
   coverImageUrl: string;
@@ -16,12 +18,12 @@ function ProfileHeroComponent({
   topInset,
   isDarkMode,
 }: ProfileHeroProps) {
-  const heroHeight = 420;
+  const heroHeight = 425;
 
   return (
     <View style={[styles.container, { height: heroHeight }]}>
       <Image
-        source={{ uri: coverImageUrl }}
+        source={require('../../assets/images/Profile-Banner-Image.png')}
         style={StyleSheet.absoluteFillObject}
         contentFit="cover"
         transition={300}
@@ -41,10 +43,15 @@ function ProfileHeroComponent({
         style={{ paddingTop: topInset + 16, paddingBottom: 24 }}
       >
         <View className="flex-row items-center justify-between">
-          <Text className="text-2xl font-black tracking-tight text-white">
-            xolace
-          </Text>
-
+          {/* //TODO Change to use liquid glass view - check expo */}
+          <Pressable
+            onPress={() => router.back()}
+            className="h-12 w-12 items-center justify-center rounded-full bg-white/20"
+          >
+            <Text>
+              <ChevronLeft color="white" size={35} />
+            </Text>
+          </Pressable>
           <View className="flex-row items-center gap-3">
             <View className="h-9 w-9 items-center justify-center rounded-full bg-white/20">
               <Text className="text-lg font-semibold text-white">+</Text>
