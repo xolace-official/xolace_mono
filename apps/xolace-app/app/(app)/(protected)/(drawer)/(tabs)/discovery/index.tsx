@@ -15,6 +15,7 @@ export interface Campfire {
   purpose: CampfirePurpose;
   memberCount: number;
   avatar: string;
+  imageUri?: string;
   joined?: boolean;
 }
 
@@ -31,6 +32,9 @@ export default function DiscoveryScreen() {
       purpose: 'creative outlet',
       memberCount: 4,
       avatar: '👩🏾',
+      imageUri:
+      'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?',
+      joined: true
     },
     {
       id: '2',
@@ -39,6 +43,8 @@ export default function DiscoveryScreen() {
       purpose: 'growth group',
       memberCount: 4,
       avatar: '👨🏾',
+      imageUri:
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=128&q=80',
     },
     {
       id: '3',
@@ -55,6 +61,8 @@ export default function DiscoveryScreen() {
       purpose: 'general discussion',
       memberCount: 8,
       avatar: '🎬',
+      imageUri:
+      'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?auto=format&fit=crop&w=128&q=80',
     },
     {
       id: '5',
@@ -78,7 +86,7 @@ export default function DiscoveryScreen() {
       <View className="flex-1 px-4 pb-20">
         <DiscoveryHeader />
         
-        <View className="flex-row items-center gap-2 mt-6 mb-4">
+        <View className="flex-row items-center gap-2 mt-3 mb-4">
           <SearchBar 
             value={searchQuery}
             onChangeText={setSearchQuery}

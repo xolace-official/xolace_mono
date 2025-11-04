@@ -39,7 +39,7 @@ export function PurposeFilter({ selectedPurposes, onPurposesChange }: PurposeFil
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <Pressable className="p-3 border bg-muted/50 rounded-2xl border-border active:opacity-70">
+        <Pressable className="p-3 border bg-muted/50 rounded-2xl border-black/10 dark:border-white/10 active:opacity-70">
           <SlidersHorizontal 
             size={20} 
             color={isDark ? '#e5e7eb' : '#1f2937'} 

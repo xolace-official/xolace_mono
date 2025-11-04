@@ -10,7 +10,7 @@ export default function DiscoveryLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: 'Campfires',
+          title: 'Discover Campfires',
           headerLeft: () => <DrawerToggleButton />,
            headerStyle: {
                       backgroundColor:

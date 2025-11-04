@@ -2,6 +2,7 @@
 import { View, TextInput } from 'react-native';
 import { Search } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
+import { Input } from '@xolacekit/ui';
 
 interface SearchBarProps {
   value: string;
@@ -13,17 +14,19 @@ export function SearchBar({ value, onChangeText }: SearchBarProps) {
   const isDark = colorScheme === 'dark';
 
   return (
-    <View className="flex-row items-center flex-1 gap-3 px-4 py-3 border bg-muted/50 rounded-2xl border-border">
-      <Search 
+    <View className="relative flex-row items-center flex-1 gap-3 border bg-muted/50 rounded-2xl border-black/10 dark:border-white/10">
+     {/* <View className='absolute z-10 bg-red-400'>
+         <Search 
         size={20} 
         color={isDark ? '#9ca3af' : '#6b7280'} 
       />
-      <TextInput
+     </View> */}
+      <Input
         value={value}
         onChangeText={onChangeText}
         placeholder="Search by name or keyword"
         placeholderTextColor={isDark ? '#9ca3af' : '#6b7280'}
-        className="flex-1 text-base text-foreground"
+        className="w-full text-base text-foreground bg-muted/50 rounded-2xl"
       />
     </View>
   );

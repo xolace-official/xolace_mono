@@ -26,7 +26,7 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
       className="active:opacity-80"
     >
       <View className="flex-row items-start">
-        <CampfireAvatar avatar={campfire.avatar} />
+        <CampfireAvatar avatar={campfire.avatar} imageUri={campfire.imageUri} />
         
         <View className="flex-1 ml-4">
           <Text className="mb-1 text-lg font-semibold text-foreground">
@@ -39,12 +39,13 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
           >
             {campfire.description}
           </Text>
-          
+          <View className="flex-row items-center gap-3">         
           <PurposeBadge purpose={campfire.purpose} />
           
-          <Text className="mt-2 text-sm text-muted-foreground">
+          <Text className="text-sm text-muted-foreground">
             {campfire.memberCount} {campfire.memberCount === 1 ? 'member' : 'members'}
           </Text>
+          </View>
         </View>
 
         {!campfire.joined && (
