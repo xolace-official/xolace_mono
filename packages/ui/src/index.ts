@@ -8,6 +8,7 @@ export * from './components/ui/card';
 export * from './components/ui/typography';
 export * from './components/ui/avatar';
 export * from './components/ui/badge';
+export * from './components/ui/radio-group';
 
 export * from './components/ui/dialog';
 export * from './components/ui/dropdown-menu';
@@ -31,6 +32,8 @@ export * from './components/shared/inputField';
 // builders
 export * from './components/builders/xolace-button';
 export * from './components/builders/xolace-icon-badge';
+export * from './components/builders/zeego-dropdown-menu';
+export * from './components/builders/zeego-context-menu';
 
 export * from './lib/constants';
 export * from './lib/utils';

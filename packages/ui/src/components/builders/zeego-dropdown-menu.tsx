@@ -3,8 +3,8 @@ import { ComponentProps } from 'react'
 import { View } from 'react-native'
 import * as DropdownMenu from 'zeego/dropdown-menu'
 
-export const DropdownMenuRoot = DropdownMenu.Root
-export const DropdownMenuTrigger = DropdownMenu.create(
+export const ZeegoDropdownMenuRoot = DropdownMenu.Root
+export const ZeegoDropdownMenuTrigger = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Trigger>) => (
     <DropdownMenu.Trigger {...props} asChild>
       <View aria-role="button">{props.children}</View>
@@ -12,58 +12,58 @@ export const DropdownMenuTrigger = DropdownMenu.create(
   ),
   'Trigger'
 )
-export const DropdownMenuContent = DropdownMenu.Content
+export const ZeegoDropdownMenuContent = DropdownMenu.Content
 
-export const DropdownMenuItem = DropdownMenu.create(
+export const ZeegoDropdownMenuItem = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Item>) => (
     <DropdownMenu.Item {...props} style={{ height: 34 }} />
   ),
   'Item'
 )
 
-export const DropdownMenuItemTitle = DropdownMenu.create(
+export const ZeegoDropdownMenuItemTitle = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.ItemTitle>) => (
     <DropdownMenu.ItemTitle {...props} />
   ),
   'ItemTitle'
 )
 
-export const DropdownMenuItemIcon = DropdownMenu.create(
+export const ZeegoDropdownMenuItemIcon = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.ItemIcon>) => (
     <DropdownMenu.ItemIcon {...props} />
   ),
   'ItemIcon'
 )
 
-export const DropdownMenuItemImage = DropdownMenu.create(
+export const ZeegoDropdownMenuItemImage = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.ItemImage>) => (
     <DropdownMenu.ItemImage {...props} />
   ),
   'ItemImage'
 )
 
-export const DropdownMenuLabel = DropdownMenu.create(
+export const ZeegoDropdownMenuLabel = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Label>) => (
     <DropdownMenu.Label {...props} />
   ),
   'Label'
 )
 
-export const DropdownMenuSeparator = DropdownMenu.create(
+export const ZeegoDropdownMenuSeparator = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Separator>) => (
     <DropdownMenu.Separator {...props} />
   ),
   'Separator'
 )
 
-export const DropdownMenuGroup = DropdownMenu.create(
+export const ZeegoDropdownMenuGroup = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Group>) => (
     <DropdownMenu.Group {...props} />
   ),
   'Group'
 )
 
-export const DropdownMenuCheckboxItem = DropdownMenu.create(
+export const ZeegoDropdownMenuCheckboxItem = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.CheckboxItem>) => (
     <DropdownMenu.CheckboxItem
       {...props}
@@ -75,28 +75,28 @@ export const DropdownMenuCheckboxItem = DropdownMenu.create(
   'CheckboxItem'
 )
 
-export const DropdownMenuSubTrigger = DropdownMenu.create(
+export const ZeegoDropdownMenuSubTrigger = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.SubTrigger>) => (
     <DropdownMenu.SubTrigger {...props} />
   ),
   'SubTrigger'
 )
 
-export const DropdownMenuSubContent = DropdownMenu.create(
+export const ZeegoDropdownMenuSubContent = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.SubContent>) => (
     <DropdownMenu.SubContent {...props} />
   ),
   'SubContent'
 )
 
-export const DropdownMenuSub = DropdownMenu.create(
+export const ZeegoDropdownMenuSub = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Sub>) => (
     <DropdownMenu.Sub {...props} />
   ),
   'Sub'
 )
 
-export const DropdownMenuItemIndicator = DropdownMenu.create(
+export const ZeegoDropdownMenuItemIndicator = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.ItemIndicator>) => (
     <DropdownMenu.ItemIndicator {...props} />
   ),
@@ -110,7 +110,7 @@ export const DropdownMenuItemIndicator = DropdownMenu.create(
 //   'Preview'
 // )
 
-export const DropdownMenuArrow = DropdownMenu.create(
+export const ZeegoDropdownMenuArrow = DropdownMenu.create(
   (props: ComponentProps<typeof DropdownMenu.Arrow>) => (
     <DropdownMenu.Arrow {...props} />
   ),
