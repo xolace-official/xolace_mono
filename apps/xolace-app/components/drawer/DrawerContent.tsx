@@ -143,7 +143,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         </View>
       </DrawerContentScrollView>
 
-      <View className="bg-[#F9FAFB] pb-10 dark:bg-[#050505]">
+      <View className="bg-[#F9FAFB] px-5 pb-10 dark:bg-[#050505]">
         <DrawerFooterAction
           label={WHATS_NEW_ACTION.label}
           icon={WHATS_NEW_ACTION.icon}

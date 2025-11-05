@@ -6,7 +6,6 @@ import {
   LibraryBig,
   PlusCircle,
   Radio,
-  Search,
   Settings2,
   ShieldCheck,
   TvMinimalPlay,
@@ -68,12 +67,6 @@ export const CAMPFIRE_ITEMS: DrawerRouteItem[] = [
     label: 'Manage Campfires',
     href: '/(app)/(protected)/(drawer)/campfire/manage',
     icon: Settings2,
-  },
-  {
-    id: 'campfire-discover',
-    label: 'Discover Campfires',
-    href: '/(app)/(protected)/(drawer)/campfire/discover',
-    icon: Search,
   },
 ];
 
