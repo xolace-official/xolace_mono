@@ -1,8 +1,8 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/manage-campfires/types.ts
-export type CampfirePurpose = 
-  | 'support circle' 
-  | 'growth group' 
-  | 'creative outlet' 
+export type CampfirePurpose =
+  | 'support circle'
+  | 'growth group'
+  | 'creative outlet'
   | 'general discussion';
 
 export type CampfireRole = 'firestarter' | 'firekeeper' | 'camper';
@@ -22,4 +22,4 @@ export interface UserCampfireFavoriteJoin {
   favoritedAt?: string;
 }
 
-export type CampfireFilter = 'all' | 'favorites'
+export type CampfireFilter = 'all' | 'favorites';

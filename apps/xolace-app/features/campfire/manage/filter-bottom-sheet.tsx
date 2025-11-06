@@ -1,9 +1,15 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/manage-campfires/components/filter-bottom-sheet.tsx
 import { forwardRef, useMemo } from 'react';
-import { View, Pressable } from 'react-native';
-import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
-import { Text, NAV_THEME } from '@xolacekit/ui';
+
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
 import { useColorScheme } from 'nativewind';
+import { Pressable, View } from 'react-native';
+
+import { NAV_THEME, Text } from '@xolacekit/ui';
+
 import type { CampfireFilter } from './types';
 
 interface FilterBottomSheetProps {
@@ -11,80 +17,84 @@ interface FilterBottomSheetProps {
   onFilterChange: (filter: CampfireFilter) => void;
 }
 
-export const FilterBottomSheet = forwardRef<BottomSheet, FilterBottomSheetProps>(
-  ({ activeFilter, onFilterChange }, ref) => {
-    const { colorScheme } = useColorScheme();
-    const isDark = colorScheme === 'dark';
-    
-    const snapPoints = useMemo(() => [280], []);
+export const FilterBottomSheet = forwardRef<
+  BottomSheet,
+  FilterBottomSheetProps
+>(({ activeFilter, onFilterChange }, ref) => {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
-    const filters: Array<{ value: CampfireFilter; label: string }> = [
-      { value: 'all', label: 'All Campfires' },
-      { value: 'favorites', label: 'Favorites' },
-    ];
+  const snapPoints = useMemo(() => [280], []);
 
-    return (
-      <BottomSheet
-        ref={ref}
-        index={-1}
-        snapPoints={snapPoints}
-        enablePanDownToClose
-        backdropComponent={(props) => (
-          <BottomSheetBackdrop
-            {...props}
-            appearsOnIndex={0}
-            disappearsOnIndex={-1}
-            opacity={0.5}
-          />
-        )}
-        backgroundStyle={{
-          backgroundColor:
-              colorScheme === 'dark'
-                ? NAV_THEME.dark.colors.background
-                : NAV_THEME.light.colors.background,
-        }}
-        handleIndicatorStyle={{
-          backgroundColor: isDark ? '#52525b' : '#d4d4d8',
-        }}
-      >
-        <BottomSheetView className="flex-1 px-6">
-          <View className="mb-6">
-            <View className="self-center w-16 h-1 mb-4 rounded-full bg-muted-foreground/20" />
-            <Text className="text-2xl font-bold text-center text-foreground">
-              Select Filter
-            </Text>
-          </View>
+  const filters: Array<{ value: CampfireFilter; label: string }> = [
+    { value: 'all', label: 'All Campfires' },
+    { value: 'favorites', label: 'Favorites' },
+  ];
 
-          <View className="gap-3">
-            {filters.map((filter) => {
-              const isActive = activeFilter === filter.value;
-              
-              return (
-                <Pressable
-                  key={filter.value}
-                  onPress={() => onFilterChange(filter.value)}
-                  className={`p-4 rounded-2xl border active:opacity-70 ${
-                    isDark ?
-                    isActive 
-                      ? 'bg-primary/10 border-white/10' 
+  return (
+    <BottomSheet
+      ref={ref}
+      index={-1}
+      snapPoints={snapPoints}
+      enablePanDownToClose
+      backdropComponent={(props) => (
+        <BottomSheetBackdrop
+          {...props}
+          appearsOnIndex={0}
+          disappearsOnIndex={-1}
+          opacity={0.5}
+        />
+      )}
+      backgroundStyle={{
+        backgroundColor:
+          colorScheme === 'dark'
+            ? NAV_THEME.dark.colors.background
+            : NAV_THEME.light.colors.background,
+      }}
+      handleIndicatorStyle={{
+        backgroundColor: isDark ? '#52525b' : '#d4d4d8',
+      }}
+    >
+      <BottomSheetView className="flex-1 px-6">
+        <View className="mb-6">
+          <View className="mb-4 h-1 w-16 self-center rounded-full bg-muted-foreground/20" />
+          <Text className="text-center text-2xl font-bold text-foreground">
+            Select Filter
+          </Text>
+        </View>
+
+        <View className="gap-3">
+          {filters.map((filter) => {
+            const isActive = activeFilter === filter.value;
+
+            return (
+              <Pressable
+                key={filter.value}
+                onPress={() => onFilterChange(filter.value)}
+                className={`rounded-2xl border p-4 active:opacity-70 ${
+                  isDark
+                    ? isActive
+                      ? 'border-white/10 bg-primary/10'
                       : 'border-white/10 bg-white/5'
-                      : isActive ? 'bg-primary/10 border-gray-200' : 'border-gray-200 bg-white'
+                    : isActive
+                      ? 'border-gray-200 bg-primary/10'
+                      : 'border-gray-200 bg-white'
+                }`}
+              >
+                <Text
+                  className={`text-base font-medium ${
+                    isActive ? 'text-primary' : 'text-foreground'
                   }`}
                 >
-                  <Text 
-                    className={`text-base font-medium ${
-                      isActive ? 'text-primary' : 'text-foreground'
-                    }`}
-                  >
-                    {filter.label}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </BottomSheetView>
-      </BottomSheet>
-    );
-  });
-  
+                  {filter.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      </BottomSheetView>
+    </BottomSheet>
+  );
+});
+
 FilterBottomSheet.displayName = 'FilterBottomSheet';

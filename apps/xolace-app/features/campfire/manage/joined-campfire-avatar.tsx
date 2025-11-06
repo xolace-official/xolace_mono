@@ -1,6 +1,3 @@
-// apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/manage-campfires/components/joined-campfire-avatar.tsx
-import { Image, View } from 'react-native';
-
 import { Avatar, AvatarFallback, AvatarImage, Text } from '@xolacekit/ui';
 
 interface JoinedCampfireAvatarProps {
@@ -22,7 +19,7 @@ export function JoinedCampfireAvatar({
 
   return (
     <>
-      <Avatar alt={'campfire'} className="w-10 h-10">
+      <Avatar alt={'campfire'} className="h-10 w-10">
         <AvatarImage source={{ uri: imageUri }} />
         <AvatarFallback className="bg-[#6a71ea]">
           <Text className={'text-base font-semibold text-white'}>

@@ -1,4 +1,5 @@
 import { View } from 'react-native';
+
 import { Text } from '@xolacekit/ui';
 
 interface ManageHeaderProps {
@@ -7,7 +8,7 @@ interface ManageHeaderProps {
 
 export function ManageHeader({ joinedCount }: ManageHeaderProps) {
   return (
-    <View className="flex-row items-center justify-between mt-4 mb-10">
+    <View className="mb-10 mt-4 flex-row items-center justify-between">
       <Text className="text-3xl font-bold text-foreground">
         Manage Campfires
       </Text>

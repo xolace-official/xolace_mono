@@ -1,5 +1,6 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/manage-campfires/hooks/use-mock-joined-campfires.ts
-import { useMemo, useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
 import type { UserCampfireFavoriteJoin } from '../types';
 import type { CampfireFilter } from '../types';
 
@@ -73,7 +74,10 @@ const MOCK_CAMPFIRES: UserCampfireFavoriteJoin[] = [
   },
 ];
 
-export function useMockJoinedCampfires(searchQuery: string, filter: CampfireFilter) {
+export function useMockJoinedCampfires(
+  searchQuery: string,
+  filter: CampfireFilter,
+) {
   const [isLoading, setIsLoading] = useState(true);
 
   // Simulate loading
@@ -91,15 +95,16 @@ export function useMockJoinedCampfires(searchQuery: string, filter: CampfireFilt
 
     // Apply filter
     if (filter === 'favorites') {
-      filtered = filtered.filter(c => c.isFavorite);
+      filtered = filtered.filter((c) => c.isFavorite);
     }
 
     // Apply search
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(c => 
-        c.name.toLowerCase().includes(query) ||
-        c.description.toLowerCase().includes(query)
+      filtered = filtered.filter(
+        (c) =>
+          c.name.toLowerCase().includes(query) ||
+          c.description.toLowerCase().includes(query),
       );
     }
 
