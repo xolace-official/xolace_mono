@@ -3,7 +3,7 @@ import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
 import { Bell } from '@xolacekit/ui';
-import { useColorScheme } from '@xolacekit/ui';
+import { useColorScheme, NAV_THEME } from '@xolacekit/ui';
 
 export default function Layout() {
   const { colorScheme } = useColorScheme();
@@ -24,6 +24,12 @@ export default function Layout() {
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),
+          headerStyle: {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? NAV_THEME.dark.colors.background
+                : NAV_THEME.light.colors.background,
+          },
         }}
       />
     </Stack>
