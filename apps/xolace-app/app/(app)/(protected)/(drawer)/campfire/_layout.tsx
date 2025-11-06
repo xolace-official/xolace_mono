@@ -10,7 +10,7 @@ export default function Layout() {
   return (
     <Stack
       screenOptions={{
-        headerBlurEffect: 'systemChromeMaterial',
+        headerBlurEffect: 'systemChromeMaterialDark',
         headerTransparent: true,
       }}
     >
@@ -20,7 +20,7 @@ export default function Layout() {
           title: 'Your Campfires',
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
-            <View className="ml-2 flex flex-row">
+            <View className="flex flex-row ml-2">
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),
