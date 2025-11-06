@@ -2,7 +2,7 @@
 import { forwardRef, useMemo } from 'react';
 import { View, Pressable } from 'react-native';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
-import { Text } from '@xolacekit/ui';
+import { Text, NAV_THEME } from '@xolacekit/ui';
 import { useColorScheme } from 'nativewind';
 import type { CampfireFilter } from './types';
 
@@ -38,7 +38,10 @@ export const FilterBottomSheet = forwardRef<BottomSheet, FilterBottomSheetProps>
           />
         )}
         backgroundStyle={{
-          backgroundColor: isDark ? '#18181b' : '#ffffff',
+          backgroundColor:
+              colorScheme === 'dark'
+                ? NAV_THEME.dark.colors.background
+                : NAV_THEME.light.colors.background,
         }}
         handleIndicatorStyle={{
           backgroundColor: isDark ? '#52525b' : '#d4d4d8',
@@ -61,9 +64,11 @@ export const FilterBottomSheet = forwardRef<BottomSheet, FilterBottomSheetProps>
                   key={filter.value}
                   onPress={() => onFilterChange(filter.value)}
                   className={`p-4 rounded-2xl border active:opacity-70 ${
+                    isDark ?
                     isActive 
-                      ? 'bg-primary/10 border-primary/30' 
-                      : 'bg-muted/30 border-border'
+                      ? 'bg-primary/10 border-white/10' 
+                      : 'border-white/10 bg-white/5'
+                      : isActive ? 'bg-primary/10 border-gray-200' : 'border-gray-200 bg-white'
                   }`}
                 >
                   <Text 
