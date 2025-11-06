@@ -3,7 +3,7 @@ import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
 import { Bell } from '@xolacekit/ui';
-import { useColorScheme, NAV_THEME } from '@xolacekit/ui';
+import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
 export default function Layout() {
   const { colorScheme } = useColorScheme();
