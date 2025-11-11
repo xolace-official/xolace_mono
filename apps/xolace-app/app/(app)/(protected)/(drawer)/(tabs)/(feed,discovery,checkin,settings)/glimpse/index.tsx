@@ -2,7 +2,6 @@
 import { useState } from 'react';
 
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GlimpseHeader } from '../../../../../../../components/glimpse/glimpse-header';
 import { GlimpseControls } from '../../../../../../../features/glimpse/glimpse-controls';
