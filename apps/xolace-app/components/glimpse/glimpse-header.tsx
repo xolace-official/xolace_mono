@@ -2,15 +2,12 @@
 import { View, Pressable } from 'react-native';
 import { Text } from '@xolacekit/ui';
 import { Upload } from 'lucide-react-native';
-import { useColorScheme } from '@xolacekit/ui';
 
 interface GlimpseHeaderProps {
   onUpload: () => void;
 }
 
 export function GlimpseHeader({ onUpload }: GlimpseHeaderProps) {
-  const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark';
 
   return (
     <View className="px-4 pt-2">
