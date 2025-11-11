@@ -3,7 +3,7 @@ import { Pressable, View } from 'react-native';
 
 import { Button, Text } from '@xolacekit/ui';
 
-import type { Campfire } from '../../../app/(app)/(protected)/(drawer)/(tabs)/discovery';
+import type { Campfire } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
 import { CampfireAvatar } from './campfire-avatar';
 import { PurposeBadge } from './purpose-bagde';
 

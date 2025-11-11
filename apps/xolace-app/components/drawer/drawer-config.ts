@@ -65,7 +65,7 @@ export const CAMPFIRE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'campfire-manage',
     label: 'Manage Campfires',
-    href: '/(app)/(protected)/(drawer)/campfire/manage',
+    href: '/(app)/(protected)/(drawer)/(tabs)/manage-campfires',
     icon: Settings2,
   },
 ];

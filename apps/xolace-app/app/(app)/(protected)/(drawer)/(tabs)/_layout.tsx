@@ -29,7 +29,7 @@ export default function MainLayout() {
       />
 
       <Tabs.Screen
-        name="discovery"
+        name="(discovery)"
         options={{
           title: 'Campfires',
           href: '/discovery',
@@ -48,7 +48,7 @@ export default function MainLayout() {
       />
 
       <Tabs.Screen
-        name="checkin"
+        name="(checkin)"
         options={{
           title: 'Checkin',
           href: '/checkin',
@@ -60,7 +60,7 @@ export default function MainLayout() {
       />
 
       <Tabs.Screen
-        name="settings"
+        name="(settings)"
         options={{
           title: 'Settings',
           href: '/settings',

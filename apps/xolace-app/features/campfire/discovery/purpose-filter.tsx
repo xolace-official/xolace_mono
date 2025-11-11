@@ -12,7 +12,7 @@ import {
   ZeegoDropdownMenuTrigger,
 } from '@xolacekit/ui';
 
-import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/discovery';
+import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
 
 interface PurposeFilterProps {
   selectedPurposes: CampfirePurpose[];

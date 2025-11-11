@@ -13,7 +13,7 @@ export function GlimpseHeader({ onUpload }: GlimpseHeaderProps) {
   const isDark = colorScheme === 'dark';
 
   return (
-    <View className="px-4 pt-4 pb-2">
+    <View className="px-4 pt-2 pb-2">
       <Text className="mb-2 text-base text-muted-foreground">
         Glimpse: Real stories. Real voices.
       </Text>

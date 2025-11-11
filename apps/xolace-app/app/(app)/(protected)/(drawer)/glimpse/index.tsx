@@ -23,7 +23,7 @@ export default function GlimpseScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background" edges={['top']}>
+    <View className="flex-1 bg-background" >
       <View className="flex-1">
         <GlimpseHeader onUpload={handleUpload} />
         
@@ -41,6 +41,6 @@ export default function GlimpseScreen() {
           onLoadMore={loadMore}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
