@@ -55,6 +55,9 @@ export * from './lib/icons/Compass';
 export * from './lib/icons/UserCheck';
 export * from './lib/icons/Bell';
 
+// --- Utilities ---
+export * from './utils'
+
 // --- types ---
 export type {
   UserClaims,

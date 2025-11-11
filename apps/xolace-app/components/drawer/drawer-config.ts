@@ -83,7 +83,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'glimpse',
     label: 'Glimpse',
-    href: '/(app)/(protected)/(drawer)/campfire/discover',
+    href: '/(app)/(protected)/(drawer)/glimpse',
     icon: TvMinimalPlay,
     badgeLabel: 'New',
     badgeVariant: 'default',
