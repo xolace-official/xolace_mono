@@ -2,7 +2,7 @@
 import { View } from 'react-native';
 import { GlimpseSearchBar } from '../../components/glimpse/glimpse-search-bar';
 import { GlimpseSortDropdown } from '../../components/glimpse/glimpse-sort-dropdown';
-import type { GlimpseSortOption, GlimpseSortOptionTypes } from './types';
+import type { GlimpseSortOptionTypes } from './types';
 
 interface GlimpseControlsProps {
   searchQuery: string;

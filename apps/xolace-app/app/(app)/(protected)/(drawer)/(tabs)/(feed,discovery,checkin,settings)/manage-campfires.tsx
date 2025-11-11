@@ -1,6 +1,6 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/manage-campfires/index.tsx
 import { useMemo, useRef, useState } from 'react';
-import { useLayoutEffect } from 'react';
+import { Stack }from 'expo-router';
 
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useNavigation } from '@react-navigation/native';
@@ -12,8 +12,20 @@ import { useMockJoinedCampfires } from '../../../../../../features/campfire/mana
 import { JoinedCampfiresList } from '../../../../../../features/campfire/manage/joined-campfire-list';
 import { ManageHeader } from '../../../../../../features/campfire/manage/manage-header';
 import { ManageSearchBar } from '../../../../../../features/campfire/manage/manage-search-bar';
+import { Text } from '@xolacekit/ui';
 
 export type CampfireFilter = 'all' | 'favorites';
+
+function ManageCampfiresHeaderTitle({count}: {count: number}) {
+  return (
+    <View style={{ flexDirection: 'column' }}>
+      <Text className="text-xl font-bold">Manage Campfires</Text>
+      <Text className="text-xs text-muted-foreground">
+        {count} joined
+      </Text>
+    </View>
+  );
+}
 
 export default function ManageCampfiresScreen() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -26,12 +38,12 @@ export default function ManageCampfiresScreen() {
    console.log("segment ", segments[4])
    const isFeed = segments[4] === '(feed)';
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTitle: 'Manage Campfires',
-      headerBackButtonDisplayMode: 'minimal',
-    });
-  }, [navigation]);
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerTitle: '',
+  //     headerBackButtonDisplayMode: 'minimal',
+  //   });
+  // }, [navigation]);
 
   // Mock data hook - replace with actual data fetching
   const { campfires, isLoading } = useMockJoinedCampfires(
@@ -54,8 +66,15 @@ export default function ManageCampfiresScreen() {
 
   return (
     <View className={`flex-1 bg-background ${isFeed ? 'pt-32' : ''}`}>
+       <Stack.Screen
+        options={{
+          headerBackButtonDisplayMode: 'minimal',
+          headerTitle: () => <ManageCampfiresHeaderTitle count={joinedCount}/>
+        }}
+      />
+      
       <View className="flex-1 px-4">
-        <ManageHeader joinedCount={joinedCount} />
+        {/* <ManageHeader joinedCount={joinedCount} /> */}
 
         <ManageSearchBar
           value={searchQuery}

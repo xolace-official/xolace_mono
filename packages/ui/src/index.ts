@@ -55,6 +55,7 @@ export * from './lib/icons/Compass';
 export * from './lib/icons/UserCheck';
 export * from './lib/icons/Bell';
 export * from './lib/icons/ChevronLeft';
+export * from './lib/icons/FileVideoCamera';
 
 // --- Utilities ---
 export * from './utils'

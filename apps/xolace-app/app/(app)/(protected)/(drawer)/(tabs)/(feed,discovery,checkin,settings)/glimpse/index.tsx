@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { View } from 'react-native';
 
-import { GlimpseHeader } from '../../../../../../../components/glimpse/glimpse-header';
+// import { GlimpseHeader } from '../../../../../../../components/glimpse/glimpse-header';
 import { GlimpseControls } from '../../../../../../../features/glimpse/glimpse-controls';
 import { GlimpseVideoList } from '../../../../../../../features/glimpse/glimpse-video-list';
 import type { GlimpseSortOptionTypes } from '../../../../../../../features/glimpse/types';
@@ -19,15 +19,15 @@ export default function GlimpseScreen() {
     sortOption,
   );
 
-  const handleUpload = () => {
-    // Navigate to upload screen
-    console.log('Navigate to upload');
-  };
+  // const handleUpload = () => {
+  //   // Navigate to upload screen
+  //   console.log('Navigate to upload');
+  // };
 
   return (
     <View className="flex-1 bg-background">
-      <View className="flex-1">
-        <GlimpseHeader onUpload={handleUpload} />
+      <View className="flex-1 pb-20">
+        {/* <GlimpseHeader onUpload={handleUpload} /> */}
 
         <GlimpseControls
           searchQuery={searchQuery}

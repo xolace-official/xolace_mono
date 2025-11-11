@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
-import { Bell, Text } from '@xolacekit/ui';
+import { Bell, Text, FileVideoCamera } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
 import BackButton from '../../../../../../../components/shared/BackButton';
@@ -28,7 +28,7 @@ export default function Layout() {
           headerLeft: () => <BackButton />,
           headerRight: () => (
             <View className="flex flex-row ml-2">
-              <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
+              <FileVideoCamera color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),
           headerStyle: {
