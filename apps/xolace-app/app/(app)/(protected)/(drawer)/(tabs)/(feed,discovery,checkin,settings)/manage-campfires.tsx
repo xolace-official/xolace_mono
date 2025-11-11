@@ -1,9 +1,11 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/manage-campfires/index.tsx
 import { useMemo, useRef, useState } from 'react';
+import { useLayoutEffect } from 'react';
 
 import BottomSheet from '@gorhom/bottom-sheet';
+import { useNavigation } from '@react-navigation/native';
+import { useSegments } from 'expo-router';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FilterBottomSheet } from '../../../../../../features/campfire/manage/filter-bottom-sheet';
 import { useMockJoinedCampfires } from '../../../../../../features/campfire/manage/hooks/use-mock-joined-campfires';
@@ -17,6 +19,19 @@ export default function ManageCampfiresScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<CampfireFilter>('all');
   const bottomSheetRef = useRef<BottomSheet>(null);
+
+  const navigation = useNavigation();
+   const segments = useSegments();
+
+   console.log("segment ", segments[4])
+   const isFeed = segments[4] === '(feed)';
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: 'Manage Campfires',
+      headerBackButtonDisplayMode: 'minimal',
+    });
+  }, [navigation]);
 
   // Mock data hook - replace with actual data fetching
   const { campfires, isLoading } = useMockJoinedCampfires(
@@ -38,7 +53,7 @@ export default function ManageCampfiresScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 pt-12 bg-background" edges={['top']}>
+    <View className={`flex-1 bg-background ${isFeed ? 'pt-32' : ''}`}>
       <View className="flex-1 px-4">
         <ManageHeader joinedCount={joinedCount} />
 
@@ -60,6 +75,6 @@ export default function ManageCampfiresScreen() {
         activeFilter={activeFilter}
         onFilterChange={handleFilterChange}
       />
-    </SafeAreaView>
+    </View>
   );
 }

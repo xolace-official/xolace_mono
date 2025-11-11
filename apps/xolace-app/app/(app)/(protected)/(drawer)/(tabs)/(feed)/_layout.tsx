@@ -3,15 +3,21 @@ import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
 import { Bell } from '@xolacekit/ui';
-import { useColorScheme } from '@xolacekit/ui';
+import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
 export default function Layout() {
   const { colorScheme } = useColorScheme();
   return (
     <Stack
       screenOptions={{
-        headerBlurEffect: 'systemChromeMaterial',
+        headerBlurEffect: 'regular',
         headerTransparent: true,
+        headerStyle: {
+          backgroundColor:
+            colorScheme === 'dark'
+              ? NAV_THEME.dark.colors.background
+              : NAV_THEME.light.colors.background,
+        },
       }}
     >
       <Stack.Screen
@@ -20,7 +26,7 @@ export default function Layout() {
           title: 'Campfire',
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
-            <View className="ml-2 flex flex-row">
+            <View className="flex flex-row ml-2">
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),

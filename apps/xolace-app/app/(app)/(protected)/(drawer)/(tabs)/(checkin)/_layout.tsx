@@ -1,11 +1,26 @@
+import { DrawerToggleButton } from '@react-navigation/drawer';
+import { Stack } from 'expo-router';
 
+import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
-import { Stack } from "expo-router";
-const CheckinLayout = () => {
-    return (
-        <Stack/>
-    );
+export default function CheckinLayout() {
+  const { colorScheme } = useColorScheme();
+  return (
+    <Stack>
+      <Stack.Screen
+        name="checkin"
+        options={{
+          title: 'Check In',
+          headerLeft: () => <DrawerToggleButton />,
+          headerStyle: {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? NAV_THEME.dark.colors.background
+                : NAV_THEME.light.colors.background,
+          },
+          animation: 'fade_from_bottom',
+        }}
+      />
+    </Stack>
+  );
 }
-
-
-export default CheckinLayout;
