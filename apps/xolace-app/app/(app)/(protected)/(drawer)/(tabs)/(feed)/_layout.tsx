@@ -32,6 +32,14 @@ export default function Layout() {
           ),
         }}
       />
+
+      <Stack.Screen
+        name="glimpse"
+        options={{
+          title: 'Glimpses',
+          headerShown: false
+        }}
+      />
     </Stack>
   );
 }

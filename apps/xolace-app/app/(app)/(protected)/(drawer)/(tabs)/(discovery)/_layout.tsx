@@ -24,6 +24,14 @@ export default function DiscoveryLayout() {
           animation: 'fade_from_bottom',
         }}
       />
+
+      <Stack.Screen
+        name="glimpse"
+        options={{
+          title: 'Glimpses',
+          headerShown: false
+        }}
+      />
     </Stack>
   );
 }

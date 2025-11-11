@@ -1,20 +1,23 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/glimpse/index.tsx
 import { useState } from 'react';
+
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { GlimpseHeader } from '../../../../../components/glimpse/glimpse-header';
-import { GlimpseControls } from '../../../../../features/glimpse/glimpse-controls';
-import { GlimpseVideoList } from '../../../../../features/glimpse/glimpse-video-list';
-import { useMockGlimpseVideos } from '../../../../../hooks/glimpse/use-mock-glimpse-videos';
-import type { GlimpseSortOptionTypes } from '../../../../../features/glimpse/types';
+
+import { GlimpseHeader } from '../../../../../../../components/glimpse/glimpse-header';
+import { GlimpseControls } from '../../../../../../../features/glimpse/glimpse-controls';
+import { GlimpseVideoList } from '../../../../../../../features/glimpse/glimpse-video-list';
+import type { GlimpseSortOptionTypes } from '../../../../../../../features/glimpse/types';
+import { useMockGlimpseVideos } from '../../../../../../../hooks/glimpse/use-mock-glimpse-videos';
 
 export default function GlimpseScreen() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortOption, setSortOption] = useState<GlimpseSortOptionTypes>('most_recent');
+  const [sortOption, setSortOption] =
+    useState<GlimpseSortOptionTypes>('most_recent');
 
   const { videos, isLoading, hasMore, loadMore } = useMockGlimpseVideos(
     searchQuery,
-    sortOption
+    sortOption,
   );
 
   const handleUpload = () => {
@@ -23,10 +26,10 @@ export default function GlimpseScreen() {
   };
 
   return (
-    <View className="flex-1 bg-background" >
+    <View className="flex-1 bg-background">
       <View className="flex-1">
         <GlimpseHeader onUpload={handleUpload} />
-        
+
         <GlimpseControls
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}

@@ -6,7 +6,11 @@ import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 export default function CheckinLayout() {
   const { colorScheme } = useColorScheme();
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerBackButtonDisplayMode: 'minimal',
+      }}
+    >
       <Stack.Screen
         name="checkin"
         options={{
@@ -19,6 +23,14 @@ export default function CheckinLayout() {
                 : NAV_THEME.light.colors.background,
           },
           animation: 'fade_from_bottom',
+        }}
+      />
+
+      <Stack.Screen
+        name="glimpse"
+        options={{
+          title: 'Glimpses',
+          headerShown: false
         }}
       />
     </Stack>
