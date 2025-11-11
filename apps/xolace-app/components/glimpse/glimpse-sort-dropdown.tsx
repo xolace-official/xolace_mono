@@ -36,7 +36,7 @@ export function GlimpseSortDropdown({
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <Pressable className="flex-row items-center gap-2 px-5 py-3.5 bg-muted/30 rounded-full border border-border/50 active:opacity-70">
+        <Pressable className="flex-row items-center gap-2 px-5 py-3 border rounded-full border-black/10 bg-muted/50 dark:border-white/10 active:opacity-70">
           <Text className="text-base font-medium text-foreground">
             {selectedLabel}
           </Text>
