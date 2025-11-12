@@ -3,14 +3,14 @@ import { useMemo, useRef, useState } from 'react';
 import { Stack }from 'expo-router';
 
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import { useSegments } from 'expo-router';
 import { View } from 'react-native';
 
 import { FilterBottomSheet } from '../../../../../../features/campfire/manage/filter-bottom-sheet';
 import { useMockJoinedCampfires } from '../../../../../../features/campfire/manage/hooks/use-mock-joined-campfires';
 import { JoinedCampfiresList } from '../../../../../../features/campfire/manage/joined-campfire-list';
-import { ManageHeader } from '../../../../../../features/campfire/manage/manage-header';
+// import { ManageHeader } from '../../../../../../features/campfire/manage/manage-header';
 import { ManageSearchBar } from '../../../../../../features/campfire/manage/manage-search-bar';
 import { Text } from '@xolacekit/ui';
 
@@ -32,7 +32,7 @@ export default function ManageCampfiresScreen() {
   const [activeFilter, setActiveFilter] = useState<CampfireFilter>('all');
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
    const segments = useSegments();
 
    console.log("segment ", segments[4])

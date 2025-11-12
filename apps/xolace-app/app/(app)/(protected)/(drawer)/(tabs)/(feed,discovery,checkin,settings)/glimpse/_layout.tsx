@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
-import { Bell, Text, FileVideoCamera } from '@xolacekit/ui';
+import { Text, FileVideoCamera } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
 import BackButton from '../../../../../../../components/shared/BackButton';

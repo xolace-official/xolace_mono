@@ -1,6 +1,7 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/glimpse/index.tsx
 import { useState } from 'react';
 
+import { useSegments } from 'expo-router';
 import { View } from 'react-native';
 
 // import { GlimpseHeader } from '../../../../../../../components/glimpse/glimpse-header';
@@ -19,14 +20,19 @@ export default function GlimpseScreen() {
     sortOption,
   );
 
+  const segments = useSegments();
+
+  console.log('segment ', segments[4]);
+  const isFeed = segments[4] === '(feed)';
+
   // const handleUpload = () => {
   //   // Navigate to upload screen
   //   console.log('Navigate to upload');
   // };
 
   return (
-    <View className="flex-1 bg-background">
-      <View className="flex-1 pb-20">
+    <View className={`flex-1 bg-background ${isFeed ? '' : 'pb-20'} `}>
+      <View className="flex-1">
         {/* <GlimpseHeader onUpload={handleUpload} /> */}
 
         <GlimpseControls
