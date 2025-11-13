@@ -32,10 +32,13 @@ export default function ManageCampfiresScreen() {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   // const navigation = useNavigation();
-  const segments = useSegments();
+const segments = useSegments() as string[];
+const isFeed = segments.includes('(feed)');
 
-  console.log('segment ', segments[4]);
-  const isFeed = segments[4] === '(feed)';
+  const lastSegment = segments[segments.length - 1];
+  console.log('last ', lastSegment)
+  console.log('segment ', segments);
+  // const isFeed = segments[4] === '(feed)';
 
   // useLayoutEffect(() => {
   //   navigation.setOptions({
