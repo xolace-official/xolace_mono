@@ -65,7 +65,7 @@ export const CAMPFIRE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'campfire-manage',
     label: 'Manage Campfires',
-    href: '/(app)/(protected)/(drawer)/campfire/manage',
+    href: '/(app)/(protected)/(drawer)/(tabs)/manage-campfires',
     icon: Settings2,
   },
 ];
@@ -83,7 +83,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'glimpse',
     label: 'Glimpse',
-    href: '/(app)/(protected)/(drawer)/campfire/discover',
+    href: '/(app)/(protected)/(drawer)/(tabs)/glimpse',
     icon: TvMinimalPlay,
     badgeLabel: 'New',
     badgeVariant: 'default',

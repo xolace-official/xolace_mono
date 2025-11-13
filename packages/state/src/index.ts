@@ -1,6 +1,6 @@
 // Core store
 export { useAppStore, ONBOARDING_VERSION } from './create-store';
-export type { AppState } from './create-store';
+export type { AppState, FeedFilterOption } from './create-store';
 
 // Storage adapters (public on purpose)
 export { mmkv, mmkvStorage } from './storage/mmkv';
@@ -11,3 +11,4 @@ export * from './selectors/ui';
 export * from './selectors/profile-local';
 export * from './selectors/pref-local';
 export * from './selectors/onboarding';
+export * from './selectors/feed';

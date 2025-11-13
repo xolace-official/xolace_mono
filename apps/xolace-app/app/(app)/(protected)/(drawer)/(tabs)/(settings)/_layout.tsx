@@ -6,23 +6,36 @@ import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 export default function SettingsLayout() {
   const { colorScheme } = useColorScheme();
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerLargeTitle: false,
+        headerStyle: {
+          backgroundColor:
+            colorScheme === 'dark'
+              ? NAV_THEME.dark.colors.background
+              : NAV_THEME.light.colors.background,
+        },
+        headerBackButtonDisplayMode: 'minimal',
+      }}
+    >
       <Stack.Screen
-        name="index"
+        name="settings"
         options={{
           title: 'Settings',
           headerLeft: () => <DrawerToggleButton />,
           headerLargeTitle: true,
           headerShadowVisible: false,
-          headerStyle: {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? NAV_THEME.dark.colors.background
-                : NAV_THEME.light.colors.background,
-          },
           headerLargeTitleStyle: {
             color: 'black',
           },
+        }}
+      />
+
+      <Stack.Screen
+        name="glimpse"
+        options={{
+          title: 'Glimpses',
+          headerShown: false,
         }}
       />
     </Stack>

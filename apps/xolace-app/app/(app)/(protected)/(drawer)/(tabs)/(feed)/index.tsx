@@ -29,6 +29,7 @@ import {
   SCROLL_DISTANCE_FOR_FULL_HIDE,
   SCROLL_THRESHOLD,
 } from '../../../../../../constants/config/tabBar-config';
+import { useFeedPosts } from '../../../../../../hooks/feed/use-feed-posts';
 import dummyPosts, {
   EnhancedPost,
 } from '../../../../../../lib/dummy-data/post';
@@ -41,6 +42,9 @@ const AnimatedFlashList = Animated.createAnimatedComponent(
 export default function HomePage() {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
+
+  // Get filtered posts based on global feed filter state
+  const { filteredPosts } = useFeedPosts(dummyPosts);
 
   // Shared values for scroll tracking
   const scrollOffset = useSharedValue(0);
@@ -168,7 +172,7 @@ export default function HomePage() {
       {/*    }}*/}
       {/*/>*/}
       <AnimatedFlashList
-        data={dummyPosts}
+        data={filteredPosts}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         getItemType={getItemType}
