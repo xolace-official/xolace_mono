@@ -1,17 +1,17 @@
-import { View , Pressable} from 'react-native';
 import { ChevronDown } from 'lucide-react-native';
 import { useColorScheme } from 'nativewind';
+import { View } from 'react-native';
+
+import type { FeedFilterOption } from '@xolacekit/state';
 import {
-  ZeegoDropdownMenuRoot,
-  ZeegoDropdownMenuTrigger,
+  Text,
   ZeegoDropdownMenuContent,
   ZeegoDropdownMenuItem,
-  ZeegoDropdownMenuItemTitle,
   ZeegoDropdownMenuItemIcon,
-  ZeegoDropdownMenuSeparator,
-  Text
+  ZeegoDropdownMenuItemTitle,
+  ZeegoDropdownMenuRoot,
+  ZeegoDropdownMenuTrigger,
 } from '@xolacekit/ui';
-import type { FeedFilterOption } from '@xolacekit/state';
 
 interface FeedHeaderTitleDropdownProps {
   selected: FeedFilterOption;
@@ -41,46 +41,43 @@ const FILTER_OPTIONS = [
   },
 ];
 
-export function FeedHeaderTitleDropdown({ 
-  selected, 
-  onSelect 
+export function FeedHeaderTitleDropdown({
+  selected,
+  onSelect,
 }: FeedHeaderTitleDropdownProps) {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
 
-  const selectedItem = FILTER_OPTIONS.find(item => item.key === selected);
+  const selectedItem = FILTER_OPTIONS.find((item) => item.key === selected);
 
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <View className="flex-row items-center gap-1.5 px-4 py-3 border rounded-full border-black/10 bg-muted/50 dark:border-white/10">
+        <View className="flex-row items-center gap-1.5 rounded-full border border-black/10 bg-muted/50 px-4 py-3 dark:border-white/10">
           <Text className="text-xl font-semibold text-foreground">
             {selectedItem?.title || 'Campfire'}
           </Text>
-          <ChevronDown 
-            size={16} 
-            color={isDark ? '#e5e7eb' : '#1f2937'} 
-          />
+          <ChevronDown size={16} color={isDark ? '#e5e7eb' : '#1f2937'} />
         </View>
       </ZeegoDropdownMenuTrigger>
 
       <ZeegoDropdownMenuContent>
         {FILTER_OPTIONS.map((item) => (
-
-            <ZeegoDropdownMenuItem key={item.key} onSelect={() => onSelect(item.key)}>
-              <ZeegoDropdownMenuItemTitle>
-                {item.title}
-              </ZeegoDropdownMenuItemTitle>
-              <ZeegoDropdownMenuItemIcon
-                ios={{
-                  name: item.icon,
-                  pointSize: 18,
-                }}
-                androidIconName={getAndroidIconName(item.key)}
-              />
-            </ZeegoDropdownMenuItem>
-            
-      
+          <ZeegoDropdownMenuItem
+            key={item.key}
+            onSelect={() => onSelect(item.key)}
+          >
+            <ZeegoDropdownMenuItemTitle>
+              {item.title}
+            </ZeegoDropdownMenuItemTitle>
+            <ZeegoDropdownMenuItemIcon
+              ios={{
+                name: item.icon,
+                pointSize: 18,
+              }}
+              androidIconName={getAndroidIconName(item.key)}
+            />
+          </ZeegoDropdownMenuItem>
         ))}
       </ZeegoDropdownMenuContent>
     </ZeegoDropdownMenuRoot>
@@ -94,6 +91,6 @@ function getAndroidIconName(key: FeedFilterOption): string {
     trending: 'trending_up',
     campfires: 'group',
   };
-  
+
   return androidIconMap[key] || 'feed';
 }

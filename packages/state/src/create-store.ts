@@ -37,11 +37,7 @@ type PrefLocalSlice = {
   resetToggles: () => void;
 };
 
-export type FeedFilterOption = 
-  | 'latest'
-  | 'popular'
-  | 'trending'
-  | 'campfires';
+export type FeedFilterOption = 'latest' | 'popular' | 'trending' | 'campfires';
 
 type FeedSlice = {
   feedFilter: FeedFilterOption;

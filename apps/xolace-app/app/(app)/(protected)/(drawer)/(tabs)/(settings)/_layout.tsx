@@ -7,16 +7,16 @@ export default function SettingsLayout() {
   const { colorScheme } = useColorScheme();
   return (
     <Stack
-    screenOptions={{
-       headerLargeTitle: false,
-       headerStyle: {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? NAV_THEME.dark.colors.background
-                : NAV_THEME.light.colors.background,
-          },
-          headerBackButtonDisplayMode: 'minimal'
-    }}
+      screenOptions={{
+        headerLargeTitle: false,
+        headerStyle: {
+          backgroundColor:
+            colorScheme === 'dark'
+              ? NAV_THEME.dark.colors.background
+              : NAV_THEME.light.colors.background,
+        },
+        headerBackButtonDisplayMode: 'minimal',
+      }}
     >
       <Stack.Screen
         name="settings"
@@ -28,7 +28,6 @@ export default function SettingsLayout() {
           headerLargeTitleStyle: {
             color: 'black',
           },
-          
         }}
       />
 
@@ -36,7 +35,7 @@ export default function SettingsLayout() {
         name="glimpse"
         options={{
           title: 'Glimpses',
-          headerShown: false
+          headerShown: false,
         }}
       />
     </Stack>

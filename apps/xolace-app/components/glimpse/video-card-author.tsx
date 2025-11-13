@@ -1,5 +1,3 @@
-// apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/glimpse/components/video-card-author.tsx
-import { Image } from 'expo-image';
 import { View } from 'react-native';
 
 import {
@@ -25,7 +23,7 @@ export function VideoCardAuthor({
 }: VideoCardAuthorProps) {
   return (
     <View className="flex-row items-center gap-3">
-      <Avatar alt={name} className="w-8 h-8">
+      <Avatar alt={name} className="h-8 w-8">
         <AvatarImage source={{ uri: avatarUrl }} />
         <AvatarFallback className="bg-gradient-to-br from-[#0536ff] to-[#6a71ea]">
           <Text className="text-xs font-semibold text-white">

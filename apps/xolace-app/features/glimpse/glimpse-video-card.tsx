@@ -1,8 +1,10 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/glimpse/components/glimpse-video-card.tsx
-import { View, Pressable, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
+import { Heart, Link2 } from 'lucide-react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+
 import { Text } from '@xolacekit/ui';
-import { Link2, Heart } from 'lucide-react-native';
+
 import { VideoCardAuthor } from '../../components/glimpse/video-card-author';
 import { VideoCardDuration } from '../../components/glimpse/video-card-duration';
 import { useVideoCardActions } from '../../hooks/glimpse/use-video-card-actions';
@@ -13,12 +15,14 @@ interface GlimpseVideoCardProps {
 }
 
 export function GlimpseVideoCard({ video }: GlimpseVideoCardProps) {
-  const { handleCardPress, handleCopyLink, copied } = useVideoCardActions(video.id);
+  const { handleCardPress, handleCopyLink, copied } = useVideoCardActions(
+    video.id,
+  );
 
   return (
-    <Pressable 
+    <Pressable
       onPress={handleCardPress}
-      className="overflow-hidden bg-white border border-gray-200 rounded-2xl dark:border-white/10 dark:bg-white/5 active:opacity-90"
+      className="overflow-hidden rounded-2xl border border-gray-200 bg-white active:opacity-90 dark:border-white/10 dark:bg-white/5"
       style={styles.card}
     >
       {/* Thumbnail */}
@@ -28,18 +32,15 @@ export function GlimpseVideoCard({ video }: GlimpseVideoCardProps) {
           style={{ width: '100%', height: 250 }}
           contentFit="cover"
         />
-        
+
         <VideoCardDuration duration={video.duration} />
-        
+
         {/* Copy Link Button */}
         <Pressable
           onPress={handleCopyLink}
-          className="absolute items-center justify-center w-10 h-10 border rounded-full top-4 right-4 bg-black/50 border-white/20 active:opacity-70"
+          className="absolute right-4 top-4 h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/50 active:opacity-70"
         >
-          <Link2 
-            size={18} 
-            color={copied ? '#22c55e' : '#ffffff'} 
-          />
+          <Link2 size={18} color={copied ? '#22c55e' : '#ffffff'} />
         </Pressable>
       </View>
 
@@ -51,14 +52,22 @@ export function GlimpseVideoCard({ video }: GlimpseVideoCardProps) {
           visibility={video.visibility}
         />
 
-        <Text className="text-lg font-semibold text-foreground" numberOfLines={2}>
+        <Text
+          className="text-lg font-semibold text-foreground"
+          numberOfLines={2}
+        >
           {video.title} - {formatDate(video.createdAt)}
         </Text>
 
         {/* Stats */}
         <View className="flex-row items-center">
           <View className="flex-row items-center gap-1.5">
-            <Heart size={16} className="text-rose-500" fill="#f43f5e" color={'#f43f5e'} />
+            <Heart
+              size={16}
+              className="text-rose-500"
+              fill="#f43f5e"
+              color={'#f43f5e'}
+            />
             <Text className="text-sm font-medium text-foreground">
               {video.likesCount}
             </Text>
@@ -70,7 +79,7 @@ export function GlimpseVideoCard({ video }: GlimpseVideoCardProps) {
 }
 
 const styles = StyleSheet.create({
-  card : {
+  card: {
     elevation: 2,
     shadowColor: '#000',
     shadowOpacity: 0.2,
@@ -79,8 +88,8 @@ const styles = StyleSheet.create({
       width: 1,
       height: 10,
     },
-  }
-})
+  },
+});
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);

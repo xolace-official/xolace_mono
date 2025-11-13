@@ -58,7 +58,7 @@ export * from './lib/icons/ChevronLeft';
 export * from './lib/icons/FileVideoCamera';
 
 // --- Utilities ---
-export * from './utils'
+export * from './utils';
 
 // --- types ---
 export type {

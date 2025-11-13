@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
-import { Text, FileVideoCamera } from '@xolacekit/ui';
+import { FileVideoCamera, Text } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
 import BackButton from '../../../../../../../components/shared/BackButton';
@@ -27,8 +27,10 @@ export default function Layout() {
           title: 'Discover Glimpses',
           headerLeft: () => <BackButton />,
           headerRight: () => (
-            <View className="flex flex-row ml-2">
-              <FileVideoCamera color={colorScheme === 'dark' ? 'white' : 'black'} />
+            <View className="ml-2 flex flex-row">
+              <FileVideoCamera
+                color={colorScheme === 'dark' ? 'white' : 'black'}
+              />
             </View>
           ),
           headerStyle: {

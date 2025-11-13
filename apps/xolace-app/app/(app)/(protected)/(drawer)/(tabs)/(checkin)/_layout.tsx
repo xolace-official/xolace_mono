@@ -10,18 +10,18 @@ export default function CheckinLayout() {
       screenOptions={{
         headerBackButtonDisplayMode: 'minimal',
         headerStyle: {
-            backgroundColor:
-              colorScheme === 'dark'
-                ? NAV_THEME.dark.colors.background
-                : NAV_THEME.light.colors.background,
-          },
+          backgroundColor:
+            colorScheme === 'dark'
+              ? NAV_THEME.dark.colors.background
+              : NAV_THEME.light.colors.background,
+        },
       }}
     >
       <Stack.Screen
         name="checkin"
         options={{
           title: 'Check In',
-          headerLeft: () => <DrawerToggleButton />,  
+          headerLeft: () => <DrawerToggleButton />,
           animation: 'fade_from_bottom',
         }}
       />
@@ -30,7 +30,7 @@ export default function CheckinLayout() {
         name="glimpse"
         options={{
           title: 'Glimpses',
-          headerShown: false
+          headerShown: false,
         }}
       />
     </Stack>

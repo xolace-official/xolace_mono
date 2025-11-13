@@ -1,11 +1,10 @@
-// apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/glimpse/hooks/use-video-card-actions.ts
 import { useState } from 'react';
+
 // import * as Clipboard from 'expo-clipboard';
-import { useRouter } from 'expo-router';
 
 export function useVideoCardActions(videoId: string) {
+  console.log(videoId);
   const [copied, setCopied] = useState(false);
-  const router = useRouter();
 
   const handleCardPress = () => {
     // Navigate to video detail
@@ -19,9 +18,9 @@ export function useVideoCardActions(videoId: string) {
 
     try {
       // Construct the full URL - adjust base URL as needed
-      const url = `xolace://glimpse/${videoId}`;
-    //   await Clipboard.setStringAsync(url);
-      
+      // const url = `xolace://glimpse/${videoId}`;
+      //   await Clipboard.setStringAsync(url);
+
       setCopied(true);
       setTimeout(() => {
         setCopied(false);

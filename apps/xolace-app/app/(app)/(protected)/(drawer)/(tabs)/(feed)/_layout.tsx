@@ -2,9 +2,10 @@ import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 
+import { useFeedFilter, useSetFeedFilter } from '@xolacekit/state';
 import { Bell } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
-import { useFeedFilter, useSetFeedFilter } from '@xolacekit/state';
+
 import { FeedHeaderTitleDropdown } from '../../../../../../components/feed/feed-header-title-dropdown';
 
 export default function Layout() {
@@ -36,7 +37,7 @@ export default function Layout() {
           ),
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
-            <View className="flex flex-row ml-2">
+            <View className="ml-2 flex flex-row">
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),
@@ -47,7 +48,7 @@ export default function Layout() {
         name="glimpse"
         options={{
           title: 'Glimpses',
-          headerShown: false
+          headerShown: false,
         }}
       />
     </Stack>

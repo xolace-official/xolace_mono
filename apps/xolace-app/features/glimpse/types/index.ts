@@ -1,8 +1,7 @@
-
-export type GlimpseSortOptionTypes = 
-  | 'most_recent' 
-  | 'most_viewed' 
-  | 'oldest_first' 
+export type GlimpseSortOptionTypes =
+  | 'most_recent'
+  | 'most_viewed'
+  | 'oldest_first'
   | 'least_viewed';
 
 export type GlimpseVisibility = 'public' | 'private' | 'unlisted';
