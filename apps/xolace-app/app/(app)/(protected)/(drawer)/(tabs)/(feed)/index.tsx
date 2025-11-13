@@ -32,6 +32,7 @@ import {
 import dummyPosts, {
   EnhancedPost,
 } from '../../../../../../lib/dummy-data/post';
+import { useFeedPosts } from '../../../../../../hooks/feed/use-feed-posts';
 
 // ✅ Create Animated version of FlashList for UI thread animations
 const AnimatedFlashList = Animated.createAnimatedComponent(
@@ -41,6 +42,9 @@ const AnimatedFlashList = Animated.createAnimatedComponent(
 export default function HomePage() {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
+
+   // Get filtered posts based on global feed filter state
+  const { filteredPosts } = useFeedPosts(dummyPosts);
 
   // Shared values for scroll tracking
   const scrollOffset = useSharedValue(0);
@@ -168,7 +172,7 @@ export default function HomePage() {
       {/*    }}*/}
       {/*/>*/}
       <AnimatedFlashList
-        data={dummyPosts}
+        data={filteredPosts}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         getItemType={getItemType}
@@ -194,12 +198,12 @@ export default function HomePage() {
             </Text>
           </View>
           <ViewUI marginT-20 marginH-20 marginB-20>
-            <Text color="#6D1865" className="px-12 text-center font-medium">
+            <Text color="#6D1865" className="px-12 font-medium text-center">
               You've just found your space. Your chosen campfires are ready, and
               you're never alone here.
             </Text>
           </ViewUI>
-          <View className="mb-8 flex flex-row items-center justify-center gap-2">
+          <View className="flex flex-row items-center justify-center gap-2 mb-8">
             <XolaceButton
               size="sm"
               label="Explore Campfires"

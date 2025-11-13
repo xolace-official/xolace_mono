@@ -4,9 +4,13 @@ import { View } from 'react-native';
 
 import { Bell } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
+import { useFeedFilter, useSetFeedFilter } from '@xolacekit/state';
+import { FeedHeaderTitleDropdown } from '../../../../../../components/feed/feed-header-title-dropdown';
 
 export default function Layout() {
   const { colorScheme } = useColorScheme();
+  const selectedFilter = useFeedFilter();
+  const setFeedFilter = useSetFeedFilter();
   return (
     <Stack
       screenOptions={{
@@ -24,6 +28,12 @@ export default function Layout() {
         name="index"
         options={{
           title: 'Campfire',
+          headerTitle: () => (
+            <FeedHeaderTitleDropdown
+              selected={selectedFilter}
+              onSelect={setFeedFilter}
+            />
+          ),
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
             <View className="flex flex-row ml-2">

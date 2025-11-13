@@ -37,6 +37,17 @@ type PrefLocalSlice = {
   resetToggles: () => void;
 };
 
+export type FeedFilterOption = 
+  | 'latest'
+  | 'popular'
+  | 'trending'
+  | 'campfires';
+
+type FeedSlice = {
+  feedFilter: FeedFilterOption;
+  setFeedFilter: (filter: FeedFilterOption) => void;
+};
+
 type HydrationSlice = {
   _hasHydrated: boolean;
   _setHasHydrated: (v: boolean) => void;
@@ -46,6 +57,7 @@ export type AppState = AuthSlice &
   UiSlice &
   ProfileLocalSlice &
   PrefLocalSlice &
+  FeedSlice &
   OnboardingSlice &
   HydrationSlice;
 
@@ -77,6 +89,10 @@ export const useAppStore = create<AppState>()(
           set((s) => ({ toggles: { ...s.toggles, [key]: value } })),
         resetToggles: () => set({ toggles: {} }),
 
+        // feed slice
+        feedFilter: 'latest',
+        setFeedFilter: (filter) => set({ feedFilter: filter }),
+
         // onboarding (versioned)
         onboardingCompletedVersion: null,
         completeOnboarding: (version = ONBOARDING_VERSION) =>
@@ -94,6 +110,7 @@ export const useAppStore = create<AppState>()(
           // persist only what is safe/useful at boot
           theme: s.theme,
           toggles: s.toggles,
+          feedFilter: s.feedFilter, // persist user's preferred feed filter
           onboardingCompletedVersion: s.onboardingCompletedVersion,
           // DO NOT persist auth identifiers unless you explicitly want cached UI routing.
           // userId/email/isAuthenticated rehydrate from Supabase listener on boot.
