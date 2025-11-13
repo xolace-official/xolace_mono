@@ -20,10 +20,10 @@ export default function GlimpseScreen() {
     sortOption,
   );
 
-  const segments = useSegments();
+const segments = useSegments() as string[];
+const isFeed = segments.includes('(feed)');
 
-  console.log('segment ', segments[4]);
-  const isFeed = segments[4] === '(feed)';
+  console.log('segment ', isFeed ? "feed" : '');
 
   // const handleUpload = () => {
   //   // Navigate to upload screen
