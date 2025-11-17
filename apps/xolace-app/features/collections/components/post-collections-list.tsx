@@ -62,7 +62,6 @@ function PostCollectionsListComponent({ isActive }: PostCollectionsListProps) {
       data={posts}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      estimatedItemSize={360}
       refreshControl={
         <RefreshControl
           refreshing={
