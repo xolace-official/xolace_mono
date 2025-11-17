@@ -65,7 +65,7 @@ function SegmentedControlComponent({
     >
       <AnimatedIndicator
         pointerEvents="none"
-        className="absolute h-8 rounded-full bg-[#6a71ea] "
+        className="absolute h-8 rounded-full bg-[#6a71ea]"
         style={[
           {
             width: itemWidth - 6,
@@ -86,7 +86,7 @@ function SegmentedControlComponent({
                 onChange?.(segment.value);
               }
             }}
-            className="items-center justify-center flex-1 px-2"
+            className="flex-1 items-center justify-center px-2"
             style={{ width: itemWidth }}
           >
             <Text

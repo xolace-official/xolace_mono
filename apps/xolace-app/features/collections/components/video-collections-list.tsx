@@ -1,11 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
 
 import { FlashList } from '@shopify/flash-list';
-import {
-  ActivityIndicator,
-  RefreshControl,
-  View,
-} from 'react-native';
+import { ActivityIndicator, RefreshControl, View } from 'react-native';
 
 import { GlimpseVideoCard } from '../../glimpse/glimpse-video-card';
 import { useVideoCollections } from '../hooks/use-video-collections';
@@ -69,8 +65,7 @@ function VideoCollectionsListComponent({
       refreshControl={
         <RefreshControl
           refreshing={
-            (isFetching && !isFetchingNextPage) ||
-            (isLoading && !videos.length)
+            (isFetching && !isFetchingNextPage) || (isLoading && !videos.length)
           }
           onRefresh={() => {
             void refetch();

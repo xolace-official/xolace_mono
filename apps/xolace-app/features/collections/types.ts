@@ -45,8 +45,7 @@ export type CollectionPostRow =
     posts: PostWithRelations | null;
   };
 
-export type VideoWithRelations =
-  Database['public']['Tables']['videos']['Row'];
+export type VideoWithRelations = Database['public']['Tables']['videos']['Row'];
 
 export type VideoCollectionRow =
   Database['public']['Tables']['video_collections']['Row'] & {

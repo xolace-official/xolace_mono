@@ -1,11 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
 
 import { FlashList } from '@shopify/flash-list';
-import {
-  ActivityIndicator,
-  RefreshControl,
-  View,
-} from 'react-native';
+import { ActivityIndicator, RefreshControl, View } from 'react-native';
 
 import { EnhancedPostCard } from '../../../components/cards/EnhancedPostCard';
 import { usePostCollections } from '../hooks/use-post-collections';
@@ -40,7 +36,7 @@ function PostCollectionsListComponent({ isActive }: PostCollectionsListProps) {
 
   const renderItem = useCallback(
     ({ item }: { item: (typeof posts)[number] }) => (
-        <EnhancedPostCard post={item} />
+      <EnhancedPostCard post={item} />
     ),
     [],
   );
@@ -65,8 +61,7 @@ function PostCollectionsListComponent({ isActive }: PostCollectionsListProps) {
       refreshControl={
         <RefreshControl
           refreshing={
-            (isFetching && !isFetchingNextPage) ||
-            (isLoading && !posts.length)
+            (isFetching && !isFetchingNextPage) || (isLoading && !posts.length)
           }
           onRefresh={() => {
             void refetch();

@@ -60,8 +60,7 @@ export function usePostCollections(options?: { enabled?: boolean }) {
     staleTime: 60 * 1000,
     initialPageParam: 0,
     queryFn: async ({ pageParam }) => {
-      const currentPage =
-        typeof pageParam === 'number' ? pageParam : 0;
+      const currentPage = typeof pageParam === 'number' ? pageParam : 0;
       const from = currentPage * PAGE_SIZE;
       const to = from + PAGE_SIZE - 1;
 
@@ -79,16 +78,11 @@ export function usePostCollections(options?: { enabled?: boolean }) {
       const items =
         data
           ?.map((row) => mapCollectionPostRow(row))
-          .filter(
-            (post): post is EnhancedPostCardModel => post !== null,
-          ) ?? [];
+          .filter((post): post is EnhancedPostCardModel => post !== null) ?? [];
 
       return {
         items,
-        nextCursor:
-          data && data.length === PAGE_SIZE
-            ? currentPage + 1
-            : null,
+        nextCursor: data && data.length === PAGE_SIZE ? currentPage + 1 : null,
       };
     },
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,

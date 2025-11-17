@@ -14,7 +14,10 @@ export type EnhancedPostCardModel = ComponentProps<
   typeof EnhancedPostCard
 >['post'];
 
-function mapVoteCount(votes: PostWithRelations['votes'], type: 'upvote' | 'downvote') {
+function mapVoteCount(
+  votes: PostWithRelations['votes'],
+  type: 'upvote' | 'downvote',
+) {
   if (!votes?.length) {
     return 0;
   }
@@ -55,8 +58,9 @@ export function mapCollectionPostRow(
     campfire_slug: post.campfires?.slug ?? null,
     campfire_icon_url: post.campfires?.icon_url ?? null,
     is_campfire_post: !!post.campfires,
-    prompt_text: (post as PostWithRelations & { prompt_text?: string | null })
-      .prompt_text ?? null,
+    prompt_text:
+      (post as PostWithRelations & { prompt_text?: string | null })
+        .prompt_text ?? null,
     posttags:
       post.posttags?.map((tag: PostTagRelation) => ({
         name: tag.tags?.name ?? '',
@@ -71,10 +75,8 @@ export function mapCollectionPostRow(
           content: slide.content,
         }))
         .sort(
-          (
-            a: { slide_index: number },
-            b: { slide_index: number },
-          ) => a.slide_index - b.slide_index,
+          (a: { slide_index: number }, b: { slide_index: number }) =>
+            a.slide_index - b.slide_index,
         ) ?? [],
   };
 }

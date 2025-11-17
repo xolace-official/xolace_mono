@@ -2,10 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
-import Animated, {
-  FadeInRight,
-  FadeOutLeft,
-} from 'react-native-reanimated';
+import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated';
 
 import { SegmentedControl } from '../../../../../../components/collections/segmented-control';
 import { PostCollectionsList } from '../../../../../../features/collections/components/post-collections-list';
@@ -31,7 +28,7 @@ export default function CollectionsScreen() {
   }, []);
 
   return (
-    <View className="flex-1 pt-48 pb-20 bg-background">
+    <View className="flex-1 bg-background pb-20 pt-48">
       <Stack.Screen
         options={{
           title: 'Collections📚',
@@ -45,7 +42,7 @@ export default function CollectionsScreen() {
               onChange={handleSegmentChange}
             />
           ),
-          headerBackButtonDisplayMode: 'minimal'
+          headerBackButtonDisplayMode: 'minimal',
         }}
       />
 
