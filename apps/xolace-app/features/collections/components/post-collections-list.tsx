@@ -40,9 +40,7 @@ function PostCollectionsListComponent({ isActive }: PostCollectionsListProps) {
 
   const renderItem = useCallback(
     ({ item }: { item: (typeof posts)[number] }) => (
-      <View className="px-4 py-3">
         <EnhancedPostCard post={item} />
-      </View>
     ),
     [],
   );

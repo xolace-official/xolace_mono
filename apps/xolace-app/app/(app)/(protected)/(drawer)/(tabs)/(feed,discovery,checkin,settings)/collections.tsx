@@ -7,7 +7,7 @@ import Animated, {
   FadeOutLeft,
 } from 'react-native-reanimated';
 
-import { SegmentedControl } from '../../../../../../components/segmented-control';
+import { SegmentedControl } from '../../../../../../components/collections/segmented-control';
 import { PostCollectionsList } from '../../../../../../features/collections/components/post-collections-list';
 import { VideoCollectionsList } from '../../../../../../features/collections/components/video-collections-list';
 
@@ -31,9 +31,13 @@ export default function CollectionsScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-background">
+    <View className="flex-1 pt-44 bg-background">
       <Stack.Screen
         options={{
+          title: 'Collections',
+          headerLargeTitle: true,
+          headerTransparent: true,
+          headerBlurEffect: 'regular',
           headerTitle: () => (
             <SegmentedControl
               segments={segments}
@@ -41,6 +45,7 @@ export default function CollectionsScreen() {
               onChange={handleSegmentChange}
             />
           ),
+          headerBackButtonDisplayMode: 'minimal'
         }}
       />
 
