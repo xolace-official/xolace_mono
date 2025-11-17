@@ -66,7 +66,6 @@ function VideoCollectionsListComponent({
       data={videos}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      estimatedItemSize={280}
       refreshControl={
         <RefreshControl
           refreshing={
