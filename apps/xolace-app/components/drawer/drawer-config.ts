@@ -27,12 +27,6 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   { id: 'fireside', label: 'Fireside', href: '/', icon: Flame },
 
   {
-    id: 'explore',
-    label: 'Explore',
-    href: '/(app)/(protected)/(drawer)/(tabs)/discovery',
-    icon: Compass,
-  },
-  {
     id: 'channel',
     label: 'Channel',
     href: '/(app)/(protected)/(drawer)/channel',
