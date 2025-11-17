@@ -1,4 +1,3 @@
-import { BookOpenCheck } from 'lucide-react-native';
 import { View } from 'react-native';
 
 import { Text, cn, useColorScheme } from '@xolacekit/ui';
