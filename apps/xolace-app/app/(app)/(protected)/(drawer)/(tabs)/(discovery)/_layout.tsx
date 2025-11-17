@@ -32,6 +32,14 @@ export default function DiscoveryLayout() {
           headerShown: false,
         }}
       />
+
+      <Stack.Screen
+        name="health-tips"
+        options={{
+          title: 'Health tips',
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

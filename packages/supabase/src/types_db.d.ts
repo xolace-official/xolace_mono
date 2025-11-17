@@ -837,6 +837,7 @@ export type Database = {
       };
       comments: {
         Row: {
+          ai_suggestion: boolean;
           author_avatar_url: string | null;
           author_name: string | null;
           campfire_id: string | null;
@@ -850,6 +851,7 @@ export type Database = {
           post: string;
         };
         Insert: {
+          ai_suggestion?: boolean;
           author_avatar_url?: string | null;
           author_name?: string | null;
           campfire_id?: string | null;
@@ -863,6 +865,7 @@ export type Database = {
           post: string;
         };
         Update: {
+          ai_suggestion?: boolean;
           author_avatar_url?: string | null;
           author_name?: string | null;
           campfire_id?: string | null;
@@ -1054,11 +1057,14 @@ export type Database = {
           content: string;
           created_at: string;
           created_by: string | null;
+          excerpt: string | null;
           id: number;
           is_approved: boolean;
           is_sponsored: boolean;
+          read_time: number;
           slug: string;
           title: string;
+          topic: string;
         };
         Insert: {
           author_avatar_url?: string | null;
@@ -1066,11 +1072,14 @@ export type Database = {
           content: string;
           created_at?: string;
           created_by?: string | null;
+          excerpt?: string | null;
           id?: number;
           is_approved?: boolean;
           is_sponsored?: boolean;
+          read_time?: number;
           slug: string;
           title: string;
+          topic?: string;
         };
         Update: {
           author_avatar_url?: string | null;
@@ -1078,11 +1087,14 @@ export type Database = {
           content?: string;
           created_at?: string;
           created_by?: string | null;
+          excerpt?: string | null;
           id?: number;
           is_approved?: boolean;
           is_sponsored?: boolean;
+          read_time?: number;
           slug?: string;
           title?: string;
+          topic?: string;
         };
         Relationships: [
           {
@@ -1154,13 +1166,79 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: 'help center_created_by_fkey';
+            foreignKeyName: 'help_center_created_by_fkey';
             columns: ['created_by'];
             isOneToOne: false;
             referencedRelation: 'profiles';
             referencedColumns: ['id'];
           },
         ];
+      };
+      highlighted_feed_content: {
+        Row: {
+          badge_text: string | null;
+          campaign_name: string | null;
+          campaign_type: string | null;
+          created_at: string;
+          description: string;
+          end_date: string;
+          glimpse_clicks: number;
+          glimpse_link: string | null;
+          health_tip_clicks: number;
+          health_tip_link: string | null;
+          id: string;
+          image_url: string;
+          is_active: boolean;
+          priority: number;
+          source_label: string;
+          start_date: string;
+          theme_color: string;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          badge_text?: string | null;
+          campaign_name?: string | null;
+          campaign_type?: string | null;
+          created_at?: string;
+          description: string;
+          end_date: string;
+          glimpse_clicks?: number;
+          glimpse_link?: string | null;
+          health_tip_clicks?: number;
+          health_tip_link?: string | null;
+          id?: string;
+          image_url: string;
+          is_active?: boolean;
+          priority?: number;
+          source_label?: string;
+          start_date: string;
+          theme_color?: string;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          badge_text?: string | null;
+          campaign_name?: string | null;
+          campaign_type?: string | null;
+          created_at?: string;
+          description?: string;
+          end_date?: string;
+          glimpse_clicks?: number;
+          glimpse_link?: string | null;
+          health_tip_clicks?: number;
+          health_tip_link?: string | null;
+          id?: string;
+          image_url?: string;
+          is_active?: boolean;
+          priority?: number;
+          source_label?: string;
+          start_date?: string;
+          theme_color?: string;
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
       };
       likes: {
         Row: {
@@ -1668,6 +1746,7 @@ export type Database = {
           daily_prompt_enabled: boolean | null;
           guided_tour_enabled: boolean | null;
           id: string;
+          loading_experience: Database['public']['Enums']['loading_experience_types'];
           mark_sensitive_by_default: boolean | null;
           preferred_language: string | null;
           privacy: Database['public']['Enums']['privacy_options'] | null;
@@ -1683,6 +1762,7 @@ export type Database = {
           daily_prompt_enabled?: boolean | null;
           guided_tour_enabled?: boolean | null;
           id?: string;
+          loading_experience?: Database['public']['Enums']['loading_experience_types'];
           mark_sensitive_by_default?: boolean | null;
           preferred_language?: string | null;
           privacy?: Database['public']['Enums']['privacy_options'] | null;
@@ -1698,6 +1778,7 @@ export type Database = {
           daily_prompt_enabled?: boolean | null;
           guided_tour_enabled?: boolean | null;
           id?: string;
+          loading_experience?: Database['public']['Enums']['loading_experience_types'];
           mark_sensitive_by_default?: boolean | null;
           preferred_language?: string | null;
           privacy?: Database['public']['Enums']['privacy_options'] | null;
@@ -1807,7 +1888,7 @@ export type Database = {
           created_at?: string | null;
           id?: string;
           user_id: string;
-          video_id?: string;
+          video_id: string;
         };
         Update: {
           collection_name?: string | null;
@@ -2159,6 +2240,30 @@ export type Database = {
         };
         Returns: string;
       };
+      get_active_highlighted_content: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          badge_text: string | null;
+          campaign_name: string | null;
+          campaign_type: string | null;
+          created_at: string;
+          description: string;
+          end_date: string;
+          glimpse_clicks: number;
+          glimpse_link: string | null;
+          health_tip_clicks: number;
+          health_tip_link: string | null;
+          id: string;
+          image_url: string;
+          is_active: boolean;
+          priority: number;
+          source_label: string;
+          start_date: string;
+          theme_color: string;
+          title: string;
+          updated_at: string;
+        }[];
+      };
       get_campfire_approved_users: {
         Args: { p_campfire_id: string };
         Returns: {
@@ -2227,6 +2332,7 @@ export type Database = {
       get_comments_with_replies: {
         Args: { post_id_param: string };
         Returns: {
+          ai_suggestion: boolean;
           author_avatar_url: string | null;
           author_name: string | null;
           campfire_id: string | null;
@@ -2336,6 +2442,46 @@ export type Database = {
           post_slides: Json;
         }[];
       };
+      get_personalized_feed_v2: {
+        Args: {
+          user_id_param: string;
+          page_size?: number;
+          offset_param?: number;
+        };
+        Returns: {
+          id: string;
+          created_at: string;
+          created_by: string;
+          author_name: string;
+          content: string;
+          mood: Database['public']['Enums']['post_mood'];
+          author_avatar_url: string;
+          expires_in_24hr: boolean;
+          duration: Database['public']['Enums']['post_duration'];
+          expires_at: string;
+          downvotes: number;
+          upvotes: number;
+          is_sensitive: boolean;
+          is_prompt_response: boolean;
+          type: Database['public']['Enums']['post_type'];
+          author_roles: Database['public']['Enums']['user_role'][];
+          campfire_id: string;
+          campfire_name: string;
+          campfire_slug: string;
+          campfire_icon_url: string;
+          daily_prompt_id: string;
+          prompt_text: string;
+          prompt_category: string;
+          priority_score: number;
+          is_new_post: boolean;
+          is_campfire_post: boolean;
+          posttags: Json;
+          comments_count: number;
+          views_count: number;
+          collections: Json;
+          post_slides: Json;
+        }[];
+      };
       get_user_campfire_permissions: {
         Args: { p_campfire_id: string };
         Returns: {
@@ -2355,6 +2501,15 @@ export type Database = {
         }[];
       };
       handle_vote: {
+        Args: {
+          p_current_vote: Database['public']['Enums']['vote_types'];
+          p_post_id: string;
+          p_user_id: string;
+          p_vote_type: Database['public']['Enums']['vote_types'];
+        };
+        Returns: Json;
+      };
+      handle_vote_v1: {
         Args: {
           p_current_vote: Database['public']['Enums']['vote_types'];
           p_post_id: string;
@@ -2422,6 +2577,10 @@ export type Database = {
           reputation: number;
         }[];
       };
+      track_highlight_click: {
+        Args: { p_highlight_id: string; p_click_type: string };
+        Returns: undefined;
+      };
       upsert_tags_and_tips_relationship: {
         Args: { tag_names: string[]; tips_id: number };
         Returns: undefined;
@@ -2459,6 +2618,7 @@ export type Database = {
         | 'video'
         | 'campfire';
       feedback_status: 'open' | 'closed';
+      loading_experience_types: 'adaptive' | 'minimal' | 'none';
       moderation_action_type:
         | 'ban_user_temporary'
         | 'ban_user_permanent'
@@ -2692,6 +2852,7 @@ export const Constants = {
         'campfire',
       ],
       feedback_status: ['open', 'closed'],
+      loading_experience_types: ['adaptive', 'minimal', 'none'],
       moderation_action_type: [
         'ban_user_temporary',
         'ban_user_permanent',
