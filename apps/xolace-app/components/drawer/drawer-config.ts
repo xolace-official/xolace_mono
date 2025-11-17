@@ -1,5 +1,4 @@
 import {
-  Compass,
   Flame,
   Gift,
   HeartPulse,
@@ -27,12 +26,6 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   { id: 'fireside', label: 'Fireside', href: '/', icon: Flame },
 
   {
-    id: 'explore',
-    label: 'Explore',
-    href: '/(app)/(protected)/(drawer)/(tabs)/discovery',
-    icon: Compass,
-  },
-  {
     id: 'channel',
     label: 'Channel',
     href: '/(app)/(protected)/(drawer)/channel',
@@ -41,7 +34,7 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   {
     id: 'collections',
     label: 'Collections',
-    href: '/(app)/(protected)/(drawer)/collections',
+    href: '/(app)/(protected)/(drawer)/(tabs)/collections',
     icon: LibraryBig,
   },
   {
