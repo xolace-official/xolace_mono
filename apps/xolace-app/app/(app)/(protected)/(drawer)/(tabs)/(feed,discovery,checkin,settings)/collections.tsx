@@ -34,7 +34,7 @@ export default function CollectionsScreen() {
     <View className="flex-1 pt-48 pb-20 bg-background">
       <Stack.Screen
         options={{
-          title: 'Collections',
+          title: 'Collections📚',
           headerLargeTitle: true,
           headerTransparent: true,
           headerBlurEffect: 'regular',
