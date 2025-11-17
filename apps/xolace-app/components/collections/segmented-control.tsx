@@ -65,7 +65,7 @@ function SegmentedControlComponent({
     >
       <AnimatedIndicator
         pointerEvents="none"
-        className="absolute h-8 rounded-full bg-background dark:bg-white/70"
+        className="absolute h-8 rounded-full bg-[#6a71ea] "
         style={[
           {
             width: itemWidth - 6,
@@ -86,13 +86,13 @@ function SegmentedControlComponent({
                 onChange?.(segment.value);
               }
             }}
-            className="flex-1 items-center justify-center px-2"
+            className="items-center justify-center flex-1 px-2"
             style={{ width: itemWidth }}
           >
             <Text
               className={cn(
                 'text-sm font-semibold text-muted-foreground',
-                isActive && 'text-foreground',
+                isActive && 'text-gray-200',
               )}
             >
               {segment.label}
