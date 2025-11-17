@@ -53,7 +53,7 @@ export function useVideoCollections(options?: { enabled?: boolean }) {
         .select(VIDEO_COLLECTION_COLUMNS)
         .order('created_at', { ascending: false })
         .range(from, to)
-        .returns<VideoCollectionRow[]>();
+        .overrideTypes<VideoCollectionRow[], { merge: false }>();
 
       if (error) {
         throw new Error(error.message);

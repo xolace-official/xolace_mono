@@ -70,7 +70,7 @@ export function usePostCollections(options?: { enabled?: boolean }) {
         .select(COLLECTION_COLUMNS)
         .order('created_at', { ascending: false })
         .range(from, to)
-        .returns<CollectionPostRow[]>();
+        .overrideTypes<CollectionPostRow[], { merge: false }>();
 
       if (error) {
         throw new Error(error.message);
