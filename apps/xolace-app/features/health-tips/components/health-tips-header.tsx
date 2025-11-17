@@ -8,7 +8,7 @@ export function HealthTipsHeader() {
   return (
     <View
       className={cn(
-        'flex-row items-center gap-3 rounded-2xl border p-4 mt-2',
+        'mt-2 flex-row items-center gap-3 rounded-2xl border p-4',
         colorScheme === 'dark'
           ? 'border-white/10 bg-white/5'
           : 'border-gray-200 bg-white',

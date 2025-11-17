@@ -37,7 +37,7 @@ export default function Layout() {
           ),
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
-            <View className="flex flex-row ml-2">
+            <View className="ml-2 flex flex-row">
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),
