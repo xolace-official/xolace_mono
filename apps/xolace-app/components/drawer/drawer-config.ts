@@ -74,7 +74,7 @@ export const HEALTH_SPACE_ITEMS: DrawerRouteItem[] = [
   {
     id: 'health-tips',
     label: 'Health Tips',
-    href: '/(app)/(protected)/(drawer)/campfire/discover',
+    href: '/(app)/(protected)/(drawer)/(tabs)/health-tips',
     icon: HeartPulse,
     badgeLabel: 'New',
     badgeVariant: 'default',
