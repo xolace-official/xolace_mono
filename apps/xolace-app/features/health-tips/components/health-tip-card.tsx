@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 
-import { Pressable, View } from 'react-native';
+import { Pressable, View, Text } from 'react-native';
 import { ArrowRight } from 'lucide-react-native';
 
 import {
@@ -9,7 +9,7 @@ import {
   AvatarImage,
   Badge,
   Card,
-  Text,
+useColorScheme
 } from '@xolacekit/ui';
 
 import type { HealthTipListItem } from '../types';
@@ -45,6 +45,8 @@ export const HealthTipCard = memo(function HealthTipCard({
   tip,
   onPress,
 }: HealthTipCardProps) {
+  const {colorScheme} = useColorScheme()
+  const isDark = colorScheme === 'dark'
   const topicMeta =
     TOPIC_STYLES[tip.topic] ??
     ({
@@ -74,7 +76,7 @@ export const HealthTipCard = memo(function HealthTipCard({
   const readMoreActive = Boolean(onPress);
 
   return (
-    <Card className="p-4 border shadow-sm rounded-3xl border-border/60 bg-card/90">
+    <Card className="p-4 border shadow-sm rounded-2xl border-border/60 bg-background">
       <View className="flex-row gap-3">
         <Avatar alt={tip.author_name} className="w-12 h-12">
           {tip.author_avatar_url ? (
@@ -89,8 +91,8 @@ export const HealthTipCard = memo(function HealthTipCard({
         </Avatar>
 
         <View className="flex-1">
-          <View className="flex-row items-start justify-between gap-3">
-            <Text className="flex-1 text-lg font-semibold leading-6 text-foreground">
+          <View className="flex-row items-start justify-between gap-2">
+            <Text numberOfLines={1} className="flex-1 text-lg font-semibold leading-6 text-foreground">
               {tip.title}
             </Text>
             <Text className="text-xs font-medium text-muted-foreground">
@@ -98,21 +100,22 @@ export const HealthTipCard = memo(function HealthTipCard({
             </Text>
           </View>
 
-          <Badge
-          variant={'secondary'}
-            className={`mt-3 self-start px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${topicMeta.badgeClassName}`}
+          <View
+            className={`  w-20 min-w-20 px-2 py-1 rounded-full dark:bg-emerald-900/30`}
+            style={{backgroundColor: isDark ? 'rgb(6 78 59 / 0.3)': '#d1fae5'}}
           >
-            <Text>{topicMeta.label}</Text>
-          </Badge>
+            <Text 
+            className='text-xs font-medium tracking-wide text-center capitalize text-emerald-700 dark:text-emerald-300'>{topicMeta.label}</Text>
+          </View>
 
           <Text
-            className="mt-3 text-sm leading-5 text-muted-foreground"
+            className="mt-2 text-sm leading-5 text-black/80 dark:text-white/80 "
             numberOfLines={2}
           >
             {tip.excerpt ?? 'Tap to learn more about this wellness insight.'}
           </Text>
 
-          <Text className="mt-4 text-xs uppercase tracking-[0.1rem] text-muted-foreground">
+          <Text className="mt-2 text-xs capitalize tracking-[0.1rem] text-muted-foreground">
             By {tip.author_name}
           </Text>
 
@@ -121,7 +124,7 @@ export const HealthTipCard = memo(function HealthTipCard({
             accessibilityRole="button"
             accessibilityLabel={`Read more about ${tip.title}`}
             disabled={!readMoreActive}
-            className="flex-row items-center gap-1 mt-3"
+            className="flex-row items-center gap-1 mt-2"
           >
             <Text
               className={`text-sm font-semibold ${
