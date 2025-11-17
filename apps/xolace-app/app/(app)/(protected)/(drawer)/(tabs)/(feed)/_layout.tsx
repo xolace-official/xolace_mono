@@ -37,7 +37,7 @@ export default function Layout() {
           ),
           headerLeft: () => <DrawerToggleButton />,
           headerRight: () => (
-            <View className="ml-2 flex flex-row">
+            <View className="flex flex-row ml-2">
               <Bell color={colorScheme === 'dark' ? 'white' : 'black'} />
             </View>
           ),
@@ -48,6 +48,14 @@ export default function Layout() {
         name="glimpse"
         options={{
           title: 'Glimpses',
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="health-tips"
+        options={{
+          title: 'Health tips',
           headerShown: false,
         }}
       />
