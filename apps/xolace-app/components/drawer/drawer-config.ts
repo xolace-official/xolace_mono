@@ -41,7 +41,7 @@ export const PRIMARY_NAV_ITEMS: DrawerRouteItem[] = [
   {
     id: 'collections',
     label: 'Collections',
-    href: '/(app)/(protected)/(drawer)/collections',
+    href: '/(app)/(protected)/(drawer)/(tabs)/collections',
     icon: LibraryBig,
   },
   {
