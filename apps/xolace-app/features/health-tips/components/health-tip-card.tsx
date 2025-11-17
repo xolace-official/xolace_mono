@@ -7,7 +7,6 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-  Badge,
   Card,
 useColorScheme
 } from '@xolacekit/ui';
@@ -23,11 +22,15 @@ const TOPIC_STYLES: Record<
     badgeClassName: 'bg-emerald-500/15 text-emerald-300 border-none',
   },
   stress: {
-    label: 'Stress',
+    label: 'Stress Management',
     badgeClassName: 'bg-green-500/15 text-green-300 border-none',
   },
   mindfulness: {
     label: 'Mindfulness',
+    badgeClassName: 'bg-blue-500/10 text-blue-300 border-none',
+  },
+  sleep: {
+    label: 'Sleep Better',
     badgeClassName: 'bg-blue-500/10 text-blue-300 border-none',
   },
   general: {

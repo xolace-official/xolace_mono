@@ -2,8 +2,7 @@
 import { View } from 'react-native';
 import { Stack } from 'expo-router';
 
-import { NAV_THEME, useColorScheme, Text } from '@xolacekit/ui';
-import { BookOpenCheck } from 'lucide-react-native';
+import { NAV_THEME, useColorScheme, Text, BookOpenCheck } from '@xolacekit/ui';
 
 import BackButton from '../../../../../../../components/shared/BackButton';
 
