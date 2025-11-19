@@ -53,7 +53,7 @@ export const HealthTipAuthorCard = memo(function HealthTipAuthorCard({
 
   return (
     <View
-      className="flex-row gap-4 p-4 mt-3 border rounded-3xl"
+      className="mt-3 flex-row gap-4 rounded-3xl border p-4"
       style={{
         backgroundColor: isDark
           ? NAV_THEME.dark.colors.glass_background

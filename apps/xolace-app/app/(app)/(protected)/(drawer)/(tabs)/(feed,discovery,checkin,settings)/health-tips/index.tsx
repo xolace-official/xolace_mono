@@ -42,8 +42,8 @@ export default function HealthTipsScreen() {
     }
 
     router.push({
-      pathname:'/health-tips/[slug]',
-      params : {slug: tip.slug},
+      pathname: '/health-tips/[slug]',
+      params: { slug: tip.slug },
     });
   }, []);
 

@@ -48,7 +48,7 @@ export const NAV_THEME = {
       beta_badge: '#F472B6',
       active_route: '#6a71ea',
       glass_background: '#fff', // background color for some cards
-      glass_border: '#e5e7eb'
+      glass_border: '#e5e7eb',
     },
     fonts: FONTS,
   },
@@ -65,7 +65,7 @@ export const NAV_THEME = {
       beta_badge: '#F472B6',
       active_route: '#453fc3',
       glass_background: 'rgb(255 255 255 / 0.05)', // background color for some cards
-      glass_border: 'rgb(255 255 255 / 0.1)' // the border that goes with it
+      glass_border: 'rgb(255 255 255 / 0.1)', // the border that goes with it
     },
     fonts: FONTS,
   },

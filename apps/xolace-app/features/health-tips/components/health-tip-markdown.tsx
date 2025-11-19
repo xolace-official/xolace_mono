@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { View } from 'react-native';
 import Markdown from 'react-native-marked';
 
-import { Text, useColorScheme, NAV_THEME } from '@xolacekit/ui';
+import { NAV_THEME, Text, useColorScheme } from '@xolacekit/ui';
 
 type HealthTipMarkdownProps = {
   content?: string;
@@ -23,7 +23,7 @@ export const HealthTipMarkdown = memo(function HealthTipMarkdown({
 
   if (!content) {
     return (
-      <View className="p-4 mt-6 border border-dashed rounded-3xl border-border/60 bg-card/40">
+      <View className="mt-6 rounded-3xl border border-dashed border-border/60 bg-card/40 p-4">
         <Text className="text-sm text-muted-foreground">
           We could not load the rest of this wellness insight. Please refresh to
           try again.
@@ -39,8 +39,10 @@ export const HealthTipMarkdown = memo(function HealthTipMarkdown({
         initialNumToRender: 24,
         scrollEnabled: false,
         contentContainerStyle: {
-          backgroundColor: isDark ? NAV_THEME.dark.colors.background : NAV_THEME.light.colors.background
-        }
+          backgroundColor: isDark
+            ? NAV_THEME.dark.colors.background
+            : NAV_THEME.light.colors.background,
+        },
       }}
       theme={{
         colors: {
@@ -108,7 +110,7 @@ export const HealthTipMarkdown = memo(function HealthTipMarkdown({
 
 function MarkdownSkeleton() {
   return (
-    <View className="p-4 mt-6 space-y-3 border rounded-3xl border-border/40 bg-card/40">
+    <View className="mt-6 space-y-3 rounded-3xl border border-border/40 bg-card/40 p-4">
       {Array.from({ length: 6 }, (_, index) => (
         <View
           key={`markdown-line-${index}`}
@@ -117,7 +119,7 @@ function MarkdownSkeleton() {
           } bg-muted/40`}
         />
       ))}
-      <View className="w-4/6 h-4 mt-2 rounded-full bg-muted/30" />
+      <View className="mt-2 h-4 w-4/6 rounded-full bg-muted/30" />
     </View>
   );
 }

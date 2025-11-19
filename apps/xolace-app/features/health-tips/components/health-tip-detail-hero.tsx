@@ -3,7 +3,7 @@ import { memo, useMemo } from 'react';
 import { Share2 } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
 
-import { Text, useColorScheme, NAV_THEME } from '@xolacekit/ui';
+import { NAV_THEME, Text, useColorScheme } from '@xolacekit/ui';
 
 import { getHealthTipTopicMeta } from '../constants/topic-meta';
 
@@ -23,7 +23,7 @@ export const HealthTipDetailHero = memo(function HealthTipDetailHero({
   isShareDisabled,
 }: HealthTipDetailHeroProps) {
   const { colorScheme } = useColorScheme();
-  const isDark = colorScheme === 'dark'
+  const isDark = colorScheme === 'dark';
   const meta = getHealthTipTopicMeta(topic ?? 'general');
   const readTimeLabel = useMemo(() => {
     if (!readTime) {
@@ -46,14 +46,18 @@ export const HealthTipDetailHero = memo(function HealthTipDetailHero({
         shadowColor: colorScheme === 'dark' ? '#000' : '#93a6ff',
         shadowOpacity: colorScheme === 'dark' ? 0.45 : 0.2,
         shadowRadius: 15,
-        backgroundColor: isDark ? NAV_THEME.dark.colors.glass_background : NAV_THEME.light.colors.glass_background,
-        borderColor: isDark ?  NAV_THEME.dark.colors.glass_border : NAV_THEME.light.colors.glass_border
+        backgroundColor: isDark
+          ? NAV_THEME.dark.colors.glass_background
+          : NAV_THEME.light.colors.glass_background,
+        borderColor: isDark
+          ? NAV_THEME.dark.colors.glass_border
+          : NAV_THEME.light.colors.glass_border,
       }}
     >
       <View className="flex-row items-start justify-between gap-4">
         <View className="flex-1">
           <View
-            className="self-start px-3 py-1 rounded-full"
+            className="self-start rounded-full px-3 py-1"
             style={{ backgroundColor: meta.backgroundTint }}
           >
             <Text className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground">
