@@ -8,7 +8,7 @@ import BackButton from '../../../../../../../components/shared/BackButton';
 function HealthTipsHeaderTitle() {
   return (
     <View className="flex-row items-center gap-3">
-      <View className="rounded-2xl bg-primary/10 p-3">
+      <View className="p-3 rounded-2xl bg-primary/10">
         <BookOpenCheck size={20} color="#7C9CFF" strokeWidth={1.75} />
       </View>
 
@@ -16,11 +16,11 @@ function HealthTipsHeaderTitle() {
         <Text className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">
           Xolace
         </Text>
-        <View className="mt-1 flex-row items-center gap-2">
+        <View className="flex-row items-center gap-2 mt-1">
           <Text className="text-lg font-semibold text-foreground">
             Wellness Insight
           </Text>
-          <View className="h-2 w-2 rounded-full bg-violet-400" />
+          <View className="w-2 h-2 rounded-full bg-violet-400" />
         </View>
       </View>
     </View>
@@ -49,7 +49,7 @@ export default function HealthTipsLayout() {
       <Stack.Screen
         name="[slug]"
         options={{
-          title: 'Wellness insight',
+          title: 'Wellness Insight',
           headerLeft: () => <BackButton />,
           headerStyle: {
             backgroundColor:
