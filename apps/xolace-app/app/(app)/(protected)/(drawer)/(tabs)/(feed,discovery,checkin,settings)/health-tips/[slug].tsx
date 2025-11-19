@@ -73,7 +73,7 @@ export default function HealthTipDetailsScreen() {
     const preview =
       metadata.excerpt ??
       'Thoughtful micro-habits to stay grounded from the Xolace well-being team.';
-    const shareUrl = `https://xolace.com/health-tips/${slug}`;
+    const shareUrl = `https://xolace.app/health-tips/${slug}`;
 
     try {
       await Share.share({
