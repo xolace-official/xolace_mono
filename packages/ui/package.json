@@ -37,6 +37,7 @@
     "@rn-primitives/menubar": "catalog:",
     "@rn-primitives/navigation-menu": "catalog:",
     "@rn-primitives/popover": "catalog:",
+    "@rn-primitives/portal": "catalog:",
     "@rn-primitives/progress": "catalog:",
     "@rn-primitives/radio-group": "catalog:",
     "@rn-primitives/select": "catalog:",

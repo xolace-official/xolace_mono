@@ -1,0 +1,56 @@
+import type { PostDraftCommunity } from '../store/usePostDraftStore';
+
+export const MOCK_COMMUNITIES: Array<
+  PostDraftCommunity & { recent?: boolean }
+> = [
+  {
+    id: 'xolace',
+    name: 'Xolace',
+    slug: 'r/Xolace',
+    description: 'Our home base for mental health and wellness.',
+    memberCount: 2450,
+    avatar: 'https://i.pravatar.cc/100?img=64',
+    recent: true,
+  },
+  {
+    id: 'anxious',
+    name: 'Anxious Minds',
+    slug: 'r/anxiousminds',
+    description: 'Talk openly about anxiety with peers who get it.',
+    memberCount: 7800,
+    avatar: 'https://i.pravatar.cc/100?img=32',
+  },
+  {
+    id: 'nightowls',
+    name: 'Night Owls',
+    slug: 'r/nightowls',
+    description: 'Late-night venting and quiet support circles.',
+    memberCount: 1310,
+    avatar: 'https://i.pravatar.cc/100?img=58',
+    recent: true,
+  },
+  {
+    id: 'gradschool',
+    name: 'Grad School Support',
+    slug: 'r/gradschool',
+    description: 'Survive the semester together with tips and kinship.',
+    memberCount: 920,
+    avatar: 'https://i.pravatar.cc/100?img=41',
+  },
+  {
+    id: 'creatives',
+    name: 'Creative Recoveries',
+    slug: 'r/creatives',
+    description: 'Art, journaling and prompts for emotional processing.',
+    memberCount: 1640,
+    avatar: 'https://i.pravatar.cc/100?img=12',
+  },
+  {
+    id: 'mindful',
+    name: 'Mindful Minutes',
+    slug: 'r/mindfulminutes',
+    description: 'Short daily practices when you only have a moment.',
+    memberCount: 5200,
+    avatar: 'https://i.pravatar.cc/100?img=76',
+  },
+];

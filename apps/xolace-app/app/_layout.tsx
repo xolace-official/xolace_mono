@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { Platform } from 'react-native';
+import { PortalHost } from '@rn-primitives/portal';
 
 import { useAppStore } from '@xolacekit/state';
 // import from packages
@@ -44,6 +45,7 @@ export default function RootLayout() {
     <RootProvider>
       <SplashController />
       <Slot />
+      <PortalHost />
     </RootProvider>
   );
 }
