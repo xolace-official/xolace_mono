@@ -17,15 +17,15 @@ export const CommunitySelectorPill = ({
     ? community.name
     : 'Select a community';
 
-  const badgeLabel = community ? community.slug : 'r/';
+  const badgeLabel = community ? community.slug : 'x/';
 
   return (
     <Pressable
       onPress={onPress}
-      className="mt-1 self-start rounded-full border border-white/10 bg-white/5 px-4 py-2 active:opacity-80 dark:bg-white/5"
+      className="self-start px-4 py-2 mt-1 border rounded-full border-white/10 bg-white/5 active:opacity-80 dark:bg-white/5"
     >
       <View className="flex-row items-center gap-3">
-        <View className="rounded-full bg-white/10 px-3 py-1">
+        <View className="px-3 py-1 rounded-full bg-white/10">
           <Text className="text-sm font-semibold text-foreground">{badgeLabel}</Text>
         </View>
         <Text

@@ -11,7 +11,7 @@ const ProtectedLayout = () => {
       <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
       <Stack.Screen
         name="post-creation"
-        options={{ presentation: 'formSheet', headerShown: false }}
+        options={{ presentation: 'pageSheet', headerShown: false }}
       />
       <Stack.Screen
         name="post-to"

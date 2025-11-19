@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
 import { Image } from 'expo-image';
-import { Pressable, View } from 'react-native';
 import { X } from 'lucide-react-native';
+import { Pressable, View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
@@ -20,11 +20,17 @@ export const PostMediaPreview = memo(
     }
 
     return (
-      <View className="mt-6 overflow-hidden rounded-2xl border border-white/10">
+      <View className="mt-6 h-40 overflow-hidden rounded-2xl border border-white/10">
         <Image
-          source={{ uri: media.uri }}
+          source={media.uri}
           className="aspect-square w-full bg-muted"
           contentFit="cover"
+          transition={1000}
+          style={{
+            flex: 1,
+            width: '100%',
+            backgroundColor: '#0553',
+          }}
         />
         <Pressable
           onPress={onRemove}

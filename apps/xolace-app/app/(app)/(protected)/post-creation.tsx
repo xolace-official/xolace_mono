@@ -1,26 +1,34 @@
 import { useCallback, useMemo, useRef } from 'react';
 
-import { useRouter } from 'expo-router';
-import * as ImagePicker from 'expo-image-picker';
-import { Alert, View } from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { KeyboardAwareScrollView, KeyboardStickyView } from 'react-native-keyboard-controller';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import * as ImagePicker from 'expo-image-picker';
+import { useRouter } from 'expo-router';
+import { Alert, View } from 'react-native';
+import {
+  KeyboardAwareScrollView,
+  KeyboardStickyView,
+} from 'react-native-keyboard-controller';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import { Text } from '@xolacekit/ui';
 
-import { CreatePostHeader } from '../../../features/post/create/components/CreatePostHeader';
 import { CommunitySelectorPill } from '../../../features/post/create/components/CommunitySelectorPill';
+import { CreatePostHeader } from '../../../features/post/create/components/CreatePostHeader';
 import { ExpirationBadge } from '../../../features/post/create/components/ExpirationBadge';
-import { MoodPicker } from '../../../features/post/create/components/MoodPicker';
+import { MoodPicker } from '../../../features/post/create/components/MoodPicker2';
 import { PostComposerToolbar } from '../../../features/post/create/components/PostComposerToolbar';
 import { PostMediaPreview } from '../../../features/post/create/components/PostMediaPreview';
 import { PostTextFields } from '../../../features/post/create/components/PostTextFields';
 import { PostToolsSheet } from '../../../features/post/create/components/PostToolsSheet';
 import { usePostDraftStore } from '../../../features/post/create/store/usePostDraftStore';
+import { MoodChip } from '../../../features/post/create/components/MoodChip';
 
 const PostCreationScreen = () => {
   const router = useRouter();
+  const moodPickerRef = useRef<BottomSheet>(null);
   const insets = useSafeAreaInsets();
   const title = usePostDraftStore((state) => state.title);
   const body = usePostDraftStore((state) => state.body);
@@ -29,6 +37,7 @@ const PostCreationScreen = () => {
   const community = usePostDraftStore((state) => state.community);
   const image = usePostDraftStore((state) => state.image);
   const moodKey = usePostDraftStore((state) => state.moodKey);
+  const setMood = usePostDraftStore((state) => state.setMood);
   const attachImage = usePostDraftStore((state) => state.attachImage);
   const is24hOnly = usePostDraftStore((state) => state.is24hOnly);
   const setIs24hOnly = usePostDraftStore((state) => state.setIs24hOnly);
@@ -58,21 +67,17 @@ const PostCreationScreen = () => {
       return;
     }
 
-    Alert.alert(
-      'Discard draft?',
-      'Your current post draft will be lost.',
-      [
-        { text: 'Keep editing', style: 'cancel' },
-        {
-          text: 'Discard',
-          style: 'destructive',
-          onPress: () => {
-            resetDraft();
-            router.back();
-          },
+    Alert.alert('Discard draft?', 'Your current post draft will be lost.', [
+      { text: 'Keep editing', style: 'cancel' },
+      {
+        text: 'Discard',
+        style: 'destructive',
+        onPress: () => {
+          resetDraft();
+          router.back();
         },
-      ],
-    );
+      },
+    ]);
   }, [hasDraft, resetDraft, router]);
 
   const handleSubmit = useCallback(() => {
@@ -123,10 +128,18 @@ const PostCreationScreen = () => {
     toolsSheetRef.current?.expand();
   }, []);
 
+  const handleMoodPress = () => {
+    moodPickerRef.current?.expand();
+  };
+
+  const handleRemoveMood = () => {
+    setMood(null);
+  };
+
   const paddingBottom = Math.max(insets.bottom, 18);
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <SafeAreaView edges={['top']} className="flex-1 bg-background">
       <CreatePostHeader
         canSubmit={canSubmit}
         onClose={handleClose}
@@ -135,15 +148,14 @@ const PostCreationScreen = () => {
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
         bottomOffset={32}
-        extraKeyboardSpace={16}
-        contentContainerStyle={{
-          paddingBottom: 200,
-        }}
+        extraKeyboardSpace={16}   
       >
         <View className="px-4">
           <CommunitySelectorPill
             onPress={() => router.push('/(app)/(protected)/post-to')}
           />
+
+           {moodKey && <MoodChip moodId={moodKey} onRemove={handleRemoveMood} />}
 
           <PostTextFields
             title={title}
@@ -152,7 +164,7 @@ const PostCreationScreen = () => {
             onChangeBody={setBody}
           />
 
-          <MoodPicker />
+         
           <ExpirationBadge visible={is24hOnly} />
           {!community && (
             <Text className="mt-4 text-sm text-muted-foreground">
@@ -165,12 +177,12 @@ const PostCreationScreen = () => {
 
       <KeyboardStickyView>
         <View
-          className="border-t border-white/10 bg-background/95 pb-3 pt-2"
-          style={{ paddingBottom }}
+          className="pt-2 pb-5 border-t border-white/10 bg-background/95"
         >
           <PostComposerToolbar
             onPickImage={handlePickImage}
             onOpenTools={openToolsSheet}
+            onMoodPress={handleMoodPress}
           />
         </View>
       </KeyboardStickyView>
@@ -180,6 +192,7 @@ const PostCreationScreen = () => {
         is24h={is24hOnly}
         onToggle24h={setIs24hOnly}
       />
+       <MoodPicker ref={moodPickerRef} />
     </SafeAreaView>
   );
 };

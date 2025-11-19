@@ -13,11 +13,13 @@ import { Text, useColorScheme } from '@xolacekit/ui';
 type ToolbarProps = {
   onPickImage: () => void;
   onOpenTools: () => void;
+  onMoodPress: () => void;
 };
 
 export const PostComposerToolbar = ({
   onPickImage,
   onOpenTools,
+  onMoodPress
 }: ToolbarProps) => {
   const { colorScheme } = useColorScheme();
   const iconColor = colorScheme === 'dark' ? '#e5e7eb' : '#111827';
@@ -25,7 +27,7 @@ export const PostComposerToolbar = ({
   const actions = [
     { key: 'link', label: 'Link', icon: Link2, disabled: true },
     { key: 'image', label: 'Media', icon: ImageIcon, onPress: onPickImage },
-    { key: 'emoji', label: 'Emoji', icon: Smile, disabled: true },
+    { key: 'emoji', label: 'Emoji', icon: Smile, onPress: onMoodPress },
     { key: 'tools', label: 'Tools', icon: Settings2, onPress: onOpenTools },
     { key: 'mic', label: 'Voice', icon: Mic, disabled: true },
     { key: 'poll', label: 'Poll', icon: BarChart3, disabled: true },
@@ -42,7 +44,7 @@ export const PostComposerToolbar = ({
             disabled ? 'opacity-40' : 'active:opacity-80'
           }`}
         >
-          <View className="h-11 w-11 items-center justify-center rounded-full bg-white/5">
+          <View className="items-center justify-center rounded-full h-11 w-11 bg-white/5">
             <Icon size={22} color={iconColor} />
           </View>
           <Text className="mt-1 text-[11px] text-muted-foreground">{label}</Text>
