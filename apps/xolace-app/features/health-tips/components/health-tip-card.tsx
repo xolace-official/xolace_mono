@@ -11,31 +11,8 @@ import {
   useColorScheme,
 } from '@xolacekit/ui';
 
+import { getHealthTipTopicMeta } from '../constants/topic-meta';
 import type { HealthTipListItem } from '../types';
-
-const TOPIC_STYLES: Record<string, { label: string; badgeClassName: string }> =
-  {
-    awareness: {
-      label: 'Awareness',
-      badgeClassName: 'bg-emerald-500/15 text-emerald-300 border-none',
-    },
-    stress: {
-      label: 'Stress Management',
-      badgeClassName: 'bg-green-500/15 text-green-300 border-none',
-    },
-    mindfulness: {
-      label: 'Mindfulness',
-      badgeClassName: 'bg-blue-500/10 text-blue-300 border-none',
-    },
-    sleep: {
-      label: 'Sleep Better',
-      badgeClassName: 'bg-blue-500/10 text-blue-300 border-none',
-    },
-    general: {
-      label: 'General',
-      badgeClassName: 'bg-purple-500/10 text-purple-200 border-none',
-    },
-  };
 
 type HealthTipCardProps = {
   tip: HealthTipListItem;
@@ -48,12 +25,7 @@ export const HealthTipCard = memo(function HealthTipCard({
 }: HealthTipCardProps) {
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === 'dark';
-  const topicMeta =
-    TOPIC_STYLES[tip.topic] ??
-    ({
-      label: tip.topic,
-      badgeClassName: 'bg-foreground/10 text-foreground border-none',
-    } as const);
+  const topicMeta = getHealthTipTopicMeta(tip.topic);
 
   const initials = useMemo(() => {
     if (!tip.author_name) {

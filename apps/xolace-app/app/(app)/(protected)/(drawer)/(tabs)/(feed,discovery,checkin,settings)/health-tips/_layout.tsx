@@ -46,6 +46,20 @@ export default function HealthTipsLayout() {
           animation: 'fade_from_bottom',
         }}
       />
+      <Stack.Screen
+        name="[slug]"
+        options={{
+          title: 'Wellness Insight',
+          headerLeft: () => <BackButton />,
+          headerStyle: {
+            backgroundColor:
+              colorScheme === 'dark'
+                ? NAV_THEME.dark.colors.background
+                : NAV_THEME.light.colors.background,
+          },
+          animation: 'slide_from_right',
+        }}
+      />
     </Stack>
   );
 }

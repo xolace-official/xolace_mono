@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useSegments } from 'expo-router';
+import { router, useSegments } from 'expo-router';
 import { View } from 'react-native';
 
 import { HealthTipsHeader } from '../../../../../../../features/health-tips/components/health-tips-header';
@@ -25,8 +25,26 @@ export default function HealthTipsScreen() {
   }, [refetch]);
 
   const handlePressTip = useCallback((tip: HealthTipListItem) => {
-    console.log('[HealthTips] selected tip', tip.slug);
-    // TODO: Navigate to the tip details screen once available.
+    const params: Record<string, string> = {
+      slug: tip.slug,
+      title: tip.title,
+      author_name: tip.author_name,
+      topic: tip.topic,
+      read_time: tip.read_time?.toString() ?? '0',
+    };
+
+    if (tip.author_avatar_url) {
+      params.author_avatar_url = tip.author_avatar_url;
+    }
+
+    if (tip.excerpt) {
+      params.excerpt = tip.excerpt;
+    }
+
+    router.push({
+      pathname: '/health-tips/[slug]',
+      params: { slug: tip.slug },
+    });
   }, []);
 
   return (
