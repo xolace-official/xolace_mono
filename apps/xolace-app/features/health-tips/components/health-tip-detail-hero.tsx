@@ -41,7 +41,7 @@ export const HealthTipDetailHero = memo(function HealthTipDetailHero({
 
   return (
     <View
-      className={`rounded-3xl border border-border/60 bg-card/90 p-5 shadow-md`}
+      className={`rounded-3xl border p-5 shadow-md`}
       style={{
         shadowColor: colorScheme === 'dark' ? '#000' : '#93a6ff',
         shadowOpacity: colorScheme === 'dark' ? 0.45 : 0.2,
