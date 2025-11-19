@@ -23,7 +23,7 @@ export const HealthTipMarkdown = memo(function HealthTipMarkdown({
 
   if (!content) {
     return (
-      <View className="mt-6 rounded-3xl border border-dashed border-border/60 bg-card/40 p-4">
+      <View className="p-4 mt-6 border border-dashed rounded-3xl border-border/60 bg-card/40">
         <Text className="text-sm text-muted-foreground">
           We could not load the rest of this wellness insight. Please refresh to
           try again.
@@ -48,7 +48,7 @@ export const HealthTipMarkdown = memo(function HealthTipMarkdown({
         colors: {
           text: isDark ? '#f8fafc' : '#0f172a',
           border: isDark ? '#1f2937' : '#e5e7eb',
-          link: isDark ? '#1f3' : '#e5e7eb',
+          link: isDark ? '#6a71ea' : '#6a71ea',
           code: isDark ? '#1f2937' : '#e5e7eb',
         },
         spacing: {
@@ -110,7 +110,7 @@ export const HealthTipMarkdown = memo(function HealthTipMarkdown({
 
 function MarkdownSkeleton() {
   return (
-    <View className="mt-6 space-y-3 rounded-3xl border border-border/40 bg-card/40 p-4">
+    <View className="p-4 mt-6 space-y-3 border rounded-3xl border-border/40 bg-card/40">
       {Array.from({ length: 6 }, (_, index) => (
         <View
           key={`markdown-line-${index}`}
@@ -119,7 +119,7 @@ function MarkdownSkeleton() {
           } bg-muted/40`}
         />
       ))}
-      <View className="mt-2 h-4 w-4/6 rounded-full bg-muted/30" />
+      <View className="w-4/6 h-4 mt-2 rounded-full bg-muted/30" />
     </View>
   );
 }
