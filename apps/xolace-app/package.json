@@ -69,6 +69,7 @@
     "react-native-ios-context-menu": "catalog:",
     "react-native-ios-utilities": "catalog:",
     "react-native-keyboard-controller": "catalog:",
+    "react-native-marked": "catalog:",
     "react-native-mmkv": "catalog:",
     "react-native-reanimated": "catalog:",
     "react-native-safe-area-context": "catalog:",
