@@ -10,7 +10,6 @@ import {
 } from 'react-native-keyboard-controller';
 import {
   SafeAreaView,
-  useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
 import { Text } from '@xolacekit/ui';
@@ -29,7 +28,6 @@ import { MoodChip } from '../../../features/post/create/components/MoodChip';
 const PostCreationScreen = () => {
   const router = useRouter();
   const moodPickerRef = useRef<BottomSheet>(null);
-  const insets = useSafeAreaInsets();
   const title = usePostDraftStore((state) => state.title);
   const body = usePostDraftStore((state) => state.body);
   const setTitle = usePostDraftStore((state) => state.setTitle);
