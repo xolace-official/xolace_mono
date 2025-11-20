@@ -1,14 +1,9 @@
 import { JSX } from 'react';
 
-import { FlatList, Pressable, View } from 'react-native';
 import { Check } from 'lucide-react-native';
+import { FlatList, Pressable, View } from 'react-native';
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Text,
-} from '@xolacekit/ui';
+import { Avatar, AvatarFallback, AvatarImage, Text } from '@xolacekit/ui';
 
 import type { PostDraftCommunity } from '../../store/usePostDraftStore';
 
@@ -53,8 +48,8 @@ export const CommunityList = ({
               isActive ? 'bg-white/5' : ''
             }`}
           >
-            <View className="flex-row items-center flex-1 gap-3 pr-4">
-              <Avatar alt={item.name} className="w-12 h-12">
+            <View className="flex-1 flex-row items-center gap-3 pr-4">
+              <Avatar alt={item.name} className="h-12 w-12">
                 <AvatarImage source={{ uri: item.avatar }} />
                 <AvatarFallback>
                   <Text className="text-base font-semibold text-foreground">
@@ -78,7 +73,7 @@ export const CommunityList = ({
               </View>
             </View>
             {isActive && (
-              <View className="items-center justify-center rounded-full h-7 w-7 bg-primary/20">
+              <View className="h-7 w-7 items-center justify-center rounded-full bg-primary/20">
                 <Check size={18} color="#a78bfa" />
               </View>
             )}

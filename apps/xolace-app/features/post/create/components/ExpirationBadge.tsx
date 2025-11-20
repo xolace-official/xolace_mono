@@ -1,5 +1,5 @@
-import { View } from 'react-native';
 import { Clock } from 'lucide-react-native';
+import { View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 

@@ -8,22 +8,20 @@ import {
   KeyboardAwareScrollView,
   KeyboardStickyView,
 } from 'react-native-keyboard-controller';
-import {
-  SafeAreaView,
-} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Text } from '@xolacekit/ui';
 
 import { CommunitySelectorPill } from '../../../features/post/create/components/CommunitySelectorPill';
 import { CreatePostHeader } from '../../../features/post/create/components/CreatePostHeader';
 import { ExpirationBadge } from '../../../features/post/create/components/ExpirationBadge';
+import { MoodChip } from '../../../features/post/create/components/MoodChip';
 import { MoodPicker } from '../../../features/post/create/components/MoodPicker2';
 import { PostComposerToolbar } from '../../../features/post/create/components/PostComposerToolbar';
 import { PostMediaPreview } from '../../../features/post/create/components/PostMediaPreview';
 import { PostTextFields } from '../../../features/post/create/components/PostTextFields';
 import { PostToolsSheet } from '../../../features/post/create/components/PostToolsSheet';
 import { usePostDraftStore } from '../../../features/post/create/store/usePostDraftStore';
-import { MoodChip } from '../../../features/post/create/components/MoodChip';
 
 const PostCreationScreen = () => {
   const router = useRouter();
@@ -144,14 +142,14 @@ const PostCreationScreen = () => {
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
         bottomOffset={32}
-        extraKeyboardSpace={16}   
+        extraKeyboardSpace={16}
       >
         <View className="px-4">
           <CommunitySelectorPill
             onPress={() => router.push('/(app)/(protected)/post-to')}
           />
 
-           {moodKey && <MoodChip moodId={moodKey} onRemove={handleRemoveMood} />}
+          {moodKey && <MoodChip moodId={moodKey} onRemove={handleRemoveMood} />}
 
           <PostTextFields
             title={title}
@@ -160,7 +158,6 @@ const PostCreationScreen = () => {
             onChangeBody={setBody}
           />
 
-         
           <ExpirationBadge visible={is24hOnly} />
           {!community && (
             <Text className="mt-4 text-sm text-muted-foreground">
@@ -172,9 +169,7 @@ const PostCreationScreen = () => {
       </KeyboardAwareScrollView>
 
       <KeyboardStickyView>
-        <View
-          className="pt-2 pb-5 border-t border-white/10 bg-background/95"
-        >
+        <View className="border-t border-white/10 bg-background/95 pb-5 pt-2">
           <PostComposerToolbar
             onPickImage={handlePickImage}
             onOpenTools={openToolsSheet}
@@ -188,7 +183,7 @@ const PostCreationScreen = () => {
         is24h={is24hOnly}
         onToggle24h={setIs24hOnly}
       />
-       <MoodPicker ref={moodPickerRef} />
+      <MoodPicker ref={moodPickerRef} />
     </SafeAreaView>
   );
 };

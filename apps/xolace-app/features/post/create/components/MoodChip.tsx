@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+
 import { X } from 'lucide-react-native';
+import { Pressable, Text, View } from 'react-native';
+
 import { getMoodById } from '../constants/moods';
 
-// Assuming Badge is not used inside the chip logic directly based on your snippet, 
+// Assuming Badge is not used inside the chip logic directly based on your snippet,
 // but kept the import if you need it elsewhere.
 
 interface MoodChipProps {
@@ -19,11 +21,15 @@ export const MoodChip: React.FC<MoodChipProps> = ({ moodId, onRemove }) => {
   const IconComponent = mood.icon;
 
   return (
-    <View 
-      className="flex-row items-center flex-none gap-2 px-3 py-1.5 rounded-full self-start mt-2 mb-2 w-auto bg-gray-400"
-      style={{ alignSelf: "flex-start", width: "auto", backgroundColor: mood.color }}
+    <View
+      className="mb-2 mt-2 w-auto flex-none flex-row items-center gap-2 self-start rounded-full bg-gray-400 px-3 py-1.5"
+      style={{
+        alignSelf: 'flex-start',
+        width: 'auto',
+        backgroundColor: mood.color,
+      }}
     >
-      <View className="w-4 h-4">
+      <View className="h-4 w-4">
         <IconComponent size={16} color="#fff" />
       </View>
       <Text className="text-sm font-medium text-white">{mood.label}</Text>

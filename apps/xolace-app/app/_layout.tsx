@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
+import { PortalHost } from '@rn-primitives/portal';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { Platform } from 'react-native';
-import { PortalHost } from '@rn-primitives/portal';
 
 import { useAppStore } from '@xolacekit/state';
 // import from packages

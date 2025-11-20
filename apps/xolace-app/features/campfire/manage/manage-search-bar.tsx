@@ -19,21 +19,21 @@ export function ManageSearchBar({
   const isDark = colorScheme === 'dark';
 
   return (
-    <View className="flex-row items-center gap-3 mt-4 mb-6">
-      <View className="flex-row items-center flex-1 gap-3 px-4 border rounded-2xl border-black/10 bg-muted/50 dark:border-white/10">
+    <View className="mb-6 mt-4 flex-row items-center gap-3">
+      <View className="flex-1 flex-row items-center gap-3 rounded-2xl border border-black/10 bg-muted/50 px-4 dark:border-white/10">
         <Folder size={20} color={isDark ? '#9ca3af' : '#6b7280'} />
         <Input
           value={value}
           onChangeText={onChangeText}
           placeholder="Search joined campfires..."
           placeholderTextColor={isDark ? '#9ca3af' : '#6b7280'}
-          className="flex-1 text-base bg-muted/30 text-foreground"
+          className="flex-1 bg-muted/30 text-base text-foreground"
         />
       </View>
 
       <Pressable
         onPress={onFilterPress}
-        className="p-3 border rounded-2xl border-black/10 bg-muted/50 active:opacity-70 dark:border-white/10"
+        className="rounded-2xl border border-black/10 bg-muted/50 p-3 active:opacity-70 dark:border-white/10"
       >
         <SquareDashedMousePointer
           size={20}

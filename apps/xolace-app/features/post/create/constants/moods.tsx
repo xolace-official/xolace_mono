@@ -1,22 +1,23 @@
 // constants/moods.ts
-import { 
-  Smile, 
-  Zap, 
-  Brain, 
-  Coffee, 
-  Heart, 
-  Frown, 
-  Angry, 
-  Meh, 
-  Laugh, 
-  Star, 
-  Sun, 
-  Moon, 
-  CloudRain, 
-  Palette, 
-  Camera, 
-  Music 
+import {
+  Angry,
+  Brain,
+  Camera,
+  CloudRain,
+  Coffee,
+  Frown,
+  Heart,
+  Laugh,
+  Meh,
+  Moon,
+  Music,
+  Palette,
+  Smile,
+  Star,
+  Sun,
+  Zap,
 } from 'lucide-react-native';
+
 import { MoodType } from '../types/post.types';
 
 export const moods: MoodType[] = [
@@ -135,5 +136,5 @@ export const moods: MoodType[] = [
 ];
 
 export const getMoodById = (id: string): MoodType | undefined => {
-  return moods.find(mood => mood.id === id);
+  return moods.find((mood) => mood.id === id);
 };

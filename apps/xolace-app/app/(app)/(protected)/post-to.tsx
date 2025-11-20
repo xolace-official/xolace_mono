@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 
-
 import { useRouter } from 'expo-router';
 import { X } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
@@ -49,7 +48,7 @@ const PostToScreen = () => {
       <View className="flex-row items-center justify-between px-4 py-3">
         <Pressable
           onPress={() => router.back()}
-          className="items-center justify-center w-10 h-10 rounded-full active:bg-white/10"
+          className="h-10 w-10 items-center justify-center rounded-full active:bg-white/10"
         >
           <X size={22} color={colorScheme === 'dark' ? '#f4f4f5' : '#0f172a'} />
         </Pressable>
@@ -57,7 +56,7 @@ const PostToScreen = () => {
         {selectedCommunity ? (
           <Pressable
             onPress={handleClear}
-            className="px-3 py-1 border border-gray-200 rounded-full dark:border-white/10 active:opacity-80"
+            className="rounded-full border border-gray-200 px-3 py-1 active:opacity-80 dark:border-white/10"
           >
             <Text className="text-sm text-muted-foreground">Clear</Text>
           </Pressable>
@@ -67,7 +66,7 @@ const PostToScreen = () => {
       </View>
 
       {selectedCommunity && (
-        <View className="px-4 py-3 mx-4 mb-4 bg-white border border-gray-200 rounded-2xl dark:border-white/10 dark:bg-white/5">
+        <View className="mx-4 mb-4 rounded-2xl border border-gray-200 bg-white px-4 py-3 dark:border-white/10 dark:bg-white/5">
           <Text className="text-xs uppercase text-muted-foreground">
             Posting to
           </Text>
@@ -80,13 +79,13 @@ const PostToScreen = () => {
         </View>
       )}
 
-      <View className="px-3 mx-4 mb-4 border rounded-2xl border-black/10 bg-muted/50 dark:border-white/10">
+      <View className="mx-4 mb-4 rounded-2xl border border-black/10 bg-muted/50 px-3 dark:border-white/10">
         <Input
           value={searchQuery}
           onChangeText={setSearchQuery}
           placeholder="Search for a campfire"
           placeholderTextColor={colorScheme === 'dark' ? '#9ca3af' : '#6b7280'}
-          className="h-12 text-base bg-muted/20 text-foreground"
+          className="h-12 bg-muted/20 text-base text-foreground"
         />
       </View>
 
@@ -96,7 +95,7 @@ const PostToScreen = () => {
           selectedId={selectedCommunity?.id}
           onSelect={handleSelect}
           ListEmptyComponent={() => (
-            <View className="items-center mt-20">
+            <View className="mt-20 items-center">
               {/* <View style={styles.container}>
                 <Image
                   style={styles.image}

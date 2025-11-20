@@ -6,13 +6,7 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet';
 import { View } from 'react-native';
 
-import {
-  Badge,
-  Switch,
-  Text,
-  NAV_THEME,
-  useColorScheme,
-} from '@xolacekit/ui';
+import { Badge, NAV_THEME, Switch, Text, useColorScheme } from '@xolacekit/ui';
 
 type PostToolsSheetProps = {
   is24h: boolean;

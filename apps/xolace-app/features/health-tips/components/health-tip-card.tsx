@@ -49,9 +49,9 @@ export const HealthTipCard = memo(function HealthTipCard({
   const readMoreActive = Boolean(onPress);
 
   return (
-    <Card className="p-4 border shadow-sm rounded-2xl border-border/60 bg-background">
+    <Card className="rounded-2xl border border-border/60 bg-background p-4 shadow-sm">
       <View className="flex-row gap-3">
-        <Avatar alt={tip.author_name} className="w-12 h-12">
+        <Avatar alt={tip.author_name} className="h-12 w-12">
           {tip.author_avatar_url ? (
             <AvatarImage source={{ uri: tip.author_avatar_url }} />
           ) : (
@@ -81,10 +81,10 @@ export const HealthTipCard = memo(function HealthTipCard({
             style={{
               backgroundColor: isDark ? 'rgb(6 78 59 / 0.3)' : '#d1fae5',
               width: 'auto',
-              alignSelf: "flex-start",
+              alignSelf: 'flex-start',
             }}
           >
-            <Text className="text-xs font-medium tracking-wide text-center capitalize text-emerald-700 dark:text-emerald-300">
+            <Text className="text-center text-xs font-medium capitalize tracking-wide text-emerald-700 dark:text-emerald-300">
               {topicMeta.label}
             </Text>
           </View>
@@ -105,7 +105,7 @@ export const HealthTipCard = memo(function HealthTipCard({
             accessibilityRole="button"
             accessibilityLabel={`Read more about ${tip.title}`}
             disabled={!readMoreActive}
-            className="flex-row items-center gap-1 mt-2"
+            className="mt-2 flex-row items-center gap-1"
           >
             <Text
               className={`text-sm font-semibold ${

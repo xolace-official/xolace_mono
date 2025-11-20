@@ -1,5 +1,5 @@
-import { Pressable, View } from 'react-native';
 import { X } from 'lucide-react-native';
+import { Pressable, View } from 'react-native';
 
 import { Button, Text, useColorScheme } from '@xolacekit/ui';
 
@@ -24,7 +24,7 @@ export const CreatePostHeader = ({
         accessibilityLabel="Close composer"
         onPress={onClose}
         hitSlop={12}
-        className="items-center justify-center w-10 h-10 rounded-full active:bg-white/10"
+        className="h-10 w-10 items-center justify-center rounded-full active:bg-white/10"
       >
         <X size={24} color={isDark ? '#f4f4f5' : '#0f172a'} />
       </Pressable>
@@ -32,7 +32,7 @@ export const CreatePostHeader = ({
       <Button
         disabled={!canSubmit}
         onPress={onSubmit}
-        className="px-6 rounded-full dark:bg-blue-600 active:opacity-90 disabled:bg-muted-foreground/30"
+        className="rounded-full px-6 active:opacity-90 disabled:bg-muted-foreground/30 dark:bg-blue-600"
       >
         <Text className="text-base font-semibold text-primary-foreground">
           Post

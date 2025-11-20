@@ -12,7 +12,7 @@ import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 import { moods } from '../constants/moods';
 import { usePostDraftStore } from '../store/usePostDraftStore';
 
-type MoodPickerProps = {};
+type MoodPickerProps = Record<string, never>;
 type MoodPickerRef = BottomSheet;
 
 export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
