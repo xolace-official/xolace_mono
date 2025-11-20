@@ -60,7 +60,7 @@ const PostCreationScreen = () => {
     [body, community, image, is24hOnly, moodKey, title],
   );
 
-  const handleClose = useCallback(() => {
+  const handleClosePostForm = useCallback(() => {
     if (!hasDraft) {
       resetDraft();
       router.back();
@@ -80,7 +80,7 @@ const PostCreationScreen = () => {
     ]);
   }, [hasDraft, resetDraft, router]);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmitPostForm = useCallback(() => {
     Alert.alert(
       'Post coming soon',
       'Hook this up to Supabase when backend is ready.',
@@ -136,14 +136,12 @@ const PostCreationScreen = () => {
     setMood(null);
   };
 
-  const paddingBottom = Math.max(insets.bottom, 18);
-
   return (
     <SafeAreaView edges={['top']} className="flex-1 bg-background">
       <CreatePostHeader
         canSubmit={canSubmit}
-        onClose={handleClose}
-        onSubmit={handleSubmit}
+        onClose={handleClosePostForm}
+        onSubmit={handleSubmitPostForm}
       />
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
