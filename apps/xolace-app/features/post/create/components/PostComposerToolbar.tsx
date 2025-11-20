@@ -25,12 +25,12 @@ export const PostComposerToolbar = ({
   const iconColor = colorScheme === 'dark' ? '#e5e7eb' : '#111827';
 
   const actions = [
-    { key: 'link', label: 'Link', icon: Link2, disabled: true },
-    { key: 'image', label: 'Media', icon: ImageIcon, onPress: onPickImage },
-    { key: 'emoji', label: 'Emoji', icon: Smile, onPress: onMoodPress },
-    { key: 'tools', label: 'Tools', icon: Settings2, onPress: onOpenTools },
-    { key: 'mic', label: 'Voice', icon: Mic, disabled: true },
-    { key: 'poll', label: 'Poll', icon: BarChart3, disabled: true },
+    { key: 'link', label: 'Link', icon: Link2, disabled: true , onPress: ()=>{} },
+    { key: 'image', label: 'Media', icon: ImageIcon, disabled: false, onPress: onPickImage },
+    { key: 'mood', label: 'Mood', icon: Smile, disabled: false, onPress: onMoodPress },
+    { key: 'tools', label: 'Tools', icon: Settings2,disabled: false, onPress: onOpenTools },
+    { key: 'mic', label: 'Voice', icon: Mic, disabled: true, onPress: ()=>{} },
+    { key: 'poll', label: 'Poll', icon: BarChart3, disabled: true, onPress: ()=>{} },
   ] as const;
 
   return (
@@ -43,6 +43,9 @@ export const PostComposerToolbar = ({
           className={`items-center ${
             disabled ? 'opacity-40' : 'active:opacity-80'
           }`}
+          style={{
+            opacity:   disabled ? 0.3 : 0.8
+          }}
         >
           <View className="items-center justify-center rounded-full h-11 w-11 bg-white/5">
             <Icon size={22} color={iconColor} />

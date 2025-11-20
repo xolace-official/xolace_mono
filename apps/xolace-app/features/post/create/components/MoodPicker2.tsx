@@ -1,7 +1,14 @@
 // components/post-creation/MoodPicker.tsx
 import React, { forwardRef, useMemo } from 'react';
-import { View, Text, Pressable, ScrollView } from 'react-native';
-import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
+
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
+import { Pressable, ScrollView, Text, View } from 'react-native';
+
+import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
+
 import { moods } from '../constants/moods';
 import { usePostDraftStore } from '../store/usePostDraftStore';
 
@@ -10,7 +17,8 @@ type MoodPickerRef = BottomSheet;
 
 export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
   (props, ref) => {
-    const snapPoints = useMemo(() => ['50%', '75%'], []);
+    const { isDarkColorScheme } = useColorScheme();
+    const snapPoints = useMemo(() => ['50%'], []);
     const { moodKey: selectedMood, setMood } = usePostDraftStore();
 
     const handleMoodSelect = (moodId: string) => {
@@ -24,7 +32,11 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
         index={-1}
         snapPoints={snapPoints}
         enablePanDownToClose
-        backgroundStyle={{ backgroundColor: '#1f2937' }}
+        backgroundStyle={{
+          backgroundColor: isDarkColorScheme
+            ? NAV_THEME.dark.colors.background
+            : NAV_THEME.light.colors.background,
+        }}
         handleIndicatorStyle={{ backgroundColor: '#6b7280' }}
         backdropComponent={(props) => (
           <BottomSheetBackdrop
@@ -40,29 +52,28 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
             How are you feeling?
           </Text>
 
-          <ScrollView 
+          <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 20 }}
           >
             <View className="flex-row flex-wrap gap-3">
               {moods.map((mood) => {
                 const IconComponent = mood.icon;
-                console.log('selected ', selectedMood)
-                console.log('mood ', mood.id)
+                console.log('selected ', selectedMood);
+                console.log('mood ', mood.id);
                 const isSelected = selectedMood === mood.id;
 
                 return (
                   <Pressable
                     key={mood.id}
                     onPress={() => handleMoodSelect(mood.id)}
-                    className={`flex-row items-center gap-2 px-4 py-3 rounded-full ${
-                      isSelected ? 'bg-blue-600' : 'bg-gray-800'
-                    } active:opacity-80`}
+                    className={`flex-row items-center gap-2 rounded-full px-4 py-3 active:opacity-80`}
+                    style={{
+                      backgroundColor: isSelected ? '#2563eb' : '#1f2937',
+                    }}
                   >
                     <IconComponent size={16} color="#fff" />
-                    <Text className="font-medium text-white">
-                      {mood.label}
-                    </Text>
+                    <Text className="font-medium text-white">{mood.label}</Text>
                   </Pressable>
                 );
               })}
@@ -71,7 +82,7 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
         </BottomSheetView>
       </BottomSheet>
     );
-  }
+  },
 );
 
 MoodPicker.displayName = 'MoodPicker';

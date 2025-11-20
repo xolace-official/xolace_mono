@@ -23,6 +23,7 @@ export const CommunitySelectorPill = ({
     <Pressable
       onPress={onPress}
       className="self-start px-4 py-2 mt-1 border rounded-full border-white/10 bg-white/5 active:opacity-80 dark:bg-white/5"
+      style={{ alignSelf: "flex-start", width: "auto" }}
     >
       <View className="flex-row items-center gap-3">
         <View className="px-3 py-1 rounded-full bg-white/10">
