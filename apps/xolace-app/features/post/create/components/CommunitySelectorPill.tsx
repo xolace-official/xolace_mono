@@ -20,11 +20,11 @@ export const CommunitySelectorPill = ({
   return (
     <Pressable
       onPress={onPress}
-      className="self-start px-4 py-2 mt-1 border rounded-full bg-white/5 active:opacity-80 dark:border-white/10 dark:bg-white/5"
-      style={{ alignSelf: 'flex-start', width: 'auto' }}
+      className="self-start px-4 py-2 mt-1 border border-gray-300 rounded-full bg-white/5 active:opacity-80 dark:border-white/10 dark:bg-white/5"
+      style={{ alignSelf: 'flex-start', width: 'auto'  }}
     >
       <View className="flex-row items-center gap-3">
-        <View className="px-3 py-1 rounded-full bg-white/10">
+        <View className="px-3 py-1 rounded-full bg-gray-300/20 dark:bg-white/10">
           <Text className="text-sm font-semibold text-foreground">
             {badgeLabel}
           </Text>

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { JSX } from 'react';
 
 import { FlatList, Pressable, View } from 'react-native';
 import { Check } from 'lucide-react-native';
@@ -16,7 +16,7 @@ type CommunityListProps = {
   data: PostDraftCommunity[];
   selectedId?: string | null;
   onSelect: (community: PostDraftCommunity) => void;
-  ListEmptyComponent?: ReactNode;
+  ListEmptyComponent?: (() => JSX.Element) | null;
 };
 
 const formatMemberCount = (count?: number) => {
@@ -43,6 +43,7 @@ export const CommunityList = ({
       keyExtractor={(item) => item.id}
       contentContainerStyle={{ paddingBottom: 48 }}
       ListEmptyComponent={ListEmptyComponent ?? null}
+      showsVerticalScrollIndicator={false}
       renderItem={({ item }) => {
         const isActive = selectedId === item.id;
         return (
@@ -53,7 +54,7 @@ export const CommunityList = ({
             }`}
           >
             <View className="flex-row items-center flex-1 gap-3 pr-4">
-              <Avatar className="w-12 h-12">
+              <Avatar alt={item.name} className="w-12 h-12">
                 <AvatarImage source={{ uri: item.avatar }} />
                 <AvatarFallback>
                   <Text className="text-base font-semibold text-foreground">

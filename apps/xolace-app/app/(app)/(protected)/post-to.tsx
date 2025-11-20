@@ -1,17 +1,18 @@
 import { useMemo, useState } from 'react';
 
-import { useRouter } from 'expo-router';
-import { Pressable, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { X } from 'lucide-react-native';
 
-import { Text, useColorScheme } from '@xolacekit/ui';
+import { useRouter } from 'expo-router';
+import { X } from 'lucide-react-native';
+import { Pressable, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { Input, Text, useColorScheme } from '@xolacekit/ui';
 
 import { CommunityList } from '../../../features/post/create/components/community-picker/CommunityList';
 import { MOCK_COMMUNITIES } from '../../../features/post/create/constants/mock-communities';
 import {
-  usePostDraftStore,
   type PostDraftCommunity,
+  usePostDraftStore,
 } from '../../../features/post/create/store/usePostDraftStore';
 
 const PostToScreen = () => {
@@ -48,7 +49,7 @@ const PostToScreen = () => {
       <View className="flex-row items-center justify-between px-4 py-3">
         <Pressable
           onPress={() => router.back()}
-          className="h-10 w-10 items-center justify-center rounded-full active:bg-white/10"
+          className="items-center justify-center w-10 h-10 rounded-full active:bg-white/10"
         >
           <X size={22} color={colorScheme === 'dark' ? '#f4f4f5' : '#0f172a'} />
         </Pressable>
@@ -56,7 +57,7 @@ const PostToScreen = () => {
         {selectedCommunity ? (
           <Pressable
             onPress={handleClear}
-            className="rounded-full border border-white/10 px-3 py-1 active:opacity-80"
+            className="px-3 py-1 border border-gray-200 rounded-full dark:border-white/10 active:opacity-80"
           >
             <Text className="text-sm text-muted-foreground">Clear</Text>
           </Pressable>
@@ -66,7 +67,7 @@ const PostToScreen = () => {
       </View>
 
       {selectedCommunity && (
-        <View className="mx-4 mb-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+        <View className="px-4 py-3 mx-4 mb-4 bg-white border border-gray-200 rounded-2xl dark:border-white/10 dark:bg-white/5">
           <Text className="text-xs uppercase text-muted-foreground">
             Posting to
           </Text>
@@ -79,13 +80,13 @@ const PostToScreen = () => {
         </View>
       )}
 
-      <View className="mx-4 mb-4 rounded-2xl border border-white/10 bg-muted/30 px-3">
-        <TextInput
+      <View className="px-3 mx-4 mb-4 border rounded-2xl border-black/10 bg-muted/50 dark:border-white/10">
+        <Input
           value={searchQuery}
           onChangeText={setSearchQuery}
-          placeholder="Search for a community"
+          placeholder="Search for a campfire"
           placeholderTextColor={colorScheme === 'dark' ? '#9ca3af' : '#6b7280'}
-          className="h-12 text-base text-foreground"
+          className="h-12 text-base bg-muted/20 text-foreground"
         />
       </View>
 
@@ -94,17 +95,40 @@ const PostToScreen = () => {
           data={filteredCommunities}
           selectedId={selectedCommunity?.id}
           onSelect={handleSelect}
-          ListEmptyComponent={
-            <View className="mt-20 items-center">
+          ListEmptyComponent={() => (
+            <View className="items-center mt-20">
+              {/* <View style={styles.container}>
+                <Image
+                  style={styles.image}
+                  source={require('../../../assets/images/CS_Moon_15.png')}
+                  contentFit="cover"
+                  transition={1000}
+                />
+              </View> */}
               <Text className="text-sm text-muted-foreground">
-                No communities found.
+                No campfires found.
               </Text>
             </View>
-          }
+          )}
         />
       </View>
     </SafeAreaView>
   );
 };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   image: {
+//     flex: 1,
+//     width: '100%',
+//     height: 200,
+//     backgroundColor: '#0553',
+//   },
+// });
 
 export default PostToScreen;
