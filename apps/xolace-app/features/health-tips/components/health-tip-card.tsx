@@ -80,6 +80,8 @@ export const HealthTipCard = memo(function HealthTipCard({
             className={`w-20 min-w-20 rounded-full px-2 py-1 dark:bg-emerald-900/30`}
             style={{
               backgroundColor: isDark ? 'rgb(6 78 59 / 0.3)' : '#d1fae5',
+              width: 'auto',
+              alignSelf: 'flex-start',
             }}
           >
             <Text className="text-center text-xs font-medium capitalize tracking-wide text-emerald-700 dark:text-emerald-300">

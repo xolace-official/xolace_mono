@@ -86,11 +86,11 @@ export default function HealthTipDetailsScreen() {
 
   if (!slug) {
     return (
-      <SafeAreaView className="items-center justify-center flex-1 px-6 bg-background">
-        <Text className="text-lg font-semibold text-center text-foreground">
+      <SafeAreaView className="flex-1 items-center justify-center bg-background px-6">
+        <Text className="text-center text-lg font-semibold text-foreground">
           This tip is not reachable
         </Text>
-        <Text className="mt-2 text-sm text-center text-muted-foreground">
+        <Text className="mt-2 text-center text-sm text-muted-foreground">
           A valid identifier was not provided.
         </Text>
       </SafeAreaView>
@@ -99,7 +99,7 @@ export default function HealthTipDetailsScreen() {
 
   if (showInitialLoading) {
     return (
-      <SafeAreaView className="flex-1 px-4 bg-background">
+      <SafeAreaView className="flex-1 bg-background px-4">
         <LoadingState />
       </SafeAreaView>
     );
@@ -107,17 +107,17 @@ export default function HealthTipDetailsScreen() {
 
   if (showErrorState) {
     return (
-      <View className="items-center justify-center flex-1 px-6 bg-background">
+      <View className="flex-1 items-center justify-center bg-background px-6">
         <Text className="text-lg font-semibold text-destructive">
           Unable to open this wellness insight
         </Text>
-        <Text className="mt-2 text-sm text-center text-muted-foreground">
+        <Text className="mt-2 text-center text-sm text-muted-foreground">
           {error?.message ?? 'Something went wrong. Please try again shortly.'}
         </Text>
-        <View className="flex-row w-full gap-3 mt-6">
+        <View className="mt-6 w-full flex-row gap-3">
           <XolaceButton
             label="Back to tips"
-            className="flex-1 bg-transparent border border-border/60"
+            className="flex-1 border border-border/60 bg-transparent"
             labelClassName="text-foreground"
             onPress={handleBackToList}
           />

@@ -1,0 +1,85 @@
+import { JSX } from 'react';
+
+import { Check } from 'lucide-react-native';
+import { FlatList, Pressable, View } from 'react-native';
+
+import { Avatar, AvatarFallback, AvatarImage, Text } from '@xolacekit/ui';
+
+import type { PostDraftCommunity } from '../../store/usePostDraftStore';
+
+type CommunityListProps = {
+  data: PostDraftCommunity[];
+  selectedId?: string | null;
+  onSelect: (community: PostDraftCommunity) => void;
+  ListEmptyComponent?: (() => JSX.Element) | null;
+};
+
+const formatMemberCount = (count?: number) => {
+  if (!count) {
+    return 'Just launched';
+  }
+
+  if (count < 1000) {
+    return `${count} members`;
+  }
+
+  return `${(count / 1000).toFixed(1)}k members`;
+};
+
+export const CommunityList = ({
+  data,
+  selectedId,
+  onSelect,
+  ListEmptyComponent,
+}: CommunityListProps) => {
+  return (
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.id}
+      contentContainerStyle={{ paddingBottom: 48 }}
+      ListEmptyComponent={ListEmptyComponent ?? null}
+      showsVerticalScrollIndicator={false}
+      renderItem={({ item }) => {
+        const isActive = selectedId === item.id;
+        return (
+          <Pressable
+            onPress={() => onSelect(item)}
+            className={`flex-row items-center justify-between border-b border-white/5 px-1 py-4 active:opacity-80 ${
+              isActive ? 'bg-white/5' : ''
+            }`}
+          >
+            <View className="flex-1 flex-row items-center gap-3 pr-4">
+              <Avatar alt={item.name} className="h-12 w-12">
+                <AvatarImage source={{ uri: item.avatar }} />
+                <AvatarFallback>
+                  <Text className="text-base font-semibold text-foreground">
+                    {item.name.charAt(0)}
+                  </Text>
+                </AvatarFallback>
+              </Avatar>
+              <View className="flex-1">
+                <Text className="text-base font-semibold text-foreground">
+                  {item.slug}
+                </Text>
+                <Text
+                  className="text-xs text-muted-foreground"
+                  numberOfLines={2}
+                >
+                  {item.description}
+                </Text>
+                <Text className="mt-1 text-xs text-muted-foreground">
+                  {formatMemberCount(item.memberCount)}
+                </Text>
+              </View>
+            </View>
+            {isActive && (
+              <View className="h-7 w-7 items-center justify-center rounded-full bg-primary/20">
+                <Check size={18} color="#a78bfa" />
+              </View>
+            )}
+          </Pressable>
+        );
+      }}
+    />
+  );
+};

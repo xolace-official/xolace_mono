@@ -1,10 +1,191 @@
-import { Text, View } from 'react-native';
+import { useCallback, useMemo, useRef } from 'react';
+
+import BottomSheet from '@gorhom/bottom-sheet';
+import { useRouter } from 'expo-router';
+import { Alert, Keyboard, View } from 'react-native';
+import {
+  KeyboardAwareScrollView,
+  KeyboardStickyView,
+} from 'react-native-keyboard-controller';
+import { KeyboardController } from 'react-native-keyboard-controller';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { CommunitySelectorPill } from '../../../features/post/create/components/CommunitySelectorPill';
+import { CreatePostHeader } from '../../../features/post/create/components/CreatePostHeader';
+import { ExpirationBadge } from '../../../features/post/create/components/ExpirationBadge';
+import { MoodChip } from '../../../features/post/create/components/MoodChip';
+import { MoodPicker } from '../../../features/post/create/components/MoodPicker2';
+import { PostComposerToolbar } from '../../../features/post/create/components/PostComposerToolbar';
+import { PostMediaPreview } from '../../../features/post/create/components/PostMediaPreview';
+import { PostTextFields } from '../../../features/post/create/components/PostTextFields';
+import { PostToolsSheet } from '../../../features/post/create/components/PostToolsSheet';
+import { VoiceRecorderBar } from '../../../features/post/create/components/VoiceRecorderBar';
+import { useSingleImagePicker } from '../../../features/post/create/hooks/useSingleImagePicker';
+import { useVoiceToTextHelper } from '../../../features/post/create/hooks/useVoiceToTextHelper';
+import { usePostDraftStore } from '../../../features/post/create/store/usePostDraftStore';
 
 const PostCreationScreen = () => {
+  const router = useRouter();
+  const moodPickerRef = useRef<BottomSheet>(null);
+  const title = usePostDraftStore((state) => state.title);
+  const body = usePostDraftStore((state) => state.body);
+  const setTitle = usePostDraftStore((state) => state.setTitle);
+  const setBody = usePostDraftStore((state) => state.setBody);
+  const community = usePostDraftStore((state) => state.community);
+  const image = usePostDraftStore((state) => state.image);
+  const moodKey = usePostDraftStore((state) => state.moodKey);
+  const setMood = usePostDraftStore((state) => state.setMood);
+  const attachImage = usePostDraftStore((state) => state.attachImage);
+  const is24hOnly = usePostDraftStore((state) => state.is24hOnly);
+  const setIs24hOnly = usePostDraftStore((state) => state.setIs24hOnly);
+  const resetDraft = usePostDraftStore((state) => state.reset);
+  const { pickImage, removeImage } = useSingleImagePicker(attachImage);
+
+  const toolsSheetRef = useRef<BottomSheet>(null);
+  const appendTranscription = useCallback(
+    (text: string) => {
+      const currentBody = usePostDraftStore.getState().body;
+      setBody(currentBody ? `${currentBody}\n${text}` : text);
+    },
+    [setBody],
+  );
+
+  const voiceHelper = useVoiceToTextHelper({
+    onTranscriptionComplete: appendTranscription,
+    onError: (message) => Alert.alert('Voice to text', message),
+  });
+
+  const canSubmit = Boolean(title.trim());
+
+  const hasDraft = useMemo(
+    () =>
+      Boolean(
+        title.trim() ||
+          body.trim() ||
+          community ||
+          image ||
+          is24hOnly ||
+          moodKey,
+      ),
+    [body, community, image, is24hOnly, moodKey, title],
+  );
+
+  const handleClosePostForm = useCallback(() => {
+    if (!hasDraft) {
+      resetDraft();
+      router.back();
+      return;
+    }
+
+    Alert.alert('Discard draft?', 'Your current post draft will be lost.', [
+      { text: 'Keep editing', style: 'cancel' },
+      {
+        text: 'Discard',
+        style: 'destructive',
+        onPress: () => {
+          resetDraft();
+          router.back();
+        },
+      },
+    ]);
+  }, [hasDraft, resetDraft, router]);
+
+  const handleSubmitPostForm = useCallback(() => {
+    Alert.alert(
+      'Post coming soon',
+      'Hook this up to Supabase when backend is ready.',
+    );
+  }, []);
+
+  const dismissKeyboard = useCallback(() => {
+    KeyboardController.dismiss();
+    Keyboard.dismiss();
+  }, []);
+
+  const openToolsSheet = useCallback(() => {
+    dismissKeyboard();
+    toolsSheetRef.current?.expand();
+  }, [dismissKeyboard]);
+
+  const handleMoodPress = () => {
+    dismissKeyboard();
+    moodPickerRef.current?.expand();
+  };
+
+  const handleRemoveMood = () => {
+    setMood(null);
+  };
+
+  const handleMicToggle = useCallback(() => {
+    voiceHelper.toggleRecording();
+  }, [voiceHelper]);
+  const showVoiceBar = voiceHelper.isRecording || voiceHelper.isTranscribing;
+
   return (
-    <View>
-      <Text>Post creation 2</Text>
-    </View>
+    <SafeAreaView edges={['top']} className="flex-1 bg-background">
+      <CreatePostHeader
+        canSubmit={canSubmit}
+        onClose={handleClosePostForm}
+        onSubmit={handleSubmitPostForm}
+      />
+      <KeyboardAwareScrollView
+        keyboardShouldPersistTaps="handled"
+        bottomOffset={32}
+        extraKeyboardSpace={16}
+      >
+        <View className="px-4">
+          <CommunitySelectorPill
+            onPress={() => router.push('/(app)/(protected)/post-to')}
+          />
+
+          {moodKey && <MoodChip moodId={moodKey} onRemove={handleRemoveMood} />}
+
+          <PostTextFields
+            title={title}
+            body={body}
+            onChangeTitle={setTitle}
+            onChangeBody={setBody}
+          />
+
+          <ExpirationBadge visible={is24hOnly} />
+          {/* {!community && (
+            <Text className="mt-4 text-sm text-muted-foreground">
+              Choose a community to unlock the Post button.
+            </Text>
+          )} */}
+          <PostMediaPreview media={image} onRemove={removeImage} />
+        </View>
+      </KeyboardAwareScrollView>
+
+      <KeyboardStickyView>
+        <View className="border-t border-white/10 bg-background/95 pb-5 pt-2">
+          <VoiceRecorderBar
+            visible={showVoiceBar}
+            isRecording={voiceHelper.isRecording}
+            isPreparing={voiceHelper.isPreparing}
+            isTranscribing={voiceHelper.isTranscribing}
+            durationLabel={voiceHelper.durationLabel}
+            bars={voiceHelper.bars}
+            onToggle={handleMicToggle}
+          />
+          <PostComposerToolbar
+            onPickImage={pickImage}
+            onOpenTools={openToolsSheet}
+            onMoodPress={handleMoodPress}
+            onToggleMic={handleMicToggle}
+            micActive={voiceHelper.isRecording || voiceHelper.isTranscribing}
+            micDisabled={voiceHelper.isTranscribing}
+          />
+        </View>
+      </KeyboardStickyView>
+
+      <PostToolsSheet
+        ref={toolsSheetRef}
+        is24h={is24hOnly}
+        onToggle24h={setIs24hOnly}
+      />
+      <MoodPicker ref={moodPickerRef} />
+    </SafeAreaView>
   );
 };
 
