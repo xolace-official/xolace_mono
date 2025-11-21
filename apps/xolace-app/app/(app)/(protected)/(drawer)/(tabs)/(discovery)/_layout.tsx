@@ -26,7 +26,7 @@ export default function DiscoveryLayout() {
       />
 
       <Stack.Screen
-        name="campfire/[slug]"
+        name="x/[slug]"
         options={{
           title: 'Details',
           headerShown: false,

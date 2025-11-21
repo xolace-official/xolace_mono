@@ -1,5 +1,5 @@
-// apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/campfire-card.tsx
 import { Pressable, View } from 'react-native';
+import { router } from 'expo-router';
 
 import { Button, Text } from '@xolacekit/ui';
 
@@ -20,6 +20,7 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
   const handleCardPress = () => {
     // Navigate to campfire detail
     console.log('Navigate to campfire:', campfire.id);
+    router.push(`../x/${campfire.slug}`)
   };
 
   return (
@@ -27,7 +28,7 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
       <View className="flex-row items-start">
         <CampfireAvatar avatar={campfire.avatar} imageUri={campfire.imageUri} />
 
-        <View className="ml-4 flex-1">
+        <View className="flex-1 ml-4">
           <Text className="mb-1 text-lg font-semibold text-foreground">
             {campfire.name}
           </Text>
@@ -51,7 +52,7 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
         {!campfire.joined && (
           <Button
             onPress={handleJoin}
-            className="ml-2 rounded-full bg-primary px-6"
+            className="px-6 ml-2 rounded-full bg-primary"
             size="sm"
           >
             <Text className="font-medium text-primary-foreground">Join</Text>

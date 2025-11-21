@@ -1,0 +1,73 @@
+import { View } from 'react-native';
+import { Shield } from 'lucide-react-native';
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Badge,
+  Button,
+  Text,
+} from '@xolacekit/ui';
+
+import type { CampfireModerator } from '../types';
+
+type CampfireModeratorsSectionProps = {
+  moderators: CampfireModerator[];
+};
+
+export function CampfireModeratorsSection({
+  moderators,
+}: CampfireModeratorsSectionProps) {
+  if (!moderators.length) return null;
+
+  return (
+    <View className="rounded-3xl border border-border/60 bg-card/90 p-4">
+      <View className="flex-row items-center justify-between">
+        <View className="flex-row items-center gap-2">
+          <Shield size={16} color="#94a3b8" />
+          <Text className="text-sm font-semibold text-foreground">
+            Firestarters & Firekeepers
+          </Text>
+        </View>
+        <Button variant="secondary" className="rounded-full px-3 py-1">
+          <Text className="text-xs font-semibold text-foreground">
+            Message team
+          </Text>
+        </Button>
+      </View>
+
+      <View className="mt-3 gap-3">
+        {moderators.map((moderator) => (
+          <View
+            key={moderator.id}
+            className="flex-row items-center gap-3 rounded-2xl bg-muted/10 px-3 py-2"
+          >
+            <Avatar className="h-10 w-10 bg-primary/10">
+              {moderator.avatarUrl ? (
+                <AvatarImage source={{ uri: moderator.avatarUrl }} />
+              ) : null}
+              <AvatarFallback>🔥</AvatarFallback>
+            </Avatar>
+            <View className="flex-1">
+              <Text className="text-sm font-semibold text-foreground">
+                {moderator.name}
+              </Text>
+              <Text className="text-xs text-muted-foreground capitalize">
+                {moderator.role}
+              </Text>
+            </View>
+            <Badge
+              variant="secondary"
+              className="rounded-full bg-primary/10 px-2 py-1"
+            >
+              <Text className="text-xs font-semibold text-primary">
+                {moderator.role === 'firestarter' ? 'Firestarter' : 'Firekeeper'}
+              </Text>
+            </Badge>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}

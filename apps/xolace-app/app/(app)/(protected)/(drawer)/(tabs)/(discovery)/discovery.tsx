@@ -16,6 +16,7 @@ export type CampfirePurpose =
 
 export interface Campfire {
   id: string;
+  slug: string;
   name: string;
   description: string;
   purpose: CampfirePurpose;
@@ -35,6 +36,7 @@ export default function DiscoveryScreen() {
   const campfires: Campfire[] = [
     {
       id: '1',
+      slug: 'health-minines',
       name: 'Health Minines',
       description: 'This is a community for health disc...',
       purpose: 'creative outlet',
@@ -45,6 +47,7 @@ export default function DiscoveryScreen() {
     },
     {
       id: '2',
+      slug: 'ktu-chapter',
       name: 'x/KTU Chaper',
       description: 'This is the best isnt it then',
       purpose: 'growth group',
@@ -55,6 +58,7 @@ export default function DiscoveryScreen() {
     },
     {
       id: '3',
+      slug: 'ktu',
       name: 'KTU',
       description: 'This is it',
       purpose: 'growth group',
@@ -63,6 +67,7 @@ export default function DiscoveryScreen() {
     },
     {
       id: '4',
+      slug: 'best-of-animes',
       name: 'x/Best Of Anime',
       description: 'This is your anime provider',
       purpose: 'general discussion',
@@ -73,6 +78,7 @@ export default function DiscoveryScreen() {
     },
     {
       id: '5',
+      slug: 'ktu-dairies',
       name: 'x/ktu diaries',
       description: 'KTU Diaries is w...',
       purpose: 'general discussion',
@@ -96,7 +102,7 @@ export default function DiscoveryScreen() {
       <View className="flex-1 px-4 pb-20">
         <DiscoveryHeader />
 
-        <View className="mb-4 mt-3 flex-row items-center gap-2">
+        <View className="flex-row items-center gap-2 mt-3 mb-4">
           <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
           <PurposeFilter
             selectedPurposes={selectedPurposes}
