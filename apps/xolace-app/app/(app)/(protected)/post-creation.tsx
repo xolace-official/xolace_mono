@@ -153,7 +153,7 @@ const PostCreationScreen = () => {
       </KeyboardAwareScrollView>
 
       <KeyboardStickyView>
-        <View className="border-t border-white/10 bg-background/95 pb-5 pt-2">
+        <View className="pt-2 pb-5 border-t border-white/10 bg-background/95">
           <VoiceRecorderBar
             visible={showVoiceBar}
             isRecording={voiceHelper.isRecording}

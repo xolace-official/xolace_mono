@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo } from 'react';
+import React, { forwardRef, memo, useEffect, useMemo } from 'react';
 
 import BottomSheet, {
   BottomSheetBackdrop,
@@ -11,20 +11,24 @@ import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 import { moods } from '../constants/moods';
 import { usePostDraftStore } from '../store/usePostDraftStore';
 
-type MoodPickerProps = {};
+type MoodPickerProps = Record<string, never>;
 type MoodPickerRef = BottomSheet;
 
-export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
-  (props, ref) => {
+export const MoodPicker = memo(
+  forwardRef<MoodPickerRef, MoodPickerProps>((_props, ref) => {
     const { isDarkColorScheme } = useColorScheme();
     const snapPoints = useMemo(() => ['50%'], []);
-    const { moodKey: selectedMood, setMood } = usePostDraftStore();
+    const selectedMood = usePostDraftStore((state) => state.moodKey);
+    const setMood = usePostDraftStore((state) => state.setMood);
 
     const handleMoodSelect = (moodId: string) => {
       setMood(moodId);
       (ref as any)?.current?.close();
     };
-    console.log('selected ', selectedMood);
+
+    useEffect(() => {
+      console.log('selected ', selectedMood);
+    }, [selectedMood]);
 
     return (
       <BottomSheet
@@ -59,15 +63,13 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
             <View className="flex-row flex-wrap gap-3">
               {moods.map((mood) => {
                 const IconComponent = mood.icon;
-                
-                //console.log('mood ', mood.id);
                 const isSelected = selectedMood === mood.id;
 
                 return (
                   <Pressable
                     key={mood.id}
                     onPress={() => handleMoodSelect(mood.id)}
-                    className={`flex-row items-center gap-2 rounded-full px-4 py-3 active:opacity-80`}
+                    className="flex-row items-center gap-2 px-4 py-3 rounded-full active:opacity-80"
                     style={{
                       backgroundColor: isSelected ? '#2563eb' : '#1f2937',
                     }}
@@ -82,7 +84,7 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
         </BottomSheetView>
       </BottomSheet>
     );
-  },
+  }),
 );
 
 MoodPicker.displayName = 'MoodPicker';

@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react';
+import { forwardRef, memo, useEffect, useMemo } from 'react';
 
 import BottomSheet, {
   BottomSheetBackdrop,
@@ -13,11 +13,15 @@ type PostToolsSheetProps = {
   onToggle24h: (value: boolean) => void;
 };
 
-export const PostToolsSheet = forwardRef<BottomSheet, PostToolsSheetProps>(
-  ({ is24h, onToggle24h }, ref) => {
+export const PostToolsSheet = memo(
+  forwardRef<BottomSheet, PostToolsSheetProps>(({ is24h, onToggle24h }, ref) => {
     const snapPoints = useMemo(() => [320], []);
     const { colorScheme } = useColorScheme();
     const isDark = colorScheme === 'dark';
+
+    useEffect(() => {
+      console.log('is24h ', is24h);
+    }, [is24h]);
 
     return (
       <BottomSheet
@@ -50,7 +54,7 @@ export const PostToolsSheet = forwardRef<BottomSheet, PostToolsSheetProps>(
             Keep things temporary or special.
           </Text>
 
-          <View className="mt-6 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 dark:bg-white/5">
+          <View className="px-4 py-4 mt-6 border rounded-2xl border-white/10 bg-white/5 dark:bg-white/5">
             <View className="flex-row items-center justify-between">
               <View className="flex-1 pr-4">
                 <Text className="text-base font-semibold text-foreground">
@@ -64,7 +68,7 @@ export const PostToolsSheet = forwardRef<BottomSheet, PostToolsSheetProps>(
             </View>
           </View>
 
-          <View className="mt-4 rounded-2xl border border-dashed border-white/20 bg-white/5 px-4 py-4 opacity-60 dark:bg-white/5">
+          <View className="px-4 py-4 mt-4 border border-dashed rounded-2xl border-white/20 bg-white/5 opacity-60 dark:bg-white/5">
             <View className="flex-row items-center justify-between">
               <Text className="text-base font-semibold text-foreground">
                 Polls
@@ -82,7 +86,7 @@ export const PostToolsSheet = forwardRef<BottomSheet, PostToolsSheetProps>(
         </BottomSheetView>
       </BottomSheet>
     );
-  },
+  }),
 );
 
 PostToolsSheet.displayName = 'PostToolsSheet';
