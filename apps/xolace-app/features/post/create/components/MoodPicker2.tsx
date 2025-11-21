@@ -24,6 +24,7 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
       setMood(moodId);
       (ref as any)?.current?.close();
     };
+    console.log('selected ', selectedMood);
 
     return (
       <BottomSheet
@@ -58,8 +59,8 @@ export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
             <View className="flex-row flex-wrap gap-3">
               {moods.map((mood) => {
                 const IconComponent = mood.icon;
-                console.log('selected ', selectedMood);
-                console.log('mood ', mood.id);
+                
+                //console.log('mood ', mood.id);
                 const isSelected = selectedMood === mood.id;
 
                 return (

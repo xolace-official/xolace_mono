@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useRef } from 'react';
 
 import BottomSheet from '@gorhom/bottom-sheet';
-import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
 import { Alert, View } from 'react-native';
 import {
@@ -21,6 +20,9 @@ import { PostComposerToolbar } from '../../../features/post/create/components/Po
 import { PostMediaPreview } from '../../../features/post/create/components/PostMediaPreview';
 import { PostTextFields } from '../../../features/post/create/components/PostTextFields';
 import { PostToolsSheet } from '../../../features/post/create/components/PostToolsSheet';
+import { VoiceRecorderBar } from '../../../features/post/create/components/VoiceRecorderBar';
+import { useSingleImagePicker } from '../../../features/post/create/hooks/useSingleImagePicker';
+import { useVoiceToTextHelper } from '../../../features/post/create/hooks/useVoiceToTextHelper';
 import { usePostDraftStore } from '../../../features/post/create/store/usePostDraftStore';
 
 const PostCreationScreen = () => {
@@ -38,8 +40,21 @@ const PostCreationScreen = () => {
   const is24hOnly = usePostDraftStore((state) => state.is24hOnly);
   const setIs24hOnly = usePostDraftStore((state) => state.setIs24hOnly);
   const resetDraft = usePostDraftStore((state) => state.reset);
+  const { pickImage, removeImage } = useSingleImagePicker(attachImage);
 
   const toolsSheetRef = useRef<BottomSheet>(null);
+  const appendTranscription = useCallback(
+    (text: string) => {
+      const currentBody = usePostDraftStore.getState().body;
+      setBody(currentBody ? `${currentBody}\n${text}` : text);
+    },
+    [setBody],
+  );
+
+  const voiceHelper = useVoiceToTextHelper({
+    onTranscriptionComplete: appendTranscription,
+    onError: (message) => Alert.alert('Voice to text', message),
+  });
 
   const canSubmit = Boolean(title.trim() && community);
 
@@ -83,43 +98,6 @@ const PostCreationScreen = () => {
     );
   }, []);
 
-  const handlePickImage = useCallback(async () => {
-    try {
-      const permissionResult =
-        await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!permissionResult.granted) {
-        Alert.alert(
-          'Permission required',
-          'We need access to your library to attach an image.',
-        );
-        return;
-      }
-
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 1,
-        allowsEditing: false,
-      });
-
-      if (!result.canceled) {
-        const asset = result.assets[0];
-        attachImage({
-          uri: asset.uri,
-          width: asset.width,
-          height: asset.height,
-          mimeType: asset.mimeType ?? asset.type,
-        });
-      }
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Unable to pick media', 'Please try again in a moment.');
-    }
-  }, [attachImage]);
-
-  const handleRemoveImage = useCallback(() => {
-    attachImage(null);
-  }, [attachImage]);
-
   const openToolsSheet = useCallback(() => {
     toolsSheetRef.current?.expand();
   }, []);
@@ -131,6 +109,12 @@ const PostCreationScreen = () => {
   const handleRemoveMood = () => {
     setMood(null);
   };
+
+  const handleMicToggle = useCallback(() => {
+    voiceHelper.toggleRecording();
+  }, [voiceHelper]);
+  const showVoiceBar =
+    voiceHelper.isRecording || voiceHelper.isTranscribing;
 
   return (
     <SafeAreaView edges={['top']} className="flex-1 bg-background">
@@ -164,16 +148,30 @@ const PostCreationScreen = () => {
               Choose a community to unlock the Post button.
             </Text>
           )}
-          <PostMediaPreview media={image} onRemove={handleRemoveImage} />
+          <PostMediaPreview media={image} onRemove={removeImage} />
         </View>
       </KeyboardAwareScrollView>
 
       <KeyboardStickyView>
         <View className="border-t border-white/10 bg-background/95 pb-5 pt-2">
+          <VoiceRecorderBar
+            visible={showVoiceBar}
+            isRecording={voiceHelper.isRecording}
+            isPreparing={voiceHelper.isPreparing}
+            isTranscribing={voiceHelper.isTranscribing}
+            durationLabel={voiceHelper.durationLabel}
+            bars={voiceHelper.bars}
+            onToggle={handleMicToggle}
+          />
           <PostComposerToolbar
-            onPickImage={handlePickImage}
+            onPickImage={pickImage}
             onOpenTools={openToolsSheet}
             onMoodPress={handleMoodPress}
+            onToggleMic={handleMicToggle}
+            micActive={
+              voiceHelper.isRecording || voiceHelper.isTranscribing
+            }
+            micDisabled={voiceHelper.isTranscribing}
           />
         </View>
       </KeyboardStickyView>
