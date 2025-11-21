@@ -69,7 +69,7 @@ export const MoodPicker = memo(
                   <Pressable
                     key={mood.id}
                     onPress={() => handleMoodSelect(mood.id)}
-                    className="flex-row items-center gap-2 px-4 py-3 rounded-full active:opacity-80"
+                    className="flex-row items-center gap-2 rounded-full px-4 py-3 active:opacity-80"
                     style={{
                       backgroundColor: isSelected ? '#2563eb' : '#1f2937',
                     }}

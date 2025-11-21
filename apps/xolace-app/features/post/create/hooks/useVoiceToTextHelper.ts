@@ -109,7 +109,7 @@ export const useVoiceToTextHelper = ({
       await recorder.stop();
       const uri = recorderState.url ?? uriBeforeStop ?? recorder.uri;
       if (uri) {
-        console.log("uri : ", uri)
+        console.log('uri : ', uri);
         void performTranscription(uri);
       } else {
         onError?.('No recording found to transcribe.');

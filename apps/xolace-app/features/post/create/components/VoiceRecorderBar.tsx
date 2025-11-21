@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
-import { ActivityIndicator, Pressable, View } from 'react-native';
 import { Mic, Square } from 'lucide-react-native';
+import { ActivityIndicator, Pressable, View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
@@ -75,7 +75,9 @@ export const VoiceRecorderBar = memo(
                   ? 'Recording'
                   : 'Voice to text'}
             </Text>
-            <Text className="text-xs text-muted-foreground">{durationLabel}</Text>
+            <Text className="text-xs text-muted-foreground">
+              {durationLabel}
+            </Text>
           </View>
 
           <Waveform bars={bars.slice(-24)} />

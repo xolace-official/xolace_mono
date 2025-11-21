@@ -119,8 +119,7 @@ const PostCreationScreen = () => {
   const handleMicToggle = useCallback(() => {
     voiceHelper.toggleRecording();
   }, [voiceHelper]);
-  const showVoiceBar =
-    voiceHelper.isRecording || voiceHelper.isTranscribing;
+  const showVoiceBar = voiceHelper.isRecording || voiceHelper.isTranscribing;
 
   return (
     <SafeAreaView edges={['top']} className="flex-1 bg-background">
@@ -159,7 +158,7 @@ const PostCreationScreen = () => {
       </KeyboardAwareScrollView>
 
       <KeyboardStickyView>
-        <View className="pt-2 pb-5 border-t border-white/10 bg-background/95">
+        <View className="border-t border-white/10 bg-background/95 pb-5 pt-2">
           <VoiceRecorderBar
             visible={showVoiceBar}
             isRecording={voiceHelper.isRecording}
@@ -174,9 +173,7 @@ const PostCreationScreen = () => {
             onOpenTools={openToolsSheet}
             onMoodPress={handleMoodPress}
             onToggleMic={handleMicToggle}
-            micActive={
-              voiceHelper.isRecording || voiceHelper.isTranscribing
-            }
+            micActive={voiceHelper.isRecording || voiceHelper.isTranscribing}
             micDisabled={voiceHelper.isTranscribing}
           />
         </View>
