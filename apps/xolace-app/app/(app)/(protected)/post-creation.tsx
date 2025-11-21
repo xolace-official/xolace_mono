@@ -2,14 +2,13 @@ import { useCallback, useMemo, useRef } from 'react';
 
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useRouter } from 'expo-router';
-import { Alert, View } from 'react-native';
+import { Alert, Keyboard, View } from 'react-native';
 import {
   KeyboardAwareScrollView,
   KeyboardStickyView,
 } from 'react-native-keyboard-controller';
+import { KeyboardController } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { Text } from '@xolacekit/ui';
 
 import { CommunitySelectorPill } from '../../../features/post/create/components/CommunitySelectorPill';
 import { CreatePostHeader } from '../../../features/post/create/components/CreatePostHeader';
@@ -56,7 +55,7 @@ const PostCreationScreen = () => {
     onError: (message) => Alert.alert('Voice to text', message),
   });
 
-  const canSubmit = Boolean(title.trim() && community);
+  const canSubmit = Boolean(title.trim());
 
   const hasDraft = useMemo(
     () =>
@@ -98,11 +97,18 @@ const PostCreationScreen = () => {
     );
   }, []);
 
-  const openToolsSheet = useCallback(() => {
-    toolsSheetRef.current?.expand();
+  const dismissKeyboard = useCallback(() => {
+    KeyboardController.dismiss();
+    Keyboard.dismiss();
   }, []);
 
+  const openToolsSheet = useCallback(() => {
+    dismissKeyboard();
+    toolsSheetRef.current?.expand();
+  }, [dismissKeyboard]);
+
   const handleMoodPress = () => {
+    dismissKeyboard();
     moodPickerRef.current?.expand();
   };
 
@@ -143,11 +149,11 @@ const PostCreationScreen = () => {
           />
 
           <ExpirationBadge visible={is24hOnly} />
-          {!community && (
+          {/* {!community && (
             <Text className="mt-4 text-sm text-muted-foreground">
               Choose a community to unlock the Post button.
             </Text>
-          )}
+          )} */}
           <PostMediaPreview media={image} onRemove={removeImage} />
         </View>
       </KeyboardAwareScrollView>
