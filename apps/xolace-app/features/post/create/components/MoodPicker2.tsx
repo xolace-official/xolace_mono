@@ -1,4 +1,3 @@
-// components/post-creation/MoodPicker.tsx
 import React, { forwardRef, useMemo } from 'react';
 
 import BottomSheet, {
@@ -12,7 +11,7 @@ import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 import { moods } from '../constants/moods';
 import { usePostDraftStore } from '../store/usePostDraftStore';
 
-type MoodPickerProps = Record<string, never>;
+type MoodPickerProps = {};
 type MoodPickerRef = BottomSheet;
 
 export const MoodPicker = forwardRef<MoodPickerRef, MoodPickerProps>(
