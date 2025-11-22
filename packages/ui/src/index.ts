@@ -9,6 +9,7 @@ export * from './components/ui/typography';
 export * from './components/ui/avatar';
 export * from './components/ui/badge';
 export * from './components/ui/radio-group';
+export * from './components/ui/skeleton';
 
 export * from './components/ui/dialog';
 export * from './components/ui/dropdown-menu';

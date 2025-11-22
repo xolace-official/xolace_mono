@@ -55,7 +55,7 @@ export function CampfireDetailsScreen() {
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
-    setIsCondensed(offsetY > 140);
+    setIsCondensed(offsetY > 180);
   };
 
   const handleToggleJoin = () => {
@@ -122,7 +122,7 @@ export function CampfireDetailsScreen() {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <View className="flex-1 bg-background">
       <CampfireCondensedBar
         visible={isCondensed}
         campfire={campfireDetailsMock}
@@ -156,6 +156,6 @@ export function CampfireDetailsScreen() {
         resources={campfireGuideResourcesMock}
         onClose={() => guideSheetRef.current?.close()}
       />
-    </SafeAreaView>
+    </View>
   );
 }

@@ -29,13 +29,13 @@ export function CampfireCondensedBar({
   if (!visible) return null;
 
   return (
-    <View className="absolute left-0 right-0 top-0 z-20 px-4 pt-8">
-      <View className="flex-row items-center gap-3 rounded-full border border-border/70 bg-background/95 px-3 py-2 shadow-md">
-        <Avatar className="h-9 w-9 bg-primary/10">
-          {campfire.iconURL ? (
+    <View className="absolute top-0 left-0 right-0 z-20 px-4 pt-8">
+      <View className="flex-row items-center gap-3 px-3 py-2 border rounded-full shadow-md border-border/70 bg-background/95">
+        <Avatar alt='avatar' className="h-9 w-9 bg-primary/10">
             <AvatarImage source={{ uri: campfire.iconURL }} />
-          ) : null}
-          <AvatarFallback>🔥</AvatarFallback>
+          <AvatarFallback>
+            <Text>🔥</Text>
+          </AvatarFallback>
         </Avatar>
         <Text
           className="flex-1 text-sm font-semibold text-foreground"

@@ -94,8 +94,7 @@ export function CampfirePostsList({
       onRefresh={onRefresh}
       onScroll={onScroll}
       scrollEventThrottle={16}
-      estimatedItemSize={320}
-      contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}
+      contentContainerStyle={{ paddingBottom: 32 }}
     />
   );
 }
@@ -106,19 +105,19 @@ function PostSkeleton() {
       {Array.from({ length: 2 }, (_, index) => (
         <Card
           key={`post-skeleton-${index}`}
-          className="border-border/50 bg-card/80 p-4"
+          className="p-4 border-border/50 bg-card/80"
         >
           <View className="flex-row items-center gap-3">
-            <Skeleton className="h-10 w-10 rounded-full" />
+            <Skeleton className="w-10 h-10 rounded-full" />
             <View className="flex-1 gap-2">
-              <Skeleton className="h-4 w-1/3 rounded-full" />
-              <Skeleton className="h-3 w-1/5 rounded-full" />
+              <Skeleton className="w-1/3 h-4 rounded-full" />
+              <Skeleton className="w-1/5 h-3 rounded-full" />
             </View>
           </View>
-          <View className="mt-4 gap-3">
-            <Skeleton className="h-4 w-full rounded-full" />
-            <Skeleton className="h-4 w-5/6 rounded-full" />
-            <Skeleton className="h-4 w-3/4 rounded-full" />
+          <View className="gap-3 mt-4">
+            <Skeleton className="w-full h-4 rounded-full" />
+            <Skeleton className="w-5/6 h-4 rounded-full" />
+            <Skeleton className="w-3/4 h-4 rounded-full" />
           </View>
         </Card>
       ))}
@@ -128,11 +127,11 @@ function PostSkeleton() {
 
 function EmptyState() {
   return (
-    <View className="items-center justify-center rounded-3xl border border-dashed border-border/60 bg-card/40 px-6 py-10">
+    <View className="items-center justify-center px-6 py-10 border border-dashed rounded-3xl border-border/60 bg-card/40">
       <Text className="text-lg font-semibold text-foreground">
         No sparks yet
       </Text>
-      <Text className="mt-2 text-center text-sm text-muted-foreground">
+      <Text className="mt-2 text-sm text-center text-muted-foreground">
         Be the first to share something with the campfire.
       </Text>
     </View>
@@ -147,17 +146,17 @@ function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <View className="items-center justify-center rounded-3xl border border-destructive/40 bg-destructive/5 px-6 py-10">
+    <View className="items-center justify-center px-6 py-10 border rounded-3xl border-destructive/40 bg-destructive/5">
       <Text className="text-lg font-semibold text-destructive">
         Unable to load campfire posts
       </Text>
-      <Text className="mt-2 text-center text-sm text-destructive/80">
+      <Text className="mt-2 text-sm text-center text-destructive/80">
         {message}
       </Text>
       {onRetry ? (
         <Pressable
           onPress={onRetry}
-          className="mt-3 rounded-full bg-destructive px-4 py-2"
+          className="px-4 py-2 mt-3 rounded-full bg-destructive"
         >
           <Text className="text-sm font-semibold text-destructive-foreground">
             Try again

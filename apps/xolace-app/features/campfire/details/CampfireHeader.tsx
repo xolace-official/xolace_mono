@@ -86,37 +86,37 @@ export function CampfireHeader({
 
   return (
     <View className="mb-6">
-      <View className="h-[220px] w-full overflow-hidden rounded-b-3xl">
+      <View className="h-[150px] w-full overflow-hidden rounded-b-3xl">
         {campfire.bannerUrl ? (
           <ImageBackground
             source={{ uri: campfire.bannerUrl }}
             resizeMode="cover"
-            className="h-full w-full"
+            className="w-full h-full"
           >
             <GradientOverlay />
           </ImageBackground>
         ) : (
           <LinearGradient
             colors={['#0c0d1a', '#1f2736', '#2c1f32']}
-            className="h-full w-full"
+            className="w-full h-full"
           >
             <Glow />
           </LinearGradient>
         )}
 
-        <View className="absolute left-0 right-0 top-0 px-4 pt-10">
+        <View className="absolute top-0 left-0 right-0 pt-10">
           <CampfireHeaderTopBar onBack={router.back} />
         </View>
       </View>
 
-      <View className="-mt-10 px-4">
-        <View className="rounded-3xl border border-border/60 bg-card/90 p-4 shadow-lg shadow-black/30">
+      <View className="-mt-10 ">
+        <View className="p-4 border shadow-lg rounded-3xl border-border/60 bg-card/90 shadow-black/30">
           <View className="flex-row items-center gap-3">
-            <Avatar className="h-14 w-14 bg-primary/10">
-              {campfire.iconURL ? (
+            <Avatar alt='avatar' className="h-14 w-14 bg-primary/10">
                 <AvatarImage source={{ uri: campfire.iconURL }} />
-              ) : null}
-              <AvatarFallback>🔥</AvatarFallback>
+              <AvatarFallback>
+                <Text>🔥</Text>
+              </AvatarFallback>
             </Avatar>
 
             <View className="flex-1">
@@ -133,7 +133,7 @@ export function CampfireHeader({
                 <Button
                   size="sm"
                   variant="secondary"
-                  className="rounded-full bg-primary/10 px-3 py-2"
+                  className="px-3 py-2 rounded-full bg-primary/10"
                   onPress={onOpenModTools}
                 >
                   <Text className="text-sm font-semibold text-primary">
@@ -145,14 +145,14 @@ export function CampfireHeader({
             </View>
           </View>
 
-          <View className="mt-3 flex-row items-center gap-3">
-            <View className="rounded-full bg-muted/60 px-3 py-1">
-              <Text className="text-xs uppercase tracking-wide text-muted-foreground">
+          <View className="flex-row items-center gap-3 mt-3">
+            <View className="px-3 py-1 rounded-full bg-muted/60">
+              <Text className="text-xs tracking-wide uppercase text-muted-foreground">
                 {campfire.visibility} campfire
               </Text>
             </View>
             {campfire.isFavorite ? (
-              <View className="rounded-full bg-primary/10 px-3 py-1">
+              <View className="px-3 py-1 rounded-full bg-primary/10">
                 <Text className="text-xs font-medium text-primary">
                   Favorite
                 </Text>
@@ -169,7 +169,7 @@ function GradientOverlay() {
   return (
     <LinearGradient
       colors={['rgba(0,0,0,0.65)', 'rgba(0,0,0,0.25)', 'rgba(0,0,0,0.7)']}
-      className="h-full w-full"
+      className="w-full h-full"
     />
   );
 }
@@ -177,8 +177,8 @@ function GradientOverlay() {
 function Glow() {
   return (
     <View className="absolute inset-0">
-      <View className="absolute inset-x-16 top-10 h-20 rounded-full bg-orange-400/30 blur-3xl" />
-      <View className="absolute inset-x-10 bottom-4 h-28 rounded-full bg-amber-500/20 blur-3xl" />
+      <View className="absolute h-20 rounded-full inset-x-16 top-10 bg-orange-400/30 blur-3xl" />
+      <View className="absolute rounded-full inset-x-10 bottom-4 h-28 bg-amber-500/20 blur-3xl" />
     </View>
   );
 }
