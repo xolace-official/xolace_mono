@@ -53,7 +53,7 @@ export function CampfireHeader({
   const purposeLabel = purposeLabels[campfire.purpose] ?? 'Campfire';
 
   const renderJoinButton = () => {
-    const joined = isMember;
+    const joined = !isMember;
     const label = joined ? 'Joined' : 'Join';
     const Icon = joined ? Check : Plus;
 
@@ -69,16 +69,16 @@ export function CampfireHeader({
       <Pressable
         onPress={handlePress}
         className={cn(
-          'flex-row items-center justify-center rounded-full px-4 py-2',
+          'flex-row items-center justify-center rounded-full px-2 py-2',
           joined
             ? 'border border-primary/40 bg-primary/5'
             : 'bg-primary',
         )}
       >
-        <Icon size={16} color={joined ? '#f97316' : '#0b0b0c'} />
+        <Icon size={13} color={joined ? '#f97316' : '#fff'} />
         <Text
           className={cn(
-            'ml-2 text-sm font-semibold',
+            'ml-1 text-xs font-semibold',
             joined ? 'text-primary' : 'text-primary-foreground',
           )}
         >
@@ -89,13 +89,14 @@ export function CampfireHeader({
   };
 
   return (
-    <View className="mb-6">
-      <View className="h-[150px] w-full overflow-hidden rounded-b-3xl">
+    <View style={{ height: CAMPFIRE_HEADER_HEIGHT }}
+      className="absolute inset-x-0 top-0 z-20">
+      <View style={{ height: BANNER_HEIGHT }} className="overflow-hidden">
         {campfire.bannerUrl ? (
           <ImageBackground
             source={{ uri: campfire.bannerUrl }}
             resizeMode="cover"
-            className="w-full h-full"
+            style={{ width: '100%', height: BANNER_HEIGHT }}
           >
             <GradientOverlay />
           </ImageBackground>
@@ -108,13 +109,13 @@ export function CampfireHeader({
           </LinearGradient>
         )}
 
-        <View className="absolute top-0 left-0 right-0 pt-10">
+        <View className="absolute inset-x-0 top-0 px-4 pt-12">
           <CampfireHeaderTopBar onBack={router.back} />
         </View>
       </View>
 
-      <View className="-mt-10 ">
-        <View className="p-4 border shadow-lg rounded-3xl border-border/60 bg-card/90 shadow-black/30">
+      <View className="px-4 -mt-6 ">
+        <View className="p-4 shadow-lg rounded-3xl bg-background/95 shadow-black/10 dark:bg-zinc-900/95">
           <View className="flex-row items-center gap-3">
             <Avatar alt='avatar' className="h-14 w-14 bg-primary/10">
                 <AvatarImage source={{ uri: campfire.iconURL }} />
@@ -124,10 +125,10 @@ export function CampfireHeader({
             </Avatar>
 
             <View className="flex-1">
-              <Text className="text-lg font-bold text-foreground">
+              <Text className="text-sm font-bold text-foreground">
                 {campfire.name}
               </Text>
-              <Text className="text-sm text-muted-foreground">
+              <Text className="text-[10px] text-muted-foreground">
                 {formatMembers(campfire.members)} campers · {purposeLabel}
               </Text>
             </View>
@@ -135,29 +136,29 @@ export function CampfireHeader({
             <View className="flex-row items-center gap-2">
               {memberRole !== 'camper' ? (
                 <Button
-                  size="sm"
+                  size="xs"
                   variant="secondary"
-                  className="px-3 py-2 rounded-full bg-primary/10"
+                  className="px-2 rounded-full shadow-sm bg-primary"
                   onPress={onOpenModTools}
                 >
-                  <Text className="text-sm font-semibold text-primary">
+                  <Text className="text-xs font-semibold text-white">
                     Mod Tools
                   </Text>
                 </Button>
               ) : null}
-              {renderJoinButton()}
+              {memberRole === 'firestarter' && renderJoinButton()}
             </View>
           </View>
 
-          <View className="flex-row items-center gap-3 mt-3">
+          <View className="flex-row items-center gap-3 ">
             <View className="px-3 py-1 rounded-full bg-muted/60">
-              <Text className="text-xs tracking-wide uppercase text-muted-foreground">
+              <Text className="text-[10px] tracking-wide uppercase text-muted-foreground">
                 {campfire.visibility} campfire
               </Text>
             </View>
             {campfire.isFavorite ? (
               <View className="px-3 py-1 rounded-full bg-primary/10">
-                <Text className="text-xs font-medium text-primary">
+                <Text className="text-[10px] font-medium text-primary">
                   Favorite
                 </Text>
               </View>
