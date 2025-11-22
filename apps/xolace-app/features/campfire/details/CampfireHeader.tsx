@@ -117,7 +117,7 @@ export function CampfireHeader({
 
       {
         showProfileCard && (
-          <View className="px-4 -mt-6 ">
+          <View className="px-4 -mt-5 ">
         <View className="px-4 py-2 shadow-lg rounded-3xl bg-background/95 shadow-black/10 dark:bg-zinc-900/95">
           <View className="flex-row items-center gap-3">
             <Avatar alt='avatar' className="h-14 w-14 bg-primary/10">
