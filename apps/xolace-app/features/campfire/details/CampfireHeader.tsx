@@ -19,6 +19,7 @@ type CampfireHeaderProps = {
   campfire: CampfireDetails;
   isMember: boolean;
   memberRole: CampfireRole;
+  showProfileCard?: boolean;
   onToggleJoin: () => void;
   onOpenMembership: () => void;
   onOpenModTools?: () => void;
@@ -44,6 +45,7 @@ export function CampfireHeader({
   campfire,
   isMember,
   memberRole,
+  showProfileCard = true,
   onToggleJoin,
   onOpenMembership,
   onOpenModTools,
@@ -89,7 +91,7 @@ export function CampfireHeader({
 
   return (
     <View style={{ height: CAMPFIRE_HEADER_HEIGHT }}
-      className="absolute inset-x-0 top-0 z-20 bg-red-400">
+      className="absolute inset-x-0 top-0 z-20">
       <View style={{ height: BANNER_HEIGHT }} className="overflow-hidden">
         {campfire.bannerUrl ? (
           <ImageBackground
@@ -113,7 +115,9 @@ export function CampfireHeader({
         </View>
       </View>
 
-      <View className="px-4 -mt-6 ">
+      {
+        showProfileCard && (
+          <View className="px-4 -mt-6 ">
         <View className="px-4 py-2 shadow-lg rounded-3xl bg-background/95 shadow-black/10 dark:bg-zinc-900/95">
           <View className="flex-row items-center gap-3">
             <Avatar alt='avatar' className="h-14 w-14 bg-primary/10">
@@ -165,6 +169,8 @@ export function CampfireHeader({
           </View>
         </View>
       </View>
+        )
+      }
 
     </View>
   );

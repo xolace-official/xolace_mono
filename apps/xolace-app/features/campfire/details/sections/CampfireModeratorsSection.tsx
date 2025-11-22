@@ -22,7 +22,7 @@ export function CampfireModeratorsSection({
   if (!moderators.length) return null;
 
   return (
-    <View className="rounded-3xl border border-border/60 bg-card/90 p-4">
+    <View className="p-4 border rounded-3xl border-border/60 bg-card/90">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center gap-2">
           <Shield size={16} color="#94a3b8" />
@@ -30,20 +30,20 @@ export function CampfireModeratorsSection({
             Firestarters & Firekeepers
           </Text>
         </View>
-        <Button variant="secondary" className="rounded-full px-3 py-1">
+        <Button size={'sm'} variant="secondary" className="px-3 py-1 rounded-full">
           <Text className="text-xs font-semibold text-foreground">
             Message team
           </Text>
         </Button>
       </View>
 
-      <View className="mt-3 gap-3">
+      <View className="gap-1 mt-3">
         {moderators.map((moderator) => (
           <View
             key={moderator.id}
-            className="flex-row items-center gap-3 rounded-2xl bg-muted/10 px-3 py-2"
+            className="flex-row items-center gap-3 px-3 py-2 rounded-2xl bg-muted/10"
           >
-            <Avatar alt={moderator.name} className="h-10 w-10 bg-primary/10">
+            <Avatar alt={moderator.name} className="w-10 h-10 bg-primary/10">
               <AvatarImage source={{ uri: moderator.avatarUrl }} />
               <AvatarFallback>
                 <Text>🔥</Text>
@@ -59,7 +59,7 @@ export function CampfireModeratorsSection({
             </View>
             <Badge
               variant="secondary"
-              className="rounded-full bg-primary/10 px-2 py-1"
+              className="px-2 py-1 rounded-full bg-primary/10"
             >
               <Text className="text-xs font-semibold text-primary">
                 {moderator.role === 'firestarter'

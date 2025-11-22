@@ -3,7 +3,7 @@ import { forwardRef, useMemo } from 'react';
 
 import BottomSheet, {
   BottomSheetBackdrop,
-  BottomSheetView,
+  BottomSheetScrollView
 } from '@gorhom/bottom-sheet';
 import { BookOpen, ExternalLink, Sparkles } from 'lucide-react-native';
 import { Linking, Pressable, View } from 'react-native';
@@ -14,7 +14,9 @@ import {
   AvatarImage,
   Button,
   Text,
-  cn,
+  NAV_THEME,
+  useColorScheme,
+  ChevronRight,
 } from '@xolacekit/ui';
 
 import type { CampfireDetails, CampfireGuideResource } from './types';
@@ -39,103 +41,116 @@ export const CampfireGuideSheet = forwardRef<
   BottomSheet,
   CampfireGuideSheetProps
 >(({ campfire, resources, onClose }, ref: ForwardedRef<BottomSheet>) => {
-  const snapPoints = useMemo(() => ['60%', '85%'], []);
+  const { isDarkColorScheme } = useColorScheme();
+  const snapPoints = useMemo(() => ['65%'], []);
 
-  const handlePressResource = (url?: string) => {
+  const handleResourcePress = (url?: string) => {
     if (!url || !isValidUrl(url)) return;
     Linking.openURL(url);
   };
 
-  const welcomeText =
+  const welcomeMessage =
     campfire.guideWelcomeMessage?.replace('{username}', 'you') ||
     'Welcome in! Here are quick sparks to help you settle into the campfire.';
 
   return (
-    <BottomSheet
-      ref={ref}
-      index={-1}
-      snapPoints={snapPoints}
-      enablePanDownToClose
-      backdropComponent={(props) => (
-        <BottomSheetBackdrop
-          {...props}
-          appearsOnIndex={0}
-          disappearsOnIndex={-1}
-        />
-      )}
-      onClose={onClose}
-    >
-      <BottomSheetView className="px-5 py-4">
-        <View className="items-center gap-2 py-2">
-          <Avatar alt={campfire.name} className="h-16 w-16 bg-primary/10">
-            <AvatarImage source={{ uri: campfire.iconURL }} />
-            <AvatarFallback>
-              <Text>🔥</Text>
-            </AvatarFallback>
-          </Avatar>
-          <Text className="text-lg font-semibold text-foreground">
-            {campfire.name}
-          </Text>
-        </View>
+     <BottomSheet
+        ref={ref}
+        index={-1}
+        snapPoints={snapPoints}
+        detached
+        bottomInset={87}
+        enablePanDownToClose
+        backdropComponent={(props) => (
+          <BottomSheetBackdrop
+            {...props}
+            appearsOnIndex={0}
+            disappearsOnIndex={-1}
+            opacity={0.5}
+          />
+        )}
+        backgroundStyle={{
+          backgroundColor: isDarkColorScheme
+            ? NAV_THEME.dark.colors.background
+            : NAV_THEME.light.colors.background,
+        }}
+        handleIndicatorStyle={{
+          backgroundColor: isDarkColorScheme ? NAV_THEME.dark.colors.background : NAV_THEME.light.colors.background,
+        }}
+      >
+        <BottomSheetScrollView className="px-6 pt-4 pb-5">
+          <View className="items-center gap-3">
+            <Avatar alt='avatar' className="w-16 h-16">
+              <AvatarImage source={{ uri: campfire.iconURL }} />
+              <AvatarFallback className="bg-gradient-to-br from-orange-400 to-pink-500">
+                <Text className="text-xl">🔥</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Text className="text-xl font-semibold text-foreground">
+              {campfire.name}
+            </Text>
+          </View>
 
-        <View className="mt-4 rounded-3xl border border-border/60 bg-card/90 p-4">
-          <Text className="text-sm leading-5 text-foreground">
-            {welcomeText}
-          </Text>
-          <Text className="mt-2 text-xs text-muted-foreground">
-            —{' '}
-            {campfire.memberRole === 'firestarter'
-              ? 'Firestarter team'
-              : 'Campfire Mod Team'}
-          </Text>
-        </View>
+          <View className="p-4 mt-4 rounded-2xl bg-muted/50 dark:bg-zinc-900">
+            <Text className="text-sm text-foreground">{welcomeMessage}</Text>
+            <Text className="mt-2 text-xs text-muted-foreground">
+              - Campfire Mod Team
+            </Text>
+          </View>
 
-        <View className="mt-5 gap-3">
-          <View className="flex-row items-center gap-2">
-            <BookOpen size={16} color="#f97316" />
+          <View className="gap-2 mt-5">
             <Text className="text-sm font-semibold text-foreground">
               Resources
             </Text>
-          </View>
-          <View className="rounded-2xl border border-border/70 bg-card/80">
-            {resources.map((resource, index) => {
-              const valid = isValidUrl(resource.url);
-              const isLast = index === resources.length - 1;
+            {resources.map((resource) => {
+              const tappable = isValidUrl(resource.url);
               return (
                 <Pressable
                   key={resource.id}
-                  onPress={() => handlePressResource(resource.url)}
-                  disabled={!valid}
-                  className={cn(
-                    'flex-row items-center justify-between px-4 py-3',
-                    !isLast && 'border-b border-border/60',
-                    !valid && 'opacity-60',
-                  )}
+                  disabled={!tappable}
+                  onPress={() => handleResourcePress(resource.url)}
+                  className={`flex-row items-center justify-between rounded-2xl px-3 py-2 bg-red-400 ${
+                    tappable
+                      ? 'active:opacity-80'
+                      : 'opacity-60'
+                  }`}
                 >
                   <View className="flex-row items-center gap-3">
-                    <Sparkles size={16} color="#f97316" />
-                    <Text className="text-sm text-foreground">
+                    <BookOpen
+                      size={18}
+                      className="text-muted-foreground"
+                    />
+                    <Text className="text-base text-foreground">
                       {resource.title}
                     </Text>
                   </View>
-                  {valid ? <ExternalLink size={16} color="#cbd5e1" /> : null}
+                  <View className="p-1 rounded-full bg-muted/60">
+                    <ChevronRight
+                      size={18}
+                      className="text-muted-foreground"
+                    />
+                  </View>
                 </Pressable>
               );
             })}
           </View>
-        </View>
 
-        <Button className="mt-6 rounded-full bg-primary py-3" onPress={onClose}>
-          <Text className="text-base font-semibold text-primary-foreground">
-            Got it
-          </Text>
-        </Button>
-
-        <Text className="mt-3 text-center text-xs text-muted-foreground">
-          Access the campfire guide any time from the About tab.
-        </Text>
-      </BottomSheetView>
-    </BottomSheet>
+          <View className="gap-3 mt-6">
+            <Button
+              className="rounded-full bg-primary"
+              onPress={onClose}
+              variant="default"
+            >
+              <Text className="text-base font-semibold text-primary-foreground">
+                Got it
+              </Text>
+            </Button>
+            <Text className="text-xs text-center text-muted-foreground">
+              Access the campfire guide any time from the About tab.
+            </Text>
+          </View>
+        </BottomSheetScrollView>
+      </BottomSheet>
   );
 });
 

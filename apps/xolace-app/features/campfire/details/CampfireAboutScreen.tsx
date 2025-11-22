@@ -47,31 +47,33 @@ export function CampfireAboutScreen() {
   };
 
   return (
-    <View className="flex-1 bg-background">
-      <CampfireCondensedBar
+    <View className="flex-1 pb-16 bg-background">
+      {/* <CampfireCondensedBar
         visible={isCondensed}
         campfire={campfireDetailsMock}
         isMember={isMember}
         onJoinPress={handleToggleJoin}
         onMembershipPress={handleOpenMembership}
-      />
-
-      <ScrollView
-        className="flex-1"
-        showsVerticalScrollIndicator={false}
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-      >
-        <CampfireHeader
+      /> */}
+      <CampfireHeader
         campfire={campfireDetailsMock}
         isMember={isMember}
         memberRole={campfireDetailsMock.memberRole}
+        showProfileCard={false}
         onToggleJoin={handleToggleJoin}
         onOpenMembership={handleOpenMembership}
         onOpenModTools={() =>
           Alert.alert('Mod Tools', 'Moderator tools coming soon.')
         }
       />
+
+      <ScrollView
+        className="flex-1 mt-32"
+        showsVerticalScrollIndicator={false}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+      >
+        
 
         <CampfireAboutContent
           campfire={campfireDetailsMock}
