@@ -83,8 +83,8 @@ export function CampfireDetailsScreen() {
     setTimeout(() => setIsRefreshing(false), 600);
   };
 
-  const header = (
-    <View className="gap-4 pb-4">
+  const NavHeader = () => (
+
       <CampfireHeader
         campfire={campfireDetailsMock}
         isMember={isMember}
@@ -96,9 +96,14 @@ export function CampfireDetailsScreen() {
         }
       />
 
+  );
+
+  const ListHeader = () => {
+    return(
+      <>
       <Pressable
-        onPress={() => router.push('./x/about')}
-        className="flex-row items-center gap-2 px-4 py-2 mx-4 rounded-full bg-muted/30"
+        onPress={() => router.push('/x/health/about')}
+        className="flex-row items-center gap-2 px-4 py-2 mx-4 mb-3 rounded-full bg-muted/30"
       >
         <Text className="text-sm font-semibold text-foreground">
           About this campfire
@@ -106,11 +111,11 @@ export function CampfireDetailsScreen() {
         <ChevronRight size={14} color="#94a3b8" />
       </Pressable>
 
-      <CampfireFilterChips
+      {/* <CampfireFilterChips
         filters={campfireFilters}
         activeFilter={activeFilter}
         onChange={setActiveFilter}
-      />
+      /> */}
 
       <CampfireHighlights
         highlights={campfireHighlightsMock}
@@ -118,26 +123,20 @@ export function CampfireDetailsScreen() {
           Alert.alert(highlight.title, 'Opens highlight detail soon.')
         }
       />
-    </View>
-  );
+      </>
+    )
+  }
 
   return (
     <View className="flex-1 bg-background">
-      <CampfireCondensedBar
-        visible={isCondensed}
-        campfire={campfireDetailsMock}
-        isMember={isMember}
-        onJoinPress={handleToggleJoin}
-        onMembershipPress={handleOpenMembership}
-      />
+     <NavHeader/>
 
       <CampfirePostsList
         posts={filteredPosts}
-        header={header}
+        header={<ListHeader />}
         isLoading={isLoading}
         isRefreshing={isRefreshing}
         onRefresh={handleRefresh}
-        onScroll={handleScroll}
         campfireOverride={{
           name: campfireDetailsMock.name,
           iconUrl: campfireDetailsMock.iconURL,

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { JSX} from 'react';
 import { useMemo } from 'react';
 
 import { FlashList } from '@shopify/flash-list';
@@ -15,7 +15,7 @@ import type { EnhancedPost } from '../../../lib/dummy-data/post';
 
 type CampfirePostsListProps = {
   posts: EnhancedPost[];
-  header?: ReactNode;
+  header?: JSX.Element ;
   isLoading?: boolean;
   isRefreshing?: boolean;
   error?: string;
@@ -87,13 +87,13 @@ export function CampfirePostsList({
         />
       )}
       keyExtractor={(item) => item.id}
-      ListHeaderComponent={()=> headerElement}
+      ListHeaderComponent={headerElement}
       showsVerticalScrollIndicator={false}
       refreshing={isRefreshing}
       onRefresh={onRefresh}
       onScroll={onScroll}
       scrollEventThrottle={16}
-      contentContainerStyle={{ paddingBottom: 32 }}
+      contentContainerStyle={{ paddingBottom: 32, marginTop: 175 }}
     />
   );
 }

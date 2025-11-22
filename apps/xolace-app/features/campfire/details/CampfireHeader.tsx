@@ -37,9 +37,8 @@ const formatMembers = (members: number) => {
   return `${members}`;
 };
 
-const BANNER_HEIGHT = 120;
-const PROFILE_HEIGHT = 120;
-export const CAMPFIRE_HEADER_HEIGHT = BANNER_HEIGHT + PROFILE_HEIGHT;
+const BANNER_HEIGHT = 100;
+export const CAMPFIRE_HEADER_HEIGHT = BANNER_HEIGHT;
 
 export function CampfireHeader({
   campfire,
@@ -90,7 +89,7 @@ export function CampfireHeader({
 
   return (
     <View style={{ height: CAMPFIRE_HEADER_HEIGHT }}
-      className="absolute inset-x-0 top-0 z-20">
+      className="absolute inset-x-0 top-0 z-20 bg-red-400">
       <View style={{ height: BANNER_HEIGHT }} className="overflow-hidden">
         {campfire.bannerUrl ? (
           <ImageBackground
@@ -115,7 +114,7 @@ export function CampfireHeader({
       </View>
 
       <View className="px-4 -mt-6 ">
-        <View className="p-4 shadow-lg rounded-3xl bg-background/95 shadow-black/10 dark:bg-zinc-900/95">
+        <View className="px-4 py-2 shadow-lg rounded-3xl bg-background/95 shadow-black/10 dark:bg-zinc-900/95">
           <View className="flex-row items-center gap-3">
             <Avatar alt='avatar' className="h-14 w-14 bg-primary/10">
                 <AvatarImage source={{ uri: campfire.iconURL }} />
@@ -150,7 +149,7 @@ export function CampfireHeader({
             </View>
           </View>
 
-          <View className="flex-row items-center gap-3 ">
+          <View className="flex-row items-center gap-3 mt-1">
             <View className="px-3 py-1 rounded-full bg-muted/60">
               <Text className="text-[10px] tracking-wide uppercase text-muted-foreground">
                 {campfire.visibility} campfire
