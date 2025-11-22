@@ -50,18 +50,18 @@ export const MembershipSheet = forwardRef<
     >
       <BottomSheetView className="px-5 py-4">
         <View className="items-center gap-2 py-2">
-          <Avatar className="h-12 w-12 bg-primary/10">
-            {campfire.iconURL ? (
+          <Avatar alt={campfire.name} className="w-12 h-12 bg-primary/10">
               <AvatarImage source={{ uri: campfire.iconURL }} />
-            ) : null}
-            <AvatarFallback>🔥</AvatarFallback>
+            <AvatarFallback>
+              <Text>🔥</Text>
+            </AvatarFallback>
           </Avatar>
           <Text className="text-base font-semibold text-foreground">
             {campfire.name}
           </Text>
         </View>
 
-        <View className="mt-4 rounded-2xl border border-border/60 bg-card/80">
+        <View className="mt-4 border rounded-2xl border-border/60 bg-card/80">
           {notificationOptions.map(({ id, label, icon: Icon }, index) => {
             const isSelected = preference === id;
             const showDivider = index !== notificationOptions.length - 1;
@@ -79,7 +79,7 @@ export const MembershipSheet = forwardRef<
                   <Text className="text-sm text-foreground">{label}</Text>
                 </View>
                 {isSelected ? (
-                  <View className="h-3 w-3 rounded-full bg-primary" />
+                  <View className="w-3 h-3 rounded-full bg-primary" />
                 ) : null}
               </Pressable>
             );
@@ -88,7 +88,7 @@ export const MembershipSheet = forwardRef<
 
         <Pressable
           onPress={onLeave}
-          className="mt-4 flex-row items-center justify-center gap-2 rounded-full bg-destructive/10 px-4 py-3"
+          className="flex-row items-center justify-center gap-2 px-4 py-3 mt-4 rounded-full bg-destructive/10"
         >
           <LogOut size={18} color="#ef4444" />
           <Text className="text-sm font-semibold text-destructive">

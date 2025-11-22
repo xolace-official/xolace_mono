@@ -87,8 +87,7 @@ export function CampfirePostsList({
         />
       )}
       keyExtractor={(item) => item.id}
-      ListHeaderComponent={headerElement}
-      ItemSeparatorComponent={() => <View className="h-4" />}
+      ListHeaderComponent={()=> headerElement}
       showsVerticalScrollIndicator={false}
       refreshing={isRefreshing}
       onRefresh={onRefresh}

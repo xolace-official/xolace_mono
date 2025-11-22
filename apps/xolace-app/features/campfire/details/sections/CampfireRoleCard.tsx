@@ -1,5 +1,5 @@
-import { View } from 'react-native';
 import { Star } from 'lucide-react-native';
+import { View } from 'react-native';
 
 import {
   Avatar,
@@ -27,16 +27,14 @@ export function CampfireRoleCard({ campfire }: { campfire: CampfireDetails }) {
 
       {campfire.isMember ? (
         <View className="mt-3 flex-row items-center gap-3">
-          <Avatar className="h-12 w-12 bg-primary/10">
-            {campfire.iconURL ? (
-              <AvatarImage source={{ uri: campfire.iconURL }} />
-            ) : null}
-            <AvatarFallback>🔥</AvatarFallback>
+          <Avatar alt="you" className="h-12 w-12 bg-primary/10">
+            <AvatarImage source={{ uri: campfire.iconURL }} />
+            <AvatarFallback>
+              <Text>🔥</Text>
+            </AvatarFallback>
           </Avatar>
           <View className="flex-1">
-            <Text className="text-base font-semibold text-foreground">
-              You
-            </Text>
+            <Text className="text-base font-semibold text-foreground">You</Text>
             <View className="mt-1 flex-row items-center gap-2">
               <Badge
                 variant="secondary"

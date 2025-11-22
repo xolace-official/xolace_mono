@@ -1,5 +1,5 @@
-import { View } from 'react-native';
 import { Shield } from 'lucide-react-native';
+import { View } from 'react-native';
 
 import {
   Avatar,
@@ -43,17 +43,17 @@ export function CampfireModeratorsSection({
             key={moderator.id}
             className="flex-row items-center gap-3 rounded-2xl bg-muted/10 px-3 py-2"
           >
-            <Avatar className="h-10 w-10 bg-primary/10">
-              {moderator.avatarUrl ? (
-                <AvatarImage source={{ uri: moderator.avatarUrl }} />
-              ) : null}
-              <AvatarFallback>🔥</AvatarFallback>
+            <Avatar alt={moderator.name} className="h-10 w-10 bg-primary/10">
+              <AvatarImage source={{ uri: moderator.avatarUrl }} />
+              <AvatarFallback>
+                <Text>🔥</Text>
+              </AvatarFallback>
             </Avatar>
             <View className="flex-1">
               <Text className="text-sm font-semibold text-foreground">
                 {moderator.name}
               </Text>
-              <Text className="text-xs text-muted-foreground capitalize">
+              <Text className="text-xs capitalize text-muted-foreground">
                 {moderator.role}
               </Text>
             </View>
@@ -62,7 +62,9 @@ export function CampfireModeratorsSection({
               className="rounded-full bg-primary/10 px-2 py-1"
             >
               <Text className="text-xs font-semibold text-primary">
-                {moderator.role === 'firestarter' ? 'Firestarter' : 'Firekeeper'}
+                {moderator.role === 'firestarter'
+                  ? 'Firestarter'
+                  : 'Firekeeper'}
               </Text>
             </Badge>
           </View>

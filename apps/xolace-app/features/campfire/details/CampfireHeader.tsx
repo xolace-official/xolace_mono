@@ -37,6 +37,10 @@ const formatMembers = (members: number) => {
   return `${members}`;
 };
 
+const BANNER_HEIGHT = 120;
+const PROFILE_HEIGHT = 120;
+export const CAMPFIRE_HEADER_HEIGHT = BANNER_HEIGHT + PROFILE_HEIGHT;
+
 export function CampfireHeader({
   campfire,
   isMember,

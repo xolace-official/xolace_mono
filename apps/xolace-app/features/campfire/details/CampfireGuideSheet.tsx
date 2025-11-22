@@ -5,8 +5,8 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { Linking, Pressable, View } from 'react-native';
 import { BookOpen, ExternalLink, Sparkles } from 'lucide-react-native';
+import { Linking, Pressable, View } from 'react-native';
 
 import {
   Avatar,
@@ -57,17 +57,21 @@ export const CampfireGuideSheet = forwardRef<
       snapPoints={snapPoints}
       enablePanDownToClose
       backdropComponent={(props) => (
-        <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />
+        <BottomSheetBackdrop
+          {...props}
+          appearsOnIndex={0}
+          disappearsOnIndex={-1}
+        />
       )}
       onClose={onClose}
     >
       <BottomSheetView className="px-5 py-4">
         <View className="items-center gap-2 py-2">
-          <Avatar className="h-16 w-16 bg-primary/10">
-            {campfire.iconURL ? (
-              <AvatarImage source={{ uri: campfire.iconURL }} />
-            ) : null}
-            <AvatarFallback>🔥</AvatarFallback>
+          <Avatar alt={campfire.name} className="h-16 w-16 bg-primary/10">
+            <AvatarImage source={{ uri: campfire.iconURL }} />
+            <AvatarFallback>
+              <Text>🔥</Text>
+            </AvatarFallback>
           </Avatar>
           <Text className="text-lg font-semibold text-foreground">
             {campfire.name}
@@ -75,9 +79,14 @@ export const CampfireGuideSheet = forwardRef<
         </View>
 
         <View className="mt-4 rounded-3xl border border-border/60 bg-card/90 p-4">
-          <Text className="text-sm leading-5 text-foreground">{welcomeText}</Text>
+          <Text className="text-sm leading-5 text-foreground">
+            {welcomeText}
+          </Text>
           <Text className="mt-2 text-xs text-muted-foreground">
-            — {campfire.memberRole === 'firestarter' ? 'Firestarter team' : 'Campfire Mod Team'}
+            —{' '}
+            {campfire.memberRole === 'firestarter'
+              ? 'Firestarter team'
+              : 'Campfire Mod Team'}
           </Text>
         </View>
 
@@ -116,10 +125,7 @@ export const CampfireGuideSheet = forwardRef<
           </View>
         </View>
 
-        <Button
-          className="mt-6 rounded-full bg-primary py-3"
-          onPress={onClose}
-        >
+        <Button className="mt-6 rounded-full bg-primary py-3" onPress={onClose}>
           <Text className="text-base font-semibold text-primary-foreground">
             Got it
           </Text>

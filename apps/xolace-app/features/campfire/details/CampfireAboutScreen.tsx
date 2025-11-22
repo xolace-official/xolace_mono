@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 import BottomSheet from '@gorhom/bottom-sheet';
 import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
-import { Alert, ScrollView } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
@@ -47,7 +47,7 @@ export function CampfireAboutScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <View className="flex-1 bg-background">
       <CampfireCondensedBar
         visible={isCondensed}
         campfire={campfireDetailsMock}
@@ -92,6 +92,6 @@ export function CampfireAboutScreen() {
         resources={campfireGuideResourcesMock}
         onClose={() => guideSheetRef.current?.close()}
       />
-    </SafeAreaView>
+    </View>
   );
 }
