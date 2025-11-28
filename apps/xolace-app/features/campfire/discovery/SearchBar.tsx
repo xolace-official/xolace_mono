@@ -1,8 +1,7 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/search-bar.tsx
-import { useColorScheme } from 'nativewind';
 import { View } from 'react-native';
 
-import { Input } from '@xolacekit/ui';
+import { Input, useColorScheme } from '@xolacekit/ui';
 
 interface SearchBarProps {
   value: string;

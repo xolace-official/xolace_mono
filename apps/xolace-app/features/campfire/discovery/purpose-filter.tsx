@@ -1,6 +1,5 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/purpose-filter.tsx
 import { SlidersHorizontal } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { Pressable } from 'react-native';
 
 import {
@@ -10,6 +9,7 @@ import {
   ZeegoDropdownMenuLabel,
   ZeegoDropdownMenuRoot,
   ZeegoDropdownMenuTrigger,
+  useColorScheme,
 } from '@xolacekit/ui';
 
 import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';

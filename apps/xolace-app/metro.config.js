@@ -1,17 +1,18 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config');
-const { withNativeWind } = require('nativewind/metro');
+const { withUniwindConfig } = require('uniwind/metro');
 
 // eslint-disable-next-line no-undef
 const currentDir = __dirname;
 const projectRoot = currentDir;
 const config = getDefaultConfig(currentDir);
 
-module.exports = withNativeWind(config, {
-  input: './app/global.css',
+module.exports = withUniwindConfig(config, {
+  cssEntryFile: './global.css',
   projectRoot,
-  inlineRem: false,
-  features: {
-    transformPercentagePolyfill: true,
+  dtsFile: './uniwind-types.d.ts',
+  extraThemes: ['sunset'],
+  polyfills: {
+    rem: 14,
   },
 });

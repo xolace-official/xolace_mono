@@ -9,8 +9,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "nativewind": "catalog:",
-    "react-native-reanimated": "catalog:",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "catalog:"
   }

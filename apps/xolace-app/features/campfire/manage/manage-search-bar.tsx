@@ -1,8 +1,7 @@
 import { Folder, SquareDashedMousePointer } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { Pressable, View } from 'react-native';
 
-import { Input } from '@xolacekit/ui';
+import { Input, useColorScheme } from '@xolacekit/ui';
 
 interface ManageSearchBarProps {
   value: string;

@@ -1,56 +1,66 @@
-// @xolacekit/ui or wherever your hook is
 import { useEffect } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useColorScheme as useNativewindColorScheme } from 'nativewind';
 import { useColorScheme as useDeviceColorScheme } from 'react-native';
+import * as Uniwind from 'uniwind';
+import { useUniwind } from 'uniwind';
 
 type Theme = 'light' | 'dark' | 'system';
 
-export function useColorScheme() {
-  const nativewindColorScheme = useNativewindColorScheme();
-  const deviceColorScheme = useDeviceColorScheme(); // Get system preference
+const setTheme = (Uniwind as { setTheme?: (theme: string) => void }).setTheme;
+const setAdaptiveThemes = (
+  Uniwind as { setAdaptiveThemes?: (enabled: boolean) => void }
+).setAdaptiveThemes;
 
-  // Initialize theme from AsyncStorage on mount
+export function useColorScheme() {
+  const { theme, hasAdaptiveThemes } = useUniwind();
+  const deviceColorScheme = useDeviceColorScheme();
+
   useEffect(() => {
     const loadTheme = async () => {
       try {
-        const savedTheme = (await AsyncStorage.getItem(
-          'theme',
-        )) as Theme | null;
-        if (savedTheme) {
-          if (savedTheme === 'system') {
-            nativewindColorScheme.setColorScheme(deviceColorScheme ?? 'dark');
-          } else {
-            nativewindColorScheme.setColorScheme(savedTheme);
-          }
+        const savedTheme = (await AsyncStorage.getItem('theme')) as
+          | Theme
+          | null;
+        const desiredTheme = savedTheme ?? 'system';
+
+        if (!savedTheme) {
+          await AsyncStorage.setItem('theme', desiredTheme);
+        }
+
+        if (desiredTheme === 'system') {
+          setAdaptiveThemes?.(true);
+          setTheme?.(deviceColorScheme ?? 'light');
+        } else {
+          setAdaptiveThemes?.(false);
+          setTheme?.(desiredTheme);
         }
       } catch (error) {
         console.error('Failed to load theme:', error);
       }
     };
-    loadTheme();
-  }, []);
 
-  // Handle system theme changes
-  useEffect(() => {
-    const checkSystemTheme = async () => {
-      const savedTheme = (await AsyncStorage.getItem('theme')) as Theme | null;
-      if (savedTheme === 'system') {
-        nativewindColorScheme.setColorScheme(deviceColorScheme ?? 'dark');
-      }
-    };
-    checkSystemTheme();
+    loadTheme();
   }, [deviceColorScheme]);
 
-  const setColorScheme = async (theme: Theme) => {
-    try {
-      await AsyncStorage.setItem('theme', theme);
+  useEffect(() => {
+    if (!hasAdaptiveThemes) {
+      return;
+    }
 
-      if (theme === 'system') {
-        nativewindColorScheme.setColorScheme(deviceColorScheme ?? 'dark');
+    setTheme?.(deviceColorScheme ?? 'light');
+  }, [deviceColorScheme, hasAdaptiveThemes]);
+
+  const setColorScheme = async (nextTheme: Theme) => {
+    try {
+      await AsyncStorage.setItem('theme', nextTheme);
+
+      if (nextTheme === 'system') {
+        setAdaptiveThemes?.(true);
+        setTheme?.(deviceColorScheme ?? 'light');
       } else {
-        nativewindColorScheme.setColorScheme(theme);
+        setAdaptiveThemes?.(false);
+        setTheme?.(nextTheme);
       }
     } catch (error) {
       console.error('Failed to save theme:', error);
@@ -58,14 +68,15 @@ export function useColorScheme() {
   };
 
   const toggleColorScheme = async () => {
-    const newTheme =
-      nativewindColorScheme.colorScheme === 'dark' ? 'light' : 'dark';
+    const newTheme = (theme === 'dark' ? 'light' : 'dark') as Theme;
     await setColorScheme(newTheme);
   };
 
+  const normalizedTheme = (theme as Theme) ?? 'dark';
+
   return {
-    colorScheme: nativewindColorScheme.colorScheme ?? 'dark',
-    isDarkColorScheme: nativewindColorScheme.colorScheme === 'dark',
+    colorScheme: normalizedTheme,
+    isDarkColorScheme: normalizedTheme === 'dark',
     setColorScheme,
     toggleColorScheme,
   };

@@ -1,6 +1,5 @@
-import { LibraryBig } from 'lucide-react-native';
+import { LibraryBig as LucideLibraryBig } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(LibraryBig);
-export { LibraryBig };
+export const LibraryBig = iconWithClassName(LucideLibraryBig);

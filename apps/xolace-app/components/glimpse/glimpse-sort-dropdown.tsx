@@ -1,5 +1,4 @@
 import { ChevronDown } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { Pressable } from 'react-native';
 
 import {
@@ -9,6 +8,7 @@ import {
   ZeegoDropdownMenuItemTitle,
   ZeegoDropdownMenuRoot,
   ZeegoDropdownMenuTrigger,
+  useColorScheme,
 } from '@xolacekit/ui';
 
 import type { GlimpseSortOptionTypes } from '../../features/glimpse/types';

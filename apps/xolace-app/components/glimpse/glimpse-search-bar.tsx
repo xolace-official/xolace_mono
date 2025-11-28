@@ -1,8 +1,7 @@
 import { Search } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { View } from 'react-native';
 
-import { Input } from '@xolacekit/ui';
+import { Input, useColorScheme } from '@xolacekit/ui';
 
 interface GlimpseSearchBarProps {
   value: string;

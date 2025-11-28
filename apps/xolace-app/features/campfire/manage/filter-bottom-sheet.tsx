@@ -5,10 +5,9 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { useColorScheme } from 'nativewind';
 import { Pressable, View } from 'react-native';
 
-import { NAV_THEME, Text } from '@xolacekit/ui';
+import { NAV_THEME, Text, useColorScheme } from '@xolacekit/ui';
 
 import type { CampfireFilter } from './types';
 

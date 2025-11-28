@@ -1,6 +1,5 @@
-import { FileVideoCamera } from 'lucide-react-native';
+import { FileVideoCamera as LucideFileVideoCamera } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(FileVideoCamera);
-export { FileVideoCamera };
+export const FileVideoCamera = iconWithClassName(LucideFileVideoCamera);

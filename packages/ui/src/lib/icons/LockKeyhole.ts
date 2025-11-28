@@ -1,6 +1,5 @@
-import { LockKeyhole } from 'lucide-react-native';
+import { LockKeyhole as LucideLockKeyhole } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(LockKeyhole);
-export { LockKeyhole };
+export const LockKeyhole = iconWithClassName(LucideLockKeyhole);

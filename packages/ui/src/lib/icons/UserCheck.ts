@@ -1,6 +1,5 @@
-import { UserCheck } from 'lucide-react-native';
+import { UserCheck as LucideUserCheck } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(UserCheck);
-export { UserCheck };
+export const UserCheck = iconWithClassName(LucideUserCheck);

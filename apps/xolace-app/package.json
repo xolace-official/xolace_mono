@@ -82,6 +82,8 @@
     "react-native-ui-lib": "catalog:",
     "react-native-web": "catalog:",
     "react-native-worklets": "catalog:",
+    "tailwind-merge": "catalog:",
+    "uniwind": "catalog:",
     "zeego": "catalog:",
     "zustand": "catalog:"
   },
@@ -98,7 +100,6 @@
     "eslint-config-expo": "catalog:",
     "jest": "catalog:",
     "jest-expo": "catalog:",
-    "nativewind": "catalog:",
     "react-test-renderer": "catalog:",
     "supabase": "catalog:",
     "tailwindcss": "catalog:",

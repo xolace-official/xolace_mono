@@ -184,7 +184,7 @@ export function DailyPrompt() {
       <SafeAreaView className="pt-20">
         <Card className="relative mx-4 overflow-hidden border-none bg-[#D91656] p-4">
           <View className="flex flex-col gap-4">
-            <View className="h-6 w-1/3 rounded bg-white/20" />
+            <View className="w-1/3 h-6 rounded bg-white/20" />
             <View className="h-20 rounded bg-white/20" />
             <View className="h-10 rounded bg-white/20" />
           </View>
@@ -197,7 +197,7 @@ export function DailyPrompt() {
   if (!promptData) {
     return (
       <SafeAreaView className={'pt-20'}>
-        <Card className="relative mx-4 my-3 overflow-hidden border-none bg-purple-500 p-4">
+        <Card className="relative p-4 mx-4 my-3 overflow-hidden bg-purple-500 border-none">
           <Text className="text-center text-white">
             No prompt available for today.
           </Text>
@@ -213,11 +213,11 @@ export function DailyPrompt() {
 
   return (
     <SafeAreaView>
-      <View className="mt-24 w-full px-4">
+      <View className="w-full px-4 mt-24">
         <Card
           className={cn(
-            'relative overflow-hidden border-none shadow-xl',
-            'bg-purple-500',
+            'relative overflow-hidden border-none shadow-sm',
+            'bg-background',
             gradient,
           )}
         >
@@ -228,11 +228,11 @@ export function DailyPrompt() {
               glow,
             )}
           />
-          <View className="absolute bottom-0 left-0 -mb-16 -ml-16 h-32 w-32 rounded-full bg-purple-400/30 opacity-30 blur-3xl" />
+          <View className="absolute bottom-0 left-0 w-32 h-32 -mb-16 -ml-16 rounded-full bg-purple-400/30 opacity-30 blur-3xl" />
 
           <View className="relative z-10 px-4 py-3">
             {/* Header */}
-            <View className="mb-1 flex flex-row items-center justify-between">
+            <View className="flex flex-row items-center justify-between mb-1">
               <View className="flex flex-row items-center gap-2">
                 <Sparkles size={20} color="#fcd34d" />
                 <Text className="text-base font-semibold text-white sm:text-lg">
@@ -266,11 +266,11 @@ export function DailyPrompt() {
 
             {/* Category Badge */}
             {promptData.category && (
-              <View className="mb-2 flex flex-row items-center gap-2">
+              <View className="flex flex-row items-center gap-2 mb-2">
                 <View className="flex flex-row items-center gap-1.5 rounded-full bg-white/10 px-3 py-1">
                   <Text className="text-sm">{categoryIcon}</Text>
                   <Tag size={12} color="#ffffff" />
-                  <Text className="text-xs font-medium capitalize text-white">
+                  <Text className="text-xs font-medium text-white capitalize">
                     {promptData.category.replace('_', ' ')}
                   </Text>
                 </View>
@@ -278,7 +278,7 @@ export function DailyPrompt() {
             )}
 
             {/* Date */}
-            <View className="mb-3 flex flex-row items-center">
+            <View className="flex flex-row items-center mb-3">
               <CalendarDays size={16} color="#e9d5ff" />
               <Text className="ml-1.5 text-xs text-purple-200">
                 {format(new Date(promptData.active_on), 'MMMM d, yyyy')}
@@ -295,7 +295,7 @@ export function DailyPrompt() {
               >
                 "
               </Text>
-              <Text className="px-4 text-center text-base font-medium leading-snug text-white sm:text-xl">
+              <Text className="px-4 text-base font-medium leading-snug text-center text-white sm:text-xl">
                 {promptData.prompt_text}
               </Text>
               <Text

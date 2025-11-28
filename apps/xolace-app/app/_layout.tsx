@@ -16,7 +16,7 @@ import {
 // root provider
 import { RootProvider } from '../components/root-provider';
 // Import global styles
-import './global.css';
+import '../global.css';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // void SplashScreen.preventAutoHideAsync();

@@ -1,5 +1,4 @@
 import { ChevronDown } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { View } from 'react-native';
 
 import type { FeedFilterOption } from '@xolacekit/state';
@@ -11,6 +10,7 @@ import {
   ZeegoDropdownMenuItemTitle,
   ZeegoDropdownMenuRoot,
   ZeegoDropdownMenuTrigger,
+  useColorScheme,
 } from '@xolacekit/ui';
 
 interface FeedHeaderTitleDropdownProps {

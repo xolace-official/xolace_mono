@@ -1,6 +1,5 @@
-import { MessageSquarePlus } from 'lucide-react-native';
+import { MessageSquarePlus as LucideMessageSquarePlus } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(MessageSquarePlus);
-export { MessageSquarePlus };
+export const MessageSquarePlus = iconWithClassName(LucideMessageSquarePlus);

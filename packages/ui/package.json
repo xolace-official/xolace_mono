@@ -54,7 +54,6 @@
     "expo-blur": "catalog:",
     "expo-glass-effect": "catalog:",
     "lucide-react-native": "catalog:",
-    "nativewind": "catalog:",
     "react": "catalog:",
     "react-native-ios-context-menu": "catalog:",
     "react-native-ios-utilities": "catalog:",
@@ -63,6 +62,7 @@
     "sonner": "catalog:",
     "sonner-native": "catalog:",
     "tailwind-merge": "catalog:",
+    "uniwind": "catalog:",
     "zeego": "catalog:"
   },
   "eslintConfig": {
