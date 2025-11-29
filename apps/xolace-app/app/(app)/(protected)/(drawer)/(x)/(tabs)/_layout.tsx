@@ -8,7 +8,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { BlurView } from "expo-blur";
-import { FlameKindling, SettingsIcon } from 'lucide-react-native';
+import { FlameKindling, SettingsIcon, Telescope } from 'lucide-react-native';
 
 import { UserCheck } from '@xolacekit/ui';
 import { Compass } from '@xolacekit/ui';
@@ -126,10 +126,10 @@ export default function TabsLayout() {
         options={{
           title: 'Fireside',
           href: '/',
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({ focused, color }) => {
             return (
               <AnimatedIconWrapper scale={homeIconScale}>
-                <FlameKindling color={color} className="h-5" />
+                <FlameKindling color={color} className="h-5" fill={focused ? color : undefined} />
               </AnimatedIconWrapper>
           )
           },
@@ -142,10 +142,10 @@ export default function TabsLayout() {
         options={{
           title: 'Campfires',
           href: '/discovery',
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({ focused, color }) => {
             return (
               <AnimatedIconWrapper scale={discoveryIconScale}>
-                <Compass color={color} className="h-5" />
+                <Telescope color={color} className="h-5" fill={focused ? color : undefined} />
               </AnimatedIconWrapper>
             )
           },
@@ -168,10 +168,10 @@ export default function TabsLayout() {
           title: 'Checkin',
           href: '/checkin',
           headerShown: false,
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({ focused, color }) => {
             return (
               <AnimatedIconWrapper scale={checkinIconScale}>
-                <UserCheck color={color} size={22} />
+                <UserCheck color={color} size={22} fill={focused ? color : undefined}/>
               </AnimatedIconWrapper>
             )
           },
@@ -184,10 +184,10 @@ export default function TabsLayout() {
           title: 'Settings',
           href: '/settings',
           headerShown: false,
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({ focused, color }) => {
             return (
               <AnimatedIconWrapper scale={settingsIconScale}>
-                <SettingsIcon color={color} size={22} />
+                <SettingsIcon color={color} size={22} fill={focused ? color : undefined}/>
               </AnimatedIconWrapper>
             )
           },
