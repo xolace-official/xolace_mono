@@ -46,6 +46,10 @@ const RGB_COLORS = {
     primary: 'rgb(250, 250, 250)',
     input: 'rgb(39, 39, 42)',
   },
+  sunset: {
+    primary: 'rgb(234, 88, 12)',
+    input: 'rgb(124, 45, 18)',
+  },
 } as const;
 
 const SwitchNative = React.forwardRef<
@@ -55,11 +59,14 @@ const SwitchNative = React.forwardRef<
   const { colorScheme } = useColorScheme();
   const translateX = useDerivedValue(() => (props.checked ? 18 : 0));
   const animatedRootStyle = useAnimatedStyle(() => {
+    const currentTheme = (colorScheme ?? 'light') as keyof typeof RGB_COLORS;
+    const colors = RGB_COLORS[currentTheme] || RGB_COLORS.light;
+    
     return {
       backgroundColor: interpolateColor(
         translateX.value,
         [0, 18],
-        [RGB_COLORS[colorScheme].input, RGB_COLORS[colorScheme].primary],
+        [colors.input, colors.primary],
       ),
     };
   });
