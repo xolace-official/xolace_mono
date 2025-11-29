@@ -38,6 +38,8 @@
         /* custom colors */
         --color-auth-background: oklch(0.2776 0.1054 9.17);
         --color-auth-text: hsl(222.2 84% 4.9%);
+        --color-manual-border-glass: oklch(92.8% 0.006 264.531)
+        --color-manual-glass: oklch(1 0 0 / 5%)
     }
     
     @variant dark {
@@ -64,6 +66,8 @@
       /* custom colors */
         --color-auth-background: oklch(0.2776 0.1054 9.17);
         --color-auth-text: hsl(222.2 84% 4.9%);
+        --color-manual-border-glass: oklch(1 0 0 / 10.01%);
+        --color-manual-glass: oklch(1 0 0 / 5%);
     }
 
         /* Sunset theme - Warm oranges and purples */
@@ -91,6 +95,8 @@
       /* custom colors */
         --color-auth-background: oklch(0.2776 0.1054 9.17);
         --color-auth-text: hsl(222.2 84% 4.9%);
+        --color-manual-border-glass: oklch(1 0 0 / 10.01%);
+        --color-manual-glass: oklch(1 0 0 / 5%);
     }
   }
 }

@@ -15,14 +15,8 @@ export default function Layout() {
   return (
     <Stack
       screenOptions={{
-        headerBlurEffect: 'regular',
+        headerBlurEffect: 'prominent',
         headerTransparent: true,
-        headerStyle: {
-          backgroundColor:
-            colorScheme === 'dark'
-              ? NAV_THEME.dark.colors.background
-              : NAV_THEME.light.colors.background,
-        },
       }}
     >
       <Stack.Screen

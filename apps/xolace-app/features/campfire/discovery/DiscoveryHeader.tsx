@@ -11,10 +11,7 @@ export function DiscoveryHeader() {
     <View className="mt-3">
       <View
         className={cn(
-          'flex-row items-center gap-3 rounded-2xl border p-4',
-          colorScheme === 'dark'
-            ? 'border-white/10 bg-white/5'
-            : 'border-gray-200 bg-white',
+          'flex-row items-center gap-3 rounded-2xl border p-4 bg-manual-glass border-manual-border-glass'
         )}
       >
         <View className="size-9 items-center justify-center rounded-full bg-primary/15">

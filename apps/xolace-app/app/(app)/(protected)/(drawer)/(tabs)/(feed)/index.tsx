@@ -165,7 +165,7 @@ export default function HomePage() {
   const getItemType = useCallback(() => 'post', []);
 
   return (
-    <View className="dark:bg-background flex-1">
+    <View className="bg-background flex-1">
       {/*<Stack.Screen*/}
       {/*    options={{*/}
       {/*        header: () => <FeedHeader />,*/}
