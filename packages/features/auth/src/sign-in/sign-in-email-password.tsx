@@ -49,11 +49,11 @@ export function SignInEmailPassword() {
         }
       >
         <View>
-          <Text className={'mb-1 text-4xl font-bold tracking-widest'}>
+          <Text className={'mb-1 text-4xl font-bold tracking-widest text-auth-text'}>
             Sign In
           </Text>
 
-          <View className={'h-[1px] w-24 bg-[#4F041D]'} />
+          <View className={'h-[1px] w-24 bg-auth-background'} />
         </View>
 
         <View>
@@ -69,6 +69,8 @@ export function SignInEmailPassword() {
                 value={field.value}
                 label={'Email'}
                 icon={Mail}
+                inputStyle='bg-white'
+                labelStyle='text-auth-text'
               />
             )}
           />
@@ -87,12 +89,14 @@ export function SignInEmailPassword() {
                 value={field.value}
                 label={'Password'}
                 icon={LockKeyhole}
+                inputStyle='bg-white'
+                labelStyle='text-auth-text'
               />
             )}
           />
 
           <Link className={'my-4'} href="/auth/password-reset">
-            <Text className={'text-muted-foreground text-sm'}>
+            <Text className={'text-auth-text text-sm'}>
               Forgot your password?
             </Text>
           </Link>

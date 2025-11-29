@@ -34,7 +34,7 @@ export const InputField = ({
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View className="my-2 w-full">
-          <Label className={`!text-lg tracking-widest ${labelStyle}`}>
+          <Label className={`text-lg! tracking-widest ${labelStyle}`}>
             {label}
           </Label>
           <View
@@ -53,7 +53,7 @@ export const InputField = ({
               />
             )}
             <Input
-              className={`native:h-[52px] flex-1 rounded-none px-0 !text-[14px] tracking-widest ${inputStyle} text-left`}
+              className={`native:h-[52px] flex-1 rounded-none px-0 text-[14px]! tracking-widest ${inputStyle} text-left`}
               placeholder={placeholder}
               placeholderTextColor={'gray'}
               secureTextEntry={secureTextEntry}

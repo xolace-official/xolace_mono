@@ -46,7 +46,7 @@ export function AuthPageLayout(props: React.PropsWithChildren) {
   };
 
   return (
-    <View className={'w-full flex-1 gap-4 bg-[#4F041D] px-2'}>
+    <View className={'w-full flex-1 gap-4 bg-auth-background px-2'}>
       <View className={'absolute right-5 top-3'}>{childrenByType.logo}</View>
 
       <View className={'absolute left-10 top-3'}>
