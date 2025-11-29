@@ -22,46 +22,50 @@ export function CampfireModeratorsSection({
   if (!moderators.length) return null;
 
   return (
-    <View className="p-4 border rounded-3xl border-border/60 bg-card/90">
+    <View className="border-border/60 bg-card/90 rounded-3xl border p-4">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center gap-2">
           <Shield size={16} color="#94a3b8" />
-          <Text className="text-sm font-semibold text-foreground">
+          <Text className="text-foreground text-sm font-semibold">
             Firestarters & Firekeepers
           </Text>
         </View>
-        <Button size={'sm'} variant="secondary" className="px-3 py-1 rounded-full">
-          <Text className="text-xs font-semibold text-foreground">
+        <Button
+          size={'sm'}
+          variant="secondary"
+          className="rounded-full px-3 py-1"
+        >
+          <Text className="text-foreground text-xs font-semibold">
             Message team
           </Text>
         </Button>
       </View>
 
-      <View className="gap-1 mt-3">
+      <View className="mt-3 gap-1">
         {moderators.map((moderator) => (
           <View
             key={moderator.id}
-            className="flex-row items-center gap-3 px-3 py-2 rounded-2xl bg-muted/10"
+            className="bg-muted/10 flex-row items-center gap-3 rounded-2xl px-3 py-2"
           >
-            <Avatar alt={moderator.name} className="w-10 h-10 bg-primary/10">
+            <Avatar alt={moderator.name} className="bg-primary/10 h-10 w-10">
               <AvatarImage source={{ uri: moderator.avatarUrl }} />
               <AvatarFallback>
                 <Text>🔥</Text>
               </AvatarFallback>
             </Avatar>
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-foreground">
+              <Text className="text-foreground text-sm font-semibold">
                 {moderator.name}
               </Text>
-              <Text className="text-xs capitalize text-muted-foreground">
+              <Text className="text-muted-foreground text-xs capitalize">
                 {moderator.role}
               </Text>
             </View>
             <Badge
               variant="secondary"
-              className="px-2 py-1 rounded-full bg-primary/10"
+              className="bg-primary/10 rounded-full px-2 py-1"
             >
-              <Text className="text-xs font-semibold text-primary">
+              <Text className="text-primary text-xs font-semibold">
                 {moderator.role === 'firestarter'
                   ? 'Firestarter'
                   : 'Firekeeper'}

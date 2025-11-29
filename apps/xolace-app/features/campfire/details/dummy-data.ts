@@ -1,6 +1,5 @@
 import type { EnhancedPost } from '../../../lib/dummy-data/post';
 import { dummyPosts } from '../../../lib/dummy-data/post';
-
 import type {
   CampfireDetails,
   CampfireGuideResource,

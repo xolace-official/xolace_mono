@@ -1,7 +1,8 @@
 import type React from 'react';
-import { StyleSheet, Pressable, View } from 'react-native';
+
 import { GlassView } from 'expo-glass-effect';
 import { ArrowLeft, MoreHorizontal, Search, Share2 } from 'lucide-react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 type CampfireHeaderTopBarProps = {
   onBack: () => void;

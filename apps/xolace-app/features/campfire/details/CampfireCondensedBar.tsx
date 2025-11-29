@@ -1,13 +1,7 @@
-import { Pressable, View } from 'react-native';
 import { Bell, Plus } from 'lucide-react-native';
+import { Pressable, View } from 'react-native';
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Text,
-  cn,
-} from '@xolacekit/ui';
+import { Avatar, AvatarFallback, AvatarImage, Text, cn } from '@xolacekit/ui';
 
 import type { CampfireDetails } from './types';
 
@@ -29,16 +23,16 @@ export function CampfireCondensedBar({
   if (!visible) return null;
 
   return (
-    <View className="absolute top-0 left-0 right-0 z-20 px-4 pt-8">
-      <View className="flex-row items-center gap-3 px-3 py-2 border rounded-full shadow-md border-border/70 bg-background/95">
-        <Avatar alt='avatar' className="h-9 w-9 bg-primary/10">
-            <AvatarImage source={{ uri: campfire.iconURL }} />
+    <View className="absolute top-0 right-0 left-0 z-20 px-4 pt-8">
+      <View className="border-border/70 bg-background/95 flex-row items-center gap-3 rounded-full border px-3 py-2 shadow-md">
+        <Avatar alt="avatar" className="bg-primary/10 h-9 w-9">
+          <AvatarImage source={{ uri: campfire.iconURL }} />
           <AvatarFallback>
             <Text>🔥</Text>
           </AvatarFallback>
         </Avatar>
         <Text
-          className="flex-1 text-sm font-semibold text-foreground"
+          className="text-foreground flex-1 text-sm font-semibold"
           numberOfLines={1}
         >
           {campfire.name}
@@ -47,7 +41,7 @@ export function CampfireCondensedBar({
           onPress={isMember ? onMembershipPress : onJoinPress}
           className={cn(
             'flex-row items-center rounded-full px-3 py-1.5',
-            isMember ? 'border border-primary/50' : 'bg-primary',
+            isMember ? 'border-primary/50 border' : 'bg-primary',
           )}
         >
           {isMember ? (

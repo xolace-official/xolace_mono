@@ -184,7 +184,7 @@ export function DailyPrompt() {
       <SafeAreaView className="pt-20">
         <Card className="relative mx-4 overflow-hidden border-none bg-[#D91656] p-4">
           <View className="flex flex-col gap-4">
-            <View className="w-1/3 h-6 rounded bg-white/20" />
+            <View className="h-6 w-1/3 rounded bg-white/20" />
             <View className="h-20 rounded bg-white/20" />
             <View className="h-10 rounded bg-white/20" />
           </View>
@@ -197,7 +197,7 @@ export function DailyPrompt() {
   if (!promptData) {
     return (
       <SafeAreaView className={'pt-20'}>
-        <Card className="relative p-4 mx-4 my-3 overflow-hidden bg-purple-500 border-none">
+        <Card className="relative mx-4 my-3 overflow-hidden border-none bg-purple-500 p-4">
           <Text className="text-center text-white">
             No prompt available for today.
           </Text>
@@ -213,7 +213,7 @@ export function DailyPrompt() {
 
   return (
     <SafeAreaView>
-      <View className="w-full px-4 mt-24">
+      <View className="mt-24 w-full px-4">
         <Card
           className={cn(
             'relative overflow-hidden border-none shadow-sm',
@@ -224,15 +224,15 @@ export function DailyPrompt() {
           {/* Decorative Glows */}
           <View
             className={cn(
-              'absolute right-0 top-0 -mr-20 -mt-20 h-40 w-40 rounded-full opacity-30 blur-3xl',
+              'absolute top-0 right-0 -mt-20 -mr-20 h-40 w-40 rounded-full opacity-30 blur-3xl',
               glow,
             )}
           />
-          <View className="absolute bottom-0 left-0 w-32 h-32 -mb-16 -ml-16 rounded-full bg-purple-400/30 opacity-30 blur-3xl" />
+          <View className="absolute bottom-0 left-0 -mb-16 -ml-16 h-32 w-32 rounded-full bg-purple-400/30 opacity-30 blur-3xl" />
 
           <View className="relative z-10 px-4 py-3">
             {/* Header */}
-            <View className="flex flex-row items-center justify-between mb-1">
+            <View className="mb-1 flex flex-row items-center justify-between">
               <View className="flex flex-row items-center gap-2">
                 <Sparkles size={20} color="#fcd34d" />
                 <Text className="text-base font-semibold text-white sm:text-lg">
@@ -266,7 +266,7 @@ export function DailyPrompt() {
 
             {/* Category Badge */}
             {promptData.category && (
-              <View className="flex flex-row items-center gap-2 mb-2">
+              <View className="mb-2 flex flex-row items-center gap-2">
                 <View className="flex flex-row items-center gap-1.5 rounded-full bg-white/10 px-3 py-1">
                   <Text className="text-sm">{categoryIcon}</Text>
                   <Tag size={12} color="#ffffff" />
@@ -278,7 +278,7 @@ export function DailyPrompt() {
             )}
 
             {/* Date */}
-            <View className="flex flex-row items-center mb-3">
+            <View className="mb-3 flex flex-row items-center">
               <CalendarDays size={16} color="#e9d5ff" />
               <Text className="ml-1.5 text-xs text-purple-200">
                 {format(new Date(promptData.active_on), 'MMMM d, yyyy')}
@@ -289,18 +289,18 @@ export function DailyPrompt() {
             <View className="relative my-3 min-h-[50px] items-center justify-center rounded-xl bg-white/5 p-3">
               <Text
                 className={cn(
-                  'absolute -left-2 top-1 select-none font-serif text-6xl',
+                  'absolute top-1 -left-2 font-serif text-6xl select-none',
                   accent,
                 )}
               >
                 "
               </Text>
-              <Text className="px-4 text-base font-medium leading-snug text-center text-white sm:text-xl">
+              <Text className="px-4 text-center text-base leading-snug font-medium text-white sm:text-xl">
                 {promptData.prompt_text}
               </Text>
               <Text
                 className={cn(
-                  'absolute -right-2 bottom-0 select-none font-serif text-6xl',
+                  'absolute -right-2 bottom-0 font-serif text-6xl select-none',
                   accent,
                 )}
               >

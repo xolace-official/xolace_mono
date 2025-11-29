@@ -56,8 +56,8 @@ export const FilterBottomSheet = forwardRef<
     >
       <BottomSheetView className="flex-1 px-6">
         <View className="mb-6">
-          <View className="mb-4 h-1 w-16 self-center rounded-full bg-muted-foreground/20" />
-          <Text className="text-center text-2xl font-bold text-foreground">
+          <View className="bg-muted-foreground/20 mb-4 h-1 w-16 self-center rounded-full" />
+          <Text className="text-foreground text-center text-2xl font-bold">
             Select Filter
           </Text>
         </View>
@@ -73,10 +73,10 @@ export const FilterBottomSheet = forwardRef<
                 className={`rounded-2xl border p-4 active:opacity-70 ${
                   isDark
                     ? isActive
-                      ? 'border-white/10 bg-primary/10'
+                      ? 'bg-primary/10 border-white/10'
                       : 'border-white/10 bg-white/5'
                     : isActive
-                      ? 'border-gray-200 bg-primary/10'
+                      ? 'bg-primary/10 border-gray-200'
                       : 'border-gray-200 bg-white'
                 }`}
               >

@@ -1,4 +1,4 @@
-import { ScrollView, Pressable, View } from 'react-native';
+import { Pressable, ScrollView, View } from 'react-native';
 
 import { Text, cn } from '@xolacekit/ui';
 

@@ -98,11 +98,11 @@ export default function DiscoveryScreen() {
   });
 
   return (
-    <View className="flex-1 bg-background">
+    <View className="bg-background flex-1">
       <View className="flex-1 px-4 pb-20">
         <DiscoveryHeader />
 
-        <View className="flex-row items-center gap-2 mt-3 mb-4">
+        <View className="mt-3 mb-4 flex-row items-center gap-2">
           <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
           <PurposeFilter
             selectedPurposes={selectedPurposes}

@@ -1,5 +1,6 @@
-import type { LucideIcon, LucideProps } from 'lucide-react-native';
 import { useMemo } from 'react';
+
+import type { LucideIcon, LucideProps } from 'lucide-react-native';
 import { useResolveClassNames } from 'uniwind';
 
 import { cn } from '../../lib/utils';
@@ -35,9 +36,7 @@ function Icon({
   size = 14,
   ...props
 }: IconProps) {
-  const resolvedStyles = useResolveClassNames(
-    cn('text-foreground', className),
-  );
+  const resolvedStyles = useResolveClassNames(cn('text-foreground', className));
 
   const flattenedStyles = useMemo(
     () => extractStyles(resolvedStyles),
@@ -50,8 +49,13 @@ function Icon({
   const widthFromStyle = flattenedStyles.width as number | undefined;
   const derivedSize = heightFromStyle ?? widthFromStyle ?? size;
 
-  const { color: _c, opacity: _o, height: _h, width: _w, ...style } =
-    flattenedStyles;
+  const {
+    color: _c,
+    opacity: _o,
+    height: _h,
+    width: _w,
+    ...style
+  } = flattenedStyles;
   const mergedStyle = props.style ? [style, props.style] : style;
 
   return (

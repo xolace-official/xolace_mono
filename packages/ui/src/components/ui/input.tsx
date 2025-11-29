@@ -7,7 +7,7 @@ import { cn } from '../../lib/utils';
 const Input = forwardRef<
   ElementRef<typeof TextInput>,
   ComponentPropsWithoutRef<typeof TextInput>
->(({ className, placeholderClassName, ...props }, ref) => {
+>(({ className, placeholderTextColorClassName, ...props }, ref) => {
   return (
     <TextInput
       ref={ref}
@@ -16,7 +16,10 @@ const Input = forwardRef<
         props.editable === false && 'web:cursor-not-allowed opacity-50',
         className,
       )}
-      placeholderClassName={cn('text-muted-foreground', placeholderClassName)}
+      placeholderTextColorClassName={cn(
+        'accent-muted-foreground',
+        placeholderTextColorClassName,
+      )}
       {...props}
     />
   );

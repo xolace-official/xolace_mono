@@ -1,5 +1,5 @@
-import { View } from 'react-native';
 import { Calendar, Globe2 } from 'lucide-react-native';
+import { View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
@@ -13,21 +13,23 @@ export function CampfireAboutCard({ campfire }: { campfire: CampfireDetails }) {
   });
 
   return (
-    <View className="rounded-3xl border border-border/60 bg-card/90 p-4">
-      <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+    <View className="border-border/60 bg-card/90 rounded-3xl border p-4">
+      <Text className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
         About {campfire.name}
       </Text>
-      <Text className="mt-2 text-base text-foreground">{campfire.description}</Text>
+      <Text className="text-foreground mt-2 text-base">
+        {campfire.description}
+      </Text>
 
       <View className="mt-4 flex-row items-center gap-3">
         <Calendar size={16} color="#94a3b8" />
-        <Text className="text-sm text-muted-foreground">
+        <Text className="text-muted-foreground text-sm">
           Created {createdDate}
         </Text>
       </View>
       <View className="mt-2 flex-row items-center gap-3">
         <Globe2 size={16} color="#94a3b8" />
-        <Text className="text-sm text-muted-foreground capitalize">
+        <Text className="text-muted-foreground text-sm capitalize">
           {campfire.visibility} campfire
         </Text>
       </View>

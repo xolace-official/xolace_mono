@@ -5,16 +5,10 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { Pressable, View } from 'react-native';
 import { Bell, BellOff, LogOut } from 'lucide-react-native';
+import { Pressable, View } from 'react-native';
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Text,
-  cn,
-} from '@xolacekit/ui';
+import { Avatar, AvatarFallback, AvatarImage, Text, cn } from '@xolacekit/ui';
 
 import type { CampfireDetails } from './types';
 
@@ -29,75 +23,78 @@ const notificationOptions = [
   { id: 'off', label: 'Off', icon: BellOff },
 ] as const;
 
-export const MembershipSheet = forwardRef<
-  BottomSheet,
-  MembershipSheetProps
->(({ campfire, onLeave }, ref: ForwardedRef<BottomSheet>) => {
-  const snapPoints = useMemo(() => ['32%'], []);
-  const [preference, setPreference] = useState<'all' | 'popular' | 'off'>(
-    'all',
-  );
+export const MembershipSheet = forwardRef<BottomSheet, MembershipSheetProps>(
+  ({ campfire, onLeave }, ref: ForwardedRef<BottomSheet>) => {
+    const snapPoints = useMemo(() => ['32%'], []);
+    const [preference, setPreference] = useState<'all' | 'popular' | 'off'>(
+      'all',
+    );
 
-  return (
-    <BottomSheet
-      ref={ref}
-      index={-1}
-      snapPoints={snapPoints}
-      enablePanDownToClose
-      backdropComponent={(props) => (
-        <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />
-      )}
-    >
-      <BottomSheetView className="px-5 py-4">
-        <View className="items-center gap-2 py-2">
-          <Avatar alt={campfire.name} className="w-12 h-12 bg-primary/10">
+    return (
+      <BottomSheet
+        ref={ref}
+        index={-1}
+        snapPoints={snapPoints}
+        enablePanDownToClose
+        backdropComponent={(props) => (
+          <BottomSheetBackdrop
+            {...props}
+            appearsOnIndex={0}
+            disappearsOnIndex={-1}
+          />
+        )}
+      >
+        <BottomSheetView className="px-5 py-4">
+          <View className="items-center gap-2 py-2">
+            <Avatar alt={campfire.name} className="bg-primary/10 h-12 w-12">
               <AvatarImage source={{ uri: campfire.iconURL }} />
-            <AvatarFallback>
-              <Text>🔥</Text>
-            </AvatarFallback>
-          </Avatar>
-          <Text className="text-base font-semibold text-foreground">
-            {campfire.name}
-          </Text>
-        </View>
+              <AvatarFallback>
+                <Text>🔥</Text>
+              </AvatarFallback>
+            </Avatar>
+            <Text className="text-foreground text-base font-semibold">
+              {campfire.name}
+            </Text>
+          </View>
 
-        <View className="mt-4 border rounded-2xl border-border/60 bg-card/80">
-          {notificationOptions.map(({ id, label, icon: Icon }, index) => {
-            const isSelected = preference === id;
-            const showDivider = index !== notificationOptions.length - 1;
-            return (
-              <Pressable
-                key={id}
-                onPress={() => setPreference(id)}
-                className={cn(
-                  'flex-row items-center justify-between px-4 py-3',
-                  showDivider ? 'border-b border-border/60' : '',
-                )}
-              >
-                <View className="flex-row items-center gap-3">
-                  <Icon size={18} color="#f97316" />
-                  <Text className="text-sm text-foreground">{label}</Text>
-                </View>
-                {isSelected ? (
-                  <View className="w-3 h-3 rounded-full bg-primary" />
-                ) : null}
-              </Pressable>
-            );
-          })}
-        </View>
+          <View className="border-border/60 bg-card/80 mt-4 rounded-2xl border">
+            {notificationOptions.map(({ id, label, icon: Icon }, index) => {
+              const isSelected = preference === id;
+              const showDivider = index !== notificationOptions.length - 1;
+              return (
+                <Pressable
+                  key={id}
+                  onPress={() => setPreference(id)}
+                  className={cn(
+                    'flex-row items-center justify-between px-4 py-3',
+                    showDivider ? 'border-border/60 border-b' : '',
+                  )}
+                >
+                  <View className="flex-row items-center gap-3">
+                    <Icon size={18} color="#f97316" />
+                    <Text className="text-foreground text-sm">{label}</Text>
+                  </View>
+                  {isSelected ? (
+                    <View className="bg-primary h-3 w-3 rounded-full" />
+                  ) : null}
+                </Pressable>
+              );
+            })}
+          </View>
 
-        <Pressable
-          onPress={onLeave}
-          className="flex-row items-center justify-center gap-2 px-4 py-3 mt-4 rounded-full bg-destructive/10"
-        >
-          <LogOut size={18} color="#ef4444" />
-          <Text className="text-sm font-semibold text-destructive">
-            Leave this campfire
-          </Text>
-        </Pressable>
-      </BottomSheetView>
-    </BottomSheet>
-  );
-});
+          <Pressable
+            onPress={onLeave}
+            className="bg-destructive/10 mt-4 flex-row items-center justify-center gap-2 rounded-full px-4 py-3"
+          >
+            <LogOut size={18} color="#ef4444" />
+            <Text className="text-destructive text-sm font-semibold">
+              Leave this campfire
+            </Text>
+          </Pressable>
+        </BottomSheetView>
+      </BottomSheet>
+    );
+  },
+);
 
 MembershipSheet.displayName = 'MembershipSheet';

@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Moon, Sun } from 'lucide-react-native';
 import { View } from 'react-native';
 
@@ -21,15 +20,15 @@ export function ThemeModeToggle() {
         }}
       >
         <ToggleGroupItem value="light" aria-label="Light Mode">
-          <Sun className="h-4 w-4 text-secondary-foreground" />
+          <Sun className="text-secondary-foreground h-4 w-4" />
         </ToggleGroupItem>
 
         <ToggleGroupItem value="dark" aria-label="Dark Mode">
-          <Moon className="h-4 w-4 text-secondary-foreground" />
+          <Moon className="text-secondary-foreground h-4 w-4" />
         </ToggleGroupItem>
 
         <ToggleGroupItem value="sunset" aria-label="Sunset Mode">
-          <Moon className="h-4 w-4 text-secondary-foreground" />
+          <Moon className="text-secondary-foreground h-4 w-4" />
         </ToggleGroupItem>
       </ToggleGroup>
     </View>

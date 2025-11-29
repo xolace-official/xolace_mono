@@ -2,27 +2,22 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useRouter } from 'expo-router';
-import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
-import { Alert, Pressable, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronRight } from 'lucide-react-native';
+import { Alert, Pressable, View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
-import {
-  campfireDetailsMock,
-  campfireFilters,
-  campfireGuideResourcesMock,
-  campfireHighlightsMock,
-  campfirePostsMock,
-} from './dummy-data';
-import { CampfireCondensedBar } from './CampfireCondensedBar';
-import { CampfireFilterChips } from './CampfireFilterChips';
 import { CampfireGuideSheet } from './CampfireGuideSheet';
 import { CampfireHeader } from './CampfireHeader';
 import { CampfireHighlights } from './CampfireHighlights';
 import { CampfirePostsList } from './CampfirePostsList';
 import { MembershipSheet } from './MembershipSheet';
+import {
+  campfireDetailsMock,
+  campfireGuideResourcesMock,
+  campfireHighlightsMock,
+  campfirePostsMock,
+} from './dummy-data';
 
 export function CampfireDetailsScreen() {
   const router = useRouter();
@@ -30,8 +25,7 @@ export function CampfireDetailsScreen() {
   const guideSheetRef = useRef<BottomSheet>(null);
 
   const [isMember, setIsMember] = useState(campfireDetailsMock.isMember);
-  const [isCondensed, setIsCondensed] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<string>(campfireFilters[0]);
+  const activeFilter = 'All';
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -53,11 +47,6 @@ export function CampfireDetailsScreen() {
     return campfirePostsMock;
   }, [activeFilter]);
 
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    setIsCondensed(offsetY > 180);
-  };
-
   const handleToggleJoin = () => {
     setIsMember((prev) => !prev);
     if (!isMember && campfireDetailsMock.guideShowOnJoin) {
@@ -74,9 +63,9 @@ export function CampfireDetailsScreen() {
     membershipSheetRef.current?.close();
   };
 
-  const handleOpenGuide = () => {
-    guideSheetRef.current?.expand();
-  };
+  // const handleOpenGuide = () => {
+  //   guideSheetRef.current?.expand();
+  // };
 
   const handleRefresh = () => {
     setIsRefreshing(true);
@@ -84,52 +73,50 @@ export function CampfireDetailsScreen() {
   };
 
   const NavHeader = () => (
-
-      <CampfireHeader
-        campfire={campfireDetailsMock}
-        isMember={isMember}
-        memberRole={campfireDetailsMock.memberRole}
-        onToggleJoin={handleToggleJoin}
-        onOpenMembership={handleOpenMembership}
-        onOpenModTools={() =>
-          Alert.alert('Mod Tools', 'Moderator tools coming soon.')
-        }
-      />
-
+    <CampfireHeader
+      campfire={campfireDetailsMock}
+      isMember={isMember}
+      memberRole={campfireDetailsMock.memberRole}
+      onToggleJoin={handleToggleJoin}
+      onOpenMembership={handleOpenMembership}
+      onOpenModTools={() =>
+        Alert.alert('Mod Tools', 'Moderator tools coming soon.')
+      }
+    />
   );
 
   const ListHeader = () => {
-    return(
+    return (
       <>
-      <Pressable
-        onPress={() => router.push('/x/health/about')}
-        className="flex-row items-center gap-2 px-4 py-2 mx-4 mb-3 rounded-full bg-muted/30"
-      >
-        <Text className="text-sm font-semibold text-foreground">
-          About this campfire
-        </Text>
-        <ChevronRight size={14} color="#94a3b8" />
-      </Pressable>
+        <Pressable
+          onPress={() => router.push('/x/health/about')}
+          className="bg-muted/30 mx-4 mb-3 flex-row items-center gap-2 rounded-full px-4 py-2"
+        >
+          <Text className="text-foreground text-sm font-semibold">
+            About this campfire
+          </Text>
+          <ChevronRight size={14} color="#94a3b8" />
+        </Pressable>
 
-      {/* <CampfireFilterChips
+        {/* <CampfireFilterChips
         filters={campfireFilters}
         activeFilter={activeFilter}
         onChange={setActiveFilter}
       /> */}
 
-      <CampfireHighlights
-        highlights={campfireHighlightsMock}
-        onPressHighlight={(highlight) =>
-          Alert.alert(highlight.title, 'Opens highlight detail soon.')
-        }
-      />
+        <CampfireHighlights
+          highlights={campfireHighlightsMock}
+          onPressHighlight={(highlight) =>
+            Alert.alert(highlight.title, 'Opens highlight detail soon.')
+          }
+        />
       </>
-    )
-  }
+    );
+  };
 
   return (
-    <View className="flex-1 bg-background">
-     <NavHeader/>
+    <View className="bg-background flex-1">
+      <NavHeader />
 
       <CampfirePostsList
         posts={filteredPosts}

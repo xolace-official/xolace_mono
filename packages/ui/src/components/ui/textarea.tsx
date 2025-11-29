@@ -13,7 +13,7 @@ const Textarea = React.forwardRef<
       className,
       multiline = true,
       numberOfLines = 4,
-      placeholderClassName,
+      placeholderTextColorClassName,
       ...props
     },
     ref,
@@ -26,7 +26,10 @@ const Textarea = React.forwardRef<
           props.editable === false && 'web:cursor-not-allowed opacity-50',
           className,
         )}
-        placeholderClassName={cn('text-muted-foreground', placeholderClassName)}
+        placeholderTextColorClassName={cn(
+          'accent-muted-foreground',
+          placeholderTextColorClassName,
+        )}
         multiline={multiline}
         numberOfLines={numberOfLines}
         textAlignVertical="top"

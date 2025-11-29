@@ -1,33 +1,24 @@
 import { useRef, useState } from 'react';
 
 import BottomSheet from '@gorhom/bottom-sheet';
-import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import { Alert, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { CampfireAboutContent } from './CampfireAboutContent';
+import { CampfireGuideSheet } from './CampfireGuideSheet';
+import { CampfireHeader } from './CampfireHeader';
+import { MembershipSheet } from './MembershipSheet';
 import {
   campfireDetailsMock,
   campfireGuideResourcesMock,
   campfireModeratorsMock,
   campfireRulesMock,
 } from './dummy-data';
-import { CampfireAboutContent } from './CampfireAboutContent';
-import { CampfireCondensedBar } from './CampfireCondensedBar';
-import { CampfireGuideSheet } from './CampfireGuideSheet';
-import { CampfireHeader } from './CampfireHeader';
-import { MembershipSheet } from './MembershipSheet';
 
 export function CampfireAboutScreen() {
   const membershipSheetRef = useRef<BottomSheet>(null);
   const guideSheetRef = useRef<BottomSheet>(null);
 
   const [isMember, setIsMember] = useState(campfireDetailsMock.isMember);
-  const [isCondensed, setIsCondensed] = useState(false);
-
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    setIsCondensed(offsetY > 140);
-  };
 
   const handleToggleJoin = () => {
     setIsMember((prev) => !prev);
@@ -47,7 +38,7 @@ export function CampfireAboutScreen() {
   };
 
   return (
-    <View className="flex-1 pb-16 bg-background">
+    <View className="bg-background flex-1 pb-16">
       {/* <CampfireCondensedBar
         visible={isCondensed}
         campfire={campfireDetailsMock}
@@ -67,14 +58,7 @@ export function CampfireAboutScreen() {
         }
       />
 
-      <ScrollView
-        className="flex-1 mt-32"
-        showsVerticalScrollIndicator={false}
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-      >
-        
-
+      <ScrollView className="mt-32 flex-1" showsVerticalScrollIndicator={false}>
         <CampfireAboutContent
           campfire={campfireDetailsMock}
           rules={campfireRulesMock}

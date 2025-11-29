@@ -13,7 +13,7 @@ export function GlobalThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { colorScheme, isDarkColorScheme, setColorScheme } = useColorScheme();
+  const { colorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
 
   useEffect(() => {

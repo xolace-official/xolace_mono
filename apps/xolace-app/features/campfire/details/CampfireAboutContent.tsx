@@ -1,15 +1,11 @@
 import { View } from 'react-native';
 
-import type {
-  CampfireDetails,
-  CampfireModerator,
-  CampfireRule,
-} from './types';
 import { CampfireAboutCard } from './sections/CampfireAboutCard';
 import { CampfireGuideCard } from './sections/CampfireGuideCard';
 import { CampfireModeratorsSection } from './sections/CampfireModeratorsSection';
 import { CampfireRoleCard } from './sections/CampfireRoleCard';
 import { CampfireRulesSection } from './sections/CampfireRulesSection';
+import type { CampfireDetails, CampfireModerator, CampfireRule } from './types';
 
 type CampfireAboutContentProps = {
   campfire: CampfireDetails;

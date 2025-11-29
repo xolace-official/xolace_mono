@@ -53,8 +53,8 @@ export function FeedHeaderTitleDropdown({
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <View className="flex-row items-center gap-1.5 rounded-full border border-black/10 bg-muted/50 px-4 py-3 dark:border-white/10">
-          <Text className="text-xl font-semibold text-foreground">
+        <View className="bg-muted/50 flex-row items-center gap-1.5 rounded-full border border-black/10 px-4 py-3 dark:border-white/10">
+          <Text className="text-foreground text-xl font-semibold">
             {selectedItem?.title || 'Campfire'}
           </Text>
           <ChevronDown size={16} color={isDark ? '#e5e7eb' : '#1f2937'} />

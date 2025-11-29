@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { ImageBackground, Pressable, View } from 'react-native';
 import { Check, Plus } from 'lucide-react-native';
+import { ImageBackground, Pressable, View } from 'react-native';
 
 import {
   Avatar,
@@ -71,9 +71,7 @@ export function CampfireHeader({
         onPress={handlePress}
         className={cn(
           'flex-row items-center justify-center rounded-full px-2 py-2',
-          joined
-            ? 'border border-primary/40 bg-primary/5'
-            : 'bg-primary',
+          joined ? 'border-primary/40 bg-primary/5 border' : 'bg-primary',
         )}
       >
         <Icon size={13} color={joined ? '#f97316' : '#fff'} />
@@ -90,8 +88,10 @@ export function CampfireHeader({
   };
 
   return (
-    <View style={{ height: CAMPFIRE_HEADER_HEIGHT }}
-      className="absolute inset-x-0 top-0 z-20">
+    <View
+      style={{ height: CAMPFIRE_HEADER_HEIGHT }}
+      className="absolute inset-x-0 top-0 z-20"
+    >
       <View style={{ height: BANNER_HEIGHT }} className="overflow-hidden">
         {campfire.bannerUrl ? (
           <ImageBackground
@@ -104,7 +104,7 @@ export function CampfireHeader({
         ) : (
           <LinearGradient
             colors={['#0c0d1a', '#1f2736', '#2c1f32']}
-            className="w-full h-full"
+            className="h-full w-full"
           >
             <Glow />
           </LinearGradient>
@@ -115,63 +115,60 @@ export function CampfireHeader({
         </View>
       </View>
 
-      {
-        showProfileCard && (
-          <View className="px-4 -mt-5 ">
-        <View className="px-4 py-2 shadow-lg rounded-3xl bg-background/95 shadow-black/10 dark:bg-zinc-900/95">
-          <View className="flex-row items-center gap-3">
-            <Avatar alt='avatar' className="h-14 w-14 bg-primary/10">
+      {showProfileCard && (
+        <View className="-mt-5 px-4">
+          <View className="bg-background/95 rounded-3xl px-4 py-2 shadow-lg shadow-black/10 dark:bg-zinc-900/95">
+            <View className="flex-row items-center gap-3">
+              <Avatar alt="avatar" className="bg-primary/10 h-14 w-14">
                 <AvatarImage source={{ uri: campfire.iconURL }} />
-              <AvatarFallback>
-                <Text>🔥</Text>
-              </AvatarFallback>
-            </Avatar>
+                <AvatarFallback>
+                  <Text>🔥</Text>
+                </AvatarFallback>
+              </Avatar>
 
-            <View className="flex-1">
-              <Text className="text-sm font-bold text-foreground">
-                {campfire.name}
-              </Text>
-              <Text className="text-[10px] text-muted-foreground">
-                {formatMembers(campfire.members)} campers · {purposeLabel}
-              </Text>
-            </View>
-
-            <View className="flex-row items-center gap-2">
-              {memberRole !== 'camper' ? (
-                <Button
-                  size="xs"
-                  variant="secondary"
-                  className="px-2 rounded-full shadow-sm bg-primary"
-                  onPress={onOpenModTools}
-                >
-                  <Text className="text-xs font-semibold text-white">
-                    Mod Tools
-                  </Text>
-                </Button>
-              ) : null}
-              {memberRole === 'firestarter' && renderJoinButton()}
-            </View>
-          </View>
-
-          <View className="flex-row items-center gap-3 mt-1">
-            <View className="px-3 py-1 rounded-full bg-muted/60">
-              <Text className="text-[10px] tracking-wide uppercase text-muted-foreground">
-                {campfire.visibility} campfire
-              </Text>
-            </View>
-            {campfire.isFavorite ? (
-              <View className="px-3 py-1 rounded-full bg-primary/10">
-                <Text className="text-[10px] font-medium text-primary">
-                  Favorite
+              <View className="flex-1">
+                <Text className="text-foreground text-sm font-bold">
+                  {campfire.name}
+                </Text>
+                <Text className="text-muted-foreground text-[10px]">
+                  {formatMembers(campfire.members)} campers · {purposeLabel}
                 </Text>
               </View>
-            ) : null}
+
+              <View className="flex-row items-center gap-2">
+                {memberRole !== 'camper' ? (
+                  <Button
+                    size="xs"
+                    variant="secondary"
+                    className="bg-primary rounded-full px-2 shadow-sm"
+                    onPress={onOpenModTools}
+                  >
+                    <Text className="text-xs font-semibold text-white">
+                      Mod Tools
+                    </Text>
+                  </Button>
+                ) : null}
+                {memberRole === 'firestarter' && renderJoinButton()}
+              </View>
+            </View>
+
+            <View className="mt-1 flex-row items-center gap-3">
+              <View className="bg-muted/60 rounded-full px-3 py-1">
+                <Text className="text-muted-foreground text-[10px] tracking-wide uppercase">
+                  {campfire.visibility} campfire
+                </Text>
+              </View>
+              {campfire.isFavorite ? (
+                <View className="bg-primary/10 rounded-full px-3 py-1">
+                  <Text className="text-primary text-[10px] font-medium">
+                    Favorite
+                  </Text>
+                </View>
+              ) : null}
+            </View>
           </View>
         </View>
-      </View>
-        )
-      }
-
+      )}
     </View>
   );
 }
@@ -179,7 +176,7 @@ function GradientOverlay() {
   return (
     <LinearGradient
       colors={['rgba(0,0,0,0.65)', 'rgba(0,0,0,0.25)', 'rgba(0,0,0,0.7)']}
-      className="w-full h-full"
+      className="h-full w-full"
     />
   );
 }
@@ -187,8 +184,8 @@ function GradientOverlay() {
 function Glow() {
   return (
     <View className="absolute inset-0">
-      <View className="absolute h-20 rounded-full inset-x-16 top-10 bg-orange-400/30 blur-3xl" />
-      <View className="absolute rounded-full inset-x-10 bottom-4 h-28 bg-amber-500/20 blur-3xl" />
+      <View className="absolute inset-x-16 top-10 h-20 rounded-full bg-orange-400/30 blur-3xl" />
+      <View className="absolute inset-x-10 bottom-4 h-28 rounded-full bg-amber-500/20 blur-3xl" />
     </View>
   );
 }

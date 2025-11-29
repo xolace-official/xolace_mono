@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { ImageBackground, Pressable, ScrollView, View } from 'react-native';
 import { ChevronDown, Sparkles } from 'lucide-react-native';
+import { ImageBackground, Pressable, ScrollView, View } from 'react-native';
 
 import { Text, cn } from '@xolacekit/ui';
 
@@ -26,7 +26,7 @@ export function CampfireHighlights({
       >
         <View className="flex-row items-center gap-2">
           <Sparkles size={18} color="#f97316" />
-          <Text className="text-base font-semibold text-foreground">
+          <Text className="text-foreground text-base font-semibold">
             Campfire highlights
           </Text>
         </View>
@@ -47,19 +47,17 @@ export function CampfireHighlights({
             <Pressable
               key={highlight.id}
               onPress={() => onPressHighlight?.(highlight)}
-              className="h-44 w-64 overflow-hidden rounded-3xl bg-muted/40"
+              className="bg-muted/40 h-44 w-64 overflow-hidden rounded-3xl"
             >
               <ImageBackground
                 source={
-                  highlight.imageUrl
-                    ? { uri: highlight.imageUrl }
-                    : undefined
+                  highlight.imageUrl ? { uri: highlight.imageUrl } : undefined
                 }
                 resizeMode="cover"
                 className="flex-1"
               >
                 <View className="absolute inset-0 bg-black/25" />
-                <View className="absolute bottom-0 left-0 right-0 p-4">
+                <View className="absolute right-0 bottom-0 left-0 p-4">
                   <Text className="text-base font-bold text-white">
                     {highlight.title}
                   </Text>
