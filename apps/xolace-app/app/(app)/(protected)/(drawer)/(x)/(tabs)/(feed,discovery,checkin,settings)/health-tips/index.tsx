@@ -3,10 +3,10 @@ import { useCallback } from 'react';
 import { router, useSegments } from 'expo-router';
 import { View } from 'react-native';
 
-import { HealthTipsHeader } from '../../../../../../../features/health-tips/components/health-tips-header';
-import { HealthTipsList } from '../../../../../../../features/health-tips/components/health-tips-list';
-import { useHealthTipsQuery } from '../../../../../../../features/health-tips/hooks/use-health-tips-query';
-import type { HealthTipListItem } from '../../../../../../../features/health-tips/types';
+import { HealthTipsHeader } from '../../../../../../../../features/health-tips/components/health-tips-header';
+import { HealthTipsList } from '../../../../../../../../features/health-tips/components/health-tips-list';
+import { useHealthTipsQuery } from '../../../../../../../../features/health-tips/hooks/use-health-tips-query';
+import type { HealthTipListItem } from '../../../../../../../../features/health-tips/types';
 
 export default function HealthTipsScreen() {
   const segments = useSegments() as string[];

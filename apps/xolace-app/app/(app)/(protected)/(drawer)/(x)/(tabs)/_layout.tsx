@@ -4,7 +4,7 @@ import { FlameKindling, SettingsIcon } from 'lucide-react-native';
 import { UserCheck } from '@xolacekit/ui';
 import { Compass } from '@xolacekit/ui';
 
-import PostCreateButton from '../../../../../components/shared/PostCreateButton';
+import PostCreateButton from '../../../../../../components/shared/PostCreateButton';
 
 export default function MainLayout() {
   return (

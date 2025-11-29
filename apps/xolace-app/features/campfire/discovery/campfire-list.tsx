@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
-import type { Campfire } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
+import type { Campfire } from '../../../app/(app)/(protected)/(drawer)/(x)/(tabs)/(discovery)/discovery';
 import { CampfireCard } from './campfire-card';
 
 interface CampfireListProps {

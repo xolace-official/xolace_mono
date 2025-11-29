@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import { BookOpenCheck, NAV_THEME, Text, useColorScheme } from '@xolacekit/ui';
 
-import BackButton from '../../../../../../../components/shared/BackButton';
+import BackButton from '../../../../../../../../components/shared/BackButton';
 
 function HealthTipsHeaderTitle() {
   return (

@@ -5,10 +5,10 @@ import { useSegments } from 'expo-router';
 import { View } from 'react-native';
 
 // import { GlimpseHeader } from '../../../../../../../components/glimpse/glimpse-header';
-import { GlimpseControls } from '../../../../../../../features/glimpse/glimpse-controls';
-import { GlimpseVideoList } from '../../../../../../../features/glimpse/glimpse-video-list';
-import type { GlimpseSortOptionTypes } from '../../../../../../../features/glimpse/types';
-import { useMockGlimpseVideos } from '../../../../../../../hooks/glimpse/use-mock-glimpse-videos';
+import { GlimpseControls } from '../../../../../../../../features/glimpse/glimpse-controls';
+import { GlimpseVideoList } from '../../../../../../../../features/glimpse/glimpse-video-list';
+import type { GlimpseSortOptionTypes } from '../../../../../../../../features/glimpse/types';
+import { useMockGlimpseVideos } from '../../../../../../../../hooks/glimpse/use-mock-glimpse-videos';
 
 export default function GlimpseScreen() {
   const [searchQuery, setSearchQuery] = useState('');

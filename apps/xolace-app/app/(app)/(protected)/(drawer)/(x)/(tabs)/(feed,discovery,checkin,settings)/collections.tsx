@@ -4,9 +4,9 @@ import { Stack } from 'expo-router';
 import { View } from 'react-native';
 import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated';
 
-import { SegmentedControl } from '../../../../../../components/collections/segmented-control';
-import { PostCollectionsList } from '../../../../../../features/collections/components/post-collections-list';
-import { VideoCollectionsList } from '../../../../../../features/collections/components/video-collections-list';
+import { SegmentedControl } from '../../../../../../../components/collections/segmented-control';
+import { PostCollectionsList } from '../../../../../../../features/collections/components/post-collections-list';
+import { VideoCollectionsList } from '../../../../../../../features/collections/components/video-collections-list';
 
 type SegmentValue = 'posts' | 'videos';
 

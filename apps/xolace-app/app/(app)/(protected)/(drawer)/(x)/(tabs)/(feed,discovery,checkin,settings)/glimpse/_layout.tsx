@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { FileVideoCamera, Text } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
-import BackButton from '../../../../../../../components/shared/BackButton';
+import BackButton from '../../../../../../../../components/shared/BackButton';
 
 function GlimpseHeaderTitle() {
   return (

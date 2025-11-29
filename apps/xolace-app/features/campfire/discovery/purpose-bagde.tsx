@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
-import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
+import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(x)/(tabs)/(discovery)/discovery';
 
 interface PurposeBadgeProps {
   purpose: CampfirePurpose;

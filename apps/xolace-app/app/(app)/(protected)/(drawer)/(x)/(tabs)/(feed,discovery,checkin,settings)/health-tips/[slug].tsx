@@ -6,11 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Text, XolaceButton, useColorScheme } from '@xolacekit/ui';
 
-import { HealthTipAuthorCard } from '../../../../../../../features/health-tips/components/health-tip-author-card';
-import { HealthTipDetailHero } from '../../../../../../../features/health-tips/components/health-tip-detail-hero';
-import { HealthTipEngagementPreview } from '../../../../../../../features/health-tips/components/health-tip-engagement-preview';
-import { HealthTipMarkdown } from '../../../../../../../features/health-tips/components/health-tip-markdown';
-import { useHealthTipDetail } from '../../../../../../../features/health-tips/hooks/use-health-tip-detail';
+import { HealthTipAuthorCard } from '../../../../../../../../features/health-tips/components/health-tip-author-card';
+import { HealthTipDetailHero } from '../../../../../../../../features/health-tips/components/health-tip-detail-hero';
+import { HealthTipEngagementPreview } from '../../../../../../../../features/health-tips/components/health-tip-engagement-preview';
+import { HealthTipMarkdown } from '../../../../../../../../features/health-tips/components/health-tip-markdown';
+import { useHealthTipDetail } from '../../../../../../../../features/health-tips/hooks/use-health-tip-detail';
 
 export default function HealthTipDetailsScreen() {
   const params = useLocalSearchParams<{

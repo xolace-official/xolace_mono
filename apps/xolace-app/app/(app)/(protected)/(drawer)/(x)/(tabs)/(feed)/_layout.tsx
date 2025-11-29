@@ -6,7 +6,7 @@ import { useFeedFilter, useSetFeedFilter } from '@xolacekit/state';
 import { Bell } from '@xolacekit/ui';
 import { NAV_THEME, useColorScheme } from '@xolacekit/ui';
 
-import { FeedHeaderTitleDropdown } from '../../../../../../components/feed/feed-header-title-dropdown';
+import { FeedHeaderTitleDropdown } from '../../../../../../../components/feed/feed-header-title-dropdown';
 
 export default function Layout() {
   const { colorScheme } = useColorScheme();

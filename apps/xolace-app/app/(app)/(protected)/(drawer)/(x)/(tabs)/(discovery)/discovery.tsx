@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 import { View } from 'react-native';
 
-import { DiscoveryHeader } from '../../../../../../features/campfire/discovery/DiscoveryHeader';
-import { SearchBar } from '../../../../../../features/campfire/discovery/SearchBar';
-import { CampfireList } from '../../../../../../features/campfire/discovery/campfire-list';
-import { PurposeFilter } from '../../../../../../features/campfire/discovery/purpose-filter';
+import { DiscoveryHeader } from '../../../../../../../features/campfire/discovery/DiscoveryHeader';
+import { SearchBar } from '../../../../../../../features/campfire/discovery/SearchBar';
+import { CampfireList } from '../../../../../../../features/campfire/discovery/campfire-list';
+import { PurposeFilter } from '../../../../../../../features/campfire/discovery/purpose-filter';
 
 export type CampfirePurpose =
   | 'support circle'

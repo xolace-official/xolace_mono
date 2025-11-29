@@ -12,7 +12,7 @@ import {
   useColorScheme,
 } from '@xolacekit/ui';
 
-import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
+import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(x)/(tabs)/(discovery)/discovery';
 
 interface PurposeFilterProps {
   selectedPurposes: CampfirePurpose[];

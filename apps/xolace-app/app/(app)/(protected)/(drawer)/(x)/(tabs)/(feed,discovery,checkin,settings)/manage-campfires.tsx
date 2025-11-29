@@ -9,11 +9,11 @@ import { View } from 'react-native';
 
 import { Text } from '@xolacekit/ui';
 
-import { FilterBottomSheet } from '../../../../../../features/campfire/manage/filter-bottom-sheet';
-import { useMockJoinedCampfires } from '../../../../../../features/campfire/manage/hooks/use-mock-joined-campfires';
-import { JoinedCampfiresList } from '../../../../../../features/campfire/manage/joined-campfire-list';
+import { FilterBottomSheet } from '../../../../../../../features/campfire/manage/filter-bottom-sheet';
+import { useMockJoinedCampfires } from '../../../../../../../features/campfire/manage/hooks/use-mock-joined-campfires';
+import { JoinedCampfiresList } from '../../../../../../../features/campfire/manage/joined-campfire-list';
 // import { ManageHeader } from '../../../../../../features/campfire/manage/manage-header';
-import { ManageSearchBar } from '../../../../../../features/campfire/manage/manage-search-bar';
+import { ManageSearchBar } from '../../../../../../../features/campfire/manage/manage-search-bar';
 
 export type CampfireFilter = 'all' | 'favorites';
 
