@@ -12,6 +12,7 @@ import {
   InputField,
   LockKeyhole,
   Mail,
+  UserRoundPen,
   Text,
   XolaceButton,
   toast,
@@ -78,8 +79,9 @@ export function SignUpEmailPassword() {
                 onChangeText={field.onChange}
                 value={field.value}
                 label={'Username'}
-                inputStyle='bg-white'
+                inputStyle='bg-white text-black pl-2'
                 labelStyle='text-auth-text'
+                icon={UserRoundPen}
               />
             )}
           />
@@ -98,7 +100,7 @@ export function SignUpEmailPassword() {
                 value={field.value}
                 label={'Email'}
                 icon={Mail}
-                inputStyle='bg-white'
+                inputStyle='bg-white text-black pl-2'
                 labelStyle='text-auth-text'
               />
             )}
@@ -118,7 +120,7 @@ export function SignUpEmailPassword() {
                 value={field.value}
                 label={'Password'}
                 icon={LockKeyhole}
-                inputStyle='bg-white'
+                inputStyle='bg-white text-black pl-2'
                 labelStyle='text-auth-text'
               />
             )}

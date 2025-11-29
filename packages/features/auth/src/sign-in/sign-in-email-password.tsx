@@ -69,7 +69,7 @@ export function SignInEmailPassword() {
                 value={field.value}
                 label={'Email'}
                 icon={Mail}
-                inputStyle='bg-white'
+                inputStyle='bg-white text-black pl-2'
                 labelStyle='text-auth-text'
               />
             )}
@@ -89,7 +89,7 @@ export function SignInEmailPassword() {
                 value={field.value}
                 label={'Password'}
                 icon={LockKeyhole}
-                inputStyle='bg-white'
+                inputStyle='bg-white text-black pl-2'
                 labelStyle='text-auth-text'
               />
             )}
