@@ -1,15 +1,10 @@
 import React, { useCallback, useContext } from 'react';
 
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 // import { useDrawerProgress } from "@react-navigation/drawer";
 import { FlashList } from '@shopify/flash-list';
-import { useNavigation } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
-  useSharedValue,
-  withSpring,
 } from 'react-native-reanimated';
 import {
   Constants,
@@ -18,24 +13,16 @@ import {
   Text,
   View as ViewUI,
 } from 'react-native-ui-lib';
-import { scheduleOnRN } from 'react-native-worklets';
 
 import { TabsContext } from '../../../../../../../lib/providers/tabs-provider';
 import { XolaceButton } from '@xolacekit/ui';
 
 import { DailyPrompt } from '../../../../../../../components/cards/DailyPrompt';
 import { EnhancedPostCard } from '../../../../../../../components/cards/EnhancedPostCard';
-import {
-  ANIMATION_START_OFFSET,
-  SCROLL_DISTANCE_FOR_FULL_HIDE,
-  SCROLL_THRESHOLD,
-} from '../../../../../../../constants/config/tabBar-config';
 import { useFeedPosts } from '../../../../../../../hooks/feed/use-feed-posts';
 import dummyPosts, {
   EnhancedPost,
 } from '../../../../../../../lib/dummy-data/post';
-
-import { useHeaderAnimation } from '../../../../../../../lib/hooks/use-header-scroll';
 
 // ✅ Create Animated version of FlashList for UI thread animations
 const AnimatedFlashList = Animated.createAnimatedComponent(

@@ -1,6 +1,6 @@
 import { ImpactFeedbackStyle, impactAsync } from 'expo-haptics';
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { PressableScale } from 'pressto';
 import { withUniwind } from 'uniwind';
 

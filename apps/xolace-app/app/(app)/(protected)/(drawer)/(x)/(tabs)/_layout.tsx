@@ -11,7 +11,6 @@ import { BlurView } from "expo-blur";
 import { FlameKindling, SettingsIcon, Telescope } from 'lucide-react-native';
 
 import { UserCheck } from '@xolacekit/ui';
-import { Compass } from '@xolacekit/ui';
 
 import PostCreateButton from '../../../../../../components/shared/PostCreateButton';
 import { TabsContext } from '../../../../../../lib/providers/tabs-provider';
