@@ -36,6 +36,7 @@
     "@react-native-async-storage/async-storage": "catalog:",
     "@react-native-menu/menu": "catalog:",
     "@react-navigation/drawer": "catalog:",
+    "@react-navigation/elements": "catalog:",
     "@react-navigation/native": "catalog:",
     "@rn-primitives/portal": "catalog:",
     "@shopify/flash-list": "catalog:",

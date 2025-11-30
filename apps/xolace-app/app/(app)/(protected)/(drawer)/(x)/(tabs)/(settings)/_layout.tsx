@@ -9,25 +9,18 @@ export default function SettingsLayout() {
     <Stack
       screenOptions={{
         headerLargeTitle: false,
-        headerStyle: {
-          backgroundColor:
-            colorScheme === 'dark'
-              ? NAV_THEME.dark.colors.background
-              : NAV_THEME.light.colors.background,
-        },
+        headerTitleAlign: "center",
+        
         headerBackButtonDisplayMode: 'minimal',
       }}
     >
       <Stack.Screen
         name="settings"
         options={{
-          title: 'Settings',
           headerLeft: () => <DrawerToggleButton />,
-          headerLargeTitle: true,
-          headerShadowVisible: false,
-          headerLargeTitleStyle: {
-            color: 'black',
-          },
+          headerShown: true,
+          headerTintColor: "white",
+          headerTransparent: true,
         }}
       />
 
