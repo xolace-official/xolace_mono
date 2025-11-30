@@ -12,8 +12,8 @@ import {
   InputField,
   LockKeyhole,
   Mail,
-  UserRoundPen,
   Text,
+  UserRoundPen,
   XolaceButton,
   toast,
 } from '@xolacekit/ui';
@@ -60,11 +60,13 @@ export function SignUpEmailPassword() {
         }
       >
         <View>
-          <Text className={'mb-1 text-4xl font-bold tracking-widest text-auth-text'}>
+          <Text
+            className={'text-auth-text mb-1 text-4xl font-bold tracking-widest'}
+          >
             Sign Up
           </Text>
 
-          <View className={'h-[1px] w-24 bg-auth-background'} />
+          <View className={'bg-auth-background h-[1px] w-24'} />
         </View>
 
         <View>
@@ -79,8 +81,8 @@ export function SignUpEmailPassword() {
                 onChangeText={field.onChange}
                 value={field.value}
                 label={'Username'}
-                inputStyle='bg-white text-black pl-2'
-                labelStyle='text-auth-text'
+                inputStyle="bg-white text-black pl-2"
+                labelStyle="text-auth-text"
                 icon={UserRoundPen}
               />
             )}
@@ -100,8 +102,8 @@ export function SignUpEmailPassword() {
                 value={field.value}
                 label={'Email'}
                 icon={Mail}
-                inputStyle='bg-white text-black pl-2'
-                labelStyle='text-auth-text'
+                inputStyle="bg-white text-black pl-2"
+                labelStyle="text-auth-text"
               />
             )}
           />
@@ -120,8 +122,8 @@ export function SignUpEmailPassword() {
                 value={field.value}
                 label={'Password'}
                 icon={LockKeyhole}
-                inputStyle='bg-white text-black pl-2'
-                labelStyle='text-auth-text'
+                inputStyle="bg-white text-black pl-2"
+                labelStyle="text-auth-text"
               />
             )}
           />

@@ -86,11 +86,11 @@ export default function HealthTipDetailsScreen() {
 
   if (!slug) {
     return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-background px-6">
-        <Text className="text-center text-lg font-semibold text-foreground">
+      <SafeAreaView className="bg-background flex-1 items-center justify-center px-6">
+        <Text className="text-foreground text-center text-lg font-semibold">
           This tip is not reachable
         </Text>
-        <Text className="mt-2 text-center text-sm text-muted-foreground">
+        <Text className="text-muted-foreground mt-2 text-center text-sm">
           A valid identifier was not provided.
         </Text>
       </SafeAreaView>
@@ -99,7 +99,7 @@ export default function HealthTipDetailsScreen() {
 
   if (showInitialLoading) {
     return (
-      <SafeAreaView className="flex-1 bg-background px-4">
+      <SafeAreaView className="bg-background flex-1 px-4">
         <LoadingState />
       </SafeAreaView>
     );
@@ -107,17 +107,17 @@ export default function HealthTipDetailsScreen() {
 
   if (showErrorState) {
     return (
-      <View className="flex-1 items-center justify-center bg-background px-6">
-        <Text className="text-lg font-semibold text-destructive">
+      <View className="bg-background flex-1 items-center justify-center px-6">
+        <Text className="text-destructive text-lg font-semibold">
           Unable to open this wellness insight
         </Text>
-        <Text className="mt-2 text-center text-sm text-muted-foreground">
+        <Text className="text-muted-foreground mt-2 text-center text-sm">
           {error?.message ?? 'Something went wrong. Please try again shortly.'}
         </Text>
         <View className="mt-6 w-full flex-row gap-3">
           <XolaceButton
             label="Back to tips"
-            className="flex-1 border border-border/60 bg-transparent"
+            className="border-border/60 flex-1 border bg-transparent"
             labelClassName="text-foreground"
             onPress={handleBackToList}
           />
@@ -132,7 +132,7 @@ export default function HealthTipDetailsScreen() {
   }
 
   return (
-    <View className="flex-1 bg-background">
+    <View className="bg-background flex-1">
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         refreshControl={
@@ -174,9 +174,9 @@ export default function HealthTipDetailsScreen() {
 function LoadingState() {
   return (
     <View className="mt-10 space-y-5">
-      <View className="h-40 rounded-3xl bg-muted/30" />
-      <View className="h-28 rounded-3xl bg-muted/25" />
-      <View className="h-64 rounded-3xl bg-muted/20" />
+      <View className="bg-muted/30 h-40 rounded-3xl" />
+      <View className="bg-muted/25 h-28 rounded-3xl" />
+      <View className="bg-muted/20 h-64 rounded-3xl" />
     </View>
   );
 }

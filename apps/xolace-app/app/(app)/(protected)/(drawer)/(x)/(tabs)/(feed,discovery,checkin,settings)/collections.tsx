@@ -28,7 +28,7 @@ export default function CollectionsScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-background pt-48">
+    <View className="bg-background flex-1 pt-48">
       <Stack.Screen
         options={{
           title: 'Collections📚',

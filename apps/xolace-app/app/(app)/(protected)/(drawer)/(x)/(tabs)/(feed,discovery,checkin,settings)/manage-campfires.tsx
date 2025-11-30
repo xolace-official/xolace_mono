@@ -21,7 +21,7 @@ function ManageCampfiresHeaderTitle({ count }: { count: number }) {
   return (
     <View style={{ flexDirection: 'column' }}>
       <Text className="text-xl font-bold">Manage Campfires</Text>
-      <Text className="text-xs text-muted-foreground">{count} joined</Text>
+      <Text className="text-muted-foreground text-xs">{count} joined</Text>
     </View>
   );
 }
@@ -67,7 +67,7 @@ export default function ManageCampfiresScreen() {
   };
 
   return (
-    <View className={`flex-1 bg-background ${isFeed ? 'pt-32' : ''}`}>
+    <View className={`bg-background flex-1 ${isFeed ? 'pt-32' : ''}`}>
       <Stack.Screen
         options={{
           headerBackButtonDisplayMode: 'minimal',

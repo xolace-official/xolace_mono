@@ -1,15 +1,16 @@
-import { ScrollDirectionValue } from "./use-scroll-direction";
 import {
   Extrapolation,
-  interpolate,
   ScrollEvent,
+  interpolate,
   useAnimatedReaction,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
   withTiming,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
+
+import { ScrollDirectionValue } from './use-scroll-direction';
 
 const _onEndDragAnimDuration = 100;
 
@@ -35,11 +36,11 @@ export const useHeaderAnimation = ({
 
   const headerState = useDerivedValue(() => {
     if (headerTranslateY.value === 0) {
-      return "visible";
+      return 'visible';
     }
 
     if (headerTranslateY.value === -headerHeight) {
-      return "hidden";
+      return 'hidden';
     }
   });
   const headerTransition = useSharedValue(false);
@@ -54,7 +55,7 @@ export const useHeaderAnimation = ({
         headerOpacityRefPoint.value = headerOpacity.value;
         headerTranslateYRefPoint.value = headerTranslateY.value;
       }
-    }
+    },
   );
 
   const scrollHandler = useAnimatedScrollHandler({
@@ -75,8 +76,12 @@ export const useHeaderAnimation = ({
       isListDragging.value = false;
 
       if (listOffsetY.value < headerHeight) {
-        headerOpacity.value = withTiming(1, { duration: _onEndDragAnimDuration * 2 });
-        headerTranslateY.value = withTiming(0, { duration: _onEndDragAnimDuration * 2 });
+        headerOpacity.value = withTiming(1, {
+          duration: _onEndDragAnimDuration * 2,
+        });
+        headerTranslateY.value = withTiming(0, {
+          duration: _onEndDragAnimDuration * 2,
+        });
         headerTransition.value = false;
         return;
       }
@@ -84,10 +89,14 @@ export const useHeaderAnimation = ({
       if (
         listOffsetY.value > headerHeight &&
         headerTransition.value === true &&
-        scrollDirection.value === "to-bottom"
+        scrollDirection.value === 'to-bottom'
       ) {
-        headerOpacity.value = withTiming(0, { duration: _onEndDragAnimDuration });
-        headerTranslateY.value = withTiming(-headerHeight, { duration: _onEndDragAnimDuration });
+        headerOpacity.value = withTiming(0, {
+          duration: _onEndDragAnimDuration,
+        });
+        headerTranslateY.value = withTiming(-headerHeight, {
+          duration: _onEndDragAnimDuration,
+        });
         headerTransition.value = false;
         return;
       }
@@ -95,10 +104,14 @@ export const useHeaderAnimation = ({
       if (
         listOffsetY.value > headerHeight &&
         headerTransition.value === true &&
-        scrollDirection.value === "to-top"
+        scrollDirection.value === 'to-top'
       ) {
-        headerOpacity.value = withTiming(1, { duration: _onEndDragAnimDuration });
-        headerTranslateY.value = withTiming(0, { duration: _onEndDragAnimDuration });
+        headerOpacity.value = withTiming(1, {
+          duration: _onEndDragAnimDuration,
+        });
+        headerTranslateY.value = withTiming(0, {
+          duration: _onEndDragAnimDuration,
+        });
         headerTransition.value = false;
         return;
       }
@@ -108,10 +121,10 @@ export const useHeaderAnimation = ({
   const rHeaderStyle = useAnimatedStyle(() => {
     if (
       listOffsetY.value > 0 &&
-      scrollDirection.value === "to-bottom" &&
+      scrollDirection.value === 'to-bottom' &&
       isListDragging.value === true
     ) {
-      if (headerState.value === "hidden") {
+      if (headerState.value === 'hidden') {
         return {
           opacity: 0,
           transform: [{ translateY: -headerHeight }],
@@ -120,24 +133,27 @@ export const useHeaderAnimation = ({
       headerTransition.value = true;
       headerOpacity.value = interpolate(
         listOffsetY.value,
-        [listOffsetYRefPoint.value, listOffsetYRefPoint.value + headerHeight / 2],
+        [
+          listOffsetYRefPoint.value,
+          listOffsetYRefPoint.value + headerHeight / 2,
+        ],
         [headerOpacityRefPoint.value, 0],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
       headerTranslateY.value = interpolate(
         listOffsetY.value,
         [listOffsetYRefPoint.value, listOffsetYRefPoint.value + headerHeight],
         [headerTranslateYRefPoint.value, -headerHeight],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
     }
 
     if (
       listOffsetY.value > 0 &&
-      scrollDirection.value === "to-top" &&
+      scrollDirection.value === 'to-top' &&
       isListDragging.value === true
     ) {
-      if (headerState.value === "visible") {
+      if (headerState.value === 'visible') {
         return {
           opacity: 1,
           transform: [{ translateY: 0 }],
@@ -146,15 +162,21 @@ export const useHeaderAnimation = ({
       headerTransition.value = true;
       headerOpacity.value = interpolate(
         listOffsetY.value,
-        [listOffsetYRefPoint.value, listOffsetYRefPoint.value - 2 * headerHeight],
+        [
+          listOffsetYRefPoint.value,
+          listOffsetYRefPoint.value - 2 * headerHeight,
+        ],
         [headerOpacityRefPoint.value, 1],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
       headerTranslateY.value = interpolate(
         listOffsetY.value,
-        [listOffsetYRefPoint.value, listOffsetYRefPoint.value - 2 * headerHeight],
+        [
+          listOffsetYRefPoint.value,
+          listOffsetYRefPoint.value - 2 * headerHeight,
+        ],
         [headerTranslateYRefPoint.value, 0],
-        Extrapolation.CLAMP
+        Extrapolation.CLAMP,
       );
     }
     return {

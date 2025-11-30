@@ -31,7 +31,7 @@ export default function GlimpseScreen() {
   // };
 
   return (
-    <View className={`flex-1 bg-background ${isFeed ? '' : 'pb-20'} `}>
+    <View className={`bg-background flex-1 ${isFeed ? '' : 'pb-20'} `}>
       <View className="flex-1">
         {/* <GlimpseHeader onUpload={handleUpload} /> */}
 

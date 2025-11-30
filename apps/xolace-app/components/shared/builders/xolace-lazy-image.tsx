@@ -1,25 +1,26 @@
-import { Image as ExpoImage } from "expo-image";
-import React from "react";
-import { ImageSourcePropType, ImageStyle, StyleProp } from "react-native";
+import React from 'react';
+
+import { Image as ExpoImage } from 'expo-image';
+import { ImageSourcePropType, ImageStyle, StyleProp } from 'react-native';
 
 interface LazyImageProps {
   source: ImageSourcePropType | string;
   style?: StyleProp<ImageStyle>;
-  contentFit?: "cover" | "contain" | "fill" | "scale-down";
+  contentFit?: 'cover' | 'contain' | 'fill' | 'scale-down';
   contentPosition?: string;
   placeholder?: string;
   onLoad?: () => void;
   onError?: (error: any) => void;
 }
 
-const DEFAULT_BLUR_HASH = "LGF5]+Yk^6#M@-5c,1J5@[or[Q6.";
+const DEFAULT_BLUR_HASH = 'LGF5]+Yk^6#M@-5c,1J5@[or[Q6.';
 
 export const XolaceLazyImage = React.memo<LazyImageProps>(
   ({
     source,
     style,
-    contentFit = "cover",
-    contentPosition = "center",
+    contentFit = 'cover',
+    contentPosition = 'center',
     placeholder,
     onLoad,
     onError,
@@ -37,10 +38,10 @@ export const XolaceLazyImage = React.memo<LazyImageProps>(
         onError={onError}
         cachePolicy="memory-disk"
         transition={200}
-        recyclingKey={typeof source === "string" ? source : undefined}
+        recyclingKey={typeof source === 'string' ? source : undefined}
       />
     );
-  }
+  },
 );
 
-XolaceLazyImage.displayName = "XolaceLazyImage";
+XolaceLazyImage.displayName = 'XolaceLazyImage';

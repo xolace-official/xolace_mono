@@ -14,7 +14,7 @@ export function CampfireList({ campfires }: CampfireListProps) {
   function EmptyComponent() {
     return (
       <View className="flex-1 items-center justify-center py-12">
-        <Text className="text-center text-muted-foreground">
+        <Text className="text-muted-foreground text-center">
           No campfires found. Try adjusting your filters.
         </Text>
       </View>
@@ -29,7 +29,7 @@ export function CampfireList({ campfires }: CampfireListProps) {
       contentContainerStyle={{ paddingBottom: 20 }}
       showsVerticalScrollIndicator={false}
       ListEmptyComponent={EmptyComponent}
-      ItemSeparatorComponent={() => <View className="my-4 h-px bg-border" />}
+      ItemSeparatorComponent={() => <View className="bg-border my-4 h-px" />}
     />
   );
 }

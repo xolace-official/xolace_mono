@@ -48,7 +48,7 @@ export default function HealthTipsScreen() {
   }, []);
 
   return (
-    <View className={`flex-1 bg-background ${isFeedContext ? '' : 'pb-20'}`}>
+    <View className={`bg-background flex-1 ${isFeedContext ? '' : 'pb-20'}`}>
       <HealthTipsList
         tips={tips}
         header={<HealthTipsHeader />}

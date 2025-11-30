@@ -3,9 +3,7 @@ import React, { useCallback, useContext } from 'react';
 // import { useDrawerProgress } from "@react-navigation/drawer";
 import { FlashList } from '@shopify/flash-list';
 import { StyleSheet, View } from 'react-native';
-import Animated, {
-  useAnimatedScrollHandler,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedScrollHandler } from 'react-native-reanimated';
 import {
   Constants,
   Dialog,
@@ -14,7 +12,6 @@ import {
   View as ViewUI,
 } from 'react-native-ui-lib';
 
-import { TabsContext } from '../../../../../../../lib/providers/tabs-provider';
 import { XolaceButton } from '@xolacekit/ui';
 
 import { DailyPrompt } from '../../../../../../../components/cards/DailyPrompt';
@@ -23,6 +20,7 @@ import { useFeedPosts } from '../../../../../../../hooks/feed/use-feed-posts';
 import dummyPosts, {
   EnhancedPost,
 } from '../../../../../../../lib/dummy-data/post';
+import { TabsContext } from '../../../../../../../lib/providers/tabs-provider';
 
 // ✅ Create Animated version of FlashList for UI thread animations
 const AnimatedFlashList = Animated.createAnimatedComponent(
@@ -30,8 +28,8 @@ const AnimatedFlashList = Animated.createAnimatedComponent(
 );
 
 export default function HomePage() {
-const isVisible = true;
-    // x-bottom-tabs-background-animation 🔽
+  const isVisible = true;
+  // x-bottom-tabs-background-animation 🔽
   const { tabBarHeight, handleXTabsOnScroll } = useContext(TabsContext);
 
   // x-bottom-tabs-background-animation 🔼
@@ -42,9 +40,8 @@ const isVisible = true;
     },
   });
 
-   // Get filtered posts based on global feed filter state
+  // Get filtered posts based on global feed filter state
   const { filteredPosts } = useFeedPosts(dummyPosts);
-
 
   // renderItem memoized for performance
   const _renderItem = useCallback(({ item }: { item: EnhancedPost }) => {
@@ -70,7 +67,7 @@ const isVisible = true;
         scrollEventThrottle={1000 / 60}
         ListHeaderComponent={<DailyPrompt />}
         ListFooterComponent={<View style={{ height: 80 }} />}
-        contentContainerStyle={{  paddingBottom: tabBarHeight + 16, }}
+        contentContainerStyle={{ paddingBottom: tabBarHeight + 16 }}
         showsVerticalScrollIndicator={false}
       />
 

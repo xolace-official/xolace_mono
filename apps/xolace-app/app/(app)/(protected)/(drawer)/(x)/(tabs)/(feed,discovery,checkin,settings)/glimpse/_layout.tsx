@@ -10,7 +10,7 @@ function GlimpseHeaderTitle() {
   return (
     <View style={{ flexDirection: 'column' }}>
       <Text className="text-lg font-bold">Discover Glimpses</Text>
-      <Text className="text-xs text-muted-foreground">
+      <Text className="text-muted-foreground text-xs">
         Glimpse: Real stories. Real voices.
       </Text>
     </View>
