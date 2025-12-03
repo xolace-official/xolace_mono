@@ -1,6 +1,7 @@
-import { ActivityIndicator, Pressable, View } from "react-native";
-import { useEffect, useState } from "react";
-import Animated, { FadeIn } from "react-native-reanimated";
+import { useEffect, useState } from 'react';
+
+import { ActivityIndicator, Pressable, View } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 // grok-paywall-upgrade-button-animation 🔽
 
@@ -28,24 +29,24 @@ const UpgradeButton = () => {
   }, [loading]);
 
   return (
-    <View className="items-center justify-center mx-5 mb-5">
+    <View className="mx-5 mb-5 items-center justify-center">
       {/* Width transition is handled by native style transitions for snappy morphing:
           - width: 100% → MIN_BUTTON_WIDTH on press
           - duration: 400ms with ease-out for quick start and gentle settle
           - borderCurve: "continuous" for iOS 16+ premium rounded look */}
       <AnimatedPressable
         onPress={() => setLoading(true)}
-        className="h-[54px] rounded-full bg-white justify-center items-center"
+        className="h-[54px] items-center justify-center rounded-full bg-white"
         style={{
-          transitionProperty: "width",
+          transitionProperty: 'width',
           transitionDuration: 400,
-          transitionTimingFunction: "ease-out",
-          width: loading ? MIN_BUTTON_WIDTH : "100%",
-          borderCurve: "continuous",
+          transitionTimingFunction: 'ease-out',
+          width: loading ? MIN_BUTTON_WIDTH : '100%',
+          borderCurve: 'continuous',
         }}
         disabled={loading}
       />
-      <View className="absolute pointer-events-none">
+      <View className="pointer-events-none absolute">
         {loading ? (
           // FadeIn smoothly reveals the spinner as the button collapses; this
           // overlaps with the width transition to create a cohesive morph.
@@ -57,7 +58,7 @@ const UpgradeButton = () => {
           <Animated.Text
             key="text"
             entering={FadeIn}
-            className="text-xl font-medium text-black text-nowrap"
+            className="text-xl font-medium text-nowrap text-black"
           >
             Upgrade to SuperGrok
           </Animated.Text>

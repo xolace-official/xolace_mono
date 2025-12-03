@@ -1,19 +1,21 @@
-import { useNavigation } from "expo-router";
-import React, { FC, useEffect } from "react";
-import Animated, {
-  Extrapolation,
-  interpolate,
-  SharedValue,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated";
+import React, { FC, useEffect } from 'react';
+
 import {
   HeaderTitle as HeaderTitleComponent,
   HeaderTitleProps,
   useHeaderHeight,
-} from "@react-navigation/elements";
-import { cn } from "@xolacekit/ui";
+} from '@react-navigation/elements';
+import { useNavigation } from 'expo-router';
+import Animated, {
+  Extrapolation,
+  SharedValue,
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+
+import { cn } from '@xolacekit/ui';
 
 // header-large-title-animation 🔽
 
@@ -46,7 +48,8 @@ export const LargeTitle: FC<Props> = ({
     if (headerBaselineY.value <= 0) return { opacity: 0 };
 
     // Trigger position: when large title baseline goes above the header's bottom by the search bar collapse distance
-    const scrollDistance = headerBaselineY.value + searchBarAnimationDistance - headerHeight;
+    const scrollDistance =
+      headerBaselineY.value + searchBarAnimationDistance - headerHeight;
 
     return {
       // Timing: default withTiming (~300ms) gives a smooth but snappy reveal
@@ -57,14 +60,24 @@ export const LargeTitle: FC<Props> = ({
   // Purpose: Drives the on-screen large title (opacity + subtle pull-to-refresh scale)
   const rLargeTitleStyle = useAnimatedStyle(() => {
     // Shared trigger math with rTitleOpacityStyle ensures perfect cross-fade handoff
-    const scrollDistance = headerBaselineY.value + searchBarAnimationDistance - headerHeight;
+    const scrollDistance =
+      headerBaselineY.value + searchBarAnimationDistance - headerHeight;
 
     return {
       // Cross-fade: large title is visible until the scroll passes the trigger
       opacity: offsetY.value < scrollDistance ? 1 : 0,
       // Interpolation: slight scale-up on negative offset (overscroll/pull-down)
       // Input: [0, -200] px scroll → Output: [1, 1.1] scale, clamped to avoid over-zoom
-      transform: [{ scale: interpolate(offsetY.value, [0, -200], [1, 1.1], Extrapolation.CLAMP) }],
+      transform: [
+        {
+          scale: interpolate(
+            offsetY.value,
+            [0, -200],
+            [1, 1.1],
+            Extrapolation.CLAMP,
+          ),
+        },
+      ],
     };
   });
 
@@ -85,9 +98,9 @@ export const LargeTitle: FC<Props> = ({
 
   return (
     <Animated.Text
-      className={cn("text-white font-bold text-3xl", className)}
+      className={cn('text-3xl font-bold text-white', className)}
       // Transform origin on the left to mimic iOS large-title anchor behavior during scale
-      style={[rLargeTitleStyle, { transformOrigin: "left" }]}
+      style={[rLargeTitleStyle, { transformOrigin: 'left' }]}
       // Measurement: capture baseline (y + height) once laid out to derive scroll trigger
       onLayout={({ nativeEvent }) =>
         headerBaselineY.set(nativeEvent.layout.y + nativeEvent.layout.height)

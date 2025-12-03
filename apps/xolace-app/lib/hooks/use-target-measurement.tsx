@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+
 import {
-  measure,
   MeasuredDimensions,
+  measure,
   runOnUI,
   useAnimatedRef,
   useSharedValue,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
 
 // Looks like there is a global issue with measure method
 // https://github.com/software-mansion/react-native-reanimated/issues/7079
