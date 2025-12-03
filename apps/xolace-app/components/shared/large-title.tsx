@@ -15,8 +15,7 @@ import {
 } from "@react-navigation/elements";
 import { cn } from "@xolacekit/ui";
 
-// whatsapp-header-large-title-animation 🔽
-// whatsapp-updates-screen-header-animation 🔽
+// header-large-title-animation 🔽
 
 type Props = {
   title: string;
@@ -99,5 +98,4 @@ export const LargeTitle: FC<Props> = ({
   );
 };
 
-// whatsapp-updates-screen-header-animation 🔼
-// whatsapp-header-large-title-animation 🔼
+// header-large-title-animation 🔼

@@ -39,14 +39,14 @@ export function SettingsPagesList() {
       className={'flex-1 bg-background'}
       // Top padding = header height + 16px spacing so first content (LargeTitle) isn't obscured
       contentContainerStyle={{ paddingTop: headerHeight + 16 }}
-      contentContainerClassName="p-5"
+      contentContainerClassName=""
       indicatorStyle="white"
       // Performance: ~60fps scroll events for smooth interpolation without flooding JS
       scrollEventThrottle={1000 / 60}
       onScroll={scrollHandler}
     >
 
-      <LargeTitle title="Settings" offsetY={offsetY} className="mb-8" />
+      <LargeTitle title="Settings" offsetY={offsetY} className="mb-8 px-3" />
       <Animated.View ref={targetRef} onLayout={onTargetLayout} className={'flex-1 gap-6 px-4 py-2 pb-16'}>
         <SettingsProfileCard user={user} />
 

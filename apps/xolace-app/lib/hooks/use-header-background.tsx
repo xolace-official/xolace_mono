@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import Animated, { SharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
 import { useHeaderHeight } from "@react-navigation/elements";
+import { useResolveClassNames } from 'uniwind'
 import { BlurView } from "expo-blur";
 import { useTargetMeasurement } from "./use-target-measurement";
 
@@ -13,6 +14,8 @@ type Props = {
 export const useHeaderBackground = ({ offsetY }: Props) => {
   const navigation = useNavigation();
 
+  const backgroundColor = useResolveClassNames("bg-background");
+
   // Why: Align blur/background trigger with actual header bottom (incl. safe areas)
   const headerHeight = useHeaderHeight();
 
@@ -20,13 +23,13 @@ export const useHeaderBackground = ({ offsetY }: Props) => {
 
   const rBgStyle = useAnimatedStyle(() => {
     // Fallback: no measurement yet → solid background (no translucency)
-    if (measurement.value === null) return { backgroundColor: "#0a0a0a" };
+    if (measurement.value === null) return { backgroundColor: String(backgroundColor.backgroundColor) };
 
     const scrollDistance = measurement.value.pageY - headerHeight;
 
     return {
       // Background tint: opaque near top, gains 50% alpha after target passes under header
-      backgroundColor: offsetY.value > scrollDistance ? "#0a0a0a80" : "#0a0a0a",
+      backgroundColor: offsetY.value > scrollDistance ? `${String(backgroundColor.backgroundColor)}80` : String(backgroundColor.backgroundColor),
     };
   });
 
