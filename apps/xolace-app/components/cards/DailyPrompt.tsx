@@ -216,15 +216,15 @@ export function DailyPrompt() {
       <View className="mt-24 w-full px-4">
         <Card
           className={cn(
-            'relative overflow-hidden border-none shadow-xl',
-            'bg-purple-500',
+            'relative overflow-hidden border-none shadow-sm',
+            'bg-background',
             gradient,
           )}
         >
           {/* Decorative Glows */}
           <View
             className={cn(
-              'absolute right-0 top-0 -mr-20 -mt-20 h-40 w-40 rounded-full opacity-30 blur-3xl',
+              'absolute top-0 right-0 -mt-20 -mr-20 h-40 w-40 rounded-full opacity-30 blur-3xl',
               glow,
             )}
           />
@@ -270,7 +270,7 @@ export function DailyPrompt() {
                 <View className="flex flex-row items-center gap-1.5 rounded-full bg-white/10 px-3 py-1">
                   <Text className="text-sm">{categoryIcon}</Text>
                   <Tag size={12} color="#ffffff" />
-                  <Text className="text-xs font-medium capitalize text-white">
+                  <Text className="text-xs font-medium text-white capitalize">
                     {promptData.category.replace('_', ' ')}
                   </Text>
                 </View>
@@ -289,18 +289,18 @@ export function DailyPrompt() {
             <View className="relative my-3 min-h-[50px] items-center justify-center rounded-xl bg-white/5 p-3">
               <Text
                 className={cn(
-                  'absolute -left-2 top-1 select-none font-serif text-6xl',
+                  'absolute top-1 -left-2 font-serif text-6xl select-none',
                   accent,
                 )}
               >
                 "
               </Text>
-              <Text className="px-4 text-center text-base font-medium leading-snug text-white sm:text-xl">
+              <Text className="px-4 text-center text-base leading-snug font-medium text-white sm:text-xl">
                 {promptData.prompt_text}
               </Text>
               <Text
                 className={cn(
-                  'absolute -right-2 bottom-0 select-none font-serif text-6xl',
+                  'absolute -right-2 bottom-0 font-serif text-6xl select-none',
                   accent,
                 )}
               >

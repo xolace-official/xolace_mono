@@ -11,6 +11,7 @@ catalog:
   "@react-native-async-storage/async-storage": 2.2.0
   "@react-native-menu/menu": ^1.2.2
   "@react-navigation/drawer": ^7.5.10
+  "@react-navigation/elements": ^2.8.4
   "@react-navigation/native": ^7.0.14
   "@rn-primitives/accordion": ^1.1.0
   "@rn-primitives/alert-dialog": ^1.1.0
@@ -87,9 +88,10 @@ catalog:
   jest-expo: ~54.0.12
   lucide-react-native: ^0.544.0
   metro-cache: ^0.83.3
-  nativewind: 4.2.1
+  uniwind: ^1.0.4
   prettier: ^3.4.2
   prettier-plugin-tailwindcss: ^0.6.8
+  pressto: ^0.6.0
   react: 19.1.0
   react-dom: 19.1.0
   react-hook-form: ^7.54.2
@@ -112,8 +114,8 @@ catalog:
   supabase: 2.51.0
   sonner: 1.7.2
   sonner-native: 0.16.2
-  tailwind-merge: ^2.6.0
-  tailwindcss: ^3.4.17
+  tailwind-merge: ^3.4.0
+  tailwindcss: ^4.1.17
   tailwindcss-animate: ^1.0.7
   turbo: ^2.3.3
   typescript: ~5.9.2

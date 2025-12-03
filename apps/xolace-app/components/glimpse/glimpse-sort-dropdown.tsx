@@ -1,5 +1,4 @@
 import { ChevronDown } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { Pressable } from 'react-native';
 
 import {
@@ -9,6 +8,7 @@ import {
   ZeegoDropdownMenuItemTitle,
   ZeegoDropdownMenuRoot,
   ZeegoDropdownMenuTrigger,
+  useColorScheme,
 } from '@xolacekit/ui';
 
 import type { GlimpseSortOptionTypes } from '../../features/glimpse/types';
@@ -39,8 +39,8 @@ export function GlimpseSortDropdown({
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <Pressable className="flex-row items-center gap-2 rounded-full border border-black/10 bg-muted/50 px-5 py-3 active:opacity-70 dark:border-white/10">
-          <Text className="text-base font-medium text-foreground">
+        <Pressable className="bg-muted/50 flex-row items-center gap-2 rounded-full border border-black/10 px-5 py-3 active:opacity-70 dark:border-white/10">
+          <Text className="text-foreground text-base font-medium">
             {selectedLabel}
           </Text>
           <ChevronDown size={18} color={isDark ? '#e5e7eb' : '#1f2937'} />

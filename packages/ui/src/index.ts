@@ -9,6 +9,7 @@ export * from './components/ui/typography';
 export * from './components/ui/avatar';
 export * from './components/ui/badge';
 export * from './components/ui/radio-group';
+export * from './components/ui/skeleton';
 
 export * from './components/ui/dialog';
 export * from './components/ui/dropdown-menu';
@@ -57,6 +58,7 @@ export * from './lib/icons/Bell';
 export * from './lib/icons/ChevronLeft';
 export * from './lib/icons/FileVideoCamera';
 export * from './lib/icons/BookOpenCheck';
+export * from './lib/icons/UserRoundPen';
 
 // --- Utilities ---
 export * from './utils';

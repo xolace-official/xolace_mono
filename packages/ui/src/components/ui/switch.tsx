@@ -18,7 +18,7 @@ const SwitchWeb = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
-      'focus-visible:ring-ring focus-visible:ring-offset-background peer h-6 w-11 shrink-0 cursor-pointer flex-row items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed',
+      'focus-visible:ring-ring focus-visible:ring-offset-background peer h-6 w-11 shrink-0 cursor-pointer flex-row items-center rounded-full border-2 border-transparent transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed',
       props.checked ? 'bg-primary' : 'bg-input',
       props.disabled && 'opacity-50',
       className,
@@ -46,6 +46,10 @@ const RGB_COLORS = {
     primary: 'rgb(250, 250, 250)',
     input: 'rgb(39, 39, 42)',
   },
+  sunset: {
+    primary: 'rgb(234, 88, 12)',
+    input: 'rgb(124, 45, 18)',
+  },
 } as const;
 
 const SwitchNative = React.forwardRef<
@@ -55,11 +59,14 @@ const SwitchNative = React.forwardRef<
   const { colorScheme } = useColorScheme();
   const translateX = useDerivedValue(() => (props.checked ? 18 : 0));
   const animatedRootStyle = useAnimatedStyle(() => {
+    const currentTheme = (colorScheme ?? 'light') as keyof typeof RGB_COLORS;
+    const colors = RGB_COLORS[currentTheme] || RGB_COLORS.light;
+
     return {
       backgroundColor: interpolateColor(
         translateX.value,
         [0, 18],
-        [RGB_COLORS[colorScheme].input, RGB_COLORS[colorScheme].primary],
+        [colors.input, colors.primary],
       ),
     };
   });

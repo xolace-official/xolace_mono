@@ -13,6 +13,7 @@ import {
   LockKeyhole,
   Mail,
   Text,
+  UserRoundPen,
   XolaceButton,
   toast,
 } from '@xolacekit/ui';
@@ -28,6 +29,7 @@ export function SignUpEmailPassword() {
       email: '',
       password: '',
     },
+    mode: 'onChange',
   });
 
   const signUpMutation = useSignUpWithEmailAndPassword({
@@ -58,11 +60,13 @@ export function SignUpEmailPassword() {
         }
       >
         <View>
-          <Text className={'mb-1 text-4xl font-bold tracking-widest'}>
+          <Text
+            className={'text-auth-text mb-1 text-4xl font-bold tracking-widest'}
+          >
             Sign Up
           </Text>
 
-          <View className={'h-[1px] w-24 bg-[#4F041D]'} />
+          <View className={'bg-auth-background h-[1px] w-24'} />
         </View>
 
         <View>
@@ -77,6 +81,9 @@ export function SignUpEmailPassword() {
                 onChangeText={field.onChange}
                 value={field.value}
                 label={'Username'}
+                inputStyle="bg-white text-black pl-2"
+                labelStyle="text-auth-text"
+                icon={UserRoundPen}
               />
             )}
           />
@@ -95,6 +102,8 @@ export function SignUpEmailPassword() {
                 value={field.value}
                 label={'Email'}
                 icon={Mail}
+                inputStyle="bg-white text-black pl-2"
+                labelStyle="text-auth-text"
               />
             )}
           />
@@ -113,6 +122,8 @@ export function SignUpEmailPassword() {
                 value={field.value}
                 label={'Password'}
                 icon={LockKeyhole}
+                inputStyle="bg-white text-black pl-2"
+                labelStyle="text-auth-text"
               />
             )}
           />

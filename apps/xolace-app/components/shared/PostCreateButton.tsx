@@ -1,8 +1,12 @@
 import { ImpactFeedbackStyle, impactAsync } from 'expo-haptics';
 import { router } from 'expo-router';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { PressableScale } from 'pressto';
+import { StyleSheet } from 'react-native';
+import { withUniwind } from 'uniwind';
 
 import { MessageSquarePlus } from '@xolacekit/ui';
+
+const StyledPressableScale = withUniwind(PressableScale);
 
 const PostCreateButton = () => {
   const handlePress = () => {
@@ -11,13 +15,13 @@ const PostCreateButton = () => {
   };
 
   return (
-    <TouchableOpacity
+    <StyledPressableScale
       style={styles.button}
       onPress={handlePress}
-      className="left-[50%] h-16 w-16 items-center justify-center rounded-2xl bg-purple-500"
+      className="-top-[30%] left-[19%] h-16 w-16 items-center justify-center rounded-2xl bg-purple-500 shadow-2xl"
     >
       <MessageSquarePlus />
-    </TouchableOpacity>
+    </StyledPressableScale>
   );
 };
 

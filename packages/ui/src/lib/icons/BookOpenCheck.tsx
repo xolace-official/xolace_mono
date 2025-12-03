@@ -1,6 +1,5 @@
-import { BookOpenCheck } from 'lucide-react-native';
+import { BookOpenCheck as LucideBookOpenCheck } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(BookOpenCheck);
-export { BookOpenCheck };
+export const BookOpenCheck = iconWithClassName(LucideBookOpenCheck);

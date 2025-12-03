@@ -26,7 +26,7 @@ const arr = [
 
 const CampfireSelection = () => {
   return (
-    <SafeAreaView className="flex-1 bg-[#353839] px-5">
+    <SafeAreaView className="bg-background flex-1 px-5">
       <View className="flex flex-row items-center justify-center gap-2 py-8">
         <View className="">
           <Memo />
@@ -36,11 +36,13 @@ const CampfireSelection = () => {
 
       <View className="flex h-[107px] flex-row items-center justify-between overflow-hidden rounded-lg bg-[#F5EFE6] px-4">
         <View className="">
-          <Text className={'text-[16px] font-medium'}>Find Your Campfire</Text>
-          <Text className="text-xs">
+          <Text className={'text-[16px] font-medium text-black'}>
+            Find Your Campfire
+          </Text>
+          <Text className="text-xs text-black">
             Pick a space where voices like yours gather.
           </Text>
-          <Text className="text-xs">You can join more later.</Text>
+          <Text className="text-xs text-black">You can join more later.</Text>
         </View>
 
         <View className="">
@@ -48,7 +50,7 @@ const CampfireSelection = () => {
         </View>
       </View>
 
-      <Text className="mt-5 text-white">Start Here</Text>
+      <Text className="mt-5 text-lg font-semibold text-white">Start Here</Text>
 
       <View>
         {arr.map((_, i) => (

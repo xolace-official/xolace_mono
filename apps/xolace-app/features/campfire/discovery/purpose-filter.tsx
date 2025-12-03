@@ -1,6 +1,5 @@
 // apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/purpose-filter.tsx
 import { SlidersHorizontal } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
 import { Pressable } from 'react-native';
 
 import {
@@ -10,9 +9,10 @@ import {
   ZeegoDropdownMenuLabel,
   ZeegoDropdownMenuRoot,
   ZeegoDropdownMenuTrigger,
+  useColorScheme,
 } from '@xolacekit/ui';
 
-import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
+import type { CampfirePurpose } from '../../../app/(app)/(protected)/(drawer)/(x)/(tabs)/(discovery)/discovery';
 
 interface PurposeFilterProps {
   selectedPurposes: CampfirePurpose[];
@@ -44,7 +44,7 @@ export function PurposeFilter({
   return (
     <ZeegoDropdownMenuRoot>
       <ZeegoDropdownMenuTrigger>
-        <Pressable className="rounded-2xl border border-black/10 bg-muted/50 p-3 active:opacity-70 dark:border-white/10">
+        <Pressable className="bg-muted/50 rounded-2xl border border-black/10 p-3 active:opacity-70 dark:border-white/10">
           <SlidersHorizontal size={20} color={isDark ? '#e5e7eb' : '#1f2937'} />
         </Pressable>
       </ZeegoDropdownMenuTrigger>

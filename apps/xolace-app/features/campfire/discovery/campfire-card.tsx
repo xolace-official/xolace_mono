@@ -1,9 +1,9 @@
-// apps/xolace-app/app/(app)/(protected)/(drawer)/(tabs)/discovery/components/campfire-card.tsx
+import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
 
 import { Button, Text } from '@xolacekit/ui';
 
-import type { Campfire } from '../../../app/(app)/(protected)/(drawer)/(tabs)/(discovery)/discovery';
+import type { Campfire } from '../../../app/(app)/(protected)/(drawer)/(x)/(tabs)/(discovery)/discovery';
 import { CampfireAvatar } from './campfire-avatar';
 import { PurposeBadge } from './purpose-bagde';
 
@@ -20,6 +20,7 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
   const handleCardPress = () => {
     // Navigate to campfire detail
     console.log('Navigate to campfire:', campfire.id);
+    router.push(`../x/${campfire.slug}`);
   };
 
   return (
@@ -28,12 +29,12 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
         <CampfireAvatar avatar={campfire.avatar} imageUri={campfire.imageUri} />
 
         <View className="ml-4 flex-1">
-          <Text className="mb-1 text-lg font-semibold text-foreground">
+          <Text className="text-foreground mb-1 text-lg font-semibold">
             {campfire.name}
           </Text>
 
           <Text
-            className="mb-2 text-sm text-muted-foreground"
+            className="text-muted-foreground mb-2 text-sm"
             numberOfLines={2}
           >
             {campfire.description}
@@ -41,7 +42,7 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
           <View className="flex-row items-center gap-3">
             <PurposeBadge purpose={campfire.purpose} />
 
-            <Text className="text-sm text-muted-foreground">
+            <Text className="text-muted-foreground text-sm">
               {campfire.memberCount}{' '}
               {campfire.memberCount === 1 ? 'member' : 'members'}
             </Text>
@@ -51,10 +52,10 @@ export function CampfireCard({ campfire }: CampfireCardProps) {
         {!campfire.joined && (
           <Button
             onPress={handleJoin}
-            className="ml-2 rounded-full bg-primary px-6"
+            className="bg-primary ml-2 rounded-full px-6"
             size="sm"
           >
-            <Text className="font-medium text-primary-foreground">Join</Text>
+            <Text className="text-primary-foreground font-medium">Join</Text>
           </Button>
         )}
       </View>

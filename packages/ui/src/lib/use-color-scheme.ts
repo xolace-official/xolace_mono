@@ -1,72 +1,27 @@
-// @xolacekit/ui or wherever your hook is
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useColorScheme as useNativewindColorScheme } from 'nativewind';
-import { useColorScheme as useDeviceColorScheme } from 'react-native';
-
-type Theme = 'light' | 'dark' | 'system';
+import { Uniwind, useUniwind } from 'uniwind';
 
 export function useColorScheme() {
-  const nativewindColorScheme = useNativewindColorScheme();
-  const deviceColorScheme = useDeviceColorScheme(); // Get system preference
+  const { theme } = useUniwind();
 
-  // Initialize theme from AsyncStorage on mount
-  useEffect(() => {
-    const loadTheme = async () => {
+  const setColorScheme = useCallback(
+    async (nextTheme: string) => {
+      console.log('theme', theme);
       try {
-        const savedTheme = (await AsyncStorage.getItem(
-          'theme',
-        )) as Theme | null;
-        if (savedTheme) {
-          if (savedTheme === 'system') {
-            nativewindColorScheme.setColorScheme(deviceColorScheme ?? 'dark');
-          } else {
-            nativewindColorScheme.setColorScheme(savedTheme);
-          }
-        }
+        Uniwind.setTheme(nextTheme as 'light' | 'dark' | 'sunset');
+        await AsyncStorage.setItem('theme', nextTheme);
       } catch (error) {
-        console.error('Failed to load theme:', error);
+        console.error('Failed to save theme:', error);
       }
-    };
-    loadTheme();
-  }, []);
-
-  // Handle system theme changes
-  useEffect(() => {
-    const checkSystemTheme = async () => {
-      const savedTheme = (await AsyncStorage.getItem('theme')) as Theme | null;
-      if (savedTheme === 'system') {
-        nativewindColorScheme.setColorScheme(deviceColorScheme ?? 'dark');
-      }
-    };
-    checkSystemTheme();
-  }, [deviceColorScheme]);
-
-  const setColorScheme = async (theme: Theme) => {
-    try {
-      await AsyncStorage.setItem('theme', theme);
-
-      if (theme === 'system') {
-        nativewindColorScheme.setColorScheme(deviceColorScheme ?? 'dark');
-      } else {
-        nativewindColorScheme.setColorScheme(theme);
-      }
-    } catch (error) {
-      console.error('Failed to save theme:', error);
-    }
-  };
-
-  const toggleColorScheme = async () => {
-    const newTheme =
-      nativewindColorScheme.colorScheme === 'dark' ? 'light' : 'dark';
-    await setColorScheme(newTheme);
-  };
+    },
+    [theme],
+  );
 
   return {
-    colorScheme: nativewindColorScheme.colorScheme ?? 'dark',
-    isDarkColorScheme: nativewindColorScheme.colorScheme === 'dark',
+    colorScheme: theme,
+    isDarkColorScheme: theme === 'dark',
     setColorScheme,
-    toggleColorScheme,
   };
 }

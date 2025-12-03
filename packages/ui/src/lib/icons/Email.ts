@@ -1,6 +1,5 @@
-import { Mail } from 'lucide-react-native';
+import { Mail as LucideMail } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(Mail);
-export { Mail };
+export const Mail = iconWithClassName(LucideMail);

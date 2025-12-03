@@ -1,6 +1,5 @@
-import { ArrowRight } from 'lucide-react-native';
+import { ArrowRight as LucideArrowRight } from 'lucide-react-native';
 
 import { iconWithClassName } from './iconWithClassName';
 
-iconWithClassName(ArrowRight);
-export { ArrowRight };
+export const ArrowRight = iconWithClassName(LucideArrowRight);
